@@ -25,21 +25,12 @@ module.exports = {
         loader: 'awesome-typescript-loader',
       },
       {
-        test: /\.p?css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1, url: false
-            }
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ]
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader'
       }
     ],
   },
@@ -48,7 +39,7 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   plugins: [
-    new webpack.IgnorePlugin(/test\.ts$/),
+    new webpack.IgnorePlugin(/spec\.ts$/),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',

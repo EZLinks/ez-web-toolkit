@@ -1,0 +1,193 @@
+@import 'src/styles/variables.scss';
+
+date-picker {
+  .form-control {
+    padding-right: 0 !important;
+    height: 40px !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  // text, path {
+  //     fill: $primaryDark;
+  // }
+
+  .calendar-button + input[type="text"] {
+    width: 110px;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .pull-left {
+    float: left !important;
+  }
+
+  .pull-right {
+    float: right !important;
+  }
+
+  .dropdown-menu li {
+    list-style: none;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    border-radius: 4px;
+    background-clip: padding-box;
+  }
+
+  button.ui.primaryButton.button.primary {
+    // background: $secondaryDark;
+    color: #eee;
+  }
+
+  button.ui.primary.attached.label.icon.button.calendar-button {
+    width: auto !important;
+  }
+
+  date-picker td,
+  div.uib-datepicker td,
+  uib-daypicker  td {
+    margin: 5px 5px;
+    padding: 7px 5px;
+    border-top: 1px solid #666666;
+  }
+
+  uib-datepicker-popup-wrap table:focus {
+    outline: -webkit-focus-ring-color 0 !important;
+    outline: 0 !important;
+  }
+
+  uib-datepicker-popup-wrap th {
+    padding-bottom: 5px;
+  }
+
+  div.uib-datepicker {
+    tr:nth-child(2) th {
+      padding-top: 5px;
+    }
+
+    td {
+      border-top: none !important;
+    }
+
+    button.ui.button.small span {
+      padding: .25em;
+    }
+
+    button.ui.button.small {
+      padding-left: 1.25em;
+      padding-right: 1.25em;
+    }
+
+    button.text-muted {
+      background: #c0c1c2;
+    }
+
+    button.text-muted:hover {
+      background-color: rgb(192, 192, 192) !important;
+      background-color: rgba(192, 192, 192, 0.6) !important;
+    }
+
+    button.ui.primary.attached.label.icon.button.calendar-button {
+      width: auto !important;
+    }
+
+    button.ui.button.small span {
+      padding: .2em .5em;
+    }
+
+    button.ui.button.small.active {
+      color: #eeeeee !important;
+      // background: $secondaryDark !important
+    }
+
+    button.ui.button.small.today span {
+      border: 2px solid rgb(125, 125, 125);
+      border-radius: 50%;
+    }
+
+    div.uib-datepicker {
+      tr:nth-child(2) th {
+        padding-top: 5px;
+      }
+
+      td {
+        border-top: none !important;
+      }
+
+      button.ui.button.small span {
+        padding: .25em;
+      }
+
+      button.ui.button.small {
+        padding-left: 1.25em;
+        padding-right: 1.25em;
+      }
+
+      button.text-muted {
+        background: #c0c1c2;
+      }
+
+      button.text-muted:hover {
+        background-color: rgb(192, 192, 192) !important;
+        background-color: rgba(192, 192, 192, 0.6) !important;
+      }
+
+      button.text-muted span {
+        color: rgb(125, 125, 125);
+        color: rgba(125, 125, 125, 0.6);
+      }
+
+      button.text-muted:hover span {
+        color: rgb(0, 0, 0);
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      button.ui.button.small span {
+        padding: .2em .5em;
+      }
+
+      button.ui.button.small.active {
+        color: #fff !important;
+        background: $primary-blue-color !important;
+        border: 1px solid $primary-blue-color;
+      }
+
+      button.ui.button.small.active span {
+        border: 2px solid #fff;
+        border-radius: 50%;
+      }
+
+      button.ui.button.small.today {
+        background: #fff !important;
+        border: 1px solid $primary-blue-color;
+      }
+
+      button.ui.button.small.today span {
+        background: #fff;
+        color: #666;
+        border-radius: 50%;
+      }
+
+      button.ui.button.small.today.active span {
+        border: 2px solid $primary-blue-color;
+      }
+    }
+  }
+}

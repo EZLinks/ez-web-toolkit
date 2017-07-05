@@ -1,0 +1,17 @@
+<div ui-grid="eg.gridOptions" ui-grid-selection ui-grid-pagination>
+
+    <div class="ui active inverted dimmer part-loader" ng-if="eg.isRequestRunning">
+        <div class="ui large text loader sr-only"><span>Loading..</span></div>
+    </div>
+    <div ng-if="eg.isRequestError" class="ui active inverted dimmer part-loader gridErrContainer">
+        <div class="ui error message gridErrMessage">
+            <div class="header">An error occurred, please try again</div>
+            <button type="button" class="ui basic icon button gridErrBtn" ng-click="eg.reloadGrid()"><i class="refresh icon"></i> Reload Data</button>
+        </div>
+    </div>
+    <div ng-show="eg.hasNoItems()" class="ui active inverted dimmer part-loader noItemsInfoContainer">
+        <div class="ui info message noItemsMessage">
+            <div class="header">No items found.</div>
+        </div>
+    </div>
+</div>

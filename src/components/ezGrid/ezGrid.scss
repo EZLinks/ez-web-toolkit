@@ -1,0 +1,53 @@
+ez-grid {
+
+    .noItemsMessage {
+        border-radius: 0px!important;
+        height: 21px!important;
+        padding: 16px 24px 16px 24px!important;
+        font-size: 12px!important;
+        margin-left: 1px!important;
+        margin-right: 1px!important;
+    }
+
+    .noItemsInfoContainer {
+        height: 55px!important;
+    }
+
+    .gridErrBtn {
+        margin-top: 10px!important;
+    }
+
+    .gridErrMessage {
+        border-radius: 0px;
+		display: table-cell!important;
+		vertical-align: middle;
+    }
+
+    .gridErrContainer {
+        display: table!important;
+    }
+
+    .ui-grid input.ui-grid-pager-control-input {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        appearance: none;
+        -webkit-appearance: none;
+        user-select: none;
+        pointer-events: none;
+        width: auto;
+        height: auto;
+        padding: 7px;
+    }
+
+    .ui-grid-viewport, .ui-grid-canvas {
+        height: auto !important;
+    }
+
+    .ui-grid-pager-panel {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        margin: auto;
+    }
+}

@@ -1,0 +1,28 @@
+<sm-modal
+    class="{{em.className}}"
+    ng-class="{ 'data-is-active' : em.isShown, 'data-is-hidden' : !em.isShown }"
+    id="{{em.id}}"
+    visible="em.isModalVisible"
+    on-show="em.onShow"
+    on-hidden="em.onHideCallback"
+    on-visible="em.onVisibleCallback"
+    settings="{
+        transition: 'scale',
+        closable: false,
+        detachable: true,
+        observeChanges: true,
+        blurring: true
+    }">
+
+    <div class="ui active inverted dimmer part-loader" ng-if="em.isLoaderVisible">
+        <div class="ui large text loader"><span>Loading...</span></div>
+    </div>
+
+    <div class="header">{{ em.headerText }}</div>
+    <div ng-if="em.isInDom" class="content" ng-transclude></div>
+
+    <div class="actions">
+        <div class="ui primary button" data-ng-click="em.onPrimaryButtonClick()">{{ em.primaryButtonText }}</div>
+        <div class="ui basic button" data-ng-click="em.onSecondaryButtonClick()">{{ em.secondaryButtonText }}</div>
+    </div>
+</sm-modal>
