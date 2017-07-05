@@ -1,6 +1,6 @@
 {
   "name": "ez-web-toolkit",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "EZ Web Toolkit",
   "main": "build/ez-web-toolkit.js",
   "files": [
@@ -16,9 +16,12 @@
     "type": "git",
     "url": "git+https://github.com/ezlinks/ez-web-toolkit.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+      "angular",
+      "typescript"
+  ],
+  "author": "EZLinks <ejohnson@ezlinks.com> (https://github.com/EZLinks)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ezlinks/ez-web-toolkit/issues"
   },
