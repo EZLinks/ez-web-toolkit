@@ -17,8 +17,8 @@
     "url": "git+https://github.com/ezlinks/ez-web-toolkit.git"
   },
   "keywords": [
-      "angular",
-      "typescript"
+    "angular",
+    "typescript"
   ],
   "author": "EZLinks <ejohnson@ezlinks.com> (https://github.com/EZLinks)",
   "license": "MIT",
@@ -64,11 +64,11 @@
     "style-loader": "^0.18.2",
     "ts-loader": "^2.0.0",
     "tslint": "^5.0.0",
-    "tslint-config-standard": "^6.0.1",
     "typescript": "^2.1.4",
     "vanilla-typescript": "^0.3.2",
     "webpack": "^3.0.0",
-    "webpack-build-notifier": "^0.1.13"
+    "webpack-build-notifier": "^0.1.13",
+    "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
     "angular": "^1.6.3",

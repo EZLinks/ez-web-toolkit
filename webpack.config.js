@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var nodeExternals = require('webpack-node-externals');
 
 const PATHS = {
   src: path.join(__dirname, './src'),
@@ -7,7 +8,7 @@ const PATHS = {
 }
 
 module.exports = {
-
+  externals: [nodeExternals()],
   entry: {
     'ez-web-toolkit': PATHS.src + '/index.ts'
   },
@@ -35,7 +36,6 @@ module.exports = {
     ],
   },
   resolve: {
-    // you can now require('file') instead of require('file.js')
     extensions: ['.ts', '.js']
   },
   plugins: [
