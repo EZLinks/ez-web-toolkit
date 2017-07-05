@@ -1,0 +1,24 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "switch-default": true,
+    "triple-equals": true,
+    "use-isnan": true,
+    "quotemark": [true, "single"],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+    "curly": true,
+    "no-empty": true,
+    "object-literal-sort-keys": false,
+    "no-unsafe-finally": true,
+    "no-invalid-this": true,
+    "member-access": false,
+    "class-name": true,
+    "interface-name": [true, "always-prefix"],
+    "jsdoc-format": true,
+    "new-parens": true,
+    "no-consecutive-blank-lines": true,
+    "semicolon": [true, "always"],
+    "variable-name": [true, "check-format"],
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-typecast", "check-module"]
+  }
+}
