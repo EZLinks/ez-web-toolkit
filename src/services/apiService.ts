@@ -60,6 +60,42 @@ export class ApiService implements IApiService {
         return this.request(opts);
     }
 
+    public urlEncoded(method: string, url: any, data: any): Promise<any> {
+
+        let opts = new RequestOptions(url, method);
+
+        opts.headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        };
+
+        if (data) {
+            opts.data = data;
+        }
+
+        // transforms request data to the form data request with key/value pairs
+        opts.transformRequest = (requestData, headersGetter) => {
+
+            let dataStr: string = '';
+
+            if (requestData) {
+
+                angular.forEach(requestData,
+                    (value, key) => {
+
+                        if (dataStr) {
+                            dataStr += '&';
+                        }
+
+                        dataStr += `${key}=${encodeURIComponent(value)}`;
+                    });
+            }
+
+            return dataStr;
+        };
+
+        return this.request(opts);
+    }
+
     public request(opts: RequestOptions): Promise<any | void> {
 
         let ngPromise = this.$http(opts)
@@ -115,4 +151,13 @@ export interface IApiService {
      * @returns {Promise<any>} A promise to the response body.
      */
     upload(method: string, url: any, file: any, data?: any): Promise<any>;
+
+    /**
+     * Executes a url encoded http request.
+     * @param {string} method - The http method.
+     * @param {string} url - The url to http.
+     * @param {any} data - The request data.
+     * @returns {Promise<any>} A promise to the response body.
+     */
+    urlEncoded(method: string, url: any, data: any): Promise<any>
 }
