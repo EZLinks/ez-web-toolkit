@@ -1,2 +1,3533 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e(require("lodash"),require("jquery"),require("angular"),require("angular-typescript-validation"),require("moment"),require("toastr")):"function"==typeof define&&define.amd?define(["lodash","jquery","angular","angular-typescript-validation","moment","toastr"],e):"object"==typeof exports?exports["ez-web-toolkit"]=e(require("lodash"),require("jquery"),require("angular"),require("angular-typescript-validation"),require("moment"),require("toastr")):t["ez-web-toolkit"]=e(t.lodash,t.jquery,t.angular,t["angular-typescript-validation"],t.moment,t.toastr)}(this,function(t,e,i,n,o,r){return function(t){function e(n){if(i[n])return i[n].exports;var o=i[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,e),o.l=!0,o.exports}var i={};return e.m=t,e.c=i,e.d=function(t,i,n){e.o(t,i)||Object.defineProperty(t,i,{configurable:!1,enumerable:!0,get:n})},e.n=function(t){var i=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(i,"a",i),i},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=19)}([function(t,e){function i(t,e){var i=t[1]||"",o=t[3];if(!o)return i;if(e&&"function"==typeof btoa){var r=n(o);return[i].concat(o.sources.map(function(t){return"/*# sourceURL="+o.sourceRoot+t+" */"})).concat([r]).join("\n")}return[i].join("\n")}function n(t){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(t))))+" */"}t.exports=function(t){var e=[];return e.toString=function(){return this.map(function(e){var n=i(e,t);return e[2]?"@media "+e[2]+"{"+n+"}":n}).join("")},e.i=function(t,i){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},o=0;o<this.length;o++){var r=this[o][0];"number"==typeof r&&(n[r]=!0)}for(o=0;o<t.length;o++){var a=t[o];"number"==typeof a[0]&&n[a[0]]||(i&&!a[2]?a[2]=i:i&&(a[2]="("+a[2]+") and ("+i+")"),e.push(a))}},e}},function(t,e,i){function n(t,e){for(var i=0;i<t.length;i++){var n=t[i],o=h[n.id];if(o){o.refs++;for(var r=0;r<o.parts.length;r++)o.parts[r](n.parts[r]);for(;r<n.parts.length;r++)o.parts.push(c(n.parts[r],e))}else{for(var a=[],r=0;r<n.parts.length;r++)a.push(c(n.parts[r],e));h[n.id]={id:n.id,refs:1,parts:a}}}}function o(t,e){for(var i=[],n={},o=0;o<t.length;o++){var r=t[o],a=e.base?r[0]+e.base:r[0],s=r[1],l=r[2],u=r[3],c={css:s,media:l,sourceMap:u};n[a]?n[a].parts.push(c):i.push(n[a]={id:a,parts:[c]})}return i}function r(t,e){var i=g(t.insertInto);if(!i)throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");var n=y[y.length-1];if("top"===t.insertAt)n?n.nextSibling?i.insertBefore(e,n.nextSibling):i.appendChild(e):i.insertBefore(e,i.firstChild),y.push(e);else{if("bottom"!==t.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");i.appendChild(e)}}function a(t){if(null===t.parentNode)return!1;t.parentNode.removeChild(t);var e=y.indexOf(t);e>=0&&y.splice(e,1)}function s(t){var e=document.createElement("style");return t.attrs.type="text/css",u(e,t.attrs),r(t,e),e}function l(t){var e=document.createElement("link");return t.attrs.type="text/css",t.attrs.rel="stylesheet",u(e,t.attrs),r(t,e),e}function u(t,e){Object.keys(e).forEach(function(i){t.setAttribute(i,e[i])})}function c(t,e){var i,n,o,r;if(e.transform&&t.css){if(!(r=e.transform(t.css)))return function(){};t.css=r}if(e.singleton){var u=b++;i=v||(v=s(e)),n=d.bind(null,i,u,!1),o=d.bind(null,i,u,!0)}else t.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(i=l(e),n=f.bind(null,i,e),o=function(){a(i),i.href&&URL.revokeObjectURL(i.href)}):(i=s(e),n=p.bind(null,i),o=function(){a(i)});return n(t),function(e){if(e){if(e.css===t.css&&e.media===t.media&&e.sourceMap===t.sourceMap)return;n(t=e)}else o()}}function d(t,e,i,n){var o=i?"":n.css;if(t.styleSheet)t.styleSheet.cssText=C(e,o);else{var r=document.createTextNode(o),a=t.childNodes;a[e]&&t.removeChild(a[e]),a.length?t.insertBefore(r,a[e]):t.appendChild(r)}}function p(t,e){var i=e.css,n=e.media;if(n&&t.setAttribute("media",n),t.styleSheet)t.styleSheet.cssText=i;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(i))}}function f(t,e,i){var n=i.css,o=i.sourceMap,r=void 0===e.convertToAbsoluteUrls&&o;(e.convertToAbsoluteUrls||r)&&(n=k(n)),o&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");var a=new Blob([n],{type:"text/css"}),s=t.href;t.href=URL.createObjectURL(a),s&&URL.revokeObjectURL(s)}var h={},m=function(t){var e;return function(){return void 0===e&&(e=t.apply(this,arguments)),e}}(function(){return window&&document&&document.all&&!window.atob}),g=function(t){var e={};return function(i){return void 0===e[i]&&(e[i]=t.call(this,i)),e[i]}}(function(t){return document.querySelector(t)}),v=null,b=0,y=[],k=i(29);t.exports=function(t,e){if("undefined"!=typeof DEBUG&&DEBUG&&"object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");e=e||{},e.attrs="object"==typeof e.attrs?e.attrs:{},e.singleton||(e.singleton=m()),e.insertInto||(e.insertInto="head"),e.insertAt||(e.insertAt="bottom");var i=o(t,e);return n(i,e),function(t){for(var r=[],a=0;a<i.length;a++){var s=i[a],l=h[s.id];l.refs--,r.push(l)}if(t){n(o(t,e),e)}for(var a=0;a<r.length;a++){var l=r[a];if(0===l.refs){for(var u=0;u<l.parts.length;u++)l.parts[u]();delete h[l.id]}}}};var C=function(){var t=[];return function(e,i){return t[e]=i,t.filter(Boolean).join("\n")}}()},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(3),o=function(){function t(t,e){var i=this;this.unwatchArray=new Array,this.destroy=function(){i.unwatchArray&&n.forEach(i.unwatchArray,function(t){t()}),e&&e()},t.$on("$destroy",this.destroy)}return t}();e.BaseComponent=o},function(t,e){t.exports=require("lodash")},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});!function(t){t[t.Add=0]="Add",t[t.Edit=1]="Edit"}(e.EditorState||(e.EditorState={}))},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t.reloadGridEvent="reloadGrid",t}();e.EventConsts=n},function(t,e){t.exports=require("jquery")},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0});var o=i(2),r=i(5),a=function(t){function e(e){var i=t.call(this,e)||this;return i.$scope=e,e.rowDblClick=function(t){return i.onDoubleClickEvent(t.entity)},e.$on(r.EventConsts.reloadGridEvent,function(){i.reloadGrid()}),i}return n(e,t),e.prototype.onDoubleClickEvent=function(t){this.selectedItem=t,this.onDoubleClick()},e}(o.BaseComponent);e.BaseLookupController=a},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(9),o=i(4),r=function(){function t(t,e,i){this.$scope=t,this.$timeout=e,this.notificationService=i,this.ManagerState=n.ManagerState,this.EditorState=o.EditorState,this.clearSelected(),this.state=n.ManagerState.Lookup}return Object.defineProperty(t.prototype,"state",{get:function(){return this.managerState},set:function(t){var e=this;this.$timeout(function(){e.managerState=t})},enumerable:!0,configurable:!0}),t.prototype.newItem=function(){this.selectedItem=this.prepareNewItem(),this.editorState=o.EditorState.Add,this.state=n.ManagerState.Editor},t.prototype.editItem=function(){var t=this;if(!this.isRequestRunning&&null!==this.selectedItem)return this.isRequestRunning=!0,this.getItem().then(function(e){t.selectedItem=e,t.editorState=o.EditorState.Edit,t.state=n.ManagerState.Editor}).catch(function(){}).then(function(){t.$timeout(function(){t.isRequestRunning=!1})})},t.prototype.clearSelected=function(){this.selectedItem=null},t.prototype.closeEditor=function(){this.clearSelected(),this.state=n.ManagerState.Lookup},t}();e.BaseManagerController=r},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});!function(t){t[t.Lookup=0]="Lookup",t[t.Editor=1]="Editor"}(e.ManagerState||(e.ManagerState={}))},function(t,e,i){"use strict";(function(t){var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0});var o=i(2),r=function(e){function i(t,i){var n=e.call(this,t)||this;return n.$scope=t,n.modalService=i,n.modalVisibilityUpdated=function(t,e){t!==e&&(t?n.modalService.show(n):n.modalService.hide(n))},n}return n(i,e),i.prototype.$onInit=function(){var e=this;this.$scope.$watch(function(){return e.isVisible},this.modalVisibilityUpdated),this.id=Math.random().toString(36).substr(2,9),this.unwatchArray.push(function(){e.modalService.hide(e),t("#"+e.id).modal("hide"),t("#"+e.id).remove()})},i.prototype.toggleModalVisibility=function(t){this.isVisible=t,this.isModalVisible=t},i.prototype.toggleDomExistence=function(t){this.isInDom=t},i}(o.BaseComponent);e.BaseModalController=r}).call(e,i(6))},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t.emptyGuid="00000000-0000-0000-0000-000000000000",t}();e.TypeConsts=n},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});!function(t){t[t.ConnectionLost=0]="ConnectionLost",t[t.ProblemResult=1]="ProblemResult",t[t.ValidationProblemResult=2]="ValidationProblemResult"}(e.ErrorResponseType||(e.ErrorResponseType={}))},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});!function(t){t[t.Continue=100]="Continue",t[t.SwitchingProtocols=101]="SwitchingProtocols",t[t.OK=200]="OK",t[t.Created=201]="Created",t[t.Accepted=202]="Accepted",t[t.NonAuthoritativeInformation=203]="NonAuthoritativeInformation",t[t.NoContent=204]="NoContent",t[t.ResetContent=205]="ResetContent",t[t.PartialContent=206]="PartialContent",t[t.MultipleChoices=300]="MultipleChoices",t[t.Ambiguous=300]="Ambiguous",t[t.MovedPermanently=301]="MovedPermanently",t[t.Moved=301]="Moved",t[t.Found=302]="Found",t[t.Redirect=302]="Redirect",t[t.SeeOther=303]="SeeOther",t[t.RedirectMethod=303]="RedirectMethod",t[t.NotModified=304]="NotModified",t[t.UseProxy=305]="UseProxy",t[t.Unused=306]="Unused",t[t.TemporaryRedirect=307]="TemporaryRedirect",t[t.RedirectKeepVerb=307]="RedirectKeepVerb",t[t.BadRequest=400]="BadRequest",t[t.Unauthorized=401]="Unauthorized",t[t.PaymentRequired=402]="PaymentRequired",t[t.Forbidden=403]="Forbidden",t[t.NotFound=404]="NotFound",t[t.MethodNotAllowed=405]="MethodNotAllowed",t[t.NotAcceptable=406]="NotAcceptable",t[t.ProxyAuthenticationRequired=407]="ProxyAuthenticationRequired",t[t.RequestTimeout=408]="RequestTimeout",t[t.Conflict=409]="Conflict",t[t.Gone=410]="Gone",t[t.LengthRequired=411]="LengthRequired",t[t.PreconditionFailed=412]="PreconditionFailed",t[t.RequestEntityTooLarge=413]="RequestEntityTooLarge",t[t.RequestUriTooLong=414]="RequestUriTooLong",t[t.UnsupportedMediaType=415]="UnsupportedMediaType",t[t.RequestedRangeNotSatisfiable=416]="RequestedRangeNotSatisfiable",t[t.ExpectationFailed=417]="ExpectationFailed",t[t.UpgradeRequired=426]="UpgradeRequired",t[t.InternalServerError=500]="InternalServerError",t[t.NotImplemented=501]="NotImplemented",t[t.BadGateway=502]="BadGateway",t[t.ServiceUnavailable=503]="ServiceUnavailable",t[t.GatewayTimeout=504]="GatewayTimeout",t[t.HttpVersionNotSupported=505]="HttpVersionNotSupported"}(e.HttpStatusCode||(e.HttpStatusCode={}))},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0});var o=function(t){function e(e,i,n){var o=t.call(this,i)||this;return o.type=e,o.data=n,o}return n(e,t),e}(Error);e.ResponseError=o},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(t,e,i){void 0===i&&(i="./"),this.url=i.concat(t),this.method=e,this.rethrow=!0}return t}();e.RequestOptions=n},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t}();e.ProblemResult=n},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t}();e.UiGridRequest=n;var o=function(){function t(){}return t}();e.SortRequest=o;var r=function(){function t(){}return t}();e.FilterRequest=r},function(t,e){t.exports=require("angular")},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(20);e.BaseClasses=n;var o=i(25);e.Components=o;var r=i(57);e.Constants=r;var a=i(58);e.Enums=a;var s=i(59);e.Exceptions=s;var l=i(60);e.Models=l;var u=i(64);e.Services=u},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(2);e.BaseComponent=n.BaseComponent;var o=i(21);e.BaseEditorController=o.BaseEditorController;var r=i(7);e.BaseLookupController=r.BaseLookupController;var a=i(8);e.BaseManagerController=a.BaseManagerController;var s=i(24);e.BaseManagerDeletableController=s.BaseManagerDeletableController;var l=i(10);e.BaseModalController=l.BaseModalController},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(22),o=i(4),r=i(23),a=function(){function t(t,e,i,o){this.$timeout=e,this.notificationService=i,this.clearItemOnClose=!0,this.validationService=new n.ValidationService(this,t),this.rulesCustomizer=o.rulesCustomizer,this.isRequestRunning=null}return Object.defineProperty(t.prototype,"model",{get:function(){return this.item},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"isRequestRunning",{get:function(){return this.isReqRunning},set:function(t){var e=this;this.$timeout(function(){e.isReqRunning=t})},enumerable:!0,configurable:!0}),t.prototype.close=function(){this.clearItemOnClose&&this.clearItem(),this.onClose&&this.onClose()},t.prototype.onResponseSuccess=function(t){},t.prototype.submit=function(){var t=this;this.item||(this.item={}),this.validationService.validate(this.item).then(function(e){e&&(t.isRequestRunning||(t.isRequestRunning=!0,t.save().then(function(e){t.notificationService.success("Successfully saved."),t.onResponseSuccess(e),t.close()}).catch(function(e){e&&e.data&&r.ValidationProcessor.processValidationServerResponse(e.data,function(e,i){return t.validationService.addServerError(e,i)})}).then(function(){t.isRequestRunning=!1})))})},t.prototype.isInAddState=function(){return this.state===o.EditorState.Add},t.prototype.isInEditState=function(){return this.state===o.EditorState.Edit},t.prototype.clearItem=function(){this.item=null},t}();e.BaseEditorController=a},function(t,e){t.exports=require("angular-typescript-validation")},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t.processValidationServerResponse=function(t,e){if(this.isValidationResultResponse(t))for(var i in t.errors)if(t.errors.hasOwnProperty(i))for(var n=t.errors[i],o=0;o<n.length;o++)e(i,n[o])},t.isValidationResultResponse=function(t){return!(!t||!0!==t.hasServerValidationErrors)},t}();e.ValidationProcessor=n},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0});var o=i(8),r=i(5),a=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return n(e,t),e.prototype.deleteItem=function(){var t=this;if(!this.isDeleteRequestRunning)return this.isDeleteRequestRunning=!0,this.deleteRequest().then(function(e){t.notificationService.success("Item deleted."),t.$scope.$broadcast(r.EventConsts.reloadGridEvent),t.isDeleteItemPromptVisible=!1}).catch(function(e){t.handleDeleteError(e)}).then(function(){t.$timeout(function(){t.isDeleteRequestRunning=!1})})},e.prototype.handleDeleteError=function(t){},e.prototype.toggleDeleteItemPrompt=function(t){this.isDeleteItemPromptVisible=t},e}(o.BaseManagerController);e.BaseManagerDeletableController=a},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(26);e.ConfirmDialog=n.ConfirmDialog;var o=i(31);e.DatePicker=o.DatePicker;var r=i(41);e.ErrorBlock=r.ErrorBlock;var a=i(43);e.EzGrid=a.EzGrid;var s=i(47);e.EzModal=s.EzModal;var l=i(49);e.SingleLookup=l.SingleLookup;var u=i(53);e.UploadImage=u.UploadImage},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),i(27);var n=function(){function t(){this.controller=o,this.controllerAs="cd",this.templateUrl=i(30),this.bindings={title:"@cdTitle",body:"@cdBody",callout:"@cdCallout",onOk:"&cdOnOk",onCancel:"&cdOnCancel",loader:"=cdLoader",visible:"=cdVisible",errorBlock:"=cdError"}}return t}();e.ConfirmDialog=n;var o=function(){function t(){var t=this;this.onHidden=function(){t.errorBlock&&(t.errorBlock.showError=!1)}}return t}();e.ConfirmDialogController=o},function(t,e,i){var n=i(28);"string"==typeof n&&(n=[[t.i,n,""]]);var o={};o.transform=void 0;i(1)(n,o);n.locals&&(t.exports=n.locals)},function(t,e,i){e=t.exports=i(0)(void 0),e.push([t.i,".confirm-dialog .content{text-align:center;font-size:1.4em;margin:0 auto;vertical-align:middle}.confirm-dialog .content .emphasis{font-weight:bolder;padding:7px 0;margin-top:10px;font-size:110%}.confirm-dialog .actions input{margin:auto 5px!important}",""])},function(t,e){t.exports=function(t){var e="undefined"!=typeof window&&window.location;if(!e)throw new Error("fixUrls requires window.location");if(!t||"string"!=typeof t)return t;var i=e.protocol+"//"+e.host,n=i+e.pathname.replace(/\/[^\/]*$/,"/");return t.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,function(t,e){var o=e.trim().replace(/^"(.*)"$/,function(t,e){return e}).replace(/^'(.*)'$/,function(t,e){return e});if(/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(o))return t;var r;return r=0===o.indexOf("//")?o:0===o.indexOf("/")?i+o:n+o.replace(/^\.\//,""),"url("+JSON.stringify(r)+")"})}},function(t,e){var i="C:/dev/ewt/src/components/confirmDialog/confirmDialog.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<ez-modal em-class-name=confirm-dialog em-header-text={{cd.title}} em-primary-button-text=Confirm em-secondary-button-text=Cancel em-is-visible=cd.visible em-on-approve=cd.onOk() em-on-deny=cd.onCancel() em-is-loader-visible=cd.loader em-on-hidden=cd.onHidden()> <div ng-bind=cd.body></div> <div ng-if=cd.callout class=emphasis ng-bind=cd.callout></div> <error-block class="margin-t10 dblock" eb-error=cd.errorBlock></error-block> </ez-modal> ')}]),t.exports=i},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),i(32);var n=i(34),o=i(35);i(36),i(37),i(38);var r=i(39),a=function(){function t(){this.templateUrl=i(40),this.controller=s,this.controllerAs="dp",this.bindings={date:"=date",onDateChange:"&onDateChange",depth:"=?depth",depthMin:"=?depthMin",format:"=?format "}}return t}();e.DatePicker=a;var s=function(){function t(){this.status={opened:!1},this.dateOptions={formatDay:"d",formatYear:"yy",startingDay:0,showWeeks:!1},this.modelOptions={timezone:r().format("Z")},this.maxDate=r().add(5,"years").toDate(),this.popupTemplate=n,this.datePickerTemplate=o}return t.prototype.$onInit=function(){void 0===this.depth&&(this.depth="day"),void 0===this.depthMin&&(this.depthMin="day"),void 0===this.format&&(this.format="mediumDate"),this.dateOptions.datepickerMode=this.depth,this.dateOptions.minMode=this.depthMin},t.prototype.toggleCalendar=function(t){this.status.opened=!this.status.opened},t.prototype.toggleMin=function(){this.minDate=this.minDate?null:r().toDate()},t}();e.DatePickerController=s},function(t,e,i){var n=i(33);"string"==typeof n&&(n=[[t.i,n,""]]);var o={};o.transform=void 0;i(1)(n,o);n.locals&&(t.exports=n.locals)},function(t,e,i){e=t.exports=i(0)(void 0),e.push([t.i,"date-picker .form-control{padding-right:0!important;height:40px!important;padding-top:5px;padding-bottom:5px}date-picker .calendar-button+input[type=text]{width:110px}date-picker ul{list-style-type:none}date-picker .text-center{text-align:center}date-picker .pull-left{float:left!important}date-picker .pull-right{float:right!important}date-picker .dropdown-menu li{list-style:none}date-picker .dropdown-menu{position:absolute!important;z-index:1000;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;list-style:none;font-size:14px;border:1px solid rgba(0,0,0,.15);box-shadow:0 6px 12px rgba(0,0,0,.175);border-radius:4px;background-clip:padding-box}date-picker button.ui.primaryButton.button.primary{color:#eee}date-picker button.ui.primary.attached.label.icon.button.calendar-button{width:auto!important}date-picker date-picker td,date-picker div.uib-datepicker td,date-picker uib-daypicker td{margin:5px;padding:7px 5px;border-top:1px solid #666}date-picker uib-datepicker-popup-wrap table:focus{outline:0 -webkit-focus-ring-color!important;outline:0!important}date-picker uib-datepicker-popup-wrap th{padding-bottom:5px}date-picker div.uib-datepicker tr:nth-child(2) th{padding-top:5px}date-picker div.uib-datepicker td{border-top:none!important}date-picker div.uib-datepicker button.ui.button.small span{padding:.25em}date-picker div.uib-datepicker button.ui.button.small{padding-left:1.25em;padding-right:1.25em}date-picker div.uib-datepicker button.text-muted{background:#c0c1c2}date-picker div.uib-datepicker button.text-muted:hover{background-color:silver!important;background-color:hsla(0,0%,75%,.6)!important}date-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button{width:auto!important}date-picker div.uib-datepicker button.ui.button.small span{padding:.2em .5em}date-picker div.uib-datepicker button.ui.button.small.active{color:#eee!important}date-picker div.uib-datepicker button.ui.button.small.today span{border:2px solid #7d7d7d;border-radius:50%}date-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th{padding-top:5px}date-picker div.uib-datepicker div.uib-datepicker td{border-top:none!important}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span{padding:.25em}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small{padding-left:1.25em;padding-right:1.25em}date-picker div.uib-datepicker div.uib-datepicker button.text-muted{background:#c0c1c2}date-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover{background-color:silver!important;background-color:hsla(0,0%,75%,.6)!important}date-picker div.uib-datepicker div.uib-datepicker button.text-muted span{color:#7d7d7d;color:hsla(0,0%,49%,.6)}date-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span{color:#000;color:rgba(0,0,0,.6)}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span{padding:.2em .5em}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active{color:#fff!important;background:RGBA(33,133,208,1)!important;border:1px solid RGBA(33,133,208,1)}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span{border:2px solid #fff;border-radius:50%}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today{background:#fff!important;border:1px solid RGBA(33,133,208,1)}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span{background:#fff;color:#666;border-radius:50%}date-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span{border:2px solid RGBA(33,133,208,1)}",""])},function(t,e){var i="C:/dev/ewt/src/components/datePicker/template/datepicker/popup.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<ul class="uib-datepicker-popup dropdown-menu ui uib-position-measure clearing segment" dropdown-nested ng-if=isOpen ng-keydown=keydown($event) ng-click=$event.stopPropagation()> <li ng-transclude></li> <li ng-if=showButtonBar style="padding:10px 9px 2px"> <span class=pull-left> <button type=button class="ui primaryButton button primary" ng-click="select(\'today\', $event)" ng-disabled="isDisabled(\'today\')"> <span ng-bind="getText(\'current\')"></span> </button> </span> <button type=button class="ui secondaryButton button pull-right" ng-click=close($event)> <span ng-bind="getText(\'close\')"></span> </button> </li> </ul>')}]),t.exports=i},function(t,e){var i="C:/dev/ewt/src/components/datePicker/template/datepicker/datepicker.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,"<div class=uib-datepicker ng-switch=datepickerMode role=application ng-keydown=keydown($event)> <div uib-daypicker ng-switch-when=day tabindex=0 template-url=day.html></div> <div uib-monthpicker ng-switch-when=month tabindex=0 template-url=month.html></div> <div uib-yearpicker ng-switch-when=year tabindex=0 template-url=year.html></div> </div>")}]),t.exports=i},function(t,e){window.angular.module("ng").run(["$templateCache",function(t){t.put("day.html",'<table role=grid aria-labelledby={{::uniqueId}}-title aria-activedescendant={{activeDateId}}> <thead> <tr> <th><button type=button class="ui button small pull-left" ng-click=move(-1) tabindex=-1><i class="icon chevron left"></i></button></th> <th colspan="{{::5 + showWeeks}}"><button id={{::uniqueId}}-title role=heading aria-live=assertive aria-atomic=true type=button class="ui button small" ng-click=toggleMode() ng-disabled="datepickerMode === maxMode" tabindex=-1 style=width:100%><strong><span ng-bind=title></span></strong></button></th> <th><button type=button class="ui button small pull-right" ng-click=move(1) tabindex=-1><i class="icon chevron right"></i></button></th> </tr> <tr> <th ng-if=showWeeks class=text-center></th> <th ng-repeat="label in ::labels track by $index" class=text-center><small aria-label={{::label.full}}><span ng-bind=label.abbr></span></small></th> </tr> </thead> <tbody> <tr ng-repeat="row in rows track by $index"> <td ng-if=showWeeks class=text-center><em><span ng-bind=weekNumbers[$index]></span></em></td> <td ng-repeat="dt in row track by dt.date" class=text-center role=gridcell id={{::dt.uid}} ng-class=::dt.customClass> <button type=button style=min-width:100% class="ui button small" ng-class="{\'btn-info\': dt.selected, active: isActive(dt), today: dt.current, \'text-muted\': dt.secondary }" ng-click=select(dt.date) ng-disabled=dt.disabled tabindex=-1><span ng-class="::{\'text-info\': dt.current}" ng-bind=dt.label></span></button> </td> </tr> </tbody> </table> ')}]),t.exports="day.html"},function(t,e){window.angular.module("ng").run(["$templateCache",function(t){t.put("month.html",'<table role=grid aria-labelledby={{::uniqueId}}-title aria-activedescendant={{activeDateId}}> <thead style=padding-bottom:1px> <tr> <th><button type=button class="ui button small" ng-click=move(-1) tabindex=-1 style=width:100%><i class="icon chevron left"></i></button></th> <th><button id={{::uniqueId}}-title role=heading aria-live=assertive aria-atomic=true type=button class="ui button small" ng-click=toggleMode() ng-disabled="datepickerMode === maxMode" tabindex=-1 style=width:100%><strong><span ng-bind=title></span></strong></button></th> <th><button type=button class="ui button small" ng-click=move(1) tabindex=-1 style=width:100%><i class="icon chevron right"></i></button></th> </tr> </thead> <tbody> <tr ng-repeat="row in rows track by $index"> <td ng-repeat="dt in row track by dt.date" class=text-center role=gridcell id={{::dt.uid}} ng-class=::dt.customClass> <button type=button style=min-width:100% class="ui button small" ng-class="{\'btn-info\': dt.selected, active: isActive(dt)}" ng-click=select(dt.date) ng-disabled=dt.disabled tabindex=-1><span ng-class="::{\'text-info\': dt.current}" ng-bind=dt.label></span></button> </td> </tr> </tbody> </table> ')}]),t.exports="month.html"},function(t,e){window.angular.module("ng").run(["$templateCache",function(t){t.put("year.html",'<table role=grid aria-labelledby={{::uniqueId}}-title aria-activedescendant={{activeDateId}}> <thead> <tr> <th><button type=button class="ui button pull-left" ng-click=move(-1) tabindex=-1><i class="icon chevron left"></i></button></th> <th colspan=3><button id={{::uniqueId}}-title role=heading aria-live=assertive aria-atomic=true type=button class="ui button" ng-click=toggleMode() ng-disabled="datepickerMode === maxMode" tabindex=-1 style=width:100%><strong><span ng-bind=title></span></strong></button></th> <th><button type=button class="ui button pull-right" ng-click=move(1) tabindex=-1><i class="icon chevron right"></i></button></th> </tr> </thead> <tbody> <tr ng-repeat="row in rows track by $index"> <td ng-repeat="dt in row track by dt.date" class=text-center role=gridcell id={{::dt.uid}}> <button type=button style=min-width:100% class="ui button" ng-class="{\'btn-info\': dt.selected, active: isActive(dt)}" ng-click=select(dt.date) ng-disabled=dt.disabled tabindex=-1><span ng-class="::{\'text-info\': dt.current}" ng-bind=dt.label></span></button> </td> </tr> </tbody> </table> ')}]),t.exports="year.html"},function(t,e){t.exports=require("moment")},function(t,e){var i="C:/dev/ewt/src/components/datePicker/datePicker.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<div class="ui action input"> <input type=text class=form-control uib-datepicker-popup={{::dp.format}} ng-model=dp.date ng-model-options=dp.modelOptions ng-click=dp.toggleCalendar($event) datepicker-popup={{::dp.format}} datepicker-popup-template-url={{::dp.popupTemplate}} datepicker-template-url={{::dp.datePickerTemplate}} is-open=dp.status.opened min-date=dp.minDate max-date=dp.maxDate datepicker-options=dp.dateOptions on-open-focus=false popup-placement=auto ng-required=true readonly=readonly close-text=Close current-text=Today /> <button class="ui icon button" ng-click=dp.toggleCalendar($event)> <i class="calendar icon"></i> </button> </div>')}]),t.exports=i},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){this.controller=o,this.controllerAs="eb",this.templateUrl=i(42),this.bindings={errorBlock:"=ebError"}}return t}();e.ErrorBlock=n;var o=function(){function t(){}return Object.defineProperty(t.prototype,"showError",{get:function(){return this.errorBlock&&this.errorBlock.showError},enumerable:!0,configurable:!0}),t}();e.ErrorBlockController=o},function(t,e){var i="C:/dev/ewt/src/components/errorBlock/errorBlock.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<div ng-if=eb.showError class="ui negative message"> <div class=header> {{eb.errorBlock.errorTitle}} </div> <p> {{eb.errorBlock.errorMessage}} </p> </div>')}]),t.exports=i},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0}),i(44);var o=i(7),r=function(){function t(){this.templateUrl=i(46),this.controller=a,this.controllerAs="eg",this.bindings={gridColumns:"=egGridColumns",selectedItem:"=egSelectedItem",getItems:"&egGetItems",onDoubleClick:"&egOnDoubleClick"}}return t}();e.EzGrid=r;var a=function(t){function e(e,i){var n=t.call(this,e)||this;return n.uiGridService=i,n}return n(e,t),e.prototype.$onInit=function(){var t=this;this.gridOptions=this.uiGridService.initPagedGridOptions(this,this.gridColumns),this.filterRequest=this.uiGridService.initFilterRequest(this.gridOptions),this.reloadGrid(),this.unwatchArray.push(function(){return t.uiGridService.destroyGrid(t)})},e.prototype.reloadGrid=function(){return this.uiGridService.doSearch(this,!1)},e.prototype.hasNoItems=function(){return!this.isRequestError&&!this.isRequestRunning&&this.gridOptions&&this.gridOptions.data&&0===this.gridOptions.data.length},e.$inject=["$scope","uiGridService"],e}(o.BaseLookupController);e.EzGridController=a},function(t,e,i){var n=i(45);"string"==typeof n&&(n=[[t.i,n,""]]);var o={};o.transform=void 0;i(1)(n,o);n.locals&&(t.exports=n.locals)},function(t,e,i){e=t.exports=i(0)(void 0),e.push([t.i,"ez-grid .noItemsMessage{border-radius:0!important;height:21px!important;padding:16px 24px!important;font-size:12px!important;margin-left:1px!important;margin-right:1px!important}ez-grid .noItemsInfoContainer{height:55px!important}ez-grid .gridErrBtn{margin-top:10px!important}ez-grid .gridErrMessage{border-radius:0;display:table-cell!important;vertical-align:middle}ez-grid .gridErrContainer{display:table!important}ez-grid .ui-grid input.ui-grid-pager-control-input{display:inline-flex;align-items:center;justify-content:center;appearance:none;-webkit-appearance:none;user-select:none;pointer-events:none;width:auto;height:auto;padding:7px}ez-grid .ui-grid-canvas,ez-grid .ui-grid-viewport{height:auto!important}ez-grid .ui-grid-pager-panel{display:flex;flex-flow:row nowrap;align-items:center;margin:auto}",""])},function(t,e){var i="C:/dev/ewt/src/components/ezGrid/ezGrid.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<div ui-grid=eg.gridOptions ui-grid-selection ui-grid-pagination> <div class="ui active inverted dimmer part-loader" ng-if=eg.isRequestRunning> <div class="ui large text loader sr-only"><span>Loading..</span></div> </div> <div ng-if=eg.isRequestError class="ui active inverted dimmer part-loader gridErrContainer"> <div class="ui error message gridErrMessage"> <div class=header>An error occurred, please try again</div> <button type=button class="ui basic icon button gridErrBtn" ng-click=eg.reloadGrid()><i class="refresh icon"></i> Reload Data</button> </div> </div> <div ng-show=eg.hasNoItems() class="ui active inverted dimmer part-loader noItemsInfoContainer"> <div class="ui info message noItemsMessage"> <div class=header>No items found.</div> </div> </div> </div> ')}]),t.exports=i},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0});var o=i(10),r=function(){function t(){this.templateUrl=i(48),this.controller=a,this.controllerAs="em",this.bindings={headerText:"@emHeaderText",primaryButtonText:"@emPrimaryButtonText",secondaryButtonText:"@emSecondaryButtonText",className:"@emClassName",isVisible:"=emIsVisible",isLoaderVisible:"=emIsLoaderVisible",hasInnerModal:"<emHasInnerModal",onApprove:"&emOnApprove",onDeny:"&emOnDeny",onShow:"&emOnShow",onHidden:"&emOnHidden"},this.transclude=!0}return t}();e.EzModal=r;var a=function(t){function e(e,i,n){var o=t.call(this,e,n)||this;return o.$timeout=i,o.onHideCallback=function(){o.onHidden&&o.onHidden(),o.$timeout(function(){o.isShown=!1})},o.onVisibleCallback=function(){o.$timeout(function(){o.isShown=!0})},o.onPrimaryButtonClick=function(){o.onApprove()},o.onSecondaryButtonClick=function(){o.isVisible=!1,o.isShown&&(o.onDeny&&o.$timeout(function(){o.onDeny()}),o.toggleModalVisibility(!1))},o}return n(e,t),e.$inject=["$scope","$timeout","modalService"],e}(o.BaseModalController);e.EzModalController=a},function(t,e){var i="C:/dev/ewt/src/components/ezModal/ezModal.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<sm-modal class={{em.className}} ng-class="{ \'data-is-active\' : em.isShown, \'data-is-hidden\' : !em.isShown }" id={{em.id}} visible=em.isModalVisible on-show=em.onShow on-hidden=em.onHideCallback on-visible=em.onVisibleCallback settings="{\r\n        transition: \'scale\',\r\n        closable: false,\r\n        detachable: true,\r\n        observeChanges: true,\r\n        blurring: true\r\n    }"> <div class="ui active inverted dimmer part-loader" ng-if=em.isLoaderVisible> <div class="ui large text loader"><span>Loading...</span></div> </div> <div class=header>{{ em.headerText }}</div> <div ng-if=em.isInDom class=content ng-transclude></div> <div class=actions> <div class="ui primary button" data-ng-click=em.onPrimaryButtonClick()>{{ em.primaryButtonText }}</div> <div class="ui basic button" data-ng-click=em.onSecondaryButtonClick()>{{ em.secondaryButtonText }}</div> </div> </sm-modal>')}]),t.exports=i},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0}),i(50);var o=i(3),r=i(2),a=i(11),s=function(){function t(){this.templateUrl=i(52),this.controller=l,this.controllerAs="sl",this.bindings={getData:"&getData",getSingle:"&getSingle",gridColumns:"<gridColumns",isRequired:"<?isRequired",itemTemplate:"@itemTemplate",resultCallback:"&resultCallback",selectedId:"<selectedId",title:"@title",placeholder:"@placeholder"}}return t}();e.SingleLookup=s;var l=function(t){function e(e,i,n,r,s){var l=t.call(this,e)||this;return l.$scope=e,l.$timeout=i,l.notificationService=n,l.customUiGridConstants=r,l.uiGridConstants=s,l.commonGridColumnOptions={enableFiltering:!0,filter:{condition:l.uiGridConstants.filter.STARTS_WITH,placeholder:"starts with",disableCancelFilterButton:!0},filterHeaderTemplate:l.customUiGridConstants.filterHeaderTemplate,headerCellTemplate:l.customUiGridConstants.headerCellTemplate,sort:{direction:"asc"}},l.onApprove=function(){if(!l.selectedItem)return l.notificationService.error("Please make a selection."),!1;l.updateItemDisplay(),l.isModalVisible=!1},l.onDeny=function(){l.selectedItem=o.cloneDeep(l.originalItem)},l.onHidden=function(){l.resultCallback({result:l.selectedItem?l.selectedItem:{id:a.TypeConsts.emptyGuid}}),l.originalItem=null},l.selectedIdChanged=function(t,e){t===e||null!==l.selectedItem&&l.selectedItem.id===t||l.refreshSelectedId()},l.isModalVisible=!1,l.unwatchArray.push(l.$scope.$watch(function(){return l.selectedId},l.selectedIdChanged)),l}return n(e,t),e.prototype.$onInit=function(){var t=this;o.forEach(this.gridColumns,function(e){var i=Object.assign({},o.cloneDeep(t.commonGridColumnOptions),e);Object.assign(e,i)}),this.refreshSelectedId()},e.prototype.clearItem=function(){this.itemDisplay="",this.selectedId=a.TypeConsts.emptyGuid,this.selectedItem=null,this.originalItem=null,this.resultCallback({result:{id:a.TypeConsts.emptyGuid}})},e.prototype.getItems=function(t){return this.getData({request:t})},e.prototype.onDoubleClickEvent=function(){this.updateItemDisplay(),this.isModalVisible=!1},e.prototype.openModal=function(){this.isModalVisible=!0,this.selectedItem&&(this.originalItem=o.cloneDeep(this.selectedItem))},e.prototype.refreshSelectedId=function(){var t=this;this.selectedId&&this.selectedId!==a.TypeConsts.emptyGuid?(this.isDataLoading=!0,this.getSingle({id:this.selectedId}).then(function(e){t.$timeout(function(){t.selectedItem=e,t.updateItemDisplay()})}).catch(function(){}).then(function(){t.$timeout(function(){t.isDataLoading=!1})})):(this.itemDisplay="",this.selectedItem=null,this.originalItem=null)},e.prototype.updateItemDisplay=function(){this.itemDisplay=this.$scope.$eval(this.itemTemplate,this.selectedItem)},e.prototype.getLoadingClass=function(){return this.isDataLoading?"loading":""},e.$inject=["$scope","$timeout","notificationService","customUiGridConstants","uiGridConstants"],e}(r.BaseComponent);e.SingleLookupController=l},function(t,e,i){var n=i(51);"string"==typeof n&&(n=[[t.i,n,""]]);var o={};o.transform=void 0;i(1)(n,o);n.locals&&(t.exports=n.locals)},function(t,e,i){e=t.exports=i(0)(void 0),e.push([t.i,"single-lookup input.action.input{max-height:40px}",""])},function(t,e){var i="C:/dev/ewt/src/components/singleLookup/singleLookup.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<div class="ui action input"> <input type=text ng-model=sl.itemDisplay placeholder="{{ sl.placeholder }}" readonly=readonly /> <button class="ui icon button {{ sl.getLoadingClass() }}" ng-click=sl.openModal()> <i class="search icon"></i> </button> <button ng-if=!sl.isRequired class="ui icon button {{ sl.getLoadingClass() }}" ng-click=sl.clearItem()> <i class="remove icon"></i> </button> </div> <ez-modal class=small em-header-text="{{ sl.title }}" em-primary-button-text=Select em-secondary-button-text=Cancel em-is-visible=sl.isModalVisible em-on-deny=sl.onDeny() em-on-hidden=sl.onHidden() em-on-approve=sl.onApprove()> <ez-grid eg-grid-columns=sl.gridColumns eg-selected-item=sl.selectedItem eg-get-items=sl.getItems(request) eg-on-double-click=sl.onDoubleClickEvent()> </ez-grid> </ez-modal>')}]),t.exports=i},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),i(54);var n=function(){function t(){this.templateUrl=i(56),this.controller=o,this.controllerAs="ui",this.bindings={imageRequest:"&uiImageUploadRequest",existingImageSrc:"=uiExistingImageSrc"}}return t}();e.UploadImage=n;var o=function(){function t(t,e){this.$scope=t,this.notificationService=e}return Object.defineProperty(t.prototype,"imageSrc",{get:function(){return this.existingImageSrc},enumerable:!0,configurable:!0}),t.prototype.onImageSelect=function(t){var e=this;t&&!this.isRequestRunning&&(this.isRequestRunning=!0,this.imageRequest({file:t}).catch(function(){}).then(function(){e.$scope.$apply(function(){e.isRequestRunning=!1;var t=(new Date).getTime().toString();e.existingImageSrc=String.prototype.concat(e.existingImageSrc,"&cb=",t)})}))},t.$inject=["$scope","notificationService"],t}();e.UploadImageController=o},function(t,e,i){var n=i(55);"string"==typeof n&&(n=[[t.i,n,""]]);var o={};o.transform=void 0;i(1)(n,o);n.locals&&(t.exports=n.locals)},function(t,e,i){e=t.exports=i(0)(void 0),e.push([t.i,"upload-image img{height:150px!important;width:150px!important}upload-image .image-uploader-container{height:180px!important;width:180px!important}",""])},function(t,e){var i="C:/dev/ewt/src/components/uploadImage/uploadImage.html";window.angular.module("ng").run(["$templateCache",function(t){t.put(i,'<div class="ui segment image-uploader-container"> <div class="ui active inverted dimmer part-loader" ng-if=ui.isRequestRunning> <div class="ui large text loader"><span>Loading..</span></div> </div> <img ng-if=!ui.hasExistingImage class="ui small rounded image" ngf-select=ui.onImageSelect($file) ngf-pattern="\'image/*\'" ngf-accept="\'image/*\'" ng-src={{ui.imageSrc}}> </div> ')}]),t.exports=i},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(5);e.EventConsts=n.EventConsts;var o=i(11);e.TypeConsts=o.TypeConsts},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(4);e.EditorState=n.EditorState;var o=i(12);e.ErrorResponseType=o.ErrorResponseType;var r=i(13);e.HttpStatusCode=r.HttpStatusCode;var a=i(9);e.ManagerState=a.ManagerState},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(14);e.ResponseError=n.ResponseError},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(15);e.RequestOptions=n.RequestOptions;var o=i(16);e.ProblemResult=o.ProblemResult;var r=i(61);e.ValidationProblemResult=r.ValidationProblemResult;var a=i(17);e.UiGridRequest=a.UiGridRequest;var s=i(62);e.UiGridResult=s.UiGridResult;var l=i(63);e.ErrorBlockModel=l.ErrorBlockModel},function(t,e,i){"use strict";var n=this&&this.__extends||function(){var t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i])};return function(e,i){function n(){this.constructor=e}t(e,i),e.prototype=null===i?Object.create(i):(n.prototype=i.prototype,new n)}}();Object.defineProperty(e,"__esModule",{value:!0});var o=i(16),r=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return n(e,t),e}(o.ProblemResult);e.ValidationProblemResult=r},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t}();e.UiGridResult=n},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function t(){}return t}();e.ErrorBlockModel=n},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(65);e.ResponseHandlers=n.ResponseHandlers;var o=i(66);e.ApiService=o.ApiService;var r=i(67);e.ModalService=r.ModalService;var a=i(68);e.NotificationService=a.NotificationService;var s=i(70);e.ProcessingService=s.ProcessingService;var l=i(71);e.ServerValidationService=l.ServerValidationService;var u=i(72);e.UiGridService=u.UiGridService},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(12),o=i(13),r=i(14),a=[o.HttpStatusCode.OK,o.HttpStatusCode.Created,o.HttpStatusCode.NoContent],s=function(){function t(t){this.notification=t}return t.prototype.error=function(t){void 0===t&&(t=!0);if(this.notification.error("An error occurred."),t)throw new r.ResponseError(n.ErrorResponseType.ConnectionLost,"An error occurred.")},t.prototype.handleProblem=function(t,e){void 0===e&&(e=!0);var i=t.detail;i?this.notification.error(i):this.error(e);var n=this.getErrorResponseType(t);if(e)throw new r.ResponseError(n,i,t)},t.prototype.isSuccessResponse=function(t){return a.includes(t)},t.prototype.getErrorResponseType=function(t){return t.detail?t.hasServerValidationErrors?n.ErrorResponseType.ValidationProblemResult:n.ErrorResponseType.ProblemResult:n.ErrorResponseType.ConnectionLost},t.$inject=["notificationService"],t}();e.ResponseHandlers=s},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(18),o=i(15),r=function(){function t(t,e){this.$http=t,this.responseHandlers=e}return t.prototype.req=function(t,e,i){var n=new o.RequestOptions(e,t);return n.headers={"Content-Type":"application/json","X-Requested-With":"XMLHttpRequest"},i&&(n.data=i),this.request(n)},t.prototype.upload=function(t,e,i,r){var a=new o.RequestOptions(e,t);return a.headers={"Content-Type":void 0},r&&(a.data=r),a.transformRequest=function(t,e){var o=new FormData;return t&&n.forEach(t,function(t,e){o.append(e,t)}),o.append("file",i),o},this.request(a)},t.prototype.request=function(t){var e=this,i=this.$http(t).catch(function(i){i.data?e.responseHandlers.handleProblem(i.data,t.rethrow):e.responseHandlers.error(t.rethrow)}).then(function(t){if(t)return t.data});return Promise.resolve(i)},t.$inject=["$http","responseHandlers"],t}();e.ApiService=r},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(3),o=function(){function t(t){this.$timeout=t,this.stack=[]}return t.prototype.show=function(t){if(!n.find(this.stack,function(e){return e===t})){if(this.stack.length>0){var e=this.stack[this.stack.length-1];t.previousModal=e}this.stack.push(t),t.previousModal&&this.$timeout(function(){t.previousModal.toggleModalVisibility(!1)})}this.showModal(t)},t.prototype.hide=function(t){if(this.hideModal(t),!this.hasPreviousLink(t)){if(t.previousModal){var e=t.previousModal;this.showModal(e),t.previousModal=null}n.remove(this.stack,function(e){return e===t})}},t.prototype.showModal=function(e){var i=t.modalAnimationTimeout;1===this.stack.length&&(i=0),this.$timeout(function(){e.toggleDomExistence(!0),e.toggleModalVisibility(!0)},i)},t.prototype.hideModal=function(e){var i=this.hasPreviousLink(e);this.$timeout(function(){e.toggleModalVisibility(!1)}),e.hasInnerModal&&(i||e.doNotRemoveFromDom)||this.$timeout(function(){e.toggleDomExistence(!1)},t.modalAnimationTimeout)},t.prototype.hasPreviousLink=function(t){return void 0!==n.find(this.stack,function(e){return e.previousModal===t})},t.modalAnimationTimeout=650,t.$inject=["$timeout"],t}();e.ModalService=o},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(69),o=function(){function t(){}return t.prototype.success=function(t){n.success(t)},t.prototype.error=function(t){n.error(t)},t.prototype.info=function(t){n.info(t)},t}();e.NotificationService=o},function(t,e){t.exports=require("toastr")},function(t,e,i){"use strict";(function(t){Object.defineProperty(e,"__esModule",{value:!0});var i=function(){function e(){this.show=!1}return Object.defineProperty(e.prototype,"showOverlay",{get:function(){return this.show},set:function(t){this.show=t,this.show||(this.text=null)},enumerable:!0,configurable:!0}),e.prototype.showOverlayIndicator=function(t){this.text=t,this.showOverlay=!0},e.prototype.hideOverlayIndicator=function(){this.showOverlay=!1},e.prototype.showPartialLoadingIndicator=function(e){t("#"+e).removeClass("hidden")},e.prototype.hidePartialLoadingIndicator=function(e){t("#"+e).addClass("hidden")},e}();e.ProcessingService=i}).call(e,i(6))},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=i(18),o=function(){function t(){this.errs={}}return Object.defineProperty(t.prototype,"errors",{get:function(){return this.errs},enumerable:!0,configurable:!0}),t.prototype.clearErrorsForKey=function(t,e){this.hasErrorsForKey(t,e)&&delete this.errs[t][e]},t.prototype.clearAllFormErrors=function(t){this.errs[t]={}},t.prototype.hasErrorsForKey=function(t,e){return!!this.errs[t]&&!!this.errs[t][e]&&!!this.errs[t][e].length},t.prototype.hasErrorsForForm=function(t){return!!this.errs[t]&&!!Object.keys(this.errs[t]).length},t.prototype.getErrorsForKey=function(t,e){return this.hasErrorsForKey(t,e)?this.errs[t][e]:[]},t.prototype.getAllFormErrors=function(t){if(this.hasErrorsForForm(t)){var e=[],i=this;return Object.keys(this.errs[t]).forEach(function(o){if(n.isArray(i.errs[t][o]))for(var r=0;r<i.errs[t][o].length;r++)e.push(i.errs[t][o][r])}),e}return[]},t.prototype.validate=function(t,e){this.clearAllFormErrors(t),!0===e.hasServerValidationErrors&&(this.errs[t]=e.errors)},t}();e.ServerValidationService=o},function(t,e,i){"use strict";(function(t){Object.defineProperty(e,"__esModule",{value:!0});var n=i(3),o=i(17),r=function(){function e(t){this.$timeout=t}return e.prototype.initScrollPagedGridOptions=function(t,i){var n=this,o={columnDefs:i,enableHorizontalScrollbar:0,enableVerticalScrollbar:0,onRegisterApi:function(e){n.handleUiGridCallbacks(e,t,function(t,e){return n.doSearch(t,e)})},rowTemplate:e.rowTemplate,enablePaginationControls:!1,enablePagination:!1};return Object.assign(o,e.commonGridOptions),o},e.prototype.initPagedGridOptions=function(t,i){var n=this,o={useExternalPagination:!0,columnDefs:i,enableHorizontalScrollbar:0,enableVerticalScrollbar:0,enableRowHeaderSelection:!1,onRegisterApi:function(e){t.gridApi=e,n.handleUiGridCallbacks(e,t,function(t,e){return n.doSearch(t,e)})},rowTemplate:e.rowTemplate,enablePaginationControls:!0,enablePagination:!0,paginationPageSizes:[10,20]};return Object.assign(o,e.commonGridOptions),o},e.prototype.initFilterRequest=function(t){var e=new o.UiGridRequest;return e.pageSize=t.paginationPageSize,e.page=1,e.sort=null,e.filters=[],e},e.prototype.doSearch=function(t,e){var i=this;if(void 0===e&&(e=!1),!(t.isRequestRunning||e&&t.allDataFetched))return t.isRequestError=!1,t.allDataFetched=!1,t.isRequestRunning=!0,t.selectedItem=null,t.getItems({request:t.filterRequest}).then(function(i){e?(0===i.length&&(t.allDataFetched=!0),t.gridOptions.data=t.gridOptions.data.concat(i)):(t.gridOptions.data=i.data,t.gridOptions.totalItems=i.totalItems)}).catch(function(){t.isRequestError=!0}).then(function(){i.$timeout(function(){t.isRequestRunning=!1,i.resizeGrid(t)})})},e.prototype.destroyGrid=function(t){t.gridApi.core.clearAllFilters(),t.gridOptions=null,t.filterRequest=null,t.gridApi=null,t.gridColumns=null},e.prototype.handleUiGridCallbacks=function(e,i,o){var r=this;e.core.on.sortChanged(i.$scope,function(t,e){i.filterRequest.page=1,0===e.length?i.filterRequest.sort=null:i.filterRequest.sort={direction:e[0].sort.direction,memberName:e[0].field},r.gridFilterChanged(i,!1,function(t,e){return o(t,e)})}),e.pagination.on.paginationChanged(i.$scope,function(t,e){i.filterRequest.page=t,i.filterRequest.pageSize=e,r.gridFilterChanged(i,!1,function(t,e){return o(t,e)})}),!1===i.gridOptions.enablePagination&&e.core.on.scrollEnd(i.$scope,function(e){var n=t(".ui-grid-viewport")[0],a=n.scrollHeight-n.offsetHeight-1;n.scrollTop===a&&(i.filterRequest.page++,r.gridFilterChanged(i,!0,function(t,e){return o(t,e)}))}),e.core.on.filterChanged(i.$scope,function(){var t=[];i.filterRequest.page=1,i.filterRequest.filters=t,e.grid.columns.forEach(function(e){n.has(e,"filters[0].term")&&n.has(e,"filters[0].condition")&&null!==e.filters[0].term&&void 0!==e.filters[0].term&&t.push({memberName:e.field,value:e.filters[0].term,condition:e.filters[0].condition})}),e.pagination.seek(1),r.gridFilterChanged(i,!1,function(t,e){return o(t,e)})}),e.selection.on.rowSelectionChanged(i.$scope,function(t){t&&t.entity&&(i.selectedItem=t.entity)})},e.prototype.gridFilterChanged=function(t,e,i){t.filterChangedTimeout&&this.$timeout.cancel(t.filterChangedTimeout),t.filterChangedTimeout=this.$timeout(function(){i(t,e)},400)},e.prototype.resizeGrid=function(e){var i=t(e.gridApi.grid.element).find(".noItemsInfoContainer"),n=t(e.gridApi.grid.element).find(".ui-grid-top-panel").outerHeight(),o=t(e.gridApi.grid.element).find(".ui-grid-pager-panel").outerHeight(),r=i.outerHeight(),a=e.gridOptions.paginationPageSize;e.gridOptions.data&&e.gridOptions.data.length<a&&(a=e.gridOptions.data.length);var s=a*e.gridOptions.rowHeight+1;0===a&&(s+=r,i.css("margin-top",n+2+"px")),t(e.gridApi.grid.element).height(s+n+o)},e.commonGridOptions={data:[],useExternalSorting:!0,enableFiltering:!0,useExternalFiltering:!0,enableColumnMenus:!1,enableFullRowSelection:!0,enableRowHeaderSelection:!1,multiSelect:!1,noUnselect:!0,rowHeight:45,paginationPageSize:10,minRowsToShow:10},e.rowTemplate='<div\n        ng-dblclick="grid.appScope.rowDblClick(row)"\n        ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name"\n        class="ui-grid-cell"\n        ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"\n        ui-grid-cell>\n    </div>',e.$inject=["$timeout"],e}();e.UiGridService=r}).call(e,i(6))}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
+	else if(typeof define === 'function' && define.amd)
+		define(["lodash", "jquery", "angular", "angular-typescript-validation", "moment", "toastr"], factory);
+	else if(typeof exports === 'object')
+		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
+	else
+		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_18__, __WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_39__, __WEBPACK_EXTERNAL_MODULE_69__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(selector) {
+		if (typeof memo[selector] === "undefined") {
+			memo[selector] = fn.call(this, selector);
+		}
+
+		return memo[selector]
+	};
+})(function (target) {
+	return document.querySelector(target)
+});
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(29);
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton) options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+	if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else {
+		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	options.attrs.type = "text/css";
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	options.attrs.type = "text/css";
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = options.transform(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var _ = __webpack_require__(3);
+var BaseComponent = (function () {
+    function BaseComponent($scope, additionalDestruction) {
+        var _this = this;
+        this.unwatchArray = new Array();
+        this.destroy = function () {
+            if (_this.unwatchArray) {
+                _.forEach(_this.unwatchArray, function (unwatch) {
+                    unwatch();
+                });
+            }
+            if (additionalDestruction) {
+                additionalDestruction();
+            }
+        };
+        $scope.$on('$destroy', this.destroy);
+    }
+    return BaseComponent;
+}());
+exports.BaseComponent = BaseComponent;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The state of the editor component.
+ */
+var EditorState;
+(function (EditorState) {
+    /**
+     * Adding a new item.
+     */
+    EditorState[EditorState["Add"] = 0] = "Add";
+    /**
+     * Editing an existing item.
+     */
+    EditorState[EditorState["Edit"] = 1] = "Edit";
+})(EditorState = exports.EditorState || (exports.EditorState = {}));
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The event constants.
+ */
+var EventConsts = (function () {
+    function EventConsts() {
+    }
+    /**
+     * The reload grid event name.
+     */
+    EventConsts.reloadGridEvent = 'reloadGrid';
+    return EventConsts;
+}());
+exports.EventConsts = EventConsts;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("jquery");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseComponent_1 = __webpack_require__(2);
+var eventConsts_1 = __webpack_require__(5);
+var BaseLookupController = (function (_super) {
+    __extends(BaseLookupController, _super);
+    //#endregion
+    //#region Constructor
+    function BaseLookupController($scope) {
+        var _this = _super.call(this, $scope) || this;
+        _this.$scope = $scope;
+        $scope.rowDblClick = function (row) { return _this.onDoubleClickEvent(row.entity); };
+        $scope.$on(eventConsts_1.EventConsts.reloadGridEvent, function () {
+            _this.reloadGrid();
+        });
+        return _this;
+    }
+    /**
+     * Opens the editor when an item is double clicked.
+     * @param {T} selectedItem - The selected (double-clicked) item.
+     */
+    BaseLookupController.prototype.onDoubleClickEvent = function (selectedItem) {
+        this.selectedItem = selectedItem;
+        this.onDoubleClick();
+    };
+    return BaseLookupController;
+}(baseComponent_1.BaseComponent));
+exports.BaseLookupController = BaseLookupController;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var managerState_1 = __webpack_require__(9);
+var editorState_1 = __webpack_require__(4);
+var BaseManagerController = (function () {
+    function BaseManagerController($scope, $timeout, notificationService) {
+        this.$scope = $scope;
+        this.$timeout = $timeout;
+        this.notificationService = notificationService;
+        this.ManagerState = managerState_1.ManagerState;
+        this.EditorState = editorState_1.EditorState;
+        this.clearSelected();
+        this.state = managerState_1.ManagerState.Lookup;
+    }
+    Object.defineProperty(BaseManagerController.prototype, "state", {
+        get: function () {
+            return this.managerState;
+        },
+        /**
+         * Needs to be set in a timeout so the page updates accordingly.
+         */
+        set: function (val) {
+            var _this = this;
+            this.$timeout(function () {
+                _this.managerState = val;
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /*
+    * Opens editor to create a new code certificate.
+    */
+    BaseManagerController.prototype.newItem = function () {
+        this.selectedItem = this.prepareNewItem();
+        this.editorState = editorState_1.EditorState.Add;
+        this.state = managerState_1.ManagerState.Editor;
+    };
+    /**
+     * Edit the selected item - retrieve the selected item then load the editor page.
+     *
+     * @returns {Promise<any>} - A promise to the result of retrieving the item
+     * and moving to the editor page.
+     */
+    BaseManagerController.prototype.editItem = function () {
+        var _this = this;
+        if (!this.isRequestRunning
+            && this.selectedItem !== null) {
+            this.isRequestRunning = true;
+            return this.getItem()
+                .then(function (resp) {
+                _this.selectedItem = resp;
+                _this.editorState = editorState_1.EditorState.Edit;
+                _this.state = managerState_1.ManagerState.Editor;
+            })
+                .catch(function () {
+                // Do nothing, error was already notified in apiService
+            })
+                .then(function () {
+                _this.$timeout(function () {
+                    _this.isRequestRunning = false;
+                });
+            });
+        }
+    };
+    /*
+    * Clears selected certificate code id and object.
+    */
+    BaseManagerController.prototype.clearSelected = function () {
+        this.selectedItem = null;
+    };
+    /*
+    * Callback executes when add/edit editor is closing.
+    */
+    BaseManagerController.prototype.closeEditor = function () {
+        this.clearSelected();
+        this.state = managerState_1.ManagerState.Lookup;
+    };
+    return BaseManagerController;
+}());
+exports.BaseManagerController = BaseManagerController;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The state of the manager component.
+ */
+var ManagerState;
+(function (ManagerState) {
+    /**
+     * Display the lookup grid.
+     */
+    ManagerState[ManagerState["Lookup"] = 0] = "Lookup";
+    /**
+     * Display the editor.
+     */
+    ManagerState[ManagerState["Editor"] = 1] = "Editor";
+})(ManagerState = exports.ManagerState || (exports.ManagerState = {}));
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseComponent_1 = __webpack_require__(2);
+var BaseModalController = (function (_super) {
+    __extends(BaseModalController, _super);
+    //#region Constructor
+    function BaseModalController($scope, modalService) {
+        var _this = _super.call(this, $scope) || this;
+        _this.$scope = $scope;
+        _this.modalService = modalService;
+        //#endregion
+        //#region Functions
+        _this.modalVisibilityUpdated = function (val, old) {
+            if (val !== old) {
+                val ? _this.modalService.show(_this)
+                    : _this.modalService.hide(_this);
+            }
+        };
+        return _this;
+    }
+    BaseModalController.prototype.$onInit = function () {
+        var _this = this;
+        this.$scope.$watch(function () { return _this.isVisible; }, this.modalVisibilityUpdated);
+        // https://gist.github.com/gordonbrander/2230317
+        this.id = Math.random().toString(36).substr(2, 9);
+        this.unwatchArray.push(function () {
+            _this.modalService.hide(_this);
+            $("#" + _this.id).modal('hide');
+            $("#" + _this.id).remove();
+        });
+    };
+    BaseModalController.prototype.toggleModalVisibility = function (val) {
+        this.isVisible = val;
+        this.isModalVisible = val;
+    };
+    BaseModalController.prototype.toggleDomExistence = function (val) {
+        this.isInDom = val;
+    };
+    return BaseModalController;
+}(baseComponent_1.BaseComponent));
+exports.BaseModalController = BaseModalController;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * type constants.
+ */
+var TypeConsts = (function () {
+    function TypeConsts() {
+    }
+    /**
+     * The empty guid value.
+     */
+    TypeConsts.emptyGuid = '00000000-0000-0000-0000-000000000000';
+    return TypeConsts;
+}());
+exports.TypeConsts = TypeConsts;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Error response types.
+ */
+var ErrorResponseType;
+(function (ErrorResponseType) {
+    ErrorResponseType[ErrorResponseType["ConnectionLost"] = 0] = "ConnectionLost";
+    ErrorResponseType[ErrorResponseType["ProblemResult"] = 1] = "ProblemResult";
+    ErrorResponseType[ErrorResponseType["ValidationProblemResult"] = 2] = "ValidationProblemResult";
+})(ErrorResponseType = exports.ErrorResponseType || (exports.ErrorResponseType = {}));
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Http status code.
+ */
+var HttpStatusCode;
+(function (HttpStatusCode) {
+    //
+    // Summary:
+    //     Equivalent to HTTP status 100. System.Net.HttpStatusCode.Continue indicates that
+    //     the client can continue with its request.
+    HttpStatusCode[HttpStatusCode["Continue"] = 100] = "Continue";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 101. System.Net.HttpStatusCode.SwitchingProtocols indicates
+    //     that the protocol version or protocol is being changed.
+    HttpStatusCode[HttpStatusCode["SwitchingProtocols"] = 101] = "SwitchingProtocols";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 200. System.Net.HttpStatusCode.OK indicates that the
+    //     request succeeded and that the requested information is in the response. This
+    //     is the most common status code to receive.
+    HttpStatusCode[HttpStatusCode["OK"] = 200] = "OK";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 201. System.Net.HttpStatusCode.Created indicates that
+    //     the request resulted in a new resource created before the response was sent.
+    HttpStatusCode[HttpStatusCode["Created"] = 201] = "Created";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 202. System.Net.HttpStatusCode.Accepted indicates that
+    //     the request has been accepted for further processing.
+    HttpStatusCode[HttpStatusCode["Accepted"] = 202] = "Accepted";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 203. System.Net.HttpStatusCode.NonAuthoritativeInformation
+    //     indicates that the returned metainformation is from a cached copy instead of
+    //     the origin server and therefore may be incorrect.
+    HttpStatusCode[HttpStatusCode["NonAuthoritativeInformation"] = 203] = "NonAuthoritativeInformation";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 204. System.Net.HttpStatusCode.NoContent indicates
+    //     that the request has been successfully processed and that the response is intentionally
+    //     blank.
+    HttpStatusCode[HttpStatusCode["NoContent"] = 204] = "NoContent";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 205. System.Net.HttpStatusCode.ResetContent indicates
+    //     that the client should reset (not reload) the current resource.
+    HttpStatusCode[HttpStatusCode["ResetContent"] = 205] = "ResetContent";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 206. System.Net.HttpStatusCode.PartialContent indicates
+    //     that the response is a partial response as requested by a GET request that includes
+    //     a byte range.
+    HttpStatusCode[HttpStatusCode["PartialContent"] = 206] = "PartialContent";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 300. System.Net.HttpStatusCode.MultipleChoices indicates
+    //     that the requested information has multiple representations. The default action
+    //     is to treat this status as a redirect and follow the contents of the Location
+    //     header associated with this response.
+    HttpStatusCode[HttpStatusCode["MultipleChoices"] = 300] = "MultipleChoices";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 300. System.Net.HttpStatusCode.Ambiguous indicates
+    //     that the requested information has multiple representations. The default action
+    //     is to treat this status as a redirect and follow the contents of the Location
+    //     header associated with this response.
+    HttpStatusCode[HttpStatusCode["Ambiguous"] = 300] = "Ambiguous";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 301. System.Net.HttpStatusCode.MovedPermanently indicates
+    //     that the requested information has been moved to the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response.
+    HttpStatusCode[HttpStatusCode["MovedPermanently"] = 301] = "MovedPermanently";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 301. System.Net.HttpStatusCode.Moved indicates that
+    //     the requested information has been moved to the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response. When the original request method was POST,
+    //     the redirected request will use the GET method.
+    HttpStatusCode[HttpStatusCode["Moved"] = 301] = "Moved";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 302. System.Net.HttpStatusCode.Found indicates that
+    //     the requested information is located at the URI specified in the Location header.
+    //     The default action when this status is received is to follow the Location header
+    //     associated with the response. When the original request method was POST, the
+    //     redirected request will use the GET method.
+    HttpStatusCode[HttpStatusCode["Found"] = 302] = "Found";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 302. System.Net.HttpStatusCode.Redirect indicates that
+    //     the requested information is located at the URI specified in the Location header.
+    //     The default action when this status is received is to follow the Location header
+    //     associated with the response. When the original request method was POST, the
+    //     redirected request will use the GET method.
+    HttpStatusCode[HttpStatusCode["Redirect"] = 302] = "Redirect";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 303. System.Net.HttpStatusCode.SeeOther automatically
+    //     redirects the client to the URI specified in the Location header as the result
+    //     of a POST. The request to the resource specified by the Location header will
+    //     be made with a GET.
+    HttpStatusCode[HttpStatusCode["SeeOther"] = 303] = "SeeOther";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 303. System.Net.HttpStatusCode.RedirectMethod automatically
+    //     redirects the client to the URI specified in the Location header as the result
+    //     of a POST. The request to the resource specified by the Location header will
+    //     be made with a GET.
+    HttpStatusCode[HttpStatusCode["RedirectMethod"] = 303] = "RedirectMethod";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 304. System.Net.HttpStatusCode.NotModified indicates
+    //     that the client's cached copy is up to date. The contents of the resource are
+    //     not transferred.
+    HttpStatusCode[HttpStatusCode["NotModified"] = 304] = "NotModified";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 305. System.Net.HttpStatusCode.UseProxy indicates that
+    //     the request should use the proxy server at the URI specified in the Location
+    //     header.
+    HttpStatusCode[HttpStatusCode["UseProxy"] = 305] = "UseProxy";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 306. System.Net.HttpStatusCode.Unused is a proposed
+    //     extension to the HTTP/1.1 specification that is not fully specified.
+    HttpStatusCode[HttpStatusCode["Unused"] = 306] = "Unused";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 307. System.Net.HttpStatusCode.TemporaryRedirect indicates
+    //     that the request information is located at the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response. When the original request method was POST,
+    //     the redirected request will also use the POST method.
+    HttpStatusCode[HttpStatusCode["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 307. System.Net.HttpStatusCode.RedirectKeepVerb indicates
+    //     that the request information is located at the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response. When the original request method was POST,
+    //     the redirected request will also use the POST method.
+    HttpStatusCode[HttpStatusCode["RedirectKeepVerb"] = 307] = "RedirectKeepVerb";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 400. System.Net.HttpStatusCode.BadRequest indicates
+    //     that the request could not be understood by the server. System.Net.HttpStatusCode.BadRequest
+    //     is sent when no other error is applicable, or if the exact error is unknown or
+    //     does not have its own error code.
+    HttpStatusCode[HttpStatusCode["BadRequest"] = 400] = "BadRequest";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates
+    //     that the requested resource requires authentication. The WWW-Authenticate header
+    //     contains the details of how to perform the authentication.
+    HttpStatusCode[HttpStatusCode["Unauthorized"] = 401] = "Unauthorized";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 402. System.Net.HttpStatusCode.PaymentRequired is reserved
+    //     for future use.
+    HttpStatusCode[HttpStatusCode["PaymentRequired"] = 402] = "PaymentRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates
+    //     that the server refuses to fulfill the request.
+    HttpStatusCode[HttpStatusCode["Forbidden"] = 403] = "Forbidden";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 404. System.Net.HttpStatusCode.NotFound indicates that
+    //     the requested resource does not exist on the server.
+    HttpStatusCode[HttpStatusCode["NotFound"] = 404] = "NotFound";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 405. System.Net.HttpStatusCode.MethodNotAllowed indicates
+    //     that the request method (POST or GET) is not allowed on the requested resource.
+    HttpStatusCode[HttpStatusCode["MethodNotAllowed"] = 405] = "MethodNotAllowed";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 406. System.Net.HttpStatusCode.NotAcceptable indicates
+    //     that the client has indicated with Accept headers that it will not accept any
+    //     of the available representations of the resource.
+    HttpStatusCode[HttpStatusCode["NotAcceptable"] = 406] = "NotAcceptable";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 407. System.Net.HttpStatusCode.ProxyAuthenticationRequired
+    //     indicates that the requested proxy requires authentication. The Proxy-authenticate
+    //     header contains the details of how to perform the authentication.
+    HttpStatusCode[HttpStatusCode["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 408. System.Net.HttpStatusCode.RequestTimeout indicates
+    //     that the client did not send a request within the time the server was expecting
+    //     the request.
+    HttpStatusCode[HttpStatusCode["RequestTimeout"] = 408] = "RequestTimeout";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 409. System.Net.HttpStatusCode.Conflict indicates that
+    //     the request could not be carried out because of a conflict on the server.
+    HttpStatusCode[HttpStatusCode["Conflict"] = 409] = "Conflict";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 410. System.Net.HttpStatusCode.Gone indicates that
+    //     the requested resource is no longer available.
+    HttpStatusCode[HttpStatusCode["Gone"] = 410] = "Gone";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 411. System.Net.HttpStatusCode.LengthRequired indicates
+    //     that the required Content-length header is missing.
+    HttpStatusCode[HttpStatusCode["LengthRequired"] = 411] = "LengthRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 412. System.Net.HttpStatusCode.PreconditionFailed indicates
+    //     that a condition set for this request failed, and the request cannot be carried
+    //     out. Conditions are set with conditional request headers like If-Match, If-None-Match,
+    //     or If-Unmodified-Since.
+    HttpStatusCode[HttpStatusCode["PreconditionFailed"] = 412] = "PreconditionFailed";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 413. System.Net.HttpStatusCode.RequestEntityTooLarge
+    //     indicates that the request is too large for the server to process.
+    HttpStatusCode[HttpStatusCode["RequestEntityTooLarge"] = 413] = "RequestEntityTooLarge";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 414. System.Net.HttpStatusCode.RequestUriTooLong indicates
+    //     that the URI is too long.
+    HttpStatusCode[HttpStatusCode["RequestUriTooLong"] = 414] = "RequestUriTooLong";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 415. System.Net.HttpStatusCode.UnsupportedMediaType
+    //     indicates that the request is an unsupported type.
+    HttpStatusCode[HttpStatusCode["UnsupportedMediaType"] = 415] = "UnsupportedMediaType";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 416. System.Net.HttpStatusCode.RequestedRangeNotSatisfiable
+    //     indicates that the range of data requested from the resource cannot be returned,
+    //     either because the beginning of the range is before the beginning of the resource,
+    //     or the end of the range is after the end of the resource.
+    HttpStatusCode[HttpStatusCode["RequestedRangeNotSatisfiable"] = 416] = "RequestedRangeNotSatisfiable";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 417. System.Net.HttpStatusCode.ExpectationFailed indicates
+    //     that an expectation given in an Expect header could not be met by the server.
+    HttpStatusCode[HttpStatusCode["ExpectationFailed"] = 417] = "ExpectationFailed";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 426. System.Net.HttpStatusCode.UpgradeRequired indicates
+    //     that the client should switch to a different protocol such as TLS/1.0.
+    HttpStatusCode[HttpStatusCode["UpgradeRequired"] = 426] = "UpgradeRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 500. System.Net.HttpStatusCode.InternalServerError
+    //     indicates that a generic error has occurred on the server.
+    HttpStatusCode[HttpStatusCode["InternalServerError"] = 500] = "InternalServerError";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 501. System.Net.HttpStatusCode.NotImplemented indicates
+    //     that the server does not support the requested function.
+    HttpStatusCode[HttpStatusCode["NotImplemented"] = 501] = "NotImplemented";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 502. System.Net.HttpStatusCode.BadGateway indicates
+    //     that an intermediate proxy server received a bad response from another proxy
+    //     or the origin server.
+    HttpStatusCode[HttpStatusCode["BadGateway"] = 502] = "BadGateway";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 503. System.Net.HttpStatusCode.ServiceUnavailable indicates
+    //     that the server is temporarily unavailable, usually due to high load or maintenance.
+    HttpStatusCode[HttpStatusCode["ServiceUnavailable"] = 503] = "ServiceUnavailable";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 504. System.Net.HttpStatusCode.GatewayTimeout indicates
+    //     that an intermediate proxy server timed out while waiting for a response from
+    //     another proxy or the origin server.
+    HttpStatusCode[HttpStatusCode["GatewayTimeout"] = 504] = "GatewayTimeout";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 505. System.Net.HttpStatusCode.HttpVersionNotSupported
+    //     indicates that the requested HTTP version is not supported by the server.
+    HttpStatusCode[HttpStatusCode["HttpVersionNotSupported"] = 505] = "HttpVersionNotSupported";
+})(HttpStatusCode = exports.HttpStatusCode || (exports.HttpStatusCode = {}));
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Response error exception.
+ */
+var ResponseError = (function (_super) {
+    __extends(ResponseError, _super);
+    /**
+     * Creates a new response error.
+     * @param message
+     * @param data
+     */
+    function ResponseError(type, message, data) {
+        var _this = _super.call(this, message) || this;
+        _this.type = type;
+        _this.data = data;
+        return _this;
+    }
+    return ResponseError;
+}(Error));
+exports.ResponseError = ResponseError;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The request options to be passed to the api service request function.
+ */
+var RequestOptions = (function () {
+    // TODO: Reverse order of url, string params.
+    function RequestOptions(url, method, baseUrl) {
+        if (baseUrl === void 0) { baseUrl = './'; }
+        this.url = baseUrl.concat(url);
+        this.method = method;
+        this.rethrow = true;
+    }
+    return RequestOptions;
+}());
+exports.RequestOptions = RequestOptions;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * problem result
+ */
+var ProblemResult = (function () {
+    function ProblemResult() {
+    }
+    return ProblemResult;
+}());
+exports.ProblemResult = ProblemResult;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the grid request model.
+ */
+var UiGridRequest = (function () {
+    function UiGridRequest() {
+    }
+    return UiGridRequest;
+}());
+exports.UiGridRequest = UiGridRequest;
+/**
+ * sort request model.
+ */
+var SortRequest = (function () {
+    function SortRequest() {
+    }
+    return SortRequest;
+}());
+exports.SortRequest = SortRequest;
+/**
+ * filter request.
+ */
+var FilterRequest = (function () {
+    function FilterRequest() {
+    }
+    return FilterRequest;
+}());
+exports.FilterRequest = FilterRequest;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("angular");
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var BaseClasses = __webpack_require__(20);
+exports.BaseClasses = BaseClasses;
+var Components = __webpack_require__(25);
+exports.Components = Components;
+var Constants = __webpack_require__(57);
+exports.Constants = Constants;
+var Enums = __webpack_require__(58);
+exports.Enums = Enums;
+var Exceptions = __webpack_require__(59);
+exports.Exceptions = Exceptions;
+var Models = __webpack_require__(60);
+exports.Models = Models;
+var Services = __webpack_require__(64);
+exports.Services = Services;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseComponent_1 = __webpack_require__(2);
+exports.BaseComponent = baseComponent_1.BaseComponent;
+var baseEditorController_1 = __webpack_require__(21);
+exports.BaseEditorController = baseEditorController_1.BaseEditorController;
+var baseLookupController_1 = __webpack_require__(7);
+exports.BaseLookupController = baseLookupController_1.BaseLookupController;
+var baseManagerController_1 = __webpack_require__(8);
+exports.BaseManagerController = baseManagerController_1.BaseManagerController;
+var baseManagerDeletableController_1 = __webpack_require__(24);
+exports.BaseManagerDeletableController = baseManagerDeletableController_1.BaseManagerDeletableController;
+var baseModalController_1 = __webpack_require__(10);
+exports.BaseModalController = baseModalController_1.BaseModalController;
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var angular_typescript_validation_1 = __webpack_require__(22);
+var editorState_1 = __webpack_require__(4);
+var validationProcessor_1 = __webpack_require__(23);
+var BaseEditorController = (function () {
+    function BaseEditorController($scope, $timeout, notificationService, validator) {
+        this.$timeout = $timeout;
+        this.notificationService = notificationService;
+        this.clearItemOnClose = true;
+        this.validationService = new angular_typescript_validation_1.ValidationService(this, $scope);
+        this.rulesCustomizer = validator.rulesCustomizer;
+        this.isRequestRunning = null;
+    }
+    Object.defineProperty(BaseEditorController.prototype, "model", {
+        /**
+         * gets the model.
+         */
+        get: function () {
+            return this.item;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BaseEditorController.prototype, "isRequestRunning", {
+        get: function () {
+            return this.isReqRunning;
+        },
+        set: function (val) {
+            var _this = this;
+            this.$timeout(function () {
+                _this.isReqRunning = val;
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Close the editor.
+     */
+    BaseEditorController.prototype.close = function () {
+        if (this.clearItemOnClose) {
+            this.clearItem();
+        }
+        if (this.onClose) {
+            this.onClose();
+        }
+    };
+    /**
+     * Occurs on success response.
+     */
+    BaseEditorController.prototype.onResponseSuccess = function (response) {
+        // could be overriden
+    };
+    /**
+     * Submit the form, save the item. Handles loading animation, notifications
+     * and validation.
+     */
+    BaseEditorController.prototype.submit = function () {
+        var _this = this;
+        if (!this.item) {
+            this.item = {};
+        }
+        this.validationService.validate(this.item).then(function (result) {
+            if (result) {
+                if (!_this.isRequestRunning) {
+                    _this.isRequestRunning = true;
+                    _this.save()
+                        .then(function (response) {
+                        _this.notificationService.success('Successfully saved.');
+                        _this.onResponseSuccess(response);
+                        _this.close();
+                    })
+                        .catch(function (reject) {
+                        if (reject && reject.data) {
+                            validationProcessor_1.ValidationProcessor.processValidationServerResponse(reject.data, function (fieldName, errorMessage) { return _this.validationService.addServerError(fieldName, errorMessage); });
+                        }
+                    })
+                        .then(function () {
+                        _this.isRequestRunning = false;
+                    });
+                }
+            }
+        });
+    };
+    /**
+     * True if the editor state is in the add state.
+     */
+    BaseEditorController.prototype.isInAddState = function () {
+        return this.state === editorState_1.EditorState.Add;
+    };
+    /**
+     * True if the editor state is in the edit state.
+     */
+    BaseEditorController.prototype.isInEditState = function () {
+        return this.state === editorState_1.EditorState.Edit;
+    };
+    /**
+     * Clear the item.
+     */
+    BaseEditorController.prototype.clearItem = function () {
+        this.item = null;
+    };
+    return BaseEditorController;
+}());
+exports.BaseEditorController = BaseEditorController;
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+module.exports = require("angular-typescript-validation");
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * validation processing tasks.
+ */
+var ValidationProcessor = (function () {
+    function ValidationProcessor() {
+    }
+    /**
+     * handles the validation server response.
+     */
+    ValidationProcessor.processValidationServerResponse = function (responseData, errorHandler) {
+        if (!this.isValidationResultResponse(responseData)) {
+            return;
+        }
+        for (var fieldName in responseData.errors) {
+            if (responseData.errors.hasOwnProperty(fieldName)) {
+                var errorMessages = responseData.errors[fieldName];
+                for (var i = 0; i < errorMessages.length; i++) {
+                    errorHandler(fieldName, errorMessages[i]);
+                }
+            }
+        }
+    };
+    /**
+     * checks if response is validationResult
+     */
+    ValidationProcessor.isValidationResultResponse = function (data) {
+        if (data && data.hasServerValidationErrors === true) {
+            return true;
+        }
+        return false;
+    };
+    return ValidationProcessor;
+}());
+exports.ValidationProcessor = ValidationProcessor;
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseManagerController_1 = __webpack_require__(8);
+var eventConsts_1 = __webpack_require__(5);
+var BaseManagerDeletableController = (function (_super) {
+    __extends(BaseManagerDeletableController, _super);
+    function BaseManagerDeletableController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * The delete item request.
+     */
+    BaseManagerDeletableController.prototype.deleteItem = function () {
+        var _this = this;
+        if (!this.isDeleteRequestRunning) {
+            this.isDeleteRequestRunning = true;
+            return this.deleteRequest()
+                .then(function (resp) {
+                _this.notificationService.success('Item deleted.');
+                _this.$scope.$broadcast(eventConsts_1.EventConsts.reloadGridEvent);
+                _this.isDeleteItemPromptVisible = false;
+            })
+                .catch(function (reject) {
+                _this.handleDeleteError(reject);
+            })
+                .then(function () {
+                _this.$timeout(function () {
+                    _this.isDeleteRequestRunning = false;
+                });
+            });
+        }
+    };
+    BaseManagerDeletableController.prototype.handleDeleteError = function (reject) {
+        // could be overriden
+    };
+    /**
+     * Toggles the delete item prompt.
+     */
+    BaseManagerDeletableController.prototype.toggleDeleteItemPrompt = function (value) {
+        this.isDeleteItemPromptVisible = value;
+    };
+    return BaseManagerDeletableController;
+}(baseManagerController_1.BaseManagerController));
+exports.BaseManagerDeletableController = BaseManagerDeletableController;
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var confirmDialog_1 = __webpack_require__(26);
+exports.ConfirmDialog = confirmDialog_1.ConfirmDialog;
+var datePicker_1 = __webpack_require__(31);
+exports.DatePicker = datePicker_1.DatePicker;
+var errorBlock_1 = __webpack_require__(41);
+exports.ErrorBlock = errorBlock_1.ErrorBlock;
+var ezGrid_1 = __webpack_require__(43);
+exports.EzGrid = ezGrid_1.EzGrid;
+var ezModal_1 = __webpack_require__(47);
+exports.EzModal = ezModal_1.EzModal;
+var singleLookup_1 = __webpack_require__(49);
+exports.SingleLookup = singleLookup_1.SingleLookup;
+var uploadImage_1 = __webpack_require__(53);
+exports.UploadImage = uploadImage_1.UploadImage;
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(27);
+/**
+ * the confirm dialog component.
+ */
+var ConfirmDialog = (function () {
+    /**
+     * inits component.
+     */
+    function ConfirmDialog() {
+        this.controller = ConfirmDialogController;
+        this.controllerAs = 'cd';
+        this.templateUrl = __webpack_require__(30);
+        this.bindings = {
+            title: '@cdTitle',
+            body: '@cdBody',
+            callout: '@cdCallout',
+            onOk: '&cdOnOk',
+            onCancel: '&cdOnCancel',
+            loader: '=cdLoader',
+            visible: '=cdVisible',
+            errorBlock: '=cdError'
+        };
+    }
+    return ConfirmDialog;
+}());
+exports.ConfirmDialog = ConfirmDialog;
+/**
+ * controller for confirm dialog component.
+ */
+var ConfirmDialogController = (function () {
+    function ConfirmDialogController() {
+        var _this = this;
+        this.onHidden = function () {
+            if (_this.errorBlock) {
+                _this.errorBlock.showError = false;
+            }
+        };
+    }
+    return ConfirmDialogController;
+}());
+exports.ConfirmDialogController = ConfirmDialogController;
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(28);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./confirmDialog.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./confirmDialog.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/confirmDialog/confirmDialog.html';
+var html = "<ez-modal\r\n    em-class-name=\"confirm-dialog\"\r\n    em-header-text=\"{{cd.title}}\"\r\n    em-primary-button-text=\"Confirm\"\r\n    em-secondary-button-text=\"Cancel\"\r\n    em-is-visible=\"cd.visible\"\r\n    em-on-approve=\"cd.onOk()\"\r\n    em-on-deny=\"cd.onCancel()\"\r\n    em-is-loader-visible=\"cd.loader\"\r\n    em-on-hidden=\"cd.onHidden()\">\r\n\r\n    <div ng-bind=\"cd.body\"></div>\r\n    <div ng-if=\"cd.callout\" class=\"emphasis\" ng-bind=\"cd.callout\"></div>\r\n\r\n    <error-block class=\"margin-t10 dblock\" eb-error=\"cd.errorBlock\"></error-block>\r\n\r\n</ez-modal>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(32);
+var popupTemplate = __webpack_require__(34);
+var datePickerTemplate = __webpack_require__(35);
+/** These are required in this manner as angular bootstrap does not allow changing the day, month and year templates with easily defined variables (scoping is an issue)
+ * Requiring the needed files and setting the relative url allows the datepicker to use template-url="*.html"
+ */
+__webpack_require__(36);
+__webpack_require__(37);
+__webpack_require__(38);
+var moment = __webpack_require__(39);
+var DatePicker = (function () {
+    function DatePicker() {
+        this.templateUrl = __webpack_require__(40);
+        this.controller = DatePickerController;
+        this.controllerAs = 'dp';
+        this.bindings = {
+            date: '=date',
+            onDateChange: '&onDateChange',
+            depth: '=?depth',
+            depthMin: '=?depthMin',
+            format: '=?format '
+        };
+    }
+    return DatePicker;
+}());
+exports.DatePicker = DatePicker;
+var DatePickerController = (function () {
+    function DatePickerController() {
+        this.status = {
+            opened: false
+        };
+        this.dateOptions = {
+            formatDay: 'd',
+            formatYear: 'yy',
+            startingDay: 0,
+            showWeeks: false
+        };
+        this.modelOptions = {
+            timezone: moment().format('Z')
+        };
+        this.maxDate = moment().add(5, 'years').toDate();
+        this.popupTemplate = popupTemplate;
+        this.datePickerTemplate = datePickerTemplate;
+    }
+    DatePickerController.prototype.$onInit = function () {
+        if (this.depth === undefined) {
+            this.depth = 'day';
+        }
+        if (this.depthMin === undefined) {
+            this.depthMin = 'day';
+        }
+        if (this.format === undefined) {
+            this.format = 'mediumDate';
+        }
+        this.dateOptions.datepickerMode = this.depth;
+        this.dateOptions.minMode = this.depthMin;
+    };
+    /**
+     * Toggles the calendar on/off when it is off/on.
+     *
+     * @param {any} $event
+     *
+     * @memberOf datePickerController
+     */
+    DatePickerController.prototype.toggleCalendar = function ($event) {
+        this.status.opened = !this.status.opened;
+    };
+    /**
+     * Toggles the min date between null and today's date;
+     *
+     *
+     * @memberOf DaySelectorController
+     */
+    DatePickerController.prototype.toggleMin = function () {
+        this.minDate = this.minDate ? null : moment().toDate();
+    };
+    return DatePickerController;
+}());
+exports.DatePickerController = DatePickerController;
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(33);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./datePicker.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./datePicker.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/datePicker/template/datepicker/popup.html';
+var html = "<ul class=\"uib-datepicker-popup dropdown-menu ui uib-position-measure clearing segment\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\r\n    <li ng-transclude></li>\r\n    <li ng-if=\"showButtonBar\" style=\"padding:10px 9px 2px\">\r\n        <span class=\"pull-left\">\r\n            <button type=\"button\" class=\"ui primaryButton button primary\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">\r\n                <span ng-bind=\"getText('current')\"></span>\r\n            </button>\r\n        </span>\r\n        <button type=\"button\" class=\"ui secondaryButton button pull-right\" ng-click=\"close($event)\">\r\n            <span ng-bind=\"getText('close')\"></span>\r\n        </button>\r\n    </li>\r\n</ul>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/datePicker/template/datepicker/datepicker.html';
+var html = "<div class=\"uib-datepicker\" ng-switch=\"datepickerMode\" role=\"application\" ng-keydown=\"keydown($event)\">\r\n  <div uib-daypicker ng-switch-when=\"day\" tabindex=\"0\" template-url=\"day.html\"></div>\r\n  <div uib-monthpicker ng-switch-when=\"month\" tabindex=\"0\" template-url=\"month.html\"></div>\r\n  <div uib-yearpicker ng-switch-when=\"year\" tabindex=\"0\" template-url=\"year.html\"></div>\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+var path = 'day.html';
+var html = "<table role=\"grid\" aria-labelledby=\"{{::uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\r\n  <thead>\r\n    <tr>\r\n      <th><button type=\"button\" class=\"ui button small pull-left\" ng-click=\"move(-1)\" tabindex=\"-1\"><i class=\"icon chevron left\"></i></button></th>\r\n      <th colspan=\"{{::5 + showWeeks}}\"><button id=\"{{::uniqueId}}-title\" role=\"heading\" aria-live=\"assertive\" aria-atomic=\"true\" type=\"button\" class=\"ui button small\" ng-click=\"toggleMode()\" ng-disabled=\"datepickerMode === maxMode\" tabindex=\"-1\" style=\"width:100%;\"><strong><span ng-bind=\"title\"></span></strong></button></th>\r\n      <th><button type=\"button\" class=\"ui button small pull-right\" ng-click=\"move(1)\" tabindex=\"-1\"><i class=\"icon chevron right\"></i></button></th>\r\n    </tr>\r\n    <tr>\r\n      <th ng-if=\"showWeeks\" class=\"text-center\"></th>\r\n      <th ng-repeat=\"label in ::labels track by $index\" class=\"text-center\"><small aria-label=\"{{::label.full}}\"><span ng-bind=\"label.abbr\"></span></small></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr ng-repeat=\"row in rows track by $index\">\r\n      <td ng-if=\"showWeeks\" class=\"text-center\"><em><span ng-bind=\"weekNumbers[$index]\"></span></em></td>\r\n      <td ng-repeat=\"dt in row track by dt.date\" class=\"text-center\" role=\"gridcell\" id=\"{{::dt.uid}}\" ng-class=\"::dt.customClass\">\r\n        <button type=\"button\" style=\"min-width:100%;\" class=\"ui button small\" ng-class=\"{'btn-info': dt.selected, active: isActive(dt), today: dt.current, 'text-muted': dt.secondary }\" ng-click=\"select(dt.date)\" ng-disabled=\"dt.disabled\" tabindex=\"-1\"><span ng-class=\"::{'text-info': dt.current}\" ng-bind=\"dt.label\"></span></button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+var path = 'month.html';
+var html = "<table role=\"grid\" aria-labelledby=\"{{::uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\r\n  <thead style=\"padding-bottom:1px;\">\r\n    <tr>\r\n      <th><button type=\"button\" class=\"ui button small\" ng-click=\"move(-1)\" tabindex=\"-1\" style=\"width:100%\"><i class=\"icon chevron left\"></i></button></th>\r\n      <th><button id=\"{{::uniqueId}}-title\" role=\"heading\" aria-live=\"assertive\" aria-atomic=\"true\" type=\"button\" class=\"ui button small\" ng-click=\"toggleMode()\" ng-disabled=\"datepickerMode === maxMode\" tabindex=\"-1\" style=\"width:100%\"><strong><span ng-bind=\"title\"></span></strong></button></th>\r\n      <th><button type=\"button\" class=\"ui button small\" ng-click=\"move(1)\" tabindex=\"-1\" style=\"width:100%\"><i class=\"icon chevron right\"></i></button></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr ng-repeat=\"row in rows track by $index\">\r\n      <td ng-repeat=\"dt in row track by dt.date\" class=\"text-center\" role=\"gridcell\" id=\"{{::dt.uid}}\" ng-class=\"::dt.customClass\">\r\n        <button type=\"button\" style=\"min-width:100%;\" class=\"ui button small\" ng-class=\"{'btn-info': dt.selected, active: isActive(dt)}\" ng-click=\"select(dt.date)\" ng-disabled=\"dt.disabled\" tabindex=\"-1\"><span ng-class=\"::{'text-info': dt.current}\" ng-bind=\"dt.label\"></span></button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+var path = 'year.html';
+var html = "<table role=\"grid\" aria-labelledby=\"{{::uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\r\n  <thead>\r\n    <tr>\r\n      <th><button type=\"button\" class=\"ui button pull-left\" ng-click=\"move(-1)\" tabindex=\"-1\"><i class=\"icon chevron left\"></i></button></th>\r\n      <th colspan=\"3\"><button id=\"{{::uniqueId}}-title\" role=\"heading\" aria-live=\"assertive\" aria-atomic=\"true\" type=\"button\" class=\"ui button\" ng-click=\"toggleMode()\" ng-disabled=\"datepickerMode === maxMode\" tabindex=\"-1\" style=\"width:100%;\"><strong><span ng-bind=\"title\"></span></strong></button></th>\r\n      <th><button type=\"button\" class=\"ui button pull-right\" ng-click=\"move(1)\" tabindex=\"-1\"><i class=\"icon chevron right\"></i></button></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr ng-repeat=\"row in rows track by $index\">\r\n      <td ng-repeat=\"dt in row track by dt.date\" class=\"text-center\" role=\"gridcell\" id=\"{{::dt.uid}}\">\r\n        <button type=\"button\" style=\"min-width:100%;\" class=\"ui button\" ng-class=\"{'btn-info': dt.selected, active: isActive(dt)}\" ng-click=\"select(dt.date)\" ng-disabled=\"dt.disabled\" tabindex=\"-1\"><span ng-class=\"::{'text-info': dt.current}\" ng-bind=\"dt.label\"></span></button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/datePicker/datePicker.html';
+var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" class=\"form-control\"\r\n            uib-datepicker-popup=\"{{::dp.format}}\"\r\n            ng-model=\"dp.date\"\r\n            ng-model-options=\"dp.modelOptions\"\r\n            ng-click=\"dp.toggleCalendar($event)\"\r\n            datepicker-popup=\"{{::dp.format}}\"\r\n            datepicker-popup-template-url=\"{{::dp.popupTemplate}}\"\r\n            datepicker-template-url=\"{{::dp.datePickerTemplate}}\"\r\n            is-open=\"dp.status.opened\"\r\n            min-date=\"dp.minDate\"\r\n            max-date=\"dp.maxDate\"\r\n            datepicker-options=\"dp.dateOptions\"\r\n            on-open-focus=\"false\"\r\n            popup-placement=\"auto\"\r\n            ng-required=\"true\"\r\n            readonly=\"readonly\"\r\n            close-text=\"Close\"\r\n            current-text=\"Today\"/>\r\n    <button class=\"ui icon button\" ng-click=\"dp.toggleCalendar($event)\">\r\n        <i class=\"calendar icon\"></i>\r\n    </button>\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the error block component.
+ */
+var ErrorBlock = (function () {
+    /**
+     * inits component.
+     */
+    function ErrorBlock() {
+        this.controller = ErrorBlockController;
+        this.controllerAs = 'eb';
+        this.templateUrl = __webpack_require__(42);
+        this.bindings = {
+            errorBlock: '=ebError'
+        };
+    }
+    return ErrorBlock;
+}());
+exports.ErrorBlock = ErrorBlock;
+/**
+ * controller for error block component.
+ */
+var ErrorBlockController = (function () {
+    function ErrorBlockController() {
+    }
+    Object.defineProperty(ErrorBlockController.prototype, "showError", {
+        get: function () {
+            return this.errorBlock && this.errorBlock.showError;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return ErrorBlockController;
+}());
+exports.ErrorBlockController = ErrorBlockController;
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/errorBlock/errorBlock.html';
+var html = "<div ng-if=\"eb.showError\" class=\"ui negative message\">\r\n    <div class=\"header\">\r\n        {{eb.errorBlock.errorTitle}}\r\n    </div>\r\n    <p>\r\n        {{eb.errorBlock.errorMessage}}\r\n    </p>\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(44);
+var baseLookupController_1 = __webpack_require__(7);
+var EzGrid = (function () {
+    function EzGrid() {
+        this.templateUrl = __webpack_require__(46);
+        this.controller = EzGridController;
+        this.controllerAs = 'eg';
+        this.bindings = {
+            // The grid column definitions.
+            gridColumns: '=egGridColumns',
+            // The selected item - corresponds with the selected row on the grid.
+            selectedItem: '=egSelectedItem',
+            /**
+             * Retrieve the items to display in the grid.
+             * @param {UiGridRequest} request - The ui grid request containing
+             *  the sorting, filtering and paging information.
+             * @returns {UiGridResult<T>} - The ui grid result containing the
+             *  retrieved items and count of total items.
+             */
+            getItems: '&egGetItems',
+            /**
+             * Executed when a grid item is double-clicked. The selected item is
+             * set before this callback function is executed.
+             */
+            onDoubleClick: '&egOnDoubleClick'
+        };
+    }
+    return EzGrid;
+}());
+exports.EzGrid = EzGrid;
+var EzGridController = (function (_super) {
+    __extends(EzGridController, _super);
+    function EzGridController($scope, uiGridService) {
+        var _this = _super.call(this, $scope) || this;
+        _this.uiGridService = uiGridService;
+        return _this;
+    }
+    //#endregion
+    //#region onInit
+    EzGridController.prototype.$onInit = function () {
+        var _this = this;
+        this.gridOptions = this.uiGridService.initPagedGridOptions(this, this.gridColumns);
+        this.filterRequest = this.uiGridService.initFilterRequest(this.gridOptions);
+        this.reloadGrid();
+        this.unwatchArray.push(function () { return _this.uiGridService.destroyGrid(_this); });
+    };
+    //#endregion
+    //#region Functions
+    EzGridController.prototype.reloadGrid = function () {
+        return this.uiGridService.doSearch(this, false);
+    };
+    /**
+     * Is the grid actually empty? Ensure there is no request currently running
+     * and that the grid data is empty.
+     */
+    EzGridController.prototype.hasNoItems = function () {
+        return !this.isRequestError
+            && !this.isRequestRunning
+            && this.gridOptions
+            && this.gridOptions.data
+            && this.gridOptions.data.length === 0;
+    };
+    //#region Constructor
+    EzGridController.$inject = [
+        '$scope',
+        'uiGridService'
+    ];
+    return EzGridController;
+}(baseLookupController_1.BaseLookupController));
+exports.EzGridController = EzGridController;
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(45);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./ezGrid.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./ezGrid.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "ez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/ezGrid/ezGrid.html';
+var html = "<div ui-grid=\"eg.gridOptions\" ui-grid-selection ui-grid-pagination>\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"eg.isRequestRunning\">\r\n        <div class=\"ui large text loader sr-only\"><span>Loading..</span></div>\r\n    </div>\r\n    <div ng-if=\"eg.isRequestError\" class=\"ui active inverted dimmer part-loader gridErrContainer\">\r\n        <div class=\"ui error message gridErrMessage\">\r\n            <div class=\"header\">An error occurred, please try again</div>\r\n            <button type=\"button\" class=\"ui basic icon button gridErrBtn\" ng-click=\"eg.reloadGrid()\"><i class=\"refresh icon\"></i> Reload Data</button>\r\n        </div>\r\n    </div>\r\n    <div ng-show=\"eg.hasNoItems()\" class=\"ui active inverted dimmer part-loader noItemsInfoContainer\">\r\n        <div class=\"ui info message noItemsMessage\">\r\n            <div class=\"header\">No items found.</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseModalController_1 = __webpack_require__(10);
+var EzModal = (function () {
+    function EzModal() {
+        this.templateUrl = __webpack_require__(48);
+        this.controller = EzModalController;
+        this.controllerAs = 'em';
+        this.bindings = {
+            // The text to be displayed in the modal header.
+            headerText: '@emHeaderText',
+            // The text to be displayed in the primary button.
+            primaryButtonText: '@emPrimaryButtonText',
+            // The text to be displayed in the secondary button.
+            secondaryButtonText: '@emSecondaryButtonText',
+            // The class name to apply to the modal. Because all modals are set
+            // as detachable, using the component name as the top-level css
+            // selector does not work. The class name allows for styling to be
+            // applied to the specific modal.
+            className: '@emClassName',
+            // Is the modal visible? Two-way bound to allow for the child to
+            // update the parent with the status of the modal.
+            isVisible: '=emIsVisible',
+            // Is the loader visible? Allow the parent to show or hide the
+            // loader animation while performing async actions for the modal.
+            isLoaderVisible: '=emIsLoaderVisible',
+            // Does the modal have a child component that is also a modal?
+            hasInnerModal: '<emHasInnerModal',
+            /**
+             * Executed when the primary button is selected. The positive callback.
+             */
+            onApprove: '&emOnApprove',
+            /**
+             * Executed when the secondary button is selected. The negative callback.
+             */
+            onDeny: '&emOnDeny',
+            /**
+             * Executed when the modal is shown/opened.
+             */
+            onShow: '&emOnShow',
+            /**
+             * Executed when the modal is hidden/closed.
+             */
+            onHidden: '&emOnHidden'
+        };
+        this.transclude = true;
+    }
+    return EzModal;
+}());
+exports.EzModal = EzModal;
+var EzModalController = (function (_super) {
+    __extends(EzModalController, _super);
+    function EzModalController($scope, $timeout, modalService) {
+        var _this = _super.call(this, $scope, modalService) || this;
+        _this.$timeout = $timeout;
+        //#endregion
+        //#region Functions
+        _this.onHideCallback = function () {
+            if (_this.onHidden) {
+                _this.onHidden();
+            }
+            // timeout needed because callback fires from sm-modal scope
+            _this.$timeout(function () {
+                _this.isShown = false;
+            });
+        };
+        _this.onVisibleCallback = function () {
+            // timeout needed because callback fires from sm-modal scope
+            _this.$timeout(function () {
+                _this.isShown = true;
+            });
+        };
+        _this.onPrimaryButtonClick = function () {
+            _this.onApprove();
+        };
+        _this.onSecondaryButtonClick = function () {
+            _this.isVisible = false;
+            // If user clicks on Cancel before modal finishes its show animation, it will not show up again any more
+            // even though isModalVisible is set to true
+            if (!_this.isShown) {
+                return;
+            }
+            if (_this.onDeny) {
+                // this timeout is needed to ensure the modal stack is in the correct state.
+                // if this timeout is not here the modal stack may contain a window that should be closed but will open it.
+                _this.$timeout(function () {
+                    _this.onDeny();
+                });
+            }
+            _this.toggleModalVisibility(false);
+        };
+        return _this;
+    }
+    //#endregion
+    //#region Constructor
+    EzModalController.$inject = [
+        '$scope',
+        '$timeout',
+        'modalService'
+    ];
+    return EzModalController;
+}(baseModalController_1.BaseModalController));
+exports.EzModalController = EzModalController;
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/ezModal/ezModal.html';
+var html = "<sm-modal\r\n    class=\"{{em.className}}\"\r\n    ng-class=\"{ 'data-is-active' : em.isShown, 'data-is-hidden' : !em.isShown }\"\r\n    id=\"{{em.id}}\"\r\n    visible=\"em.isModalVisible\"\r\n    on-show=\"em.onShow\"\r\n    on-hidden=\"em.onHideCallback\"\r\n    on-visible=\"em.onVisibleCallback\"\r\n    settings=\"{\r\n        transition: 'scale',\r\n        closable: false,\r\n        detachable: true,\r\n        observeChanges: true,\r\n        blurring: true\r\n    }\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"em.isLoaderVisible\">\r\n        <div class=\"ui large text loader\"><span>Loading...</span></div>\r\n    </div>\r\n\r\n    <div class=\"header\">{{ em.headerText }}</div>\r\n    <div ng-if=\"em.isInDom\" class=\"content\" ng-transclude></div>\r\n\r\n    <div class=\"actions\">\r\n        <div class=\"ui primary button\" data-ng-click=\"em.onPrimaryButtonClick()\">{{ em.primaryButtonText }}</div>\r\n        <div class=\"ui basic button\" data-ng-click=\"em.onSecondaryButtonClick()\">{{ em.secondaryButtonText }}</div>\r\n    </div>\r\n</sm-modal>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(50);
+var _ = __webpack_require__(3);
+var baseComponent_1 = __webpack_require__(2);
+var typeConsts_1 = __webpack_require__(11);
+var SingleLookup = (function () {
+    function SingleLookup() {
+        this.templateUrl = __webpack_require__(52);
+        this.controller = SingleLookupController;
+        this.controllerAs = 'sl';
+        this.bindings = {
+            // The function to request lookup data, passed with 'request' as a parameter
+            getData: '&getData',
+            // The function to get the initial item by ID
+            getSingle: '&getSingle',
+            // The columns to display in the grid in the format
+            // [{ displayName: 'Last Name', name: 'lastName', width: '30%'}]
+            gridColumns: '<gridColumns',
+            // If true, the button to clear the lookup is hidden.
+            isRequired: '<?isRequired',
+            // The html template to display in the textbox
+            // example: name + ' - ' + number
+            itemTemplate: '@itemTemplate',
+            // The callback function that returns the selected items id, passed with 'result' as a parameter
+            // (result will be the id of the selected item)
+            resultCallback: '&resultCallback',
+            // The id to use as the current selected item
+            selectedId: '<selectedId',
+            // The title for the lookup window
+            title: '@title',
+            // The input placeholder text
+            placeholder: '@placeholder'
+        };
+    }
+    return SingleLookup;
+}());
+exports.SingleLookup = SingleLookup;
+var SingleLookupController = (function (_super) {
+    __extends(SingleLookupController, _super);
+    function SingleLookupController($scope, $timeout, notificationService, customUiGridConstants, uiGridConstants) {
+        var _this = _super.call(this, $scope) || this;
+        _this.$scope = $scope;
+        _this.$timeout = $timeout;
+        _this.notificationService = notificationService;
+        _this.customUiGridConstants = customUiGridConstants;
+        _this.uiGridConstants = uiGridConstants;
+        _this.commonGridColumnOptions = {
+            enableFiltering: true,
+            filter: {
+                condition: _this.uiGridConstants.filter.STARTS_WITH,
+                placeholder: 'starts with',
+                disableCancelFilterButton: true
+            },
+            filterHeaderTemplate: _this.customUiGridConstants.filterHeaderTemplate,
+            headerCellTemplate: _this.customUiGridConstants.headerCellTemplate,
+            sort: { direction: 'asc' }
+        };
+        /**
+         * The function called when the user clicks the ok button.
+         * Return false to keep the window open.
+         */
+        _this.onApprove = function () {
+            if (!_this.selectedItem) {
+                _this.notificationService.error('Please make a selection.');
+                return false;
+            }
+            _this.updateItemDisplay();
+            _this.isModalVisible = false;
+        };
+        /**
+         * The function called when the user clicks the cancel button.
+         */
+        _this.onDeny = function () {
+            _this.selectedItem = _.cloneDeep(_this.originalItem);
+        };
+        /**
+         * The function called when the modal window is done closing.
+         */
+        _this.onHidden = function () {
+            _this.resultCallback({ result: _this.selectedItem ? _this.selectedItem : { id: typeConsts_1.TypeConsts.emptyGuid } });
+            _this.originalItem = null;
+        };
+        /**
+         * Watch function to check if the selected id has changed
+         */
+        _this.selectedIdChanged = function (newValue, oldValue) {
+            // Check if the value that has been changed is equal to the currently selected item's id, if they
+            // are the same we do not need to do the refresh. The id's would not match if you are re-using a component
+            // for multiple purposes and need to refresh the display on the lookup.
+            if (newValue !== oldValue && (_this.selectedItem === null || _this.selectedItem.id !== newValue)) {
+                _this.refreshSelectedId();
+            }
+        };
+        _this.isModalVisible = false;
+        _this.unwatchArray.push(_this.$scope.$watch(function () { return _this.selectedId; }, _this.selectedIdChanged));
+        return _this;
+    }
+    /**
+     * Initialization function to get everything setup.
+     */
+    SingleLookupController.prototype.$onInit = function () {
+        var _this = this;
+        // Merge the columns passed in with the common properties
+        _.forEach(this.gridColumns, function (col) {
+            // Use cloneDeep to prevent the same filter being used multiple times.
+            var c = Object.assign({}, _.cloneDeep(_this.commonGridColumnOptions), col);
+            Object.assign(col, c);
+        });
+        // Find the item to display if the id is given
+        this.refreshSelectedId();
+    };
+    /**
+     * Clears the selected item.
+     */
+    SingleLookupController.prototype.clearItem = function () {
+        this.itemDisplay = '';
+        this.selectedId = typeConsts_1.TypeConsts.emptyGuid;
+        this.selectedItem = null;
+        this.originalItem = null;
+        this.resultCallback({ result: { id: typeConsts_1.TypeConsts.emptyGuid } });
+    };
+    /**
+     * Gets all the items filtered, sorted and paged.
+     */
+    SingleLookupController.prototype.getItems = function (request) {
+        return this.getData({ request: request });
+    };
+    /**
+     * Opens the editor when an item is double clicked.
+     */
+    SingleLookupController.prototype.onDoubleClickEvent = function () {
+        this.updateItemDisplay();
+        this.isModalVisible = false;
+    };
+    /**
+     * Function to open the modal window.
+     */
+    SingleLookupController.prototype.openModal = function () {
+        this.isModalVisible = true;
+        if (this.selectedItem) {
+            this.originalItem = _.cloneDeep(this.selectedItem);
+        }
+    };
+    /**
+     * Function to refresh the currently selected item
+     */
+    SingleLookupController.prototype.refreshSelectedId = function () {
+        var _this = this;
+        if (this.selectedId && this.selectedId !== typeConsts_1.TypeConsts.emptyGuid) {
+            this.isDataLoading = true;
+            this.getSingle({ id: this.selectedId })
+                .then(function (result) {
+                _this.$timeout(function () {
+                    _this.selectedItem = result;
+                    _this.updateItemDisplay();
+                });
+            }).catch(function () {
+                // nothing to do
+            }).then(function () {
+                _this.$timeout(function () {
+                    _this.isDataLoading = false;
+                });
+            });
+        }
+        else {
+            this.itemDisplay = '';
+            this.selectedItem = null;
+            this.originalItem = null;
+        }
+    };
+    SingleLookupController.prototype.updateItemDisplay = function () {
+        this.itemDisplay = this.$scope.$eval(this.itemTemplate, this.selectedItem);
+    };
+    SingleLookupController.prototype.getLoadingClass = function () {
+        if (this.isDataLoading) {
+            return 'loading';
+        }
+        return '';
+    };
+    SingleLookupController.$inject = [
+        '$scope',
+        '$timeout',
+        'notificationService',
+        'customUiGridConstants',
+        'uiGridConstants'
+    ];
+    return SingleLookupController;
+}(baseComponent_1.BaseComponent));
+exports.SingleLookupController = SingleLookupController;
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(51);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./singleLookup.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./singleLookup.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "single-lookup input.action.input {\n  max-height: 40px; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/singleLookup/singleLookup.html';
+var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\" \r\n          em-header-text=\"{{ sl.title }}\" \r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\" \r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\">\r\n\r\n            <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\">\r\n        </ez-grid>\r\n\r\n</ez-modal>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(54);
+/**
+ * The upload image component.
+ */
+var UploadImage = (function () {
+    /**
+     * inits component.
+     */
+    function UploadImage() {
+        this.templateUrl = __webpack_require__(56);
+        this.controller = UploadImageController;
+        this.controllerAs = 'ui';
+        this.bindings = {
+            imageRequest: '&uiImageUploadRequest',
+            existingImageSrc: '=uiExistingImageSrc'
+        };
+    }
+    return UploadImage;
+}());
+exports.UploadImage = UploadImage;
+/**
+ * The upload image controller.
+ */
+var UploadImageController = (function () {
+    /**
+     * inits controller.
+     * @param $timeout
+     */
+    function UploadImageController($scope, notificationService) {
+        this.$scope = $scope;
+        this.notificationService = notificationService;
+    }
+    Object.defineProperty(UploadImageController.prototype, "imageSrc", {
+        /**
+         * gets the image source.
+         * @returns {string}
+         */
+        get: function () {
+            return this.existingImageSrc;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // occurs on image being selected
+    UploadImageController.prototype.onImageSelect = function (file) {
+        var _this = this;
+        if (!file || this.isRequestRunning) {
+            return;
+        }
+        this.isRequestRunning = true;
+        this.imageRequest({ file: file })
+            .catch(function () {
+            // nothing needs to be done
+        })
+            .then(function () {
+            _this.$scope.$apply(function () {
+                _this.isRequestRunning = false;
+                // Add a random query string to the image source url to
+                // force a reload.
+                var time = new Date().getTime().toString();
+                _this.existingImageSrc = String.prototype.concat(_this.existingImageSrc, '&cb=', time);
+            });
+        });
+    };
+    UploadImageController.$inject = [
+        '$scope',
+        'notificationService'
+    ];
+    return UploadImageController;
+}());
+exports.UploadImageController = UploadImageController;
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(55);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./uploadImage.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./uploadImage.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "upload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/components/uploadImage/uploadImage.html';
+var html = "<div class=\"ui segment image-uploader-container\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"ui.isRequestRunning\">\r\n        <div class=\"ui large text loader\"><span>Loading..</span></div>\r\n    </div>\r\n\r\n    <img ng-if=\"!ui.hasExistingImage\" class=\"ui small rounded image\"\r\n         ngf-select=\"ui.onImageSelect($file)\"\r\n         ngf-pattern=\"'image/*'\"\r\n         ngf-accept=\"'image/*'\"\r\n         ng-src=\"{{ui.imageSrc}}\">\r\n\r\n</div>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var eventConsts_1 = __webpack_require__(5);
+exports.EventConsts = eventConsts_1.EventConsts;
+var typeConsts_1 = __webpack_require__(11);
+exports.TypeConsts = typeConsts_1.TypeConsts;
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var editorState_1 = __webpack_require__(4);
+exports.EditorState = editorState_1.EditorState;
+var errorResponseType_1 = __webpack_require__(12);
+exports.ErrorResponseType = errorResponseType_1.ErrorResponseType;
+var httpStatusCode_1 = __webpack_require__(13);
+exports.HttpStatusCode = httpStatusCode_1.HttpStatusCode;
+var managerState_1 = __webpack_require__(9);
+exports.ManagerState = managerState_1.ManagerState;
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var responseError_1 = __webpack_require__(14);
+exports.ResponseError = responseError_1.ResponseError;
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var requestOptions_1 = __webpack_require__(15);
+exports.RequestOptions = requestOptions_1.RequestOptions;
+var problemResult_1 = __webpack_require__(16);
+exports.ProblemResult = problemResult_1.ProblemResult;
+var validationProblemResult_1 = __webpack_require__(61);
+exports.ValidationProblemResult = validationProblemResult_1.ValidationProblemResult;
+var uiGridRequest_1 = __webpack_require__(17);
+exports.UiGridRequest = uiGridRequest_1.UiGridRequest;
+var uiGridResult_1 = __webpack_require__(62);
+exports.UiGridResult = uiGridResult_1.UiGridResult;
+var errorBlock_1 = __webpack_require__(63);
+exports.ErrorBlockModel = errorBlock_1.ErrorBlockModel;
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var problemResult_1 = __webpack_require__(16);
+/**
+ * validaiton problem result.
+ */
+var ValidationProblemResult = (function (_super) {
+    __extends(ValidationProblemResult, _super);
+    function ValidationProblemResult() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ValidationProblemResult;
+}(problemResult_1.ProblemResult));
+exports.ValidationProblemResult = ValidationProblemResult;
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var UiGridResult = (function () {
+    function UiGridResult() {
+    }
+    return UiGridResult;
+}());
+exports.UiGridResult = UiGridResult;
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the error block model.
+ */
+var ErrorBlockModel = (function () {
+    function ErrorBlockModel() {
+    }
+    return ErrorBlockModel;
+}());
+exports.ErrorBlockModel = ErrorBlockModel;
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var responseHandlers_1 = __webpack_require__(65);
+exports.ResponseHandlers = responseHandlers_1.ResponseHandlers;
+var apiService_1 = __webpack_require__(66);
+exports.ApiService = apiService_1.ApiService;
+var modalService_1 = __webpack_require__(67);
+exports.ModalService = modalService_1.ModalService;
+var notificationService_1 = __webpack_require__(68);
+exports.NotificationService = notificationService_1.NotificationService;
+var processingService_1 = __webpack_require__(70);
+exports.ProcessingService = processingService_1.ProcessingService;
+var serverValidationService_1 = __webpack_require__(71);
+exports.ServerValidationService = serverValidationService_1.ServerValidationService;
+var serviceRequestProcessor_1 = __webpack_require__(72);
+exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
+var uiGridService_1 = __webpack_require__(73);
+exports.UiGridService = uiGridService_1.UiGridService;
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var errorResponseType_1 = __webpack_require__(12);
+var httpStatusCode_1 = __webpack_require__(13);
+var responseError_1 = __webpack_require__(14);
+var successStatusCodes = [
+    httpStatusCode_1.HttpStatusCode.OK,
+    httpStatusCode_1.HttpStatusCode.Created,
+    httpStatusCode_1.HttpStatusCode.NoContent
+];
+/**
+ * Generic response handlers.
+ */
+var ResponseHandlers = (function () {
+    function ResponseHandlers(notification) {
+        this.notification = notification;
+    }
+    /**
+     * Notifies and throws a generic error message.
+     *
+     * @param {boolean} rethrow - Whether or not to rethrow the error.
+     */
+    ResponseHandlers.prototype.error = function (rethrow) {
+        if (rethrow === void 0) { rethrow = true; }
+        var message = 'An error occurred.';
+        this.notification.error(message);
+        if (rethrow) {
+            throw new responseError_1.ResponseError(errorResponseType_1.ErrorResponseType.ConnectionLost, message);
+        }
+    };
+    /**
+     * Handles error in response.
+     *
+     * makes notification with detail taken from json and throws ResponseError
+     * with the type of data and data itself
+     *
+     * @param {any} jsonData - The json data object.
+     * @param {boolean} rethrow - Whether or not to rethrow the error.
+     */
+    ResponseHandlers.prototype.handleProblem = function (jsonData, rethrow) {
+        if (rethrow === void 0) { rethrow = true; }
+        var message = jsonData.detail;
+        if (message) {
+            this.notification.error(message);
+        }
+        else {
+            this.error(rethrow);
+        }
+        var errorResponseType = this.getErrorResponseType(jsonData);
+        if (rethrow) {
+            throw new responseError_1.ResponseError(errorResponseType, message, jsonData);
+        }
+    };
+    /**
+     * Checks if response is success.
+     *
+     * @param {HttpStatusCode} statusCode - The http status code.
+     * @returns {boolean} Whether or not the status code is a success response.
+     */
+    ResponseHandlers.prototype.isSuccessResponse = function (statusCode) {
+        return successStatusCodes.includes(statusCode);
+    };
+    /**
+     * Gets response data typed from json data.
+     *
+     * @param {any} jsonData - The json data object.
+     * @returns {ErrorResponseType} The error response type.
+     */
+    ResponseHandlers.prototype.getErrorResponseType = function (jsonData) {
+        if (jsonData.detail) {
+            if (jsonData.hasServerValidationErrors) {
+                return errorResponseType_1.ErrorResponseType.ValidationProblemResult;
+            }
+            return errorResponseType_1.ErrorResponseType.ProblemResult;
+        }
+        return errorResponseType_1.ErrorResponseType.ConnectionLost;
+    };
+    ResponseHandlers.$inject = [
+        'notificationService'
+    ];
+    return ResponseHandlers;
+}());
+exports.ResponseHandlers = ResponseHandlers;
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var angular = __webpack_require__(18);
+var requestOptions_1 = __webpack_require__(15);
+var ApiService = (function () {
+    function ApiService($http, responseHandlers) {
+        this.$http = $http;
+        this.responseHandlers = responseHandlers;
+    }
+    ApiService.prototype.req = function (method, url, data) {
+        var opts = new requestOptions_1.RequestOptions(url, method);
+        opts.headers = {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        };
+        if (data) {
+            opts.data = data;
+        }
+        return this.request(opts);
+    };
+    ApiService.prototype.upload = function (method, url, file, data) {
+        var opts = new requestOptions_1.RequestOptions(url, method);
+        opts.headers = {
+            // NOTE: Content type must be undefined for this to work. It is set
+            // automagically.
+            'Content-Type': undefined
+        };
+        if (data) {
+            opts.data = data;
+        }
+        // transforms request data to the form data request with key/value pairs
+        opts.transformRequest = function (requestData, headersGetter) {
+            var formData = new FormData();
+            if (requestData) {
+                angular.forEach(requestData, function (value, key) {
+                    formData.append(key, value);
+                });
+            }
+            formData.append('file', file);
+            return formData;
+        };
+        return this.request(opts);
+    };
+    ApiService.prototype.urlEncoded = function (method, url, data) {
+        var opts = new requestOptions_1.RequestOptions(url, method);
+        opts.headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        };
+        if (data) {
+            opts.data = data;
+        }
+        // transforms request data to the form data request with key/value pairs
+        opts.transformRequest = function (requestData, headersGetter) {
+            var dataStr = '';
+            if (requestData) {
+                angular.forEach(requestData, function (value, key) {
+                    if (dataStr) {
+                        dataStr += '&';
+                    }
+                    dataStr += key + "=" + encodeURIComponent(value);
+                });
+            }
+            return dataStr;
+        };
+        return this.request(opts);
+    };
+    ApiService.prototype.request = function (opts) {
+        var _this = this;
+        var ngPromise = this.$http(opts)
+            .catch(function (err) {
+            // If a response was received and it contains some useful information.
+            if (err.data) {
+                _this.responseHandlers.handleProblem(err.data, opts.rethrow);
+            }
+            else {
+                _this.responseHandlers.error(opts.rethrow);
+            }
+        })
+            .then(function (res) {
+            // Need to check if res is defined.
+            if (res) {
+                return res.data;
+            }
+        });
+        return Promise.resolve(ngPromise);
+    };
+    ApiService.$inject = [
+        '$http',
+        'responseHandlers'
+    ];
+    return ApiService;
+}());
+exports.ApiService = ApiService;
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var _ = __webpack_require__(3);
+var ModalService = (function () {
+    function ModalService($timeout) {
+        this.$timeout = $timeout;
+        this.stack = [];
+    }
+    //#endregion
+    //#region Functions
+    ModalService.prototype.show = function (modal) {
+        // If the modal is not already in the stack...
+        if (!_.find(this.stack, function (element) { return element === modal; })) {
+            // If there is already another modal displayed...
+            if (this.stack.length > 0) {
+                // Set the currently shown modal to the prevModal
+                var prevModal = this.stack[this.stack.length - 1];
+                modal.previousModal = prevModal;
+            }
+            // Add the modal to the stack.
+            this.stack.push(modal);
+            // If the modal has a parent modal, hide the parent modal (but do
+            // not remove it from the DOM).
+            if (modal.previousModal) {
+                this.$timeout(function () {
+                    modal.previousModal.toggleModalVisibility(false);
+                });
+            }
+        }
+        // The modal is already in the stack and just needs to be displayed again.
+        this.showModal(modal);
+    };
+    ModalService.prototype.hide = function (modal) {
+        // Hide the modal.
+        this.hideModal(modal);
+        // If the modal has a parent modal...
+        if (!this.hasPreviousLink(modal)) {
+            if (modal.previousModal) {
+                var prevModal = modal.previousModal;
+                // Now that the modal is closed, show its parent modal.
+                this.showModal(prevModal);
+                modal.previousModal = null;
+            }
+            // Remove the modal from the stack.
+            _.remove(this.stack, function (element) {
+                return element === modal;
+            });
+        }
+    };
+    ModalService.prototype.showModal = function (modal) {
+        // Add the modal to the DOM and enable its visibility.
+        var timeout = ModalService.modalAnimationTimeout;
+        // If we have only one modal in stack - show it immediately - first time any modal is opened.
+        if (this.stack.length === 1) {
+            timeout = 0;
+        }
+        this.$timeout(function () {
+            modal.toggleDomExistence(true);
+            modal.toggleModalVisibility(true);
+        }, timeout);
+    };
+    ModalService.prototype.hideModal = function (modal) {
+        var hasPreviousLink = this.hasPreviousLink(modal);
+        // Disable the modal visibility.
+        this.$timeout(function () {
+            modal.toggleModalVisibility(false);
+        });
+        // If a modal has an inner modal, it should not be removed from the DOM
+        // so that it preserves any data entered into any form elements.
+        //
+        // Therefore, if the modal has no inner modal, it can safely be removed
+        // from the DOM.
+        //
+        // Otherwise, if the modal does not have a parent modal and is not
+        // specifically set to not be removed from to DOM, it can be removed
+        // from the DOM.
+        if (!modal.hasInnerModal || (!hasPreviousLink && !modal.doNotRemoveFromDom)) {
+            this.$timeout(function () {
+                modal.toggleDomExistence(false);
+            }, ModalService.modalAnimationTimeout);
+        }
+    };
+    /**
+     * Does the modal contain a link to a previous/parent modal?
+     */
+    ModalService.prototype.hasPreviousLink = function (modal) {
+        return _.find(this.stack, function (element) { return element.previousModal === modal; }) !== undefined;
+    };
+    //#region Properties
+    ModalService.modalAnimationTimeout = 650;
+    //#endregion
+    //#region Constructor
+    ModalService.$inject = ['$timeout'];
+    return ModalService;
+}());
+exports.ModalService = ModalService;
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var toastr = __webpack_require__(69);
+/**
+ * notification service implementation
+ */
+var NotificationService = (function () {
+    function NotificationService() {
+    }
+    NotificationService.prototype.success = function (message) {
+        toastr.success(message);
+    };
+    NotificationService.prototype.error = function (message) {
+        toastr.error(message);
+    };
+    NotificationService.prototype.info = function (message) {
+        toastr.info(message);
+    };
+    return NotificationService;
+}());
+exports.NotificationService = NotificationService;
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+module.exports = require("toastr");
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * A service responsible for indicating processing of operations on pages (not refreshing data).
+ *
+ * @returns {Object}
+ */
+// ReSharper disable once InconsistentNaming
+var ProcessingService = (function () {
+    function ProcessingService() {
+        /**
+         * Whether or not to show the text of the overlay.
+         */
+        this.show = false;
+    }
+    Object.defineProperty(ProcessingService.prototype, "showOverlay", {
+        get: function () {
+            return this.show;
+        },
+        set: function (val) {
+            this.show = val;
+            if (!this.show) {
+                this.text = null;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ProcessingService.prototype.showOverlayIndicator = function (message) {
+        this.text = message;
+        this.showOverlay = true;
+    };
+    ProcessingService.prototype.hideOverlayIndicator = function () {
+        this.showOverlay = false;
+    };
+    // NOTE: These are dirty but they are the most efficient way to show or hide
+    // the loading indicator without relying on a digest.
+    ProcessingService.prototype.showPartialLoadingIndicator = function (id) {
+        $('#' + id).removeClass('hidden');
+    };
+    ProcessingService.prototype.hidePartialLoadingIndicator = function (id) {
+        $('#' + id).addClass('hidden');
+    };
+    return ProcessingService;
+}());
+exports.ProcessingService = ProcessingService;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var angular = __webpack_require__(18);
+var ServerValidationService = (function () {
+    function ServerValidationService() {
+        this.errs = {};
+    }
+    Object.defineProperty(ServerValidationService.prototype, "errors", {
+        get: function () {
+            return this.errs;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ServerValidationService.prototype.clearErrorsForKey = function (formName, key) {
+        if (this.hasErrorsForKey(formName, key)) {
+            delete this.errs[formName][key];
+        }
+    };
+    ServerValidationService.prototype.clearAllFormErrors = function (formName) {
+        this.errs[formName] = {};
+    };
+    ServerValidationService.prototype.hasErrorsForKey = function (formName, key) {
+        return !!this.errs[formName]
+            && !!this.errs[formName][key]
+            && !!this.errs[formName][key].length;
+    };
+    ServerValidationService.prototype.hasErrorsForForm = function (formName) {
+        return !!this.errs[formName]
+            && !!Object.keys(this.errs[formName]).length;
+    };
+    ServerValidationService.prototype.getErrorsForKey = function (formName, key) {
+        if (this.hasErrorsForKey(formName, key)) {
+            return this.errs[formName][key];
+        }
+        return [];
+    };
+    ServerValidationService.prototype.getAllFormErrors = function (formName) {
+        if (this.hasErrorsForForm(formName)) {
+            var allErrs = [];
+            var self = this;
+            Object.keys(this.errs[formName]).forEach(function (key) {
+                if (angular.isArray(self.errs[formName][key])) {
+                    for (var i = 0; i < self.errs[formName][key].length; i++) {
+                        allErrs.push(self.errs[formName][key][i]);
+                    }
+                }
+            });
+            return allErrs;
+        }
+        return [];
+    };
+    ServerValidationService.prototype.validate = function (formName, respData) {
+        this.clearAllFormErrors(formName);
+        if (respData.hasServerValidationErrors === true) {
+            this.errs[formName] = respData.errors;
+        }
+    };
+    return ServerValidationService;
+}());
+exports.ServerValidationService = ServerValidationService;
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the service request processor.
+ */
+var ServiceRequestProcessor = (function () {
+    function ServiceRequestProcessor($timeout, request, handleCallback) {
+        this.$timeout = $timeout;
+        this.request = request;
+        this.handleCallback = handleCallback;
+    }
+    ServiceRequestProcessor.prototype.process = function () {
+        var _this = this;
+        if (this.isRequestRunning) {
+            return;
+        }
+        this.isRequestRunning = true;
+        this.request().then(function (res) {
+            _this.handleCallback(res);
+        })
+            .catch(function () {
+            _this.$timeout(function () {
+                _this.isErrorOccured = true;
+            });
+        })
+            .then(function () {
+            _this.$timeout(function () {
+                _this.isRequestRunning = false;
+            });
+        });
+    };
+    return ServiceRequestProcessor;
+}());
+exports.ServiceRequestProcessor = ServiceRequestProcessor;
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var _ = __webpack_require__(3);
+var uiGridRequest_1 = __webpack_require__(17);
+// TODO: Update comments.
+var UiGridService = (function () {
+    function UiGridService($timeout) {
+        this.$timeout = $timeout;
+    }
+    //#endregion
+    //#region Functions
+    UiGridService.prototype.initScrollPagedGridOptions = function (controller, columnDefs) {
+        var _this = this;
+        var scrollGridOptions = {
+            columnDefs: columnDefs,
+            enableHorizontalScrollbar: 0,
+            enableVerticalScrollbar: 0,
+            onRegisterApi: function (gridApi) {
+                _this.handleUiGridCallbacks(gridApi, controller, function (ctrl, isScrollPaging) { return _this.doSearch(ctrl, isScrollPaging); });
+            },
+            rowTemplate: UiGridService.rowTemplate,
+            enablePaginationControls: false,
+            enablePagination: false
+        };
+        Object.assign(scrollGridOptions, UiGridService.commonGridOptions);
+        return scrollGridOptions;
+    };
+    UiGridService.prototype.initPagedGridOptions = function (controller, columnDefs) {
+        var _this = this;
+        var pagedGridOptions = {
+            useExternalPagination: true,
+            columnDefs: columnDefs,
+            enableHorizontalScrollbar: 0,
+            enableVerticalScrollbar: 0,
+            enableRowHeaderSelection: false,
+            onRegisterApi: function (gridApi) {
+                controller.gridApi = gridApi;
+                _this.handleUiGridCallbacks(gridApi, controller, function (ctrl, isScrollPaging) { return _this.doSearch(ctrl, isScrollPaging); });
+            },
+            rowTemplate: UiGridService.rowTemplate,
+            enablePaginationControls: true,
+            enablePagination: true,
+            paginationPageSizes: [10, 20]
+        };
+        Object.assign(pagedGridOptions, UiGridService.commonGridOptions);
+        return pagedGridOptions;
+    };
+    UiGridService.prototype.initFilterRequest = function (gridOptions) {
+        var request = new uiGridRequest_1.UiGridRequest();
+        request.pageSize = gridOptions.paginationPageSize;
+        request.page = 1;
+        request.sort = null;
+        request.filters = [];
+        return request;
+    };
+    UiGridService.prototype.doSearch = function (controller, isScrollPaging) {
+        var _this = this;
+        if (isScrollPaging === void 0) { isScrollPaging = false; }
+        if (controller.isRequestRunning) {
+            return;
+        }
+        if (isScrollPaging && controller.allDataFetched) {
+            return;
+        }
+        controller.isRequestError = false;
+        controller.allDataFetched = false;
+        controller.isRequestRunning = true;
+        controller.selectedItem = null;
+        return controller.getItems({ request: controller.filterRequest })
+            .then(function (response) {
+            if (isScrollPaging) {
+                if (response.length === 0) {
+                    controller.allDataFetched = true;
+                }
+                controller.gridOptions.data = controller.gridOptions.data.concat(response);
+            }
+            else {
+                controller.gridOptions.data = response.data;
+                controller.gridOptions.totalItems = response.totalItems;
+            }
+        })
+            .catch(function () {
+            controller.isRequestError = true;
+        })
+            .then(function () {
+            _this.$timeout(function () {
+                controller.isRequestRunning = false;
+                _this.resizeGrid(controller);
+            });
+        });
+    };
+    UiGridService.prototype.destroyGrid = function (controller) {
+        controller.gridApi.core.clearAllFilters();
+        controller.gridOptions = null;
+        controller.filterRequest = null;
+        controller.gridApi = null;
+        controller.gridColumns = null;
+    };
+    UiGridService.prototype.handleUiGridCallbacks = function (gridApi, controller, callback) {
+        var _this = this;
+        gridApi.core.on.sortChanged(controller.$scope, function (grid, sortColumns) {
+            controller.filterRequest.page = 1;
+            if (sortColumns.length === 0) {
+                controller.filterRequest.sort = null;
+            }
+            else {
+                controller.filterRequest.sort = {
+                    direction: sortColumns[0].sort.direction,
+                    memberName: sortColumns[0].field
+                };
+            }
+            _this.gridFilterChanged(controller, false, function (ctrl, isScrollPaging) { return callback(ctrl, isScrollPaging); });
+        });
+        gridApi.pagination.on.paginationChanged(controller.$scope, function (newPage, pageSize) {
+            controller.filterRequest.page = newPage;
+            controller.filterRequest.pageSize = pageSize;
+            _this.gridFilterChanged(controller, false, function (ctrl, isScrollPaging) { return callback(ctrl, isScrollPaging); });
+        });
+        if (controller.gridOptions.enablePagination === false) {
+            gridApi.core.on.scrollEnd(controller.$scope, function (e) {
+                var viewPort = $('.ui-grid-viewport')[0];
+                var fullHeight = viewPort.scrollHeight - viewPort.offsetHeight - 1;
+                if (viewPort.scrollTop === fullHeight) {
+                    controller.filterRequest.page++;
+                    _this.gridFilterChanged(controller, true, function (ctrl, isScrollPaging) { return callback(ctrl, isScrollPaging); });
+                }
+            });
+        }
+        gridApi.core.on.filterChanged(controller.$scope, function () {
+            var filters = [];
+            controller.filterRequest.page = 1;
+            controller.filterRequest.filters = filters;
+            gridApi.grid.columns.forEach(function (column) {
+                if (_.has(column, 'filters[0].term') && _.has(column, 'filters[0].condition')) {
+                    if (column.filters[0].term !== null && column.filters[0].term !== undefined) {
+                        filters.push({
+                            memberName: column.field,
+                            value: column.filters[0].term,
+                            condition: column.filters[0].condition
+                        });
+                    }
+                }
+            });
+            gridApi.pagination.seek(1);
+            _this.gridFilterChanged(controller, false, function (ctrl, isScrollPaging) { return callback(ctrl, isScrollPaging); });
+        });
+        gridApi.selection.on.rowSelectionChanged(controller.$scope, function (row) {
+            if (row && row.entity) {
+                controller.selectedItem = row.entity;
+            }
+        });
+    };
+    UiGridService.prototype.gridFilterChanged = function (controller, isScrollPaging, callback) {
+        if (controller.filterChangedTimeout) {
+            this.$timeout.cancel(controller.filterChangedTimeout);
+        }
+        controller.filterChangedTimeout = this.$timeout(function () {
+            callback(controller, isScrollPaging);
+        }, 400);
+    };
+    /**
+     * Resize the grid according to the number of rows retrieved from the data
+     * source. If the number of rows is less than the page size, resize the grid
+     * to fit that number of rows.
+     *
+     * If there are no items to display, resize the grid to allow for the display
+     * of an error message inside the grid.
+     *
+     * @param  {BaseLookupController<T>} controller - The controller.
+     */
+    UiGridService.prototype.resizeGrid = function (controller) {
+        var noItemsElement = $(controller.gridApi.grid.element).find('.noItemsInfoContainer');
+        var headerHeight = $(controller.gridApi.grid.element).find('.ui-grid-top-panel').outerHeight();
+        var footerHeight = $(controller.gridApi.grid.element).find('.ui-grid-pager-panel').outerHeight();
+        var noItemsFoundHeight = noItemsElement.outerHeight();
+        var rowsToShow = controller.gridOptions.paginationPageSize;
+        if (controller.gridOptions.data && controller.gridOptions.data.length < rowsToShow) {
+            rowsToShow = controller.gridOptions.data.length;
+        }
+        var viewPortHeight = rowsToShow * controller.gridOptions.rowHeight + 1;
+        if (rowsToShow === 0) {
+            viewPortHeight += noItemsFoundHeight;
+            noItemsElement.css('margin-top', headerHeight + 2 + "px");
+        }
+        $(controller.gridApi.grid.element).height(viewPortHeight + headerHeight + footerHeight);
+    };
+    //#region Static Properties
+    UiGridService.commonGridOptions = {
+        data: [],
+        useExternalSorting: true,
+        enableFiltering: true,
+        useExternalFiltering: true,
+        enableColumnMenus: false,
+        enableFullRowSelection: true,
+        enableRowHeaderSelection: false,
+        multiSelect: false,
+        noUnselect: true,
+        rowHeight: 45,
+        paginationPageSize: 10,
+        minRowsToShow: 10
+    };
+    UiGridService.rowTemplate = "<div\n        ng-dblclick=\"grid.appScope.rowDblClick(row)\"\n        ng-repeat=\"(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name\"\n        class=\"ui-grid-cell\"\n        ng-class=\"{ 'ui-grid-row-header-cell': col.isRowHeader }\"\n        ui-grid-cell>\n    </div>";
+    //#endregion
+    //#region Constructor
+    UiGridService.$inject = ['$timeout'];
+    return UiGridService;
+}());
+exports.UiGridService = UiGridService;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+
+/***/ })
+/******/ ]);
+});
 //# sourceMappingURL=ez-web-toolkit.js.map

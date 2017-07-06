@@ -8,6 +8,7 @@ export declare class ApiService implements IApiService {
     constructor($http: ng.IHttpService, responseHandlers: IResponseHandlers);
     req(method: string, url: string, data?: any): Promise<any>;
     upload(method: string, url: any, file: any, data?: any): Promise<any>;
+    urlEncoded(method: string, url: any, data: any): Promise<any>;
     request(opts: RequestOptions): Promise<any | void>;
 }
 export interface IApiService {
@@ -35,4 +36,12 @@ export interface IApiService {
      * @returns {Promise<any>} A promise to the response body.
      */
     upload(method: string, url: any, file: any, data?: any): Promise<any>;
+    /**
+     * Executes a url encoded http request.
+     * @param {string} method - The http method.
+     * @param {string} url - The url to http.
+     * @param {any} data - The request data.
+     * @returns {Promise<any>} A promise to the response body.
+     */
+    urlEncoded(method: string, url: any, data: any): Promise<any>;
 }
