@@ -1,12 +1,10 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 
-import 'modules/Common/Common';
-
 import './ezModal.ts';
 import { EzModalController } from './ezModal';
 
-import { IModalService } from 'modules/common/services/modalService';
+import { IModalService } from '../../services/modalService';
 
 describe('Component EzModal', () => {
     let vm: EzModalController;

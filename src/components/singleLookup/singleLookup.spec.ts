@@ -1,15 +1,15 @@
 import * as angular from 'angular';
 import 'angular-mocks';
+import 'jasmine';
 
-import { ComponentTest } from 'modules/util/ComponentTest';
-import 'modules/Common/Common';
+import '../../test';
 
 import './singleLookup.ts';
 import { SingleLookupController } from './singleLookup';
 
-import { IUiGridService } from 'modules/common/services/uiGridService';
-import { INotificationService } from 'modules/common/services/notificationService';
-import { UiGridRequest } from 'models/uiGrid/uiGridRequest';
+import { IUiGridService } from '../../services/uiGridService';
+import { INotificationService } from '../../services/notificationService';
+import { UiGridRequest } from '../../models/uiGrid/uiGridRequest';
 
 const emptyGUID = '00000000-0000-0000-0000-000000000000';
 
@@ -24,7 +24,7 @@ describe('Component SingleLookup', () => {
         $q: ng.IQService;
 
     beforeEach(() => {
-        angular.mock.module('MFD.Common');
+        angular.mock.module('EZ.Test');
 
         inject(function (
             _$rootScope_: ng.IRootScopeService,
@@ -41,6 +41,7 @@ describe('Component SingleLookup', () => {
             notificationService = _notificationService_;
             customUiGridConstants = _customUiGridConstants_;
         });
+debugger;
 
         vm = new SingleLookupController(
             $rootScope,

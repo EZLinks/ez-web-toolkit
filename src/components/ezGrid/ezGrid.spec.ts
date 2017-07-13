@@ -1,12 +1,10 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 
-import 'modules/Common/Common';
-
 import './ezGrid.ts';
 import {EzGridController} from './ezGrid';
 
-import { IUiGridService } from 'modules/common/services/uiGridService';
+import { IUiGridService } from '../../services/uiGridService';
 
 describe('Component EzGrid', () => {
     let uiGridService: IUiGridService<any>;

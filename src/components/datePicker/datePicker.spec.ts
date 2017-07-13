@@ -3,9 +3,6 @@ import 'angular-mocks';
 
 import * as moment from 'moment';
 
-import 'modules/common/common';
-
-import { ComponentTest } from 'modules/util/ComponentTest';
 import { DatePickerController } from './datePicker';
 
 describe('Component DatePicker', () => {
