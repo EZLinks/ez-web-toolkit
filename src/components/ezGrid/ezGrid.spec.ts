@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import 'angular-mocks';
+import 'jasmine';
 
 import './ezGrid.ts';
 import {EzGridController} from './ezGrid';
@@ -13,8 +13,8 @@ describe('Component EzGrid', () => {
     let $rootScope: ng.IRootScopeService;
 
     beforeEach(() => {
-        angular.mock.module('MFD.Common');
-        angular.mock.module('MFD.Common');
+        angular.mock.module('EZ.Test');
+        angular.mock.module('EZ.Test');
 
         inject(function(
             _$rootScope_: ng.IRootScopeService,

@@ -11,7 +11,7 @@ module.exports = function karmaConfig(config) {
     reporters: [
       // Reference: https://github.com/mlex/karma-spec-reporter
       // Set reporter to print detailed results to console
-      'spec'
+      'spec',
       // Reference: https://github.com/karma-runner/karma-coverage
       // Output code coverage files
       //'coverage'
@@ -20,62 +20,19 @@ module.exports = function karmaConfig(config) {
       '**/*.spec.ts'
     ],
     preprocessors: {
-      '**/*.spec.ts': ['webpack', 'sourcemap']
+      '**/*.spec.ts': ['webpack']
     },
     browsers: [
       // Run tests using PhantomJS
-      'Chrome'
+      'PhantomJS'
     ],
-    singleRun: false,
+    singleRun: true,
 
     webpackMiddleware: {
         stats: 'errors-only'
     },
 
-    webpack: {
-        entry: {
-          'ez-web-toolkit': path.join(__dirname, './src', '/test.ts')
-        },
-        output: {
-          path: path.join(__dirname, './build'),
-          filename: '[name].js',
-          library: 'ez-web-toolkit',
-          libraryTarget: 'umd'
-        },
-        devtool: 'inline-source-map',
-        module: {
-            rules: [
-              {
-                test: /\.ts$/,
-                loader: 'awesome-typescript-loader',
-              },
-              {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-              },
-              {
-                test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader'
-              }
-            ],
-        },
-        resolve: {
-          extensions: ['.ts', '.js']
-        },
-        plugins: [
-          //new webpack.IgnorePlugin(/spec\.ts$/),
-          new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-          })
-
-
-      ],
-      // https://github.com/webpack-contrib/css-loader/issues/447#issuecomment-285598881
-      node: {
-          fs: 'empty'
-      }
-    },
+    webpack: require('./webpack.test'),
 
     // https://github.com/webpack-contrib/karma-webpack/issues/188#issuecomment-268538430
     mime: {
@@ -86,9 +43,7 @@ module.exports = function karmaConfig(config) {
       require('karma-webpack'),
       require('karma-jasmine'),
       require('karma-spec-reporter'),
-      require('karma-phantomjs-launcher'),
-      require('karma-sourcemap-loader'),
-      require('karma-chrome-launcher')
+      require('karma-phantomjs-launcher')
     ]
   });
 };

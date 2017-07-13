@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import 'angular-mocks';
+import 'jasmine';
 
 import './ezModal.ts';
 import { EzModalController } from './ezModal';
@@ -14,8 +14,8 @@ describe('Component EzModal', () => {
         $timeout;
 
     beforeEach(() => {
-        angular.mock.module('MFD.Common');
-        angular.mock.module('MFD.Common');
+        angular.mock.module('EZ.Test');
+        angular.mock.module('EZ.Test');
 
         inject(function (
             _$rootScope_: ng.IRootScopeService,

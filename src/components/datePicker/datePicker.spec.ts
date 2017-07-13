@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import 'angular-mocks';
+import 'jasmine';
 
 import * as moment from 'moment';
 
@@ -10,7 +10,7 @@ describe('Component DatePicker', () => {
     let $rootScope: ng.IRootScopeService;
 
     beforeEach(() => {
-        angular.mock.module('360.Common');
+        angular.mock.module('EZ.Test');
 
         inject(function (_$rootScope_: ng.IRootScopeService): void {
             $rootScope = _$rootScope_;

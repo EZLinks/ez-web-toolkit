@@ -18,7 +18,7 @@ export class Test {
 
 }
 
-angular.module('EZ.Test', ['.ui.grid'])
+angular.module('EZ.Test', ['ui.grid', require('angular-mocks/ngMock')])
     .constant('customUiGridConstants', CustomUiGridConstants.Default)
     .component('confirmDialog', new Components.ConfirmDialog())
     .component('datePicker', new Components.DatePicker())
