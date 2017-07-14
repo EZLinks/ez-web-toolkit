@@ -2,7 +2,9 @@ language: node_js
 node_js:
     - node
 script:
+  - npm install
   - npm run build
+  - npm test
 deploy:
     provider: npm
     api_key: "7d88f8f6-7945-459b-a8bd-0a2ab3eee0b3"
