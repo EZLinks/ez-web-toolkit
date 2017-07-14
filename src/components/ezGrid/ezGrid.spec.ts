@@ -14,7 +14,6 @@ describe('Component EzGrid', () => {
 
     beforeEach(() => {
         angular.mock.module('EZ.Test');
-        angular.mock.module('EZ.Test');
 
         inject(function(
             _$rootScope_: ng.IRootScopeService,
