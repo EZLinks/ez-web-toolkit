@@ -1,4 +1,6 @@
 
+import './index.scss';
+
 import { ConfirmDialog } from './confirmDialog/confirmDialog';
 import { DatePicker } from './datePicker/datePicker';
 import { ErrorBlock } from './errorBlock/errorBlock';

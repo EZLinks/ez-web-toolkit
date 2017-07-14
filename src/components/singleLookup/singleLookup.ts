@@ -1,4 +1,3 @@
-import './singleLookup.scss';
 
 import * as _ from 'lodash';
 

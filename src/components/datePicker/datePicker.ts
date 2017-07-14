@@ -1,4 +1,3 @@
-import './datePicker.scss';
 
 let popupTemplate = require('ngtemplate-loader!html-loader!./template/datepicker/popup.html');
 let datePickerTemplate = require('ngtemplate-loader!html-loader!./template/datepicker/datepicker.html');

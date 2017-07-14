@@ -1,4 +1,3 @@
-import './datePicker.scss';
 export declare class DatePicker implements ng.IComponentOptions {
     templateUrl: string;
     controller: any;
