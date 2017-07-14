@@ -1,6 +1,6 @@
 {
   "name": "ez-web-toolkit",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "EZ Web Toolkit",
   "main": "build/ez-web-toolkit.js",
   "files": [
