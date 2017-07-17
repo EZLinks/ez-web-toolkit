@@ -1,6 +1,5 @@
 /// <reference types="angular" />
 /// <reference types="angular-mocks" />
-import './singleLookup.scss';
 import { BaseComponent } from '../../baseClasses/baseComponent';
 import { UiGridRequest } from '../../models/uiGrid/uiGridRequest';
 import { INotificationService } from '../../services/notificationService';

@@ -1,4 +1,3 @@
-import './uploadImage.scss';
 
 import { INotificationService } from '../../services/notificationService';
 

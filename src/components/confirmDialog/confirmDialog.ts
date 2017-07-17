@@ -1,4 +1,3 @@
-import './confirmDialog.scss';
 
 import { ErrorBlockModel } from '../../models/errorBlock';
 

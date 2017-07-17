@@ -1,5 +1,4 @@
 /// <reference types="angular" />
-import './uploadImage.scss';
 import { INotificationService } from '../../services/notificationService';
 /**
  * The upload image component.

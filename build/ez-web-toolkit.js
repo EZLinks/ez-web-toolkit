@@ -7,7 +7,7 @@
 		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
 	else
 		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_18__, __WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_39__, __WEBPACK_EXTERNAL_MODULE_69__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_16__, __WEBPACK_EXTERNAL_MODULE_20__, __WEBPACK_EXTERNAL_MODULE_37__, __WEBPACK_EXTERNAL_MODULE_65__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,11 +70,1102 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var _ = __webpack_require__(1);
+var BaseComponent = (function () {
+    function BaseComponent($scope, additionalDestruction) {
+        var _this = this;
+        this.unwatchArray = new Array();
+        this.destroy = function () {
+            if (_this.unwatchArray) {
+                _.forEach(_this.unwatchArray, function (unwatch) {
+                    unwatch();
+                });
+            }
+            if (additionalDestruction) {
+                additionalDestruction();
+            }
+        };
+        $scope.$on('$destroy', this.destroy);
+    }
+    return BaseComponent;
+}());
+exports.BaseComponent = BaseComponent;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The state of the editor component.
+ */
+var EditorState;
+(function (EditorState) {
+    /**
+     * Adding a new item.
+     */
+    EditorState[EditorState["Add"] = 0] = "Add";
+    /**
+     * Editing an existing item.
+     */
+    EditorState[EditorState["Edit"] = 1] = "Edit";
+})(EditorState = exports.EditorState || (exports.EditorState = {}));
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The event constants.
+ */
+var EventConsts = (function () {
+    function EventConsts() {
+    }
+    /**
+     * The reload grid event name.
+     */
+    EventConsts.reloadGridEvent = 'reloadGrid';
+    return EventConsts;
+}());
+exports.EventConsts = EventConsts;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("jquery");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseComponent_1 = __webpack_require__(0);
+var eventConsts_1 = __webpack_require__(3);
+var BaseLookupController = (function (_super) {
+    __extends(BaseLookupController, _super);
+    //#endregion
+    //#region Constructor
+    function BaseLookupController($scope) {
+        var _this = _super.call(this, $scope) || this;
+        _this.$scope = $scope;
+        $scope.rowDblClick = function (row) { return _this.onDoubleClickEvent(row.entity); };
+        $scope.$on(eventConsts_1.EventConsts.reloadGridEvent, function () {
+            _this.reloadGrid();
+        });
+        return _this;
+    }
+    /**
+     * Opens the editor when an item is double clicked.
+     * @param {T} selectedItem - The selected (double-clicked) item.
+     */
+    BaseLookupController.prototype.onDoubleClickEvent = function (selectedItem) {
+        this.selectedItem = selectedItem;
+        this.onDoubleClick();
+    };
+    return BaseLookupController;
+}(baseComponent_1.BaseComponent));
+exports.BaseLookupController = BaseLookupController;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var managerState_1 = __webpack_require__(7);
+var editorState_1 = __webpack_require__(2);
+var BaseManagerController = (function () {
+    function BaseManagerController($scope, $timeout, notificationService) {
+        this.$scope = $scope;
+        this.$timeout = $timeout;
+        this.notificationService = notificationService;
+        this.ManagerState = managerState_1.ManagerState;
+        this.EditorState = editorState_1.EditorState;
+        this.clearSelected();
+        this.state = managerState_1.ManagerState.Lookup;
+    }
+    Object.defineProperty(BaseManagerController.prototype, "state", {
+        get: function () {
+            return this.managerState;
+        },
+        /**
+         * Needs to be set in a timeout so the page updates accordingly.
+         */
+        set: function (val) {
+            var _this = this;
+            this.$timeout(function () {
+                _this.managerState = val;
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /*
+    * Opens editor to create a new code certificate.
+    */
+    BaseManagerController.prototype.newItem = function () {
+        this.selectedItem = this.prepareNewItem();
+        this.editorState = editorState_1.EditorState.Add;
+        this.state = managerState_1.ManagerState.Editor;
+    };
+    /**
+     * Edit the selected item - retrieve the selected item then load the editor page.
+     *
+     * @returns {Promise<any>} - A promise to the result of retrieving the item
+     * and moving to the editor page.
+     */
+    BaseManagerController.prototype.editItem = function () {
+        var _this = this;
+        if (!this.isRequestRunning
+            && this.selectedItem !== null) {
+            this.isRequestRunning = true;
+            return this.getItem()
+                .then(function (resp) {
+                _this.selectedItem = resp;
+                _this.editorState = editorState_1.EditorState.Edit;
+                _this.state = managerState_1.ManagerState.Editor;
+            })
+                .catch(function () {
+                // Do nothing, error was already notified in apiService
+            })
+                .then(function () {
+                _this.$timeout(function () {
+                    _this.isRequestRunning = false;
+                });
+            });
+        }
+    };
+    /*
+    * Clears selected certificate code id and object.
+    */
+    BaseManagerController.prototype.clearSelected = function () {
+        this.selectedItem = null;
+    };
+    /*
+    * Callback executes when add/edit editor is closing.
+    */
+    BaseManagerController.prototype.closeEditor = function () {
+        this.clearSelected();
+        this.state = managerState_1.ManagerState.Lookup;
+    };
+    return BaseManagerController;
+}());
+exports.BaseManagerController = BaseManagerController;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The state of the manager component.
+ */
+var ManagerState;
+(function (ManagerState) {
+    /**
+     * Display the lookup grid.
+     */
+    ManagerState[ManagerState["Lookup"] = 0] = "Lookup";
+    /**
+     * Display the editor.
+     */
+    ManagerState[ManagerState["Editor"] = 1] = "Editor";
+})(ManagerState = exports.ManagerState || (exports.ManagerState = {}));
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseComponent_1 = __webpack_require__(0);
+var BaseModalController = (function (_super) {
+    __extends(BaseModalController, _super);
+    //#region Constructor
+    function BaseModalController($scope, modalService) {
+        var _this = _super.call(this, $scope) || this;
+        _this.$scope = $scope;
+        _this.modalService = modalService;
+        //#endregion
+        //#region Functions
+        _this.modalVisibilityUpdated = function (val, old) {
+            if (val !== old) {
+                val ? _this.modalService.show(_this)
+                    : _this.modalService.hide(_this);
+            }
+        };
+        return _this;
+    }
+    BaseModalController.prototype.$onInit = function () {
+        var _this = this;
+        this.$scope.$watch(function () { return _this.isVisible; }, this.modalVisibilityUpdated);
+        // https://gist.github.com/gordonbrander/2230317
+        this.id = Math.random().toString(36).substr(2, 9);
+        this.unwatchArray.push(function () {
+            _this.modalService.hide(_this);
+            $("#" + _this.id).modal('hide');
+            $("#" + _this.id).remove();
+        });
+    };
+    BaseModalController.prototype.toggleModalVisibility = function (val) {
+        this.isVisible = val;
+        this.isModalVisible = val;
+    };
+    BaseModalController.prototype.toggleDomExistence = function (val) {
+        this.isInDom = val;
+    };
+    return BaseModalController;
+}(baseComponent_1.BaseComponent));
+exports.BaseModalController = BaseModalController;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * type constants.
+ */
+var TypeConsts = (function () {
+    function TypeConsts() {
+    }
+    /**
+     * The empty guid value.
+     */
+    TypeConsts.emptyGuid = '00000000-0000-0000-0000-000000000000';
+    return TypeConsts;
+}());
+exports.TypeConsts = TypeConsts;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Error response types.
+ */
+var ErrorResponseType;
+(function (ErrorResponseType) {
+    ErrorResponseType[ErrorResponseType["ConnectionLost"] = 0] = "ConnectionLost";
+    ErrorResponseType[ErrorResponseType["ProblemResult"] = 1] = "ProblemResult";
+    ErrorResponseType[ErrorResponseType["ValidationProblemResult"] = 2] = "ValidationProblemResult";
+})(ErrorResponseType = exports.ErrorResponseType || (exports.ErrorResponseType = {}));
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Http status code.
+ */
+var HttpStatusCode;
+(function (HttpStatusCode) {
+    //
+    // Summary:
+    //     Equivalent to HTTP status 100. System.Net.HttpStatusCode.Continue indicates that
+    //     the client can continue with its request.
+    HttpStatusCode[HttpStatusCode["Continue"] = 100] = "Continue";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 101. System.Net.HttpStatusCode.SwitchingProtocols indicates
+    //     that the protocol version or protocol is being changed.
+    HttpStatusCode[HttpStatusCode["SwitchingProtocols"] = 101] = "SwitchingProtocols";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 200. System.Net.HttpStatusCode.OK indicates that the
+    //     request succeeded and that the requested information is in the response. This
+    //     is the most common status code to receive.
+    HttpStatusCode[HttpStatusCode["OK"] = 200] = "OK";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 201. System.Net.HttpStatusCode.Created indicates that
+    //     the request resulted in a new resource created before the response was sent.
+    HttpStatusCode[HttpStatusCode["Created"] = 201] = "Created";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 202. System.Net.HttpStatusCode.Accepted indicates that
+    //     the request has been accepted for further processing.
+    HttpStatusCode[HttpStatusCode["Accepted"] = 202] = "Accepted";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 203. System.Net.HttpStatusCode.NonAuthoritativeInformation
+    //     indicates that the returned metainformation is from a cached copy instead of
+    //     the origin server and therefore may be incorrect.
+    HttpStatusCode[HttpStatusCode["NonAuthoritativeInformation"] = 203] = "NonAuthoritativeInformation";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 204. System.Net.HttpStatusCode.NoContent indicates
+    //     that the request has been successfully processed and that the response is intentionally
+    //     blank.
+    HttpStatusCode[HttpStatusCode["NoContent"] = 204] = "NoContent";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 205. System.Net.HttpStatusCode.ResetContent indicates
+    //     that the client should reset (not reload) the current resource.
+    HttpStatusCode[HttpStatusCode["ResetContent"] = 205] = "ResetContent";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 206. System.Net.HttpStatusCode.PartialContent indicates
+    //     that the response is a partial response as requested by a GET request that includes
+    //     a byte range.
+    HttpStatusCode[HttpStatusCode["PartialContent"] = 206] = "PartialContent";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 300. System.Net.HttpStatusCode.MultipleChoices indicates
+    //     that the requested information has multiple representations. The default action
+    //     is to treat this status as a redirect and follow the contents of the Location
+    //     header associated with this response.
+    HttpStatusCode[HttpStatusCode["MultipleChoices"] = 300] = "MultipleChoices";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 300. System.Net.HttpStatusCode.Ambiguous indicates
+    //     that the requested information has multiple representations. The default action
+    //     is to treat this status as a redirect and follow the contents of the Location
+    //     header associated with this response.
+    HttpStatusCode[HttpStatusCode["Ambiguous"] = 300] = "Ambiguous";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 301. System.Net.HttpStatusCode.MovedPermanently indicates
+    //     that the requested information has been moved to the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response.
+    HttpStatusCode[HttpStatusCode["MovedPermanently"] = 301] = "MovedPermanently";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 301. System.Net.HttpStatusCode.Moved indicates that
+    //     the requested information has been moved to the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response. When the original request method was POST,
+    //     the redirected request will use the GET method.
+    HttpStatusCode[HttpStatusCode["Moved"] = 301] = "Moved";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 302. System.Net.HttpStatusCode.Found indicates that
+    //     the requested information is located at the URI specified in the Location header.
+    //     The default action when this status is received is to follow the Location header
+    //     associated with the response. When the original request method was POST, the
+    //     redirected request will use the GET method.
+    HttpStatusCode[HttpStatusCode["Found"] = 302] = "Found";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 302. System.Net.HttpStatusCode.Redirect indicates that
+    //     the requested information is located at the URI specified in the Location header.
+    //     The default action when this status is received is to follow the Location header
+    //     associated with the response. When the original request method was POST, the
+    //     redirected request will use the GET method.
+    HttpStatusCode[HttpStatusCode["Redirect"] = 302] = "Redirect";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 303. System.Net.HttpStatusCode.SeeOther automatically
+    //     redirects the client to the URI specified in the Location header as the result
+    //     of a POST. The request to the resource specified by the Location header will
+    //     be made with a GET.
+    HttpStatusCode[HttpStatusCode["SeeOther"] = 303] = "SeeOther";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 303. System.Net.HttpStatusCode.RedirectMethod automatically
+    //     redirects the client to the URI specified in the Location header as the result
+    //     of a POST. The request to the resource specified by the Location header will
+    //     be made with a GET.
+    HttpStatusCode[HttpStatusCode["RedirectMethod"] = 303] = "RedirectMethod";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 304. System.Net.HttpStatusCode.NotModified indicates
+    //     that the client's cached copy is up to date. The contents of the resource are
+    //     not transferred.
+    HttpStatusCode[HttpStatusCode["NotModified"] = 304] = "NotModified";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 305. System.Net.HttpStatusCode.UseProxy indicates that
+    //     the request should use the proxy server at the URI specified in the Location
+    //     header.
+    HttpStatusCode[HttpStatusCode["UseProxy"] = 305] = "UseProxy";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 306. System.Net.HttpStatusCode.Unused is a proposed
+    //     extension to the HTTP/1.1 specification that is not fully specified.
+    HttpStatusCode[HttpStatusCode["Unused"] = 306] = "Unused";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 307. System.Net.HttpStatusCode.TemporaryRedirect indicates
+    //     that the request information is located at the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response. When the original request method was POST,
+    //     the redirected request will also use the POST method.
+    HttpStatusCode[HttpStatusCode["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 307. System.Net.HttpStatusCode.RedirectKeepVerb indicates
+    //     that the request information is located at the URI specified in the Location
+    //     header. The default action when this status is received is to follow the Location
+    //     header associated with the response. When the original request method was POST,
+    //     the redirected request will also use the POST method.
+    HttpStatusCode[HttpStatusCode["RedirectKeepVerb"] = 307] = "RedirectKeepVerb";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 400. System.Net.HttpStatusCode.BadRequest indicates
+    //     that the request could not be understood by the server. System.Net.HttpStatusCode.BadRequest
+    //     is sent when no other error is applicable, or if the exact error is unknown or
+    //     does not have its own error code.
+    HttpStatusCode[HttpStatusCode["BadRequest"] = 400] = "BadRequest";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates
+    //     that the requested resource requires authentication. The WWW-Authenticate header
+    //     contains the details of how to perform the authentication.
+    HttpStatusCode[HttpStatusCode["Unauthorized"] = 401] = "Unauthorized";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 402. System.Net.HttpStatusCode.PaymentRequired is reserved
+    //     for future use.
+    HttpStatusCode[HttpStatusCode["PaymentRequired"] = 402] = "PaymentRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates
+    //     that the server refuses to fulfill the request.
+    HttpStatusCode[HttpStatusCode["Forbidden"] = 403] = "Forbidden";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 404. System.Net.HttpStatusCode.NotFound indicates that
+    //     the requested resource does not exist on the server.
+    HttpStatusCode[HttpStatusCode["NotFound"] = 404] = "NotFound";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 405. System.Net.HttpStatusCode.MethodNotAllowed indicates
+    //     that the request method (POST or GET) is not allowed on the requested resource.
+    HttpStatusCode[HttpStatusCode["MethodNotAllowed"] = 405] = "MethodNotAllowed";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 406. System.Net.HttpStatusCode.NotAcceptable indicates
+    //     that the client has indicated with Accept headers that it will not accept any
+    //     of the available representations of the resource.
+    HttpStatusCode[HttpStatusCode["NotAcceptable"] = 406] = "NotAcceptable";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 407. System.Net.HttpStatusCode.ProxyAuthenticationRequired
+    //     indicates that the requested proxy requires authentication. The Proxy-authenticate
+    //     header contains the details of how to perform the authentication.
+    HttpStatusCode[HttpStatusCode["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 408. System.Net.HttpStatusCode.RequestTimeout indicates
+    //     that the client did not send a request within the time the server was expecting
+    //     the request.
+    HttpStatusCode[HttpStatusCode["RequestTimeout"] = 408] = "RequestTimeout";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 409. System.Net.HttpStatusCode.Conflict indicates that
+    //     the request could not be carried out because of a conflict on the server.
+    HttpStatusCode[HttpStatusCode["Conflict"] = 409] = "Conflict";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 410. System.Net.HttpStatusCode.Gone indicates that
+    //     the requested resource is no longer available.
+    HttpStatusCode[HttpStatusCode["Gone"] = 410] = "Gone";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 411. System.Net.HttpStatusCode.LengthRequired indicates
+    //     that the required Content-length header is missing.
+    HttpStatusCode[HttpStatusCode["LengthRequired"] = 411] = "LengthRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 412. System.Net.HttpStatusCode.PreconditionFailed indicates
+    //     that a condition set for this request failed, and the request cannot be carried
+    //     out. Conditions are set with conditional request headers like If-Match, If-None-Match,
+    //     or If-Unmodified-Since.
+    HttpStatusCode[HttpStatusCode["PreconditionFailed"] = 412] = "PreconditionFailed";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 413. System.Net.HttpStatusCode.RequestEntityTooLarge
+    //     indicates that the request is too large for the server to process.
+    HttpStatusCode[HttpStatusCode["RequestEntityTooLarge"] = 413] = "RequestEntityTooLarge";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 414. System.Net.HttpStatusCode.RequestUriTooLong indicates
+    //     that the URI is too long.
+    HttpStatusCode[HttpStatusCode["RequestUriTooLong"] = 414] = "RequestUriTooLong";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 415. System.Net.HttpStatusCode.UnsupportedMediaType
+    //     indicates that the request is an unsupported type.
+    HttpStatusCode[HttpStatusCode["UnsupportedMediaType"] = 415] = "UnsupportedMediaType";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 416. System.Net.HttpStatusCode.RequestedRangeNotSatisfiable
+    //     indicates that the range of data requested from the resource cannot be returned,
+    //     either because the beginning of the range is before the beginning of the resource,
+    //     or the end of the range is after the end of the resource.
+    HttpStatusCode[HttpStatusCode["RequestedRangeNotSatisfiable"] = 416] = "RequestedRangeNotSatisfiable";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 417. System.Net.HttpStatusCode.ExpectationFailed indicates
+    //     that an expectation given in an Expect header could not be met by the server.
+    HttpStatusCode[HttpStatusCode["ExpectationFailed"] = 417] = "ExpectationFailed";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 426. System.Net.HttpStatusCode.UpgradeRequired indicates
+    //     that the client should switch to a different protocol such as TLS/1.0.
+    HttpStatusCode[HttpStatusCode["UpgradeRequired"] = 426] = "UpgradeRequired";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 500. System.Net.HttpStatusCode.InternalServerError
+    //     indicates that a generic error has occurred on the server.
+    HttpStatusCode[HttpStatusCode["InternalServerError"] = 500] = "InternalServerError";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 501. System.Net.HttpStatusCode.NotImplemented indicates
+    //     that the server does not support the requested function.
+    HttpStatusCode[HttpStatusCode["NotImplemented"] = 501] = "NotImplemented";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 502. System.Net.HttpStatusCode.BadGateway indicates
+    //     that an intermediate proxy server received a bad response from another proxy
+    //     or the origin server.
+    HttpStatusCode[HttpStatusCode["BadGateway"] = 502] = "BadGateway";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 503. System.Net.HttpStatusCode.ServiceUnavailable indicates
+    //     that the server is temporarily unavailable, usually due to high load or maintenance.
+    HttpStatusCode[HttpStatusCode["ServiceUnavailable"] = 503] = "ServiceUnavailable";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 504. System.Net.HttpStatusCode.GatewayTimeout indicates
+    //     that an intermediate proxy server timed out while waiting for a response from
+    //     another proxy or the origin server.
+    HttpStatusCode[HttpStatusCode["GatewayTimeout"] = 504] = "GatewayTimeout";
+    //
+    // Summary:
+    //     Equivalent to HTTP status 505. System.Net.HttpStatusCode.HttpVersionNotSupported
+    //     indicates that the requested HTTP version is not supported by the server.
+    HttpStatusCode[HttpStatusCode["HttpVersionNotSupported"] = 505] = "HttpVersionNotSupported";
+})(HttpStatusCode = exports.HttpStatusCode || (exports.HttpStatusCode = {}));
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Response error exception.
+ */
+var ResponseError = (function (_super) {
+    __extends(ResponseError, _super);
+    /**
+     * Creates a new response error.
+     * @param message
+     * @param data
+     */
+    function ResponseError(type, message, data) {
+        var _this = _super.call(this, message) || this;
+        _this.type = type;
+        _this.data = data;
+        return _this;
+    }
+    return ResponseError;
+}(Error));
+exports.ResponseError = ResponseError;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The request options to be passed to the api service request function.
+ */
+var RequestOptions = (function () {
+    // TODO: Reverse order of url, string params.
+    function RequestOptions(url, method, baseUrl) {
+        if (baseUrl === void 0) { baseUrl = './'; }
+        this.url = baseUrl.concat(url);
+        this.method = method;
+        this.rethrow = true;
+    }
+    return RequestOptions;
+}());
+exports.RequestOptions = RequestOptions;
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * problem result
+ */
+var ProblemResult = (function () {
+    function ProblemResult() {
+    }
+    return ProblemResult;
+}());
+exports.ProblemResult = ProblemResult;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the grid request model.
+ */
+var UiGridRequest = (function () {
+    function UiGridRequest() {
+    }
+    return UiGridRequest;
+}());
+exports.UiGridRequest = UiGridRequest;
+/**
+ * sort request model.
+ */
+var SortRequest = (function () {
+    function SortRequest() {
+    }
+    return SortRequest;
+}());
+exports.SortRequest = SortRequest;
+/**
+ * filter request.
+ */
+var FilterRequest = (function () {
+    function FilterRequest() {
+    }
+    return FilterRequest;
+}());
+exports.FilterRequest = FilterRequest;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("angular");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var BaseClasses = __webpack_require__(18);
+exports.BaseClasses = BaseClasses;
+var Components = __webpack_require__(23);
+exports.Components = Components;
+var Constants = __webpack_require__(49);
+exports.Constants = Constants;
+var Enums = __webpack_require__(54);
+exports.Enums = Enums;
+var Exceptions = __webpack_require__(55);
+exports.Exceptions = Exceptions;
+var Models = __webpack_require__(56);
+exports.Models = Models;
+var Services = __webpack_require__(60);
+exports.Services = Services;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseComponent_1 = __webpack_require__(0);
+exports.BaseComponent = baseComponent_1.BaseComponent;
+var baseEditorController_1 = __webpack_require__(19);
+exports.BaseEditorController = baseEditorController_1.BaseEditorController;
+var baseLookupController_1 = __webpack_require__(5);
+exports.BaseLookupController = baseLookupController_1.BaseLookupController;
+var baseManagerController_1 = __webpack_require__(6);
+exports.BaseManagerController = baseManagerController_1.BaseManagerController;
+var baseManagerDeletableController_1 = __webpack_require__(22);
+exports.BaseManagerDeletableController = baseManagerDeletableController_1.BaseManagerDeletableController;
+var baseModalController_1 = __webpack_require__(8);
+exports.BaseModalController = baseModalController_1.BaseModalController;
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var angular_typescript_validation_1 = __webpack_require__(20);
+var editorState_1 = __webpack_require__(2);
+var validationProcessor_1 = __webpack_require__(21);
+var BaseEditorController = (function () {
+    function BaseEditorController($scope, $timeout, notificationService, validator) {
+        this.$timeout = $timeout;
+        this.notificationService = notificationService;
+        this.clearItemOnClose = true;
+        this.validationService = new angular_typescript_validation_1.ValidationService(this, $scope);
+        this.rulesCustomizer = validator.rulesCustomizer;
+        this.isRequestRunning = null;
+    }
+    Object.defineProperty(BaseEditorController.prototype, "model", {
+        /**
+         * gets the model.
+         */
+        get: function () {
+            return this.item;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BaseEditorController.prototype, "isRequestRunning", {
+        get: function () {
+            return this.isReqRunning;
+        },
+        set: function (val) {
+            var _this = this;
+            this.$timeout(function () {
+                _this.isReqRunning = val;
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Close the editor.
+     */
+    BaseEditorController.prototype.close = function () {
+        if (this.clearItemOnClose) {
+            this.clearItem();
+        }
+        if (this.onClose) {
+            this.onClose();
+        }
+    };
+    /**
+     * Occurs on success response.
+     */
+    BaseEditorController.prototype.onResponseSuccess = function (response) {
+        // could be overriden
+    };
+    /**
+     * Submit the form, save the item. Handles loading animation, notifications
+     * and validation.
+     */
+    BaseEditorController.prototype.submit = function () {
+        var _this = this;
+        if (!this.item) {
+            this.item = {};
+        }
+        this.validationService.validate(this.item).then(function (result) {
+            if (result) {
+                if (!_this.isRequestRunning) {
+                    _this.isRequestRunning = true;
+                    _this.save()
+                        .then(function (response) {
+                        _this.notificationService.success('Successfully saved.');
+                        _this.onResponseSuccess(response);
+                        _this.close();
+                    })
+                        .catch(function (reject) {
+                        if (reject && reject.data) {
+                            validationProcessor_1.ValidationProcessor.processValidationServerResponse(reject.data, function (fieldName, errorMessage) { return _this.validationService.addServerError(fieldName, errorMessage); });
+                        }
+                    })
+                        .then(function () {
+                        _this.isRequestRunning = false;
+                    });
+                }
+            }
+        });
+    };
+    /**
+     * True if the editor state is in the add state.
+     */
+    BaseEditorController.prototype.isInAddState = function () {
+        return this.state === editorState_1.EditorState.Add;
+    };
+    /**
+     * True if the editor state is in the edit state.
+     */
+    BaseEditorController.prototype.isInEditState = function () {
+        return this.state === editorState_1.EditorState.Edit;
+    };
+    /**
+     * Clear the item.
+     */
+    BaseEditorController.prototype.clearItem = function () {
+        this.item = null;
+    };
+    return BaseEditorController;
+}());
+exports.BaseEditorController = BaseEditorController;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = require("angular-typescript-validation");
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * validation processing tasks.
+ */
+var ValidationProcessor = (function () {
+    function ValidationProcessor() {
+    }
+    /**
+     * handles the validation server response.
+     */
+    ValidationProcessor.processValidationServerResponse = function (responseData, errorHandler) {
+        if (!this.isValidationResultResponse(responseData)) {
+            return;
+        }
+        for (var fieldName in responseData.errors) {
+            if (responseData.errors.hasOwnProperty(fieldName)) {
+                var errorMessages = responseData.errors[fieldName];
+                for (var i = 0; i < errorMessages.length; i++) {
+                    errorHandler(fieldName, errorMessages[i]);
+                }
+            }
+        }
+    };
+    /**
+     * checks if response is validationResult
+     */
+    ValidationProcessor.isValidationResultResponse = function (data) {
+        if (data && data.hasServerValidationErrors === true) {
+            return true;
+        }
+        return false;
+    };
+    return ValidationProcessor;
+}());
+exports.ValidationProcessor = ValidationProcessor;
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var baseManagerController_1 = __webpack_require__(6);
+var eventConsts_1 = __webpack_require__(3);
+var BaseManagerDeletableController = (function (_super) {
+    __extends(BaseManagerDeletableController, _super);
+    function BaseManagerDeletableController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * The delete item request.
+     */
+    BaseManagerDeletableController.prototype.deleteItem = function () {
+        var _this = this;
+        if (!this.isDeleteRequestRunning) {
+            this.isDeleteRequestRunning = true;
+            return this.deleteRequest()
+                .then(function (resp) {
+                _this.notificationService.success('Item deleted.');
+                _this.$scope.$broadcast(eventConsts_1.EventConsts.reloadGridEvent);
+                _this.isDeleteItemPromptVisible = false;
+            })
+                .catch(function (reject) {
+                _this.handleDeleteError(reject);
+            })
+                .then(function () {
+                _this.$timeout(function () {
+                    _this.isDeleteRequestRunning = false;
+                });
+            });
+        }
+    };
+    BaseManagerDeletableController.prototype.handleDeleteError = function (reject) {
+        // could be overriden
+    };
+    /**
+     * Toggles the delete item prompt.
+     */
+    BaseManagerDeletableController.prototype.toggleDeleteItemPrompt = function (value) {
+        this.isDeleteItemPromptVisible = value;
+    };
+    return BaseManagerDeletableController;
+}(baseManagerController_1.BaseManagerController));
+exports.BaseManagerDeletableController = BaseManagerDeletableController;
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(24);
+var confirmDialog_1 = __webpack_require__(29);
+exports.ConfirmDialog = confirmDialog_1.ConfirmDialog;
+var datePicker_1 = __webpack_require__(31);
+exports.DatePicker = datePicker_1.DatePicker;
+var errorBlock_1 = __webpack_require__(39);
+exports.ErrorBlock = errorBlock_1.ErrorBlock;
+var ezGrid_1 = __webpack_require__(41);
+exports.EzGrid = ezGrid_1.EzGrid;
+var ezModal_1 = __webpack_require__(43);
+exports.EzModal = ezModal_1.EzModal;
+var singleLookup_1 = __webpack_require__(45);
+exports.SingleLookup = singleLookup_1.SingleLookup;
+var uploadImage_1 = __webpack_require__(47);
+exports.UploadImage = uploadImage_1.UploadImage;
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(25);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(27)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./index.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(26)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n\n/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n\nez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n\nsingle-lookup input.action.input {\n  max-height: 40px; }\n\nupload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports) {
 
 /*
@@ -156,7 +1247,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 1 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -202,7 +1293,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(29);
+var	fixUrls = __webpack_require__(28);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -515,1147 +1606,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(3);
-var BaseComponent = (function () {
-    function BaseComponent($scope, additionalDestruction) {
-        var _this = this;
-        this.unwatchArray = new Array();
-        this.destroy = function () {
-            if (_this.unwatchArray) {
-                _.forEach(_this.unwatchArray, function (unwatch) {
-                    unwatch();
-                });
-            }
-            if (additionalDestruction) {
-                additionalDestruction();
-            }
-        };
-        $scope.$on('$destroy', this.destroy);
-    }
-    return BaseComponent;
-}());
-exports.BaseComponent = BaseComponent;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("lodash");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * The state of the editor component.
- */
-var EditorState;
-(function (EditorState) {
-    /**
-     * Adding a new item.
-     */
-    EditorState[EditorState["Add"] = 0] = "Add";
-    /**
-     * Editing an existing item.
-     */
-    EditorState[EditorState["Edit"] = 1] = "Edit";
-})(EditorState = exports.EditorState || (exports.EditorState = {}));
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * The event constants.
- */
-var EventConsts = (function () {
-    function EventConsts() {
-    }
-    /**
-     * The reload grid event name.
-     */
-    EventConsts.reloadGridEvent = 'reloadGrid';
-    return EventConsts;
-}());
-exports.EventConsts = EventConsts;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("jquery");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var baseComponent_1 = __webpack_require__(2);
-var eventConsts_1 = __webpack_require__(5);
-var BaseLookupController = (function (_super) {
-    __extends(BaseLookupController, _super);
-    //#endregion
-    //#region Constructor
-    function BaseLookupController($scope) {
-        var _this = _super.call(this, $scope) || this;
-        _this.$scope = $scope;
-        $scope.rowDblClick = function (row) { return _this.onDoubleClickEvent(row.entity); };
-        $scope.$on(eventConsts_1.EventConsts.reloadGridEvent, function () {
-            _this.reloadGrid();
-        });
-        return _this;
-    }
-    /**
-     * Opens the editor when an item is double clicked.
-     * @param {T} selectedItem - The selected (double-clicked) item.
-     */
-    BaseLookupController.prototype.onDoubleClickEvent = function (selectedItem) {
-        this.selectedItem = selectedItem;
-        this.onDoubleClick();
-    };
-    return BaseLookupController;
-}(baseComponent_1.BaseComponent));
-exports.BaseLookupController = BaseLookupController;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var managerState_1 = __webpack_require__(9);
-var editorState_1 = __webpack_require__(4);
-var BaseManagerController = (function () {
-    function BaseManagerController($scope, $timeout, notificationService) {
-        this.$scope = $scope;
-        this.$timeout = $timeout;
-        this.notificationService = notificationService;
-        this.ManagerState = managerState_1.ManagerState;
-        this.EditorState = editorState_1.EditorState;
-        this.clearSelected();
-        this.state = managerState_1.ManagerState.Lookup;
-    }
-    Object.defineProperty(BaseManagerController.prototype, "state", {
-        get: function () {
-            return this.managerState;
-        },
-        /**
-         * Needs to be set in a timeout so the page updates accordingly.
-         */
-        set: function (val) {
-            var _this = this;
-            this.$timeout(function () {
-                _this.managerState = val;
-            });
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /*
-    * Opens editor to create a new code certificate.
-    */
-    BaseManagerController.prototype.newItem = function () {
-        this.selectedItem = this.prepareNewItem();
-        this.editorState = editorState_1.EditorState.Add;
-        this.state = managerState_1.ManagerState.Editor;
-    };
-    /**
-     * Edit the selected item - retrieve the selected item then load the editor page.
-     *
-     * @returns {Promise<any>} - A promise to the result of retrieving the item
-     * and moving to the editor page.
-     */
-    BaseManagerController.prototype.editItem = function () {
-        var _this = this;
-        if (!this.isRequestRunning
-            && this.selectedItem !== null) {
-            this.isRequestRunning = true;
-            return this.getItem()
-                .then(function (resp) {
-                _this.selectedItem = resp;
-                _this.editorState = editorState_1.EditorState.Edit;
-                _this.state = managerState_1.ManagerState.Editor;
-            })
-                .catch(function () {
-                // Do nothing, error was already notified in apiService
-            })
-                .then(function () {
-                _this.$timeout(function () {
-                    _this.isRequestRunning = false;
-                });
-            });
-        }
-    };
-    /*
-    * Clears selected certificate code id and object.
-    */
-    BaseManagerController.prototype.clearSelected = function () {
-        this.selectedItem = null;
-    };
-    /*
-    * Callback executes when add/edit editor is closing.
-    */
-    BaseManagerController.prototype.closeEditor = function () {
-        this.clearSelected();
-        this.state = managerState_1.ManagerState.Lookup;
-    };
-    return BaseManagerController;
-}());
-exports.BaseManagerController = BaseManagerController;
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * The state of the manager component.
- */
-var ManagerState;
-(function (ManagerState) {
-    /**
-     * Display the lookup grid.
-     */
-    ManagerState[ManagerState["Lookup"] = 0] = "Lookup";
-    /**
-     * Display the editor.
-     */
-    ManagerState[ManagerState["Editor"] = 1] = "Editor";
-})(ManagerState = exports.ManagerState || (exports.ManagerState = {}));
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var baseComponent_1 = __webpack_require__(2);
-var BaseModalController = (function (_super) {
-    __extends(BaseModalController, _super);
-    //#region Constructor
-    function BaseModalController($scope, modalService) {
-        var _this = _super.call(this, $scope) || this;
-        _this.$scope = $scope;
-        _this.modalService = modalService;
-        //#endregion
-        //#region Functions
-        _this.modalVisibilityUpdated = function (val, old) {
-            if (val !== old) {
-                val ? _this.modalService.show(_this)
-                    : _this.modalService.hide(_this);
-            }
-        };
-        return _this;
-    }
-    BaseModalController.prototype.$onInit = function () {
-        var _this = this;
-        this.$scope.$watch(function () { return _this.isVisible; }, this.modalVisibilityUpdated);
-        // https://gist.github.com/gordonbrander/2230317
-        this.id = Math.random().toString(36).substr(2, 9);
-        this.unwatchArray.push(function () {
-            _this.modalService.hide(_this);
-            $("#" + _this.id).modal('hide');
-            $("#" + _this.id).remove();
-        });
-    };
-    BaseModalController.prototype.toggleModalVisibility = function (val) {
-        this.isVisible = val;
-        this.isModalVisible = val;
-    };
-    BaseModalController.prototype.toggleDomExistence = function (val) {
-        this.isInDom = val;
-    };
-    return BaseModalController;
-}(baseComponent_1.BaseComponent));
-exports.BaseModalController = BaseModalController;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * type constants.
- */
-var TypeConsts = (function () {
-    function TypeConsts() {
-    }
-    /**
-     * The empty guid value.
-     */
-    TypeConsts.emptyGuid = '00000000-0000-0000-0000-000000000000';
-    return TypeConsts;
-}());
-exports.TypeConsts = TypeConsts;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Error response types.
- */
-var ErrorResponseType;
-(function (ErrorResponseType) {
-    ErrorResponseType[ErrorResponseType["ConnectionLost"] = 0] = "ConnectionLost";
-    ErrorResponseType[ErrorResponseType["ProblemResult"] = 1] = "ProblemResult";
-    ErrorResponseType[ErrorResponseType["ValidationProblemResult"] = 2] = "ValidationProblemResult";
-})(ErrorResponseType = exports.ErrorResponseType || (exports.ErrorResponseType = {}));
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Http status code.
- */
-var HttpStatusCode;
-(function (HttpStatusCode) {
-    //
-    // Summary:
-    //     Equivalent to HTTP status 100. System.Net.HttpStatusCode.Continue indicates that
-    //     the client can continue with its request.
-    HttpStatusCode[HttpStatusCode["Continue"] = 100] = "Continue";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 101. System.Net.HttpStatusCode.SwitchingProtocols indicates
-    //     that the protocol version or protocol is being changed.
-    HttpStatusCode[HttpStatusCode["SwitchingProtocols"] = 101] = "SwitchingProtocols";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 200. System.Net.HttpStatusCode.OK indicates that the
-    //     request succeeded and that the requested information is in the response. This
-    //     is the most common status code to receive.
-    HttpStatusCode[HttpStatusCode["OK"] = 200] = "OK";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 201. System.Net.HttpStatusCode.Created indicates that
-    //     the request resulted in a new resource created before the response was sent.
-    HttpStatusCode[HttpStatusCode["Created"] = 201] = "Created";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 202. System.Net.HttpStatusCode.Accepted indicates that
-    //     the request has been accepted for further processing.
-    HttpStatusCode[HttpStatusCode["Accepted"] = 202] = "Accepted";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 203. System.Net.HttpStatusCode.NonAuthoritativeInformation
-    //     indicates that the returned metainformation is from a cached copy instead of
-    //     the origin server and therefore may be incorrect.
-    HttpStatusCode[HttpStatusCode["NonAuthoritativeInformation"] = 203] = "NonAuthoritativeInformation";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 204. System.Net.HttpStatusCode.NoContent indicates
-    //     that the request has been successfully processed and that the response is intentionally
-    //     blank.
-    HttpStatusCode[HttpStatusCode["NoContent"] = 204] = "NoContent";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 205. System.Net.HttpStatusCode.ResetContent indicates
-    //     that the client should reset (not reload) the current resource.
-    HttpStatusCode[HttpStatusCode["ResetContent"] = 205] = "ResetContent";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 206. System.Net.HttpStatusCode.PartialContent indicates
-    //     that the response is a partial response as requested by a GET request that includes
-    //     a byte range.
-    HttpStatusCode[HttpStatusCode["PartialContent"] = 206] = "PartialContent";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 300. System.Net.HttpStatusCode.MultipleChoices indicates
-    //     that the requested information has multiple representations. The default action
-    //     is to treat this status as a redirect and follow the contents of the Location
-    //     header associated with this response.
-    HttpStatusCode[HttpStatusCode["MultipleChoices"] = 300] = "MultipleChoices";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 300. System.Net.HttpStatusCode.Ambiguous indicates
-    //     that the requested information has multiple representations. The default action
-    //     is to treat this status as a redirect and follow the contents of the Location
-    //     header associated with this response.
-    HttpStatusCode[HttpStatusCode["Ambiguous"] = 300] = "Ambiguous";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 301. System.Net.HttpStatusCode.MovedPermanently indicates
-    //     that the requested information has been moved to the URI specified in the Location
-    //     header. The default action when this status is received is to follow the Location
-    //     header associated with the response.
-    HttpStatusCode[HttpStatusCode["MovedPermanently"] = 301] = "MovedPermanently";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 301. System.Net.HttpStatusCode.Moved indicates that
-    //     the requested information has been moved to the URI specified in the Location
-    //     header. The default action when this status is received is to follow the Location
-    //     header associated with the response. When the original request method was POST,
-    //     the redirected request will use the GET method.
-    HttpStatusCode[HttpStatusCode["Moved"] = 301] = "Moved";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 302. System.Net.HttpStatusCode.Found indicates that
-    //     the requested information is located at the URI specified in the Location header.
-    //     The default action when this status is received is to follow the Location header
-    //     associated with the response. When the original request method was POST, the
-    //     redirected request will use the GET method.
-    HttpStatusCode[HttpStatusCode["Found"] = 302] = "Found";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 302. System.Net.HttpStatusCode.Redirect indicates that
-    //     the requested information is located at the URI specified in the Location header.
-    //     The default action when this status is received is to follow the Location header
-    //     associated with the response. When the original request method was POST, the
-    //     redirected request will use the GET method.
-    HttpStatusCode[HttpStatusCode["Redirect"] = 302] = "Redirect";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 303. System.Net.HttpStatusCode.SeeOther automatically
-    //     redirects the client to the URI specified in the Location header as the result
-    //     of a POST. The request to the resource specified by the Location header will
-    //     be made with a GET.
-    HttpStatusCode[HttpStatusCode["SeeOther"] = 303] = "SeeOther";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 303. System.Net.HttpStatusCode.RedirectMethod automatically
-    //     redirects the client to the URI specified in the Location header as the result
-    //     of a POST. The request to the resource specified by the Location header will
-    //     be made with a GET.
-    HttpStatusCode[HttpStatusCode["RedirectMethod"] = 303] = "RedirectMethod";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 304. System.Net.HttpStatusCode.NotModified indicates
-    //     that the client's cached copy is up to date. The contents of the resource are
-    //     not transferred.
-    HttpStatusCode[HttpStatusCode["NotModified"] = 304] = "NotModified";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 305. System.Net.HttpStatusCode.UseProxy indicates that
-    //     the request should use the proxy server at the URI specified in the Location
-    //     header.
-    HttpStatusCode[HttpStatusCode["UseProxy"] = 305] = "UseProxy";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 306. System.Net.HttpStatusCode.Unused is a proposed
-    //     extension to the HTTP/1.1 specification that is not fully specified.
-    HttpStatusCode[HttpStatusCode["Unused"] = 306] = "Unused";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 307. System.Net.HttpStatusCode.TemporaryRedirect indicates
-    //     that the request information is located at the URI specified in the Location
-    //     header. The default action when this status is received is to follow the Location
-    //     header associated with the response. When the original request method was POST,
-    //     the redirected request will also use the POST method.
-    HttpStatusCode[HttpStatusCode["TemporaryRedirect"] = 307] = "TemporaryRedirect";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 307. System.Net.HttpStatusCode.RedirectKeepVerb indicates
-    //     that the request information is located at the URI specified in the Location
-    //     header. The default action when this status is received is to follow the Location
-    //     header associated with the response. When the original request method was POST,
-    //     the redirected request will also use the POST method.
-    HttpStatusCode[HttpStatusCode["RedirectKeepVerb"] = 307] = "RedirectKeepVerb";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 400. System.Net.HttpStatusCode.BadRequest indicates
-    //     that the request could not be understood by the server. System.Net.HttpStatusCode.BadRequest
-    //     is sent when no other error is applicable, or if the exact error is unknown or
-    //     does not have its own error code.
-    HttpStatusCode[HttpStatusCode["BadRequest"] = 400] = "BadRequest";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates
-    //     that the requested resource requires authentication. The WWW-Authenticate header
-    //     contains the details of how to perform the authentication.
-    HttpStatusCode[HttpStatusCode["Unauthorized"] = 401] = "Unauthorized";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 402. System.Net.HttpStatusCode.PaymentRequired is reserved
-    //     for future use.
-    HttpStatusCode[HttpStatusCode["PaymentRequired"] = 402] = "PaymentRequired";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates
-    //     that the server refuses to fulfill the request.
-    HttpStatusCode[HttpStatusCode["Forbidden"] = 403] = "Forbidden";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 404. System.Net.HttpStatusCode.NotFound indicates that
-    //     the requested resource does not exist on the server.
-    HttpStatusCode[HttpStatusCode["NotFound"] = 404] = "NotFound";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 405. System.Net.HttpStatusCode.MethodNotAllowed indicates
-    //     that the request method (POST or GET) is not allowed on the requested resource.
-    HttpStatusCode[HttpStatusCode["MethodNotAllowed"] = 405] = "MethodNotAllowed";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 406. System.Net.HttpStatusCode.NotAcceptable indicates
-    //     that the client has indicated with Accept headers that it will not accept any
-    //     of the available representations of the resource.
-    HttpStatusCode[HttpStatusCode["NotAcceptable"] = 406] = "NotAcceptable";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 407. System.Net.HttpStatusCode.ProxyAuthenticationRequired
-    //     indicates that the requested proxy requires authentication. The Proxy-authenticate
-    //     header contains the details of how to perform the authentication.
-    HttpStatusCode[HttpStatusCode["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 408. System.Net.HttpStatusCode.RequestTimeout indicates
-    //     that the client did not send a request within the time the server was expecting
-    //     the request.
-    HttpStatusCode[HttpStatusCode["RequestTimeout"] = 408] = "RequestTimeout";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 409. System.Net.HttpStatusCode.Conflict indicates that
-    //     the request could not be carried out because of a conflict on the server.
-    HttpStatusCode[HttpStatusCode["Conflict"] = 409] = "Conflict";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 410. System.Net.HttpStatusCode.Gone indicates that
-    //     the requested resource is no longer available.
-    HttpStatusCode[HttpStatusCode["Gone"] = 410] = "Gone";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 411. System.Net.HttpStatusCode.LengthRequired indicates
-    //     that the required Content-length header is missing.
-    HttpStatusCode[HttpStatusCode["LengthRequired"] = 411] = "LengthRequired";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 412. System.Net.HttpStatusCode.PreconditionFailed indicates
-    //     that a condition set for this request failed, and the request cannot be carried
-    //     out. Conditions are set with conditional request headers like If-Match, If-None-Match,
-    //     or If-Unmodified-Since.
-    HttpStatusCode[HttpStatusCode["PreconditionFailed"] = 412] = "PreconditionFailed";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 413. System.Net.HttpStatusCode.RequestEntityTooLarge
-    //     indicates that the request is too large for the server to process.
-    HttpStatusCode[HttpStatusCode["RequestEntityTooLarge"] = 413] = "RequestEntityTooLarge";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 414. System.Net.HttpStatusCode.RequestUriTooLong indicates
-    //     that the URI is too long.
-    HttpStatusCode[HttpStatusCode["RequestUriTooLong"] = 414] = "RequestUriTooLong";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 415. System.Net.HttpStatusCode.UnsupportedMediaType
-    //     indicates that the request is an unsupported type.
-    HttpStatusCode[HttpStatusCode["UnsupportedMediaType"] = 415] = "UnsupportedMediaType";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 416. System.Net.HttpStatusCode.RequestedRangeNotSatisfiable
-    //     indicates that the range of data requested from the resource cannot be returned,
-    //     either because the beginning of the range is before the beginning of the resource,
-    //     or the end of the range is after the end of the resource.
-    HttpStatusCode[HttpStatusCode["RequestedRangeNotSatisfiable"] = 416] = "RequestedRangeNotSatisfiable";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 417. System.Net.HttpStatusCode.ExpectationFailed indicates
-    //     that an expectation given in an Expect header could not be met by the server.
-    HttpStatusCode[HttpStatusCode["ExpectationFailed"] = 417] = "ExpectationFailed";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 426. System.Net.HttpStatusCode.UpgradeRequired indicates
-    //     that the client should switch to a different protocol such as TLS/1.0.
-    HttpStatusCode[HttpStatusCode["UpgradeRequired"] = 426] = "UpgradeRequired";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 500. System.Net.HttpStatusCode.InternalServerError
-    //     indicates that a generic error has occurred on the server.
-    HttpStatusCode[HttpStatusCode["InternalServerError"] = 500] = "InternalServerError";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 501. System.Net.HttpStatusCode.NotImplemented indicates
-    //     that the server does not support the requested function.
-    HttpStatusCode[HttpStatusCode["NotImplemented"] = 501] = "NotImplemented";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 502. System.Net.HttpStatusCode.BadGateway indicates
-    //     that an intermediate proxy server received a bad response from another proxy
-    //     or the origin server.
-    HttpStatusCode[HttpStatusCode["BadGateway"] = 502] = "BadGateway";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 503. System.Net.HttpStatusCode.ServiceUnavailable indicates
-    //     that the server is temporarily unavailable, usually due to high load or maintenance.
-    HttpStatusCode[HttpStatusCode["ServiceUnavailable"] = 503] = "ServiceUnavailable";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 504. System.Net.HttpStatusCode.GatewayTimeout indicates
-    //     that an intermediate proxy server timed out while waiting for a response from
-    //     another proxy or the origin server.
-    HttpStatusCode[HttpStatusCode["GatewayTimeout"] = 504] = "GatewayTimeout";
-    //
-    // Summary:
-    //     Equivalent to HTTP status 505. System.Net.HttpStatusCode.HttpVersionNotSupported
-    //     indicates that the requested HTTP version is not supported by the server.
-    HttpStatusCode[HttpStatusCode["HttpVersionNotSupported"] = 505] = "HttpVersionNotSupported";
-})(HttpStatusCode = exports.HttpStatusCode || (exports.HttpStatusCode = {}));
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Response error exception.
- */
-var ResponseError = (function (_super) {
-    __extends(ResponseError, _super);
-    /**
-     * Creates a new response error.
-     * @param message
-     * @param data
-     */
-    function ResponseError(type, message, data) {
-        var _this = _super.call(this, message) || this;
-        _this.type = type;
-        _this.data = data;
-        return _this;
-    }
-    return ResponseError;
-}(Error));
-exports.ResponseError = ResponseError;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * The request options to be passed to the api service request function.
- */
-var RequestOptions = (function () {
-    // TODO: Reverse order of url, string params.
-    function RequestOptions(url, method, baseUrl) {
-        if (baseUrl === void 0) { baseUrl = './'; }
-        this.url = baseUrl.concat(url);
-        this.method = method;
-        this.rethrow = true;
-    }
-    return RequestOptions;
-}());
-exports.RequestOptions = RequestOptions;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * problem result
- */
-var ProblemResult = (function () {
-    function ProblemResult() {
-    }
-    return ProblemResult;
-}());
-exports.ProblemResult = ProblemResult;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * the grid request model.
- */
-var UiGridRequest = (function () {
-    function UiGridRequest() {
-    }
-    return UiGridRequest;
-}());
-exports.UiGridRequest = UiGridRequest;
-/**
- * sort request model.
- */
-var SortRequest = (function () {
-    function SortRequest() {
-    }
-    return SortRequest;
-}());
-exports.SortRequest = SortRequest;
-/**
- * filter request.
- */
-var FilterRequest = (function () {
-    function FilterRequest() {
-    }
-    return FilterRequest;
-}());
-exports.FilterRequest = FilterRequest;
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = require("angular");
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var BaseClasses = __webpack_require__(20);
-exports.BaseClasses = BaseClasses;
-var Components = __webpack_require__(25);
-exports.Components = Components;
-var Constants = __webpack_require__(57);
-exports.Constants = Constants;
-var Enums = __webpack_require__(58);
-exports.Enums = Enums;
-var Exceptions = __webpack_require__(59);
-exports.Exceptions = Exceptions;
-var Models = __webpack_require__(60);
-exports.Models = Models;
-var Services = __webpack_require__(64);
-exports.Services = Services;
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var baseComponent_1 = __webpack_require__(2);
-exports.BaseComponent = baseComponent_1.BaseComponent;
-var baseEditorController_1 = __webpack_require__(21);
-exports.BaseEditorController = baseEditorController_1.BaseEditorController;
-var baseLookupController_1 = __webpack_require__(7);
-exports.BaseLookupController = baseLookupController_1.BaseLookupController;
-var baseManagerController_1 = __webpack_require__(8);
-exports.BaseManagerController = baseManagerController_1.BaseManagerController;
-var baseManagerDeletableController_1 = __webpack_require__(24);
-exports.BaseManagerDeletableController = baseManagerDeletableController_1.BaseManagerDeletableController;
-var baseModalController_1 = __webpack_require__(10);
-exports.BaseModalController = baseModalController_1.BaseModalController;
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var angular_typescript_validation_1 = __webpack_require__(22);
-var editorState_1 = __webpack_require__(4);
-var validationProcessor_1 = __webpack_require__(23);
-var BaseEditorController = (function () {
-    function BaseEditorController($scope, $timeout, notificationService, validator) {
-        this.$timeout = $timeout;
-        this.notificationService = notificationService;
-        this.clearItemOnClose = true;
-        this.validationService = new angular_typescript_validation_1.ValidationService(this, $scope);
-        this.rulesCustomizer = validator.rulesCustomizer;
-        this.isRequestRunning = null;
-    }
-    Object.defineProperty(BaseEditorController.prototype, "model", {
-        /**
-         * gets the model.
-         */
-        get: function () {
-            return this.item;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(BaseEditorController.prototype, "isRequestRunning", {
-        get: function () {
-            return this.isReqRunning;
-        },
-        set: function (val) {
-            var _this = this;
-            this.$timeout(function () {
-                _this.isReqRunning = val;
-            });
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * Close the editor.
-     */
-    BaseEditorController.prototype.close = function () {
-        if (this.clearItemOnClose) {
-            this.clearItem();
-        }
-        if (this.onClose) {
-            this.onClose();
-        }
-    };
-    /**
-     * Occurs on success response.
-     */
-    BaseEditorController.prototype.onResponseSuccess = function (response) {
-        // could be overriden
-    };
-    /**
-     * Submit the form, save the item. Handles loading animation, notifications
-     * and validation.
-     */
-    BaseEditorController.prototype.submit = function () {
-        var _this = this;
-        if (!this.item) {
-            this.item = {};
-        }
-        this.validationService.validate(this.item).then(function (result) {
-            if (result) {
-                if (!_this.isRequestRunning) {
-                    _this.isRequestRunning = true;
-                    _this.save()
-                        .then(function (response) {
-                        _this.notificationService.success('Successfully saved.');
-                        _this.onResponseSuccess(response);
-                        _this.close();
-                    })
-                        .catch(function (reject) {
-                        if (reject && reject.data) {
-                            validationProcessor_1.ValidationProcessor.processValidationServerResponse(reject.data, function (fieldName, errorMessage) { return _this.validationService.addServerError(fieldName, errorMessage); });
-                        }
-                    })
-                        .then(function () {
-                        _this.isRequestRunning = false;
-                    });
-                }
-            }
-        });
-    };
-    /**
-     * True if the editor state is in the add state.
-     */
-    BaseEditorController.prototype.isInAddState = function () {
-        return this.state === editorState_1.EditorState.Add;
-    };
-    /**
-     * True if the editor state is in the edit state.
-     */
-    BaseEditorController.prototype.isInEditState = function () {
-        return this.state === editorState_1.EditorState.Edit;
-    };
-    /**
-     * Clear the item.
-     */
-    BaseEditorController.prototype.clearItem = function () {
-        this.item = null;
-    };
-    return BaseEditorController;
-}());
-exports.BaseEditorController = BaseEditorController;
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports) {
-
-module.exports = require("angular-typescript-validation");
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * validation processing tasks.
- */
-var ValidationProcessor = (function () {
-    function ValidationProcessor() {
-    }
-    /**
-     * handles the validation server response.
-     */
-    ValidationProcessor.processValidationServerResponse = function (responseData, errorHandler) {
-        if (!this.isValidationResultResponse(responseData)) {
-            return;
-        }
-        for (var fieldName in responseData.errors) {
-            if (responseData.errors.hasOwnProperty(fieldName)) {
-                var errorMessages = responseData.errors[fieldName];
-                for (var i = 0; i < errorMessages.length; i++) {
-                    errorHandler(fieldName, errorMessages[i]);
-                }
-            }
-        }
-    };
-    /**
-     * checks if response is validationResult
-     */
-    ValidationProcessor.isValidationResultResponse = function (data) {
-        if (data && data.hasServerValidationErrors === true) {
-            return true;
-        }
-        return false;
-    };
-    return ValidationProcessor;
-}());
-exports.ValidationProcessor = ValidationProcessor;
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var baseManagerController_1 = __webpack_require__(8);
-var eventConsts_1 = __webpack_require__(5);
-var BaseManagerDeletableController = (function (_super) {
-    __extends(BaseManagerDeletableController, _super);
-    function BaseManagerDeletableController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * The delete item request.
-     */
-    BaseManagerDeletableController.prototype.deleteItem = function () {
-        var _this = this;
-        if (!this.isDeleteRequestRunning) {
-            this.isDeleteRequestRunning = true;
-            return this.deleteRequest()
-                .then(function (resp) {
-                _this.notificationService.success('Item deleted.');
-                _this.$scope.$broadcast(eventConsts_1.EventConsts.reloadGridEvent);
-                _this.isDeleteItemPromptVisible = false;
-            })
-                .catch(function (reject) {
-                _this.handleDeleteError(reject);
-            })
-                .then(function () {
-                _this.$timeout(function () {
-                    _this.isDeleteRequestRunning = false;
-                });
-            });
-        }
-    };
-    BaseManagerDeletableController.prototype.handleDeleteError = function (reject) {
-        // could be overriden
-    };
-    /**
-     * Toggles the delete item prompt.
-     */
-    BaseManagerDeletableController.prototype.toggleDeleteItemPrompt = function (value) {
-        this.isDeleteItemPromptVisible = value;
-    };
-    return BaseManagerDeletableController;
-}(baseManagerController_1.BaseManagerController));
-exports.BaseManagerDeletableController = BaseManagerDeletableController;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var confirmDialog_1 = __webpack_require__(26);
-exports.ConfirmDialog = confirmDialog_1.ConfirmDialog;
-var datePicker_1 = __webpack_require__(31);
-exports.DatePicker = datePicker_1.DatePicker;
-var errorBlock_1 = __webpack_require__(41);
-exports.ErrorBlock = errorBlock_1.ErrorBlock;
-var ezGrid_1 = __webpack_require__(43);
-exports.EzGrid = ezGrid_1.EzGrid;
-var ezModal_1 = __webpack_require__(47);
-exports.EzModal = ezModal_1.EzModal;
-var singleLookup_1 = __webpack_require__(49);
-exports.SingleLookup = singleLookup_1.SingleLookup;
-var uploadImage_1 = __webpack_require__(53);
-exports.UploadImage = uploadImage_1.UploadImage;
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(27);
-/**
- * the confirm dialog component.
- */
-var ConfirmDialog = (function () {
-    /**
-     * inits component.
-     */
-    function ConfirmDialog() {
-        this.controller = ConfirmDialogController;
-        this.controllerAs = 'cd';
-        this.templateUrl = __webpack_require__(30);
-        this.bindings = {
-            title: '@cdTitle',
-            body: '@cdBody',
-            callout: '@cdCallout',
-            onOk: '&cdOnOk',
-            onCancel: '&cdOnCancel',
-            loader: '=cdLoader',
-            visible: '=cdVisible',
-            errorBlock: '=cdError'
-        };
-    }
-    return ConfirmDialog;
-}());
-exports.ConfirmDialog = ConfirmDialog;
-/**
- * controller for confirm dialog component.
- */
-var ConfirmDialogController = (function () {
-    function ConfirmDialogController() {
-        var _this = this;
-        this.onHidden = function () {
-            if (_this.errorBlock) {
-                _this.errorBlock.showError = false;
-            }
-        };
-    }
-    return ConfirmDialogController;
-}());
-exports.ConfirmDialogController = ConfirmDialogController;
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(28);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./confirmDialog.scss", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./confirmDialog.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
 /* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 29 */
 /***/ (function(module, exports) {
 
 
@@ -1750,6 +1701,55 @@ module.exports = function (css) {
 
 
 /***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the confirm dialog component.
+ */
+var ConfirmDialog = (function () {
+    /**
+     * inits component.
+     */
+    function ConfirmDialog() {
+        this.controller = ConfirmDialogController;
+        this.controllerAs = 'cd';
+        this.templateUrl = __webpack_require__(30);
+        this.bindings = {
+            title: '@cdTitle',
+            body: '@cdBody',
+            callout: '@cdCallout',
+            onOk: '&cdOnOk',
+            onCancel: '&cdOnCancel',
+            loader: '=cdLoader',
+            visible: '=cdVisible',
+            errorBlock: '=cdError'
+        };
+    }
+    return ConfirmDialog;
+}());
+exports.ConfirmDialog = ConfirmDialog;
+/**
+ * controller for confirm dialog component.
+ */
+var ConfirmDialogController = (function () {
+    function ConfirmDialogController() {
+        var _this = this;
+        this.onHidden = function () {
+            if (_this.errorBlock) {
+                _this.errorBlock.showError = false;
+            }
+        };
+    }
+    return ConfirmDialogController;
+}());
+exports.ConfirmDialogController = ConfirmDialogController;
+
+
+/***/ }),
 /* 30 */
 /***/ (function(module, exports) {
 
@@ -1765,19 +1765,18 @@ module.exports = path;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(32);
-var popupTemplate = __webpack_require__(34);
-var datePickerTemplate = __webpack_require__(35);
+var popupTemplate = __webpack_require__(32);
+var datePickerTemplate = __webpack_require__(33);
 /** These are required in this manner as angular bootstrap does not allow changing the day, month and year templates with easily defined variables (scoping is an issue)
  * Requiring the needed files and setting the relative url allows the datepicker to use template-url="*.html"
  */
+__webpack_require__(34);
+__webpack_require__(35);
 __webpack_require__(36);
-__webpack_require__(37);
-__webpack_require__(38);
-var moment = __webpack_require__(39);
+var moment = __webpack_require__(37);
 var DatePicker = (function () {
     function DatePicker() {
-        this.templateUrl = __webpack_require__(40);
+        this.templateUrl = __webpack_require__(38);
         this.controller = DatePickerController;
         this.controllerAs = 'dp';
         this.bindings = {
@@ -1848,51 +1847,6 @@ exports.DatePickerController = DatePickerController;
 
 /***/ }),
 /* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(33);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./datePicker.scss", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./datePicker.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 34 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/datePicker/template/datepicker/popup.html';
@@ -1901,7 +1855,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/datePicker/template/datepicker/datepicker.html';
@@ -1910,7 +1864,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var path = 'day.html';
@@ -1919,7 +1873,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, exports) {
 
 var path = 'month.html';
@@ -1928,7 +1882,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, exports) {
 
 var path = 'year.html';
@@ -1937,13 +1891,13 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = require("moment");
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/datePicker/datePicker.html';
@@ -1952,7 +1906,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 41 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1968,7 +1922,7 @@ var ErrorBlock = (function () {
     function ErrorBlock() {
         this.controller = ErrorBlockController;
         this.controllerAs = 'eb';
-        this.templateUrl = __webpack_require__(42);
+        this.templateUrl = __webpack_require__(40);
         this.bindings = {
             errorBlock: '=ebError'
         };
@@ -1995,7 +1949,7 @@ exports.ErrorBlockController = ErrorBlockController;
 
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/errorBlock/errorBlock.html';
@@ -2004,7 +1958,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2020,11 +1974,10 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(44);
-var baseLookupController_1 = __webpack_require__(7);
+var baseLookupController_1 = __webpack_require__(5);
 var EzGrid = (function () {
     function EzGrid() {
-        this.templateUrl = __webpack_require__(46);
+        this.templateUrl = __webpack_require__(42);
         this.controller = EzGridController;
         this.controllerAs = 'eg';
         this.bindings = {
@@ -2093,52 +2046,7 @@ exports.EzGridController = EzGridController;
 
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(45);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./ezGrid.scss", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./ezGrid.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "ez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 46 */
+/* 42 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/ezGrid/ezGrid.html';
@@ -2147,7 +2055,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 47 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2163,10 +2071,10 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseModalController_1 = __webpack_require__(10);
+var baseModalController_1 = __webpack_require__(8);
 var EzModal = (function () {
     function EzModal() {
-        this.templateUrl = __webpack_require__(48);
+        this.templateUrl = __webpack_require__(44);
         this.controller = EzModalController;
         this.controllerAs = 'em';
         this.bindings = {
@@ -2267,7 +2175,7 @@ exports.EzModalController = EzModalController;
 
 
 /***/ }),
-/* 48 */
+/* 44 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/ezModal/ezModal.html';
@@ -2276,7 +2184,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 49 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2292,13 +2200,12 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(50);
-var _ = __webpack_require__(3);
-var baseComponent_1 = __webpack_require__(2);
-var typeConsts_1 = __webpack_require__(11);
+var _ = __webpack_require__(1);
+var baseComponent_1 = __webpack_require__(0);
+var typeConsts_1 = __webpack_require__(9);
 var SingleLookup = (function () {
     function SingleLookup() {
-        this.templateUrl = __webpack_require__(52);
+        this.templateUrl = __webpack_require__(46);
         this.controller = SingleLookupController;
         this.controllerAs = 'sl';
         this.bindings = {
@@ -2483,52 +2390,7 @@ exports.SingleLookupController = SingleLookupController;
 
 
 /***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(51);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./singleLookup.scss", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./singleLookup.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "single-lookup input.action.input {\n  max-height: 40px; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 52 */
+/* 46 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/singleLookup/singleLookup.html';
@@ -2537,13 +2399,12 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 53 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(54);
 /**
  * The upload image component.
  */
@@ -2552,7 +2413,7 @@ var UploadImage = (function () {
      * inits component.
      */
     function UploadImage() {
-        this.templateUrl = __webpack_require__(56);
+        this.templateUrl = __webpack_require__(48);
         this.controller = UploadImageController;
         this.controllerAs = 'ui';
         this.bindings = {
@@ -2617,52 +2478,7 @@ exports.UploadImageController = UploadImageController;
 
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(55);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./uploadImage.scss", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./uploadImage.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "upload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 56 */
+/* 48 */
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt/src/components/uploadImage/uploadImage.html';
@@ -2671,69 +2487,125 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 57 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var eventConsts_1 = __webpack_require__(5);
+var customUiGridConstants_1 = __webpack_require__(50);
+exports.CustomUiGridConstants = customUiGridConstants_1.CustomUiGridConstants;
+var eventConsts_1 = __webpack_require__(3);
 exports.EventConsts = eventConsts_1.EventConsts;
-var typeConsts_1 = __webpack_require__(11);
+var typeConsts_1 = __webpack_require__(9);
 exports.TypeConsts = typeConsts_1.TypeConsts;
 
 
 /***/ }),
-/* 58 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var editorState_1 = __webpack_require__(4);
+var CustomUiGridConstants = (function () {
+    function CustomUiGridConstants() {
+    }
+    Object.defineProperty(CustomUiGridConstants, "Default", {
+        get: function () {
+            return {
+                debounceDelay: 400,
+                headerCellTemplate: __webpack_require__(51),
+                filterHeaderTemplate: __webpack_require__(52),
+                cellTemplate: __webpack_require__(53)
+            };
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return CustomUiGridConstants;
+}());
+exports.CustomUiGridConstants = CustomUiGridConstants;
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/templates/ui-grid/ui-grid-search-header.html';
+var html = "<style>\r\n    .ui-grid-filter-input {\r\n        display: inline-block;\r\n        position: relative;\r\n        height: 25px !important;\r\n        width: 0 auto;\r\n        min-width: 75% !important;\r\n        width: 100%;\r\n        padding: 0px;\r\n    }\r\n</style>\r\n\r\n<div ng-class=\"{ 'sortable': sortable }\">\r\n    <div class=\"ui-grid-cell-contents\" col-index=\"renderIndex\" title=\"TOOLTIP\">\r\n        <span ng-bind=\"col.displayName CUSTOM_FILTERS\"></span>\r\n\r\n        <span ui-grid-visible=\"col.sort.direction\" ng-class=\"{ 'ui-grid-icon-up-dir': col.sort.direction == asc, 'ui-grid-icon-down-dir': col.sort.direction == desc, 'ui-grid-icon-blank': !col.sort.direction }\">\r\n            &nbsp;\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ui-grid-column-menu-button\" ng-if=\"grid.options.enableColumnMenus && !col.isRowHeader  && col.colDef.enableColumnMenu !== false\" ng-click=\"toggleMenu($event)\" ng-class=\"{'ui-grid-column-menu-button-last-col': isLastCol}\">\r\n        <i class=\"ui-grid-icon-angle-down\">&nbsp;</i>\r\n    </div>\r\n\r\n    <div ui-grid-filter=\"\"></div>\r\n\r\n</div>\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/templates/ui-grid/ui-grid-filter.html';
+var html = "<div class=\"ui-grid-filter-container\"\r\n    ng-repeat=\"colFilter in col.filters\"\r\n    ng-class=\"{'ui-grid-filter-cancel-button-hidden' : colFilter.disableCancelFilterButton === true }\">\r\n    <div ng-if=\"colFilter.type !== 'select'\">\r\n        <div class=\"ui small icon input ui-grid-filter-input\">\r\n            <input type=\"text\"\r\n                class=\"ui-grid-filter-input-{{$index}}\"\r\n                ng-model=\"colFilter.term\"\r\n                ng-attr-placeholder=\"{{colFilter.placeholder || ''}}\"\r\n                aria-label=\"{{colFilter.ariaLabel || aria.defaultFilterLabel}}\" />\r\n\r\n            <i class=\"search icon\"></i>\r\n        </div>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term !== null && colFilter.term !== ''\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n\r\n    <div ng-if=\"colFilter.type === 'select'\">\r\n        <select class=\"ui-grid-filter-select ui-grid-filter-input-{{$index}}\"\r\n            ng-model=\"colFilter.term\"\r\n            aria-label=\"{{colFilter.ariaLabel || ''}}\"\r\n            ng-options=\"option.value as option.label for option in colFilter.selectOptions\">\r\n            <option value=\"\" disabled selected ng-bind=\"colFilter.placeholder || 'Select an option'\"></option>\r\n        </select>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button-select\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term != null\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+var path = 'C:/dev/ewt/src/templates/ui-grid/ui-grid-centered-cell.html';
+var html = "<div class=\"ui-grid-cell-contents\" style=\"line-height:{{ grid.options.rowHeight - 10 }}px\" title=\"TOOLTIP\" ng-bind=\"COL_FIELD CUSTOM_FILTERS\"></div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var editorState_1 = __webpack_require__(2);
 exports.EditorState = editorState_1.EditorState;
-var errorResponseType_1 = __webpack_require__(12);
+var errorResponseType_1 = __webpack_require__(10);
 exports.ErrorResponseType = errorResponseType_1.ErrorResponseType;
-var httpStatusCode_1 = __webpack_require__(13);
+var httpStatusCode_1 = __webpack_require__(11);
 exports.HttpStatusCode = httpStatusCode_1.HttpStatusCode;
-var managerState_1 = __webpack_require__(9);
+var managerState_1 = __webpack_require__(7);
 exports.ManagerState = managerState_1.ManagerState;
 
 
 /***/ }),
-/* 59 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var responseError_1 = __webpack_require__(14);
+var responseError_1 = __webpack_require__(12);
 exports.ResponseError = responseError_1.ResponseError;
 
 
 /***/ }),
-/* 60 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var requestOptions_1 = __webpack_require__(15);
+var requestOptions_1 = __webpack_require__(13);
 exports.RequestOptions = requestOptions_1.RequestOptions;
-var problemResult_1 = __webpack_require__(16);
+var problemResult_1 = __webpack_require__(14);
 exports.ProblemResult = problemResult_1.ProblemResult;
-var validationProblemResult_1 = __webpack_require__(61);
+var validationProblemResult_1 = __webpack_require__(57);
 exports.ValidationProblemResult = validationProblemResult_1.ValidationProblemResult;
-var uiGridRequest_1 = __webpack_require__(17);
+var uiGridRequest_1 = __webpack_require__(15);
 exports.UiGridRequest = uiGridRequest_1.UiGridRequest;
-var uiGridResult_1 = __webpack_require__(62);
+var uiGridResult_1 = __webpack_require__(58);
 exports.UiGridResult = uiGridResult_1.UiGridResult;
-var errorBlock_1 = __webpack_require__(63);
+var errorBlock_1 = __webpack_require__(59);
 exports.ErrorBlockModel = errorBlock_1.ErrorBlockModel;
 
 
 /***/ }),
-/* 61 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2749,7 +2621,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var problemResult_1 = __webpack_require__(16);
+var problemResult_1 = __webpack_require__(14);
 /**
  * validaiton problem result.
  */
@@ -2764,7 +2636,7 @@ exports.ValidationProblemResult = ValidationProblemResult;
 
 
 /***/ }),
-/* 62 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2779,7 +2651,7 @@ exports.UiGridResult = UiGridResult;
 
 
 /***/ }),
-/* 63 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2797,40 +2669,40 @@ exports.ErrorBlockModel = ErrorBlockModel;
 
 
 /***/ }),
-/* 64 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var responseHandlers_1 = __webpack_require__(65);
+var responseHandlers_1 = __webpack_require__(61);
 exports.ResponseHandlers = responseHandlers_1.ResponseHandlers;
-var apiService_1 = __webpack_require__(66);
+var apiService_1 = __webpack_require__(62);
 exports.ApiService = apiService_1.ApiService;
-var modalService_1 = __webpack_require__(67);
+var modalService_1 = __webpack_require__(63);
 exports.ModalService = modalService_1.ModalService;
-var notificationService_1 = __webpack_require__(68);
+var notificationService_1 = __webpack_require__(64);
 exports.NotificationService = notificationService_1.NotificationService;
-var processingService_1 = __webpack_require__(70);
+var processingService_1 = __webpack_require__(66);
 exports.ProcessingService = processingService_1.ProcessingService;
-var serverValidationService_1 = __webpack_require__(71);
+var serverValidationService_1 = __webpack_require__(67);
 exports.ServerValidationService = serverValidationService_1.ServerValidationService;
-var serviceRequestProcessor_1 = __webpack_require__(72);
+var serviceRequestProcessor_1 = __webpack_require__(68);
 exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
-var uiGridService_1 = __webpack_require__(73);
+var uiGridService_1 = __webpack_require__(69);
 exports.UiGridService = uiGridService_1.UiGridService;
 
 
 /***/ }),
-/* 65 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var errorResponseType_1 = __webpack_require__(12);
-var httpStatusCode_1 = __webpack_require__(13);
-var responseError_1 = __webpack_require__(14);
+var errorResponseType_1 = __webpack_require__(10);
+var httpStatusCode_1 = __webpack_require__(11);
+var responseError_1 = __webpack_require__(12);
 var successStatusCodes = [
     httpStatusCode_1.HttpStatusCode.OK,
     httpStatusCode_1.HttpStatusCode.Created,
@@ -2912,14 +2784,14 @@ exports.ResponseHandlers = ResponseHandlers;
 
 
 /***/ }),
-/* 66 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular = __webpack_require__(18);
-var requestOptions_1 = __webpack_require__(15);
+var angular = __webpack_require__(16);
+var requestOptions_1 = __webpack_require__(13);
 var ApiService = (function () {
     function ApiService($http, responseHandlers) {
         this.$http = $http;
@@ -3012,13 +2884,13 @@ exports.ApiService = ApiService;
 
 
 /***/ }),
-/* 67 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(3);
+var _ = __webpack_require__(1);
 var ModalService = (function () {
     function ModalService($timeout) {
         this.$timeout = $timeout;
@@ -3115,13 +2987,13 @@ exports.ModalService = ModalService;
 
 
 /***/ }),
-/* 68 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var toastr = __webpack_require__(69);
+var toastr = __webpack_require__(65);
 /**
  * notification service implementation
  */
@@ -3143,13 +3015,13 @@ exports.NotificationService = NotificationService;
 
 
 /***/ }),
-/* 69 */
+/* 65 */
 /***/ (function(module, exports) {
 
 module.exports = require("toastr");
 
 /***/ }),
-/* 70 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3200,16 +3072,16 @@ var ProcessingService = (function () {
 }());
 exports.ProcessingService = ProcessingService;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 71 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular = __webpack_require__(18);
+var angular = __webpack_require__(16);
 var ServerValidationService = (function () {
     function ServerValidationService() {
         this.errs = {};
@@ -3271,7 +3143,7 @@ exports.ServerValidationService = ServerValidationService;
 
 
 /***/ }),
-/* 72 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3312,14 +3184,14 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 
 /***/ }),
-/* 73 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(3);
-var uiGridRequest_1 = __webpack_require__(17);
+var _ = __webpack_require__(1);
+var uiGridRequest_1 = __webpack_require__(15);
 // TODO: Update comments.
 var UiGridService = (function () {
     function UiGridService($timeout) {
@@ -3525,7 +3397,7 @@ var UiGridService = (function () {
 }());
 exports.UiGridService = UiGridService;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ })
 /******/ ]);

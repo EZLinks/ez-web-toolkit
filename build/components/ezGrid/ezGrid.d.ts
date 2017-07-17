@@ -1,4 +1,3 @@
-import './ezGrid.scss';
 import { BaseLookupController } from '../../baseClasses/baseLookupController';
 import { IUiGridService } from '../../services/uiGridService';
 export declare class EzGrid implements ng.IComponentOptions {
