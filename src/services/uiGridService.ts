@@ -99,13 +99,25 @@ export class UiGridService<T> implements IUiGridService<T> {
 
         request.pageSize = gridOptions.paginationPageSize;
         request.page = 1;
-        request.sort = null;
         request.filters = [];
+
+        var sort = _.first(gridOptions.columnDefs, (columnDef) => {
+            return columnDef.sort;
+        });
+
+        if (sort) {
+            sort = {
+                direction: sort.sort.direction,
+                memberName: sort.name
+            };
+        }
+
+        request.sort = sort;
 
         return request;
     }
 
-    public doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean = false): Promise<any>|void {
+    public doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean = false): Promise<any> | void {
 
         if (controller.isRequestRunning) { return; }
         if (isScrollPaging && controller.allDataFetched) { return; }
@@ -303,7 +315,7 @@ export interface IUiGridService<T> {
     /**
      * makes a call to api to get the data.
      */
-    doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean): Promise<any>|void;
+    doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean): Promise<any> | void;
 
     /**
      * destroys grid variables linked to controller.
