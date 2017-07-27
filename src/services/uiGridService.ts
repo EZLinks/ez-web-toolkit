@@ -19,7 +19,7 @@ export class UiGridService<T> implements IUiGridService<T> {
         enableFullRowSelection: true,
         enableRowHeaderSelection: false,
         multiSelect: false,
-        noUnselect: true,
+        noUnselect: false,
         rowHeight: 45,
         paginationPageSize: 10,
         minRowsToShow: 10
@@ -113,10 +113,17 @@ export class UiGridService<T> implements IUiGridService<T> {
         controller.isRequestError = false;
         controller.allDataFetched = false;
         controller.isRequestRunning = true;
+
+        // If selected item is not emptied out manager grids will allow users to
+        // take actions on items that do not appear to be currently selected.
+        // ie: If the user selects an item and then goes to a different page
+        // they can hit the delete button but not see the item they are deleting.
         controller.selectedItem = null;
 
         return controller.getItems({ request: controller.filterRequest })
             .then((response: UiGridResult<T>) => {
+                let idField = !controller.itemIdField ? 'id' : controller.itemIdField;
+
                 if (isScrollPaging) {
 
                     if (response.length === 0) {
@@ -130,6 +137,41 @@ export class UiGridService<T> implements IUiGridService<T> {
                     controller.gridOptions.totalItems = response.totalItems;
                 }
 
+                // Set the item the user clicked as selected in both the grid and the backing model.
+                if (controller.selectedItem || (controller.selectedItemIds && controller.selectedItemIds.length > 0)) {
+                    controller.gridApi.grid.modifyRows(controller.gridOptions.data);
+
+                    var selectedItemIds = new Array<any>();
+
+                    if (controller.gridOptions.multiSelect) {
+                        selectedItemIds = _.clone(controller.selectedItemIds);
+                    } else {
+                        if (!controller.selectedItem || !controller.selectedItem[idField]) {
+                            throw new Error(`Unable to selected initial item. Either the item does not exist on the controller
+                            or the id field (${idField}) does not exist on the item.`);
+                        }
+
+                        selectedItemIds.push(controller.selectedItem[idField]);
+                    }
+
+                    var indexes = new Array<number>();
+
+                    // find the indexes of the selected items.
+                    _.forEach(selectedItemIds, (selectedItemId) => {
+                        var index = _.findIndex(controller.gridOptions.data, (datum) => {
+                            return selectedItemId === datum[idField];
+                        });
+
+                        if (index >= 0) {
+                            indexes.push(index);
+                        }
+                    });
+
+                    // Select the items by the indexes.
+                    _.forEach(indexes, (index) => {
+                        controller.gridApi.selection.selectRow(controller.gridOptions.data[index]);
+                    });
+                }
             })
             .catch(() => {
                 controller.isRequestError = true;
@@ -220,12 +262,57 @@ export class UiGridService<T> implements IUiGridService<T> {
         });
 
         gridApi.selection.on.rowSelectionChanged(controller.$scope, (row) => {
+            let idField = !controller.itemIdField ? 'id' : controller.itemIdField;
 
+            // Add/remove the item from the list of selected items depending on if the item was selected or deselected.
             if (row && row.entity) {
-                controller.selectedItem = row.entity;
+                if (controller.gridOptions.multiSelect) {
+                    if (row.isSelected) {
+                        if (!_.some(controller.selectedItemIds, (selectedItemId) => {
+                            return selectedItemId === row.entity[idField];
+                        })) {
+                            controller.selectedItemIds.push(row.entity[idField]);
+                        }
+                    } else {
+                        _.remove(controller.selectedItemIds, (selectedItemId) => {
+                            return selectedItemId === row.entity[idField];
+                        });
+                    }
+                } else {
+                    controller.selectedItem = row.entity;
+                }
             }
         });
     }
+
+    public selectAllItems = (controller: BaseLookupController<T>): void => {
+        controller.gridApi.selection.selectAllRows();
+
+        let filterRequest = {
+            page: 1,
+            // max int to make sure we get all possible items.
+            pageSize: 2147483647
+        };
+
+        // Get all the items that can appear on the grid and add them to the list of selected items..
+        controller.getItems({ request: filterRequest })
+            .then((response: UiGridResult<T>) => {
+                _.forEach(_.map(response.data, !controller.itemIdField ? 'id' : controller.itemIdField), (itemId) => {
+                    if (!_.find(controller.selectedItemIds, (id) => {
+                        return id === itemId;
+                    })) {
+                        controller.selectedItemIds.push(itemId);
+                    }
+                });
+            });
+    }
+
+    public unselectAllItems = (controller: BaseLookupController<T>): void => {
+        controller.gridApi.selection.clearSelectedRows();
+
+        controller.selectedItemIds = [];
+    }
+
 
     private gridFilterChanged(
         controller: BaseLookupController<T>,
@@ -309,4 +396,19 @@ export interface IUiGridService<T> {
      * destroys grid variables linked to controller.
      */
     destroyGrid(controller: BaseLookupController<T>): void;
+
+    /**
+     * Selects all the items that can appear on the grid regardless of filter.
+     *
+     * @param {BaseLookupController<T>} controller
+     */
+    selectAllItems(controller: BaseLookupController<T>): void;
+
+    /**
+     * Unselects all the items that can appear on the grid regardless of filter.
+     *
+     * @param {BaseLookupController<T>} controller
+     */
+    unselectAllItems(controller: BaseLookupController<T>): void;
+
 }

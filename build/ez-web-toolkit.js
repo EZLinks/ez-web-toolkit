@@ -1993,7 +1993,13 @@ var EzGrid = (function () {
              * Executed when a grid item is double-clicked. The selected item is
              * set before this callback function is executed.
              */
-            onDoubleClick: '&egOnDoubleClick'
+            onDoubleClick: '&egOnDoubleClick',
+            /**
+             * The name of the model's id field.
+             *
+             * @type {string}
+             */
+            itemIdField: '=egItemIdField'
         };
     }
     return EzGrid;
@@ -2225,7 +2231,10 @@ var SingleLookup = (function () {
             // The title for the lookup window
             title: '@title',
             // The input placeholder text
-            placeholder: '@placeholder'
+            placeholder: '@placeholder',
+            // The name of the property on the item that contains the unique
+            //  identifier (probably 'id')
+            itemIdField: '<?itemIdField'
         };
     }
     return SingleLookup;
@@ -2390,7 +2399,7 @@ exports.SingleLookupController = SingleLookupController;
 /***/ (function(module, exports) {
 
 var path = 'C:/dev/ewt2/src/components/singleLookup/singleLookup.html';
-var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\" \r\n          em-header-text=\"{{ sl.title }}\" \r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\" \r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\">\r\n\r\n            <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\">\r\n        </ez-grid>\r\n\r\n</ez-modal>";
+var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\">\r\n\r\n            <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                 eg-item-id-field=\"sl.itemIdField\">\r\n        </ez-grid>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -3192,6 +3201,29 @@ var uiGridRequest_1 = __webpack_require__(15);
 var UiGridService = (function () {
     function UiGridService($timeout) {
         this.$timeout = $timeout;
+        this.selectAllItems = function (controller) {
+            controller.gridApi.selection.selectAllRows();
+            var filterRequest = {
+                page: 1,
+                // max int to make sure we get all possible items.
+                pageSize: 2147483647
+            };
+            // Get all the items that can appear on the grid and add them to the list of selected items..
+            controller.getItems({ request: filterRequest })
+                .then(function (response) {
+                _.forEach(_.map(response.data, !controller.itemIdField ? 'id' : controller.itemIdField), function (itemId) {
+                    if (!_.find(controller.selectedItemIds, function (id) {
+                        return id === itemId;
+                    })) {
+                        controller.selectedItemIds.push(itemId);
+                    }
+                });
+            });
+        };
+        this.unselectAllItems = function (controller) {
+            controller.gridApi.selection.clearSelectedRows();
+            controller.selectedItemIds = [];
+        };
     }
     //#endregion
     //#region Functions
@@ -3251,9 +3283,14 @@ var UiGridService = (function () {
         controller.isRequestError = false;
         controller.allDataFetched = false;
         controller.isRequestRunning = true;
+        // If selected item is not emptied out manager grids will allow users to
+        // take actions on items that do not appear to be currently selected.
+        // ie: If the user selects an item and then goes to a different page
+        // they can hit the delete button but not see the item they are deleting.
         controller.selectedItem = null;
         return controller.getItems({ request: controller.filterRequest })
             .then(function (response) {
+            var idField = !controller.itemIdField ? 'id' : controller.itemIdField;
             if (isScrollPaging) {
                 if (response.length === 0) {
                     controller.allDataFetched = true;
@@ -3263,6 +3300,34 @@ var UiGridService = (function () {
             else {
                 controller.gridOptions.data = response.data;
                 controller.gridOptions.totalItems = response.totalItems;
+            }
+            // Set the item the user clicked as selected in both the grid and the backing model.
+            if (controller.selectedItem || (controller.selectedItemIds && controller.selectedItemIds.length > 0)) {
+                controller.gridApi.grid.modifyRows(controller.gridOptions.data);
+                var selectedItemIds = new Array();
+                if (controller.gridOptions.multiSelect) {
+                    selectedItemIds = _.clone(controller.selectedItemIds);
+                }
+                else {
+                    if (!controller.selectedItem || !controller.selectedItem[idField]) {
+                        throw new Error("Unable to selected initial item. Either the item does not exist on the controller\n                            or the id field (" + idField + ") does not exist on the item.");
+                    }
+                    selectedItemIds.push(controller.selectedItem[idField]);
+                }
+                var indexes = new Array();
+                // find the indexes of the selected items.
+                _.forEach(selectedItemIds, function (selectedItemId) {
+                    var index = _.findIndex(controller.gridOptions.data, function (datum) {
+                        return selectedItemId === datum[idField];
+                    });
+                    if (index >= 0) {
+                        indexes.push(index);
+                    }
+                });
+                // Select the items by the indexes.
+                _.forEach(indexes, function (index) {
+                    controller.gridApi.selection.selectRow(controller.gridOptions.data[index]);
+                });
             }
         })
             .catch(function () {
@@ -3331,8 +3396,26 @@ var UiGridService = (function () {
             _this.gridFilterChanged(controller, false, function (ctrl, isScrollPaging) { return callback(ctrl, isScrollPaging); });
         });
         gridApi.selection.on.rowSelectionChanged(controller.$scope, function (row) {
+            var idField = !controller.itemIdField ? 'id' : controller.itemIdField;
+            // Add/remove the item from the list of selected items depending on if the item was selected or deselected.
             if (row && row.entity) {
-                controller.selectedItem = row.entity;
+                if (controller.gridOptions.multiSelect) {
+                    if (row.isSelected) {
+                        if (!_.some(controller.selectedItemIds, function (selectedItemId) {
+                            return selectedItemId === row.entity[idField];
+                        })) {
+                            controller.selectedItemIds.push(row.entity[idField]);
+                        }
+                    }
+                    else {
+                        _.remove(controller.selectedItemIds, function (selectedItemId) {
+                            return selectedItemId === row.entity[idField];
+                        });
+                    }
+                }
+                else {
+                    controller.selectedItem = row.entity;
+                }
             }
         });
     };
@@ -3380,7 +3463,7 @@ var UiGridService = (function () {
         enableFullRowSelection: true,
         enableRowHeaderSelection: false,
         multiSelect: false,
-        noUnselect: true,
+        noUnselect: false,
         rowHeight: 45,
         paginationPageSize: 10,
         minRowsToShow: 10

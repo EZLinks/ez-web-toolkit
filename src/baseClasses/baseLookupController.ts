@@ -25,6 +25,10 @@ export abstract class BaseLookupController<T> extends BaseComponent {
 
     selectedItem: T;
 
+    selectedItemIds: Array<any>;
+
+    itemIdField: string;
+
     onDoubleClick: Function;
 
     getItems: Function;

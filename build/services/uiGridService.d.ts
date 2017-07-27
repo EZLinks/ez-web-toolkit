@@ -44,6 +44,8 @@ export declare class UiGridService<T> implements IUiGridService<T> {
     doSearch(controller: BaseLookupController<T>, isScrollPaging?: boolean): Promise<any> | void;
     destroyGrid(controller: BaseLookupController<T>): void;
     private handleUiGridCallbacks(gridApi, controller, callback);
+    selectAllItems: (controller: BaseLookupController<T>) => void;
+    unselectAllItems: (controller: BaseLookupController<T>) => void;
     private gridFilterChanged(controller, isScrollPaging, callback);
     /**
      * Resize the grid according to the number of rows retrieved from the data
@@ -83,4 +85,16 @@ export interface IUiGridService<T> {
      * destroys grid variables linked to controller.
      */
     destroyGrid(controller: BaseLookupController<T>): void;
+    /**
+     * Selects all the items that can appear on the grid regardless of filter.
+     *
+     * @param {BaseLookupController<T>} controller
+     */
+    selectAllItems(controller: BaseLookupController<T>): void;
+    /**
+     * Unselects all the items that can appear on the grid regardless of filter.
+     *
+     * @param {BaseLookupController<T>} controller
+     */
+    unselectAllItems(controller: BaseLookupController<T>): void;
 }

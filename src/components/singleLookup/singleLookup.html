@@ -8,10 +8,10 @@
     </button>
 </div>
 
-<ez-modal class="small" 
-          em-header-text="{{ sl.title }}" 
+<ez-modal class="small"
+          em-header-text="{{ sl.title }}"
           em-primary-button-text="Select"
-          em-secondary-button-text="Cancel" 
+          em-secondary-button-text="Cancel"
           em-is-visible="sl.isModalVisible"
           em-on-deny="sl.onDeny()"
           em-on-hidden="sl.onHidden()"
@@ -20,7 +20,8 @@
             <ez-grid eg-grid-columns="sl.gridColumns"
                  eg-selected-item="sl.selectedItem"
                  eg-get-items="sl.getItems(request)"
-                 eg-on-double-click="sl.onDoubleClickEvent()">
+                 eg-on-double-click="sl.onDoubleClickEvent()"
+                 eg-item-id-field="sl.itemIdField">
         </ez-grid>
 
 </ez-modal>

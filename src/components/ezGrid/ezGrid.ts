@@ -34,7 +34,15 @@ export class EzGrid implements ng.IComponentOptions {
              * Executed when a grid item is double-clicked. The selected item is
              * set before this callback function is executed.
              */
-            onDoubleClick: '&egOnDoubleClick'
+            onDoubleClick: '&egOnDoubleClick',
+
+            /**
+             * The name of the model's id field.
+             *
+             * @type {string}
+             */
+            itemIdField: '=egItemIdField'
+
         };
     }
 }

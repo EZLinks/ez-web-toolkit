@@ -5,13 +5,24 @@ import 'angular-ui-grid';
 import { CustomUiGridConstants } from './constants/customUiGridConstants';
 
 import {
-    BaseClasses,
-    Components,
-    Constants,
-    Enums,
-    Exceptions,
-    Models,
-    Services
+    ResponseHandlers,
+    ApiService,
+    ModalService,
+    NotificationService,
+    ProcessingService,
+    ServerValidationService,
+    ServiceRequestProcessor,
+    UiGridService
+} from './index';
+
+import {
+    ConfirmDialog,
+    DatePicker,
+    ErrorBlock,
+    EzGrid,
+    EzModal,
+    SingleLookup,
+    UploadImage
 } from './index';
 
 export class Test {
@@ -20,18 +31,18 @@ export class Test {
 
 angular.module('EZ.Test', ['ui.grid', require('angular-mocks/ngMock')])
     .constant('customUiGridConstants', CustomUiGridConstants.Default)
-    .component('confirmDialog', new Components.ConfirmDialog())
-    .component('datePicker', new Components.DatePicker())
-    .component('errorBlock', new Components.ErrorBlock())
-    .component('ezGrid', new Components.EzGrid())
-    .component('ezModal', new Components.EzModal())
-    .component('singleLookup', new Components.SingleLookup())
-    .component('uploadImage', new Components.UploadImage())
-    .service('responseHandlers', Services.ResponseHandlers)
-    .service('apiService', Services.ApiService)
-    .service('modalService', Services.ModalService)
-    .service('notificationService', Services.NotificationService)
-    .service('processingService', Services.ProcessingService)
-    .service('serverValidationService', Services.ServerValidationService)
-    .service('serviceRequestProcessor', Services.ServiceRequestProcessor)
-    .service('uiGridService', Services.UiGridService);
+    .component('confirmDialog', new ConfirmDialog())
+    .component('datePicker', new DatePicker())
+    .component('errorBlock', new ErrorBlock())
+    .component('ezGrid', new EzGrid())
+    .component('ezModal', new EzModal())
+    .component('singleLookup', new SingleLookup())
+    .component('uploadImage', new UploadImage())
+    .service('responseHandlers', ResponseHandlers)
+    .service('apiService', ApiService)
+    .service('modalService', ModalService)
+    .service('notificationService', NotificationService)
+    .service('processingService', ProcessingService)
+    .service('serverValidationService', ServerValidationService)
+    .service('serviceRequestProcessor', ServiceRequestProcessor)
+    .service('uiGridService', UiGridService);

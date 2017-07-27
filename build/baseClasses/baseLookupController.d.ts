@@ -11,6 +11,8 @@ export declare abstract class BaseLookupController<T> extends BaseComponent {
     isRequestError: boolean;
     filterChangedTimeout: any;
     selectedItem: T;
+    selectedItemIds: Array<any>;
+    itemIdField: string;
     onDoubleClick: Function;
     getItems: Function;
     constructor($scope: any);

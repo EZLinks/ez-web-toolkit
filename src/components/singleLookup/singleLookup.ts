@@ -47,7 +47,11 @@ export class SingleLookup implements ng.IComponentOptions {
             title: '@title',
 
             // The input placeholder text
-            placeholder: '@placeholder'
+            placeholder: '@placeholder',
+
+            // The name of the property on the item that contains the unique
+            //  identifier (probably 'id')
+            itemIdField: '<?itemIdField'
         };
     }
 }
