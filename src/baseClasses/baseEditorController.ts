@@ -49,8 +49,13 @@ export abstract class BaseEditorController<T> implements IValidatableController 
      */
     private isReqRunning: boolean;
 
+    /**
+     * Indicates if validation request is running.
+     */
+    private isValidationRequestRunning: boolean;
+
     public get isRequestRunning(): boolean {
-        return this.isReqRunning;
+        return this.isReqRunning || this.isValidationRequestRunning;
     }
 
     public set isRequestRunning(val: boolean) {
@@ -75,6 +80,7 @@ export abstract class BaseEditorController<T> implements IValidatableController 
         this.validationService = new ValidationService(this, $scope);
         this.rulesCustomizer = validator.rulesCustomizer;
         this.isRequestRunning = null;
+        this.isValidationRequestRunning = false;
     }
 
     /**
@@ -110,11 +116,20 @@ export abstract class BaseEditorController<T> implements IValidatableController 
      * and validation.
      */
     public submit(): void {
+
         if (!this.item) {
             this.item = {} as T;
         }
 
+        if (this.isValidationRequestRunning) {
+            return;
+        }
+
+        this.isValidationRequestRunning = true;
+
         this.validationService.validate(this.item).then((result) => {
+
+            this.isValidationRequestRunning = false;
 
             if (result) {
 

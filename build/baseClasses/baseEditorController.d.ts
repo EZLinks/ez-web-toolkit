@@ -37,6 +37,10 @@ export declare abstract class BaseEditorController<T> implements IValidatableCon
      * additional requests.
      */
     private isReqRunning;
+    /**
+     * Indicates if validation request is running.
+     */
+    private isValidationRequestRunning;
     isRequestRunning: boolean;
     /**
      * The state of the editor.
