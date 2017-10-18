@@ -111,6 +111,10 @@ export abstract class BaseEditorController<T> implements IValidatableController 
         // could be overriden
     }
 
+    protected successNotification(): void {
+        this.notificationService.success('Successfully saved.');
+    }
+
     /**
      * Submit the form, save the item. Handles loading animation, notifications
      * and validation.
@@ -140,7 +144,7 @@ export abstract class BaseEditorController<T> implements IValidatableController 
                     this.save()
                         .then((response: any) => {
 
-                            this.notificationService.success('Successfully saved.');
+                            this.successNotification();
                             this.onResponseSuccess(response);
                             this.close();
 

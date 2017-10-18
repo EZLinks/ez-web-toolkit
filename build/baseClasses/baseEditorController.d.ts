@@ -61,6 +61,7 @@ export declare abstract class BaseEditorController<T> implements IValidatableCon
      * Occurs on success response.
      */
     protected onResponseSuccess(response: any): void;
+    protected successNotification(): void;
     /**
      * Submit the form, save the item. Handles loading animation, notifications
      * and validation.

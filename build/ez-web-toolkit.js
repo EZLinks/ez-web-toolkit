@@ -928,6 +928,9 @@ var BaseEditorController = (function () {
     BaseEditorController.prototype.onResponseSuccess = function (response) {
         // could be overriden
     };
+    BaseEditorController.prototype.successNotification = function () {
+        this.notificationService.success('Successfully saved.');
+    };
     /**
      * Submit the form, save the item. Handles loading animation, notifications
      * and validation.
@@ -948,7 +951,7 @@ var BaseEditorController = (function () {
                     _this.isRequestRunning = true;
                     _this.save()
                         .then(function (response) {
-                        _this.notificationService.success('Successfully saved.');
+                        _this.successNotification();
                         _this.onResponseSuccess(response);
                         _this.close();
                     })
