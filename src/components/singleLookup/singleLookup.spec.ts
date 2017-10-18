@@ -40,7 +40,6 @@ describe('Component SingleLookup', () => {
             notificationService = _notificationService_;
             customUiGridConstants = _customUiGridConstants_;
         });
-debugger;
 
         vm = new SingleLookupController(
             $rootScope,
