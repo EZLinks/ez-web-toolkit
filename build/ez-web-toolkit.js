@@ -949,7 +949,9 @@ var BaseEditorController = (function () {
         }
         this.isValidationRequestRunning = true;
         this.validationService.validate(this.item).then(function (result) {
-            _this.isValidationRequestRunning = false;
+            _this.$timeout(function () {
+                _this.isValidationRequestRunning = false;
+            });
             if (result) {
                 if (!_this.isRequestRunning) {
                     _this.isRequestRunning = true;

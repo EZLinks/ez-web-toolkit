@@ -133,7 +133,9 @@ export abstract class BaseEditorController<T> implements IValidatableController 
 
         this.validationService.validate(this.item).then((result) => {
 
-            this.isValidationRequestRunning = false;
+            this.$timeout(() => {
+                this.isValidationRequestRunning = false;
+            });
 
             if (result) {
 
