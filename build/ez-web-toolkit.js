@@ -953,7 +953,7 @@ var BaseEditorController = (function () {
                 _this.isValidationRequestRunning = false;
             });
             if (result) {
-                if (!_this.isRequestRunning) {
+                if (!_this.isReqRunning) {
                     _this.isRequestRunning = true;
                     _this.save()
                         .then(function (response) {

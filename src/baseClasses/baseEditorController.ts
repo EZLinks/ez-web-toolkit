@@ -139,7 +139,7 @@ export abstract class BaseEditorController<T> implements IValidatableController 
 
             if (result) {
 
-                if (!this.isRequestRunning) {
+                if (!this.isReqRunning) {
 
                     this.isRequestRunning = true;
 
