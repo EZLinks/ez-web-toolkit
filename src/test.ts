@@ -13,7 +13,7 @@ import {
     ServerValidationService,
     ServiceRequestProcessor,
     UiGridService
-} from './index';
+} from './services/index';
 
 import {
     ConfirmDialog,
@@ -23,7 +23,7 @@ import {
     EzModal,
     SingleLookup,
     UploadImage
-} from './index';
+} from './components/index';
 
 export class Test {
 
