@@ -8,6 +8,7 @@ import { EzGrid } from './ezGrid/ezGrid';
 import { EzModal } from './ezModal/ezModal';
 import { SingleLookup } from './singleLookup/singleLookup';
 import { UploadImage } from './uploadImage/uploadImage';
+import { NotificationViewer } from './NotificationViewer/notificationViewer';
 
 export {
     ConfirmDialog,
@@ -16,5 +17,6 @@ export {
     EzGrid,
     EzModal,
     SingleLookup,
-    UploadImage
+    UploadImage,
+    NotificationViewer
 }

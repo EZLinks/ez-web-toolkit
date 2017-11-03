@@ -5,6 +5,8 @@ import * as Enums from './enums/index';
 import * as Exceptions from './exceptions/index';
 import * as Models from './models/index';
 import * as Services from './services/index';
+import * as Directives from './directives/index';
+import * as Utils from './utils/index';
 
 export {
     BaseClasses,
@@ -13,5 +15,7 @@ export {
     Enums,
     Exceptions,
     Models,
-    Services
+    Services,
+    Directives,
+    Utils
 }

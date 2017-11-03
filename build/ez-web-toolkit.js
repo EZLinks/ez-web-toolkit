@@ -7,7 +7,7 @@
 		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
 	else
 		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_16__, __WEBPACK_EXTERNAL_MODULE_20__, __WEBPACK_EXTERNAL_MODULE_37__, __WEBPACK_EXTERNAL_MODULE_65__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_17__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_68__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,17 +70,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
+var _ = __webpack_require__(0);
 var BaseComponent = (function () {
     function BaseComponent($scope, additionalDestruction) {
         var _this = this;
@@ -101,12 +107,6 @@ var BaseComponent = (function () {
 }());
 exports.BaseComponent = BaseComponent;
 
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("lodash");
 
 /***/ }),
 /* 2 */
@@ -176,7 +176,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseComponent_1 = __webpack_require__(0);
+var baseComponent_1 = __webpack_require__(1);
 var eventConsts_1 = __webpack_require__(3);
 var BaseLookupController = (function (_super) {
     __extends(BaseLookupController, _super);
@@ -332,7 +332,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseComponent_1 = __webpack_require__(0);
+var baseComponent_1 = __webpack_require__(1);
 var BaseModalController = (function (_super) {
     __extends(BaseModalController, _super);
     //#region Constructor
@@ -824,32 +824,27 @@ exports.FilterRequest = FilterRequest;
 
 /***/ }),
 /* 16 */
-/***/ (function(module, exports) {
-
-module.exports = require("angular");
-
-/***/ }),
-/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var BaseClasses = __webpack_require__(18);
-exports.BaseClasses = BaseClasses;
-var Components = __webpack_require__(23);
-exports.Components = Components;
-var Constants = __webpack_require__(49);
-exports.Constants = Constants;
-var Enums = __webpack_require__(54);
-exports.Enums = Enums;
-var Exceptions = __webpack_require__(55);
-exports.Exceptions = Exceptions;
-var Models = __webpack_require__(56);
-exports.Models = Models;
-var Services = __webpack_require__(60);
-exports.Services = Services;
+/**
+ * the persistent message class.
+ */
+var PersistentMessage = (function () {
+    function PersistentMessage() {
+    }
+    return PersistentMessage;
+}());
+exports.PersistentMessage = PersistentMessage;
 
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("angular");
 
 /***/ }),
 /* 18 */
@@ -858,18 +853,24 @@ exports.Services = Services;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseComponent_1 = __webpack_require__(0);
-exports.BaseComponent = baseComponent_1.BaseComponent;
-var baseEditorController_1 = __webpack_require__(19);
-exports.BaseEditorController = baseEditorController_1.BaseEditorController;
-var baseLookupController_1 = __webpack_require__(5);
-exports.BaseLookupController = baseLookupController_1.BaseLookupController;
-var baseManagerController_1 = __webpack_require__(6);
-exports.BaseManagerController = baseManagerController_1.BaseManagerController;
-var baseManagerDeletableController_1 = __webpack_require__(22);
-exports.BaseManagerDeletableController = baseManagerDeletableController_1.BaseManagerDeletableController;
-var baseModalController_1 = __webpack_require__(8);
-exports.BaseModalController = baseModalController_1.BaseModalController;
+var BaseClasses = __webpack_require__(19);
+exports.BaseClasses = BaseClasses;
+var Components = __webpack_require__(24);
+exports.Components = Components;
+var Constants = __webpack_require__(52);
+exports.Constants = Constants;
+var Enums = __webpack_require__(57);
+exports.Enums = Enums;
+var Exceptions = __webpack_require__(58);
+exports.Exceptions = Exceptions;
+var Models = __webpack_require__(59);
+exports.Models = Models;
+var Services = __webpack_require__(63);
+exports.Services = Services;
+var Directives = __webpack_require__(74);
+exports.Directives = Directives;
+var Utils = __webpack_require__(76);
+exports.Utils = Utils;
 
 
 /***/ }),
@@ -879,9 +880,30 @@ exports.BaseModalController = baseModalController_1.BaseModalController;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular_typescript_validation_1 = __webpack_require__(20);
+var baseComponent_1 = __webpack_require__(1);
+exports.BaseComponent = baseComponent_1.BaseComponent;
+var baseEditorController_1 = __webpack_require__(20);
+exports.BaseEditorController = baseEditorController_1.BaseEditorController;
+var baseLookupController_1 = __webpack_require__(5);
+exports.BaseLookupController = baseLookupController_1.BaseLookupController;
+var baseManagerController_1 = __webpack_require__(6);
+exports.BaseManagerController = baseManagerController_1.BaseManagerController;
+var baseManagerDeletableController_1 = __webpack_require__(23);
+exports.BaseManagerDeletableController = baseManagerDeletableController_1.BaseManagerDeletableController;
+var baseModalController_1 = __webpack_require__(8);
+exports.BaseModalController = baseModalController_1.BaseModalController;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var angular_typescript_validation_1 = __webpack_require__(21);
 var editorState_1 = __webpack_require__(2);
-var validationProcessor_1 = __webpack_require__(21);
+var validationProcessor_1 = __webpack_require__(22);
 var BaseEditorController = (function () {
     function BaseEditorController($scope, $timeout, notificationService, validator) {
         this.$timeout = $timeout;
@@ -997,13 +1019,13 @@ exports.BaseEditorController = BaseEditorController;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("angular-typescript-validation");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1046,7 +1068,7 @@ exports.ValidationProcessor = ValidationProcessor;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1107,37 +1129,39 @@ exports.BaseManagerDeletableController = BaseManagerDeletableController;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(24);
-var confirmDialog_1 = __webpack_require__(29);
+__webpack_require__(25);
+var confirmDialog_1 = __webpack_require__(30);
 exports.ConfirmDialog = confirmDialog_1.ConfirmDialog;
-var datePicker_1 = __webpack_require__(31);
+var datePicker_1 = __webpack_require__(32);
 exports.DatePicker = datePicker_1.DatePicker;
-var errorBlock_1 = __webpack_require__(39);
+var errorBlock_1 = __webpack_require__(40);
 exports.ErrorBlock = errorBlock_1.ErrorBlock;
-var ezGrid_1 = __webpack_require__(41);
+var ezGrid_1 = __webpack_require__(42);
 exports.EzGrid = ezGrid_1.EzGrid;
-var ezModal_1 = __webpack_require__(43);
+var ezModal_1 = __webpack_require__(44);
 exports.EzModal = ezModal_1.EzModal;
-var singleLookup_1 = __webpack_require__(45);
+var singleLookup_1 = __webpack_require__(46);
 exports.SingleLookup = singleLookup_1.SingleLookup;
-var uploadImage_1 = __webpack_require__(47);
+var uploadImage_1 = __webpack_require__(48);
 exports.UploadImage = uploadImage_1.UploadImage;
+var notificationViewer_1 = __webpack_require__(50);
+exports.NotificationViewer = notificationViewer_1.NotificationViewer;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(25);
+var content = __webpack_require__(26);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -1145,7 +1169,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(27)(content, options);
+var update = __webpack_require__(28)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1162,10 +1186,10 @@ if(false) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(26)(undefined);
+exports = module.exports = __webpack_require__(27)(undefined);
 // imports
 
 
@@ -1176,7 +1200,7 @@ exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  fo
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /*
@@ -1258,7 +1282,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1304,7 +1328,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(28);
+var	fixUrls = __webpack_require__(29);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -1617,7 +1641,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 
@@ -1712,7 +1736,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1728,7 +1752,7 @@ var ConfirmDialog = (function () {
     function ConfirmDialog() {
         this.controller = ConfirmDialogController;
         this.controllerAs = 'cd';
-        this.templateUrl = __webpack_require__(30);
+        this.templateUrl = __webpack_require__(31);
         this.bindings = {
             title: '@cdTitle',
             body: '@cdBody',
@@ -1761,7 +1785,7 @@ exports.ConfirmDialogController = ConfirmDialogController;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
@@ -1770,24 +1794,24 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var popupTemplate = __webpack_require__(32);
-var datePickerTemplate = __webpack_require__(33);
+var popupTemplate = __webpack_require__(33);
+var datePickerTemplate = __webpack_require__(34);
 /** These are required in this manner as angular bootstrap does not allow changing the day, month and year templates with easily defined variables (scoping is an issue)
  * Requiring the needed files and setting the relative url allows the datepicker to use template-url="*.html"
  */
-__webpack_require__(34);
 __webpack_require__(35);
 __webpack_require__(36);
-var moment = __webpack_require__(37);
+__webpack_require__(37);
+var moment = __webpack_require__(38);
 var DatePicker = (function () {
     function DatePicker() {
-        this.templateUrl = __webpack_require__(38);
+        this.templateUrl = __webpack_require__(39);
         this.controller = DatePickerController;
         this.controllerAs = 'dp';
         this.bindings = {
@@ -1857,7 +1881,7 @@ exports.DatePickerController = DatePickerController;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
@@ -1866,7 +1890,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
@@ -1875,7 +1899,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 var path = 'day.html';
@@ -1884,7 +1908,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 var path = 'month.html';
@@ -1893,7 +1917,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 var path = 'year.html';
@@ -1902,13 +1926,13 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = require("moment");
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/datePicker.html';
@@ -1917,7 +1941,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1933,7 +1957,7 @@ var ErrorBlock = (function () {
     function ErrorBlock() {
         this.controller = ErrorBlockController;
         this.controllerAs = 'eb';
-        this.templateUrl = __webpack_require__(40);
+        this.templateUrl = __webpack_require__(41);
         this.bindings = {
             errorBlock: '=ebError'
         };
@@ -1960,7 +1984,7 @@ exports.ErrorBlockController = ErrorBlockController;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
@@ -1969,7 +1993,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1988,7 +2012,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var baseLookupController_1 = __webpack_require__(5);
 var EzGrid = (function () {
     function EzGrid() {
-        this.templateUrl = __webpack_require__(42);
+        this.templateUrl = __webpack_require__(43);
         this.controller = EzGridController;
         this.controllerAs = 'eg';
         this.bindings = {
@@ -2063,7 +2087,7 @@ exports.EzGridController = EzGridController;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
@@ -2072,7 +2096,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2091,7 +2115,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var baseModalController_1 = __webpack_require__(8);
 var EzModal = (function () {
     function EzModal() {
-        this.templateUrl = __webpack_require__(44);
+        this.templateUrl = __webpack_require__(45);
         this.controller = EzModalController;
         this.controllerAs = 'em';
         this.bindings = {
@@ -2192,7 +2216,7 @@ exports.EzModalController = EzModalController;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/ezModal/ezModal.html';
@@ -2201,7 +2225,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2217,12 +2241,12 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
-var baseComponent_1 = __webpack_require__(0);
+var _ = __webpack_require__(0);
+var baseComponent_1 = __webpack_require__(1);
 var typeConsts_1 = __webpack_require__(9);
 var SingleLookup = (function () {
     function SingleLookup() {
-        this.templateUrl = __webpack_require__(46);
+        this.templateUrl = __webpack_require__(47);
         this.controller = SingleLookupController;
         this.controllerAs = 'sl';
         this.bindings = {
@@ -2410,7 +2434,7 @@ exports.SingleLookupController = SingleLookupController;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
@@ -2419,7 +2443,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2433,7 +2457,7 @@ var UploadImage = (function () {
      * inits component.
      */
     function UploadImage() {
-        this.templateUrl = __webpack_require__(48);
+        this.templateUrl = __webpack_require__(49);
         this.controller = UploadImageController;
         this.controllerAs = 'ui';
         this.bindings = {
@@ -2498,7 +2522,7 @@ exports.UploadImageController = UploadImageController;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
@@ -2507,13 +2531,64 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var customUiGridConstants_1 = __webpack_require__(50);
+var NotificationViewer = (function () {
+    function NotificationViewer() {
+        this.templateUrl = __webpack_require__(51);
+        this.controller = NotificationViewerController;
+        this.controllerAs = 'nv';
+        this.bindings = {};
+    }
+    return NotificationViewer;
+}());
+exports.NotificationViewer = NotificationViewer;
+var NotificationViewerController = (function () {
+    function NotificationViewerController(service) {
+        this.service = service;
+    }
+    Object.defineProperty(NotificationViewerController.prototype, "items", {
+        //#region Properties
+        get: function () {
+            return this.service.items();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    //#endregion
+    //#region Functions
+    NotificationViewerController.prototype.dismiss = function (item) {
+        this.service.dismiss(item);
+    };
+    //#endregion
+    //#region Constructor
+    NotificationViewerController.$inject = ['persistentNotificationService'];
+    return NotificationViewerController;
+}());
+exports.NotificationViewerController = NotificationViewerController;
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/NotificationViewer/notificationViewer.html';
+var html = "<div ng-repeat=\"item in nv.items\" class=\"ui {{ item.type }} message\">\r\n    <i class=\"close icon\" ng-click=\"nv.dismiss(item)\"></i>\r\n    <div>\r\n        {{ item.message }}\r\n    </div>\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var customUiGridConstants_1 = __webpack_require__(53);
 exports.CustomUiGridConstants = customUiGridConstants_1.CustomUiGridConstants;
 var eventConsts_1 = __webpack_require__(3);
 exports.EventConsts = eventConsts_1.EventConsts;
@@ -2522,7 +2597,7 @@ exports.TypeConsts = typeConsts_1.TypeConsts;
 
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2535,9 +2610,9 @@ var CustomUiGridConstants = (function () {
         get: function () {
             return {
                 debounceDelay: 400,
-                headerCellTemplate: __webpack_require__(51),
-                filterHeaderTemplate: __webpack_require__(52),
-                cellTemplate: __webpack_require__(53)
+                headerCellTemplate: __webpack_require__(54),
+                filterHeaderTemplate: __webpack_require__(55),
+                cellTemplate: __webpack_require__(56)
             };
         },
         enumerable: true,
@@ -2549,7 +2624,7 @@ exports.CustomUiGridConstants = CustomUiGridConstants;
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
@@ -2558,7 +2633,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
@@ -2567,7 +2642,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports) {
 
 var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
@@ -2576,7 +2651,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2593,7 +2668,7 @@ exports.ManagerState = managerState_1.ManagerState;
 
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2604,7 +2679,7 @@ exports.ResponseError = responseError_1.ResponseError;
 
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2614,18 +2689,20 @@ var requestOptions_1 = __webpack_require__(13);
 exports.RequestOptions = requestOptions_1.RequestOptions;
 var problemResult_1 = __webpack_require__(14);
 exports.ProblemResult = problemResult_1.ProblemResult;
-var validationProblemResult_1 = __webpack_require__(57);
+var validationProblemResult_1 = __webpack_require__(60);
 exports.ValidationProblemResult = validationProblemResult_1.ValidationProblemResult;
 var uiGridRequest_1 = __webpack_require__(15);
 exports.UiGridRequest = uiGridRequest_1.UiGridRequest;
-var uiGridResult_1 = __webpack_require__(58);
+var uiGridResult_1 = __webpack_require__(61);
 exports.UiGridResult = uiGridResult_1.UiGridResult;
-var errorBlock_1 = __webpack_require__(59);
+var errorBlock_1 = __webpack_require__(62);
 exports.ErrorBlockModel = errorBlock_1.ErrorBlockModel;
+var persistentMessage_1 = __webpack_require__(16);
+exports.PersistentMessage = persistentMessage_1.PersistentMessage;
 
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2656,7 +2733,7 @@ exports.ValidationProblemResult = ValidationProblemResult;
 
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2671,7 +2748,7 @@ exports.UiGridResult = UiGridResult;
 
 
 /***/ }),
-/* 59 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2689,32 +2766,34 @@ exports.ErrorBlockModel = ErrorBlockModel;
 
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var responseHandlers_1 = __webpack_require__(61);
+var responseHandlers_1 = __webpack_require__(64);
 exports.ResponseHandlers = responseHandlers_1.ResponseHandlers;
-var apiService_1 = __webpack_require__(62);
+var apiService_1 = __webpack_require__(65);
 exports.ApiService = apiService_1.ApiService;
-var modalService_1 = __webpack_require__(63);
+var modalService_1 = __webpack_require__(66);
 exports.ModalService = modalService_1.ModalService;
-var notificationService_1 = __webpack_require__(64);
+var notificationService_1 = __webpack_require__(67);
 exports.NotificationService = notificationService_1.NotificationService;
-var processingService_1 = __webpack_require__(66);
+var processingService_1 = __webpack_require__(69);
 exports.ProcessingService = processingService_1.ProcessingService;
-var serverValidationService_1 = __webpack_require__(67);
+var serverValidationService_1 = __webpack_require__(70);
 exports.ServerValidationService = serverValidationService_1.ServerValidationService;
-var serviceRequestProcessor_1 = __webpack_require__(68);
+var serviceRequestProcessor_1 = __webpack_require__(71);
 exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
-var uiGridService_1 = __webpack_require__(69);
+var uiGridService_1 = __webpack_require__(72);
 exports.UiGridService = uiGridService_1.UiGridService;
+var persistentNotificationService_1 = __webpack_require__(73);
+exports.PersistentNotificationService = persistentNotificationService_1.PersistentNotificationService;
 
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2804,13 +2883,13 @@ exports.ResponseHandlers = ResponseHandlers;
 
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular = __webpack_require__(16);
+var angular = __webpack_require__(17);
 var requestOptions_1 = __webpack_require__(13);
 var ApiService = (function () {
     function ApiService($http, responseHandlers) {
@@ -2904,13 +2983,13 @@ exports.ApiService = ApiService;
 
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
+var _ = __webpack_require__(0);
 var ModalService = (function () {
     function ModalService($timeout) {
         this.$timeout = $timeout;
@@ -3007,13 +3086,13 @@ exports.ModalService = ModalService;
 
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var toastr = __webpack_require__(65);
+var toastr = __webpack_require__(68);
 /**
  * notification service implementation
  */
@@ -3035,13 +3114,13 @@ exports.NotificationService = NotificationService;
 
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, exports) {
 
 module.exports = require("toastr");
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3095,13 +3174,13 @@ exports.ProcessingService = ProcessingService;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 67 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular = __webpack_require__(16);
+var angular = __webpack_require__(17);
 var ServerValidationService = (function () {
     function ServerValidationService() {
         this.errs = {};
@@ -3163,7 +3242,7 @@ exports.ServerValidationService = ServerValidationService;
 
 
 /***/ }),
-/* 68 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3204,13 +3283,13 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
+var _ = __webpack_require__(0);
 var uiGridRequest_1 = __webpack_require__(15);
 // TODO: Update comments.
 var UiGridService = (function () {
@@ -3492,6 +3571,285 @@ var UiGridService = (function () {
 exports.UiGridService = UiGridService;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var _ = __webpack_require__(0);
+var persistentMessage_1 = __webpack_require__(16);
+var PersistentNotificationService = (function () {
+    function PersistentNotificationService() {
+    }
+    PersistentNotificationService.prototype.items = function () {
+        return PersistentNotificationService.items;
+    };
+    PersistentNotificationService.prototype.warn = function (message) {
+        var item = new persistentMessage_1.PersistentMessage();
+        item.message = message;
+        item.type = 'warning';
+        PersistentNotificationService.items.push(item);
+    };
+    PersistentNotificationService.prototype.dismiss = function (item) {
+        _.remove(PersistentNotificationService.items, function (itm) { return itm === item; });
+    };
+    PersistentNotificationService.items = new Array();
+    return PersistentNotificationService;
+}());
+exports.PersistentNotificationService = PersistentNotificationService;
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var focusElement_1 = __webpack_require__(75);
+exports.FocusElement = focusElement_1.FocusElement;
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Makes a focus on element while loaded.
+ */
+var FocusElement = (function () {
+    function FocusElement($timeout) {
+        this.$timeout = $timeout;
+        this.restrict = 'A';
+    }
+    /**
+     * creates a factory for directive
+     */
+    FocusElement.factory = function () {
+        var directive = function ($timeout) { return new FocusElement($timeout); };
+        directive.$inject = ['$timeout'];
+        return directive;
+    };
+    /**
+     * link for directive.
+     *
+     * @param scope
+     * @param element
+     * @param attrs
+     * @param ctrl
+     */
+    FocusElement.prototype.link = function (scope, element, attrs) {
+        this.$timeout(function () {
+            element[0].focus();
+        });
+    };
+    return FocusElement;
+}());
+exports.FocusElement = FocusElement;
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var activator_1 = __webpack_require__(77);
+exports.Activator = activator_1.Activator;
+var arrayHelpers_1 = __webpack_require__(78);
+exports.ArrayHelper = arrayHelpers_1.ArrayHelper;
+var objectCopier_1 = __webpack_require__(79);
+exports.ObjectCopier = objectCopier_1.ObjectCopier;
+var serviceRequestProcessor_1 = __webpack_require__(80);
+exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
+var validationProcessor_1 = __webpack_require__(81);
+exports.ValidationProcessor = validationProcessor_1.ValidationProcessor;
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * activator class.
+ *
+ */
+var Activator = (function () {
+    function Activator() {
+    }
+    /**
+     * creates instance of some type.
+     *
+     * @param type
+     */
+    Activator.createInstance = function (type) {
+        return new type();
+    };
+    return Activator;
+}());
+exports.Activator = Activator;
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Methods for helping deal with arrays.
+ */
+var ArrayHelper = (function () {
+    function ArrayHelper() {
+    }
+    /**
+     * Create an array of the given length. The array will start at 1 instead of 0
+     *
+     * @param {number} length
+     */
+    ArrayHelper.createArray = function (length) {
+        if (isNaN(length) || length <= 0) {
+            throw new Error("Unable to create an array with the length of " + length);
+        }
+        var array = new Array();
+        for (var x = 1; x <= length; x++) {
+            array.push(x);
+        }
+        return array;
+    };
+    return ArrayHelper;
+}());
+exports.ArrayHelper = ArrayHelper;
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * copies object properties from one object to another.
+ */
+var ObjectCopier = (function () {
+    function ObjectCopier() {
+    }
+    /**
+     * copies object properties from one object to another.
+     */
+    ObjectCopier.copyObject = function (copyFrom, copyTo) {
+        for (var key in copyFrom) {
+            if (copyFrom.hasOwnProperty(key)) {
+                try {
+                    copyTo[key] = copyFrom[key];
+                }
+                catch (err) {
+                    // could be getter
+                }
+            }
+        }
+        return copyTo;
+    };
+    return ObjectCopier;
+}());
+exports.ObjectCopier = ObjectCopier;
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * the service request processor.
+ */
+var ServiceRequestProcessor = (function () {
+    function ServiceRequestProcessor($timeout, request, handleCallback) {
+        this.$timeout = $timeout;
+        this.request = request;
+        this.handleCallback = handleCallback;
+    }
+    ServiceRequestProcessor.prototype.process = function () {
+        var _this = this;
+        if (this.isRequestRunning) {
+            return;
+        }
+        this.isRequestRunning = true;
+        this.request().then(function (res) {
+            _this.handleCallback(res);
+        })
+            .catch(function () {
+            _this.$timeout(function () {
+                _this.isErrorOccured = true;
+            });
+        })
+            .then(function () {
+            _this.$timeout(function () {
+                _this.isRequestRunning = false;
+            });
+        });
+    };
+    return ServiceRequestProcessor;
+}());
+exports.ServiceRequestProcessor = ServiceRequestProcessor;
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * validation processing tasks.
+ */
+var ValidationProcessor = (function () {
+    function ValidationProcessor() {
+    }
+    /**
+     * handles the validation server response.
+     */
+    ValidationProcessor.processValidationServerResponse = function (responseData, errorHandler) {
+        if (!this.isValidationResultResponse(responseData)) {
+            return;
+        }
+        for (var fieldName in responseData.errors) {
+            if (responseData.errors.hasOwnProperty(fieldName)) {
+                var errorMessages = responseData.errors[fieldName];
+                for (var i = 0; i < errorMessages.length; i++) {
+                    errorHandler(fieldName, errorMessages[i]);
+                }
+            }
+        }
+    };
+    /**
+     * checks if response is validationResult
+     */
+    ValidationProcessor.isValidationResultResponse = function (data) {
+        if (data && data.hasServerValidationErrors === true) {
+            return true;
+        }
+        return false;
+    };
+    return ValidationProcessor;
+}());
+exports.ValidationProcessor = ValidationProcessor;
+
 
 /***/ })
 /******/ ]);

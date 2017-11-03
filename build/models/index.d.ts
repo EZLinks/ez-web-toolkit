@@ -4,4 +4,5 @@ import { ValidationProblemResult } from './results/validationProblemResult';
 import { UiGridRequest } from './uiGrid/uiGridRequest';
 import { UiGridResult } from './uiGrid/uiGridResult';
 import { ErrorBlockModel } from './errorBlock';
-export { RequestOptions, ProblemResult, ValidationProblemResult, UiGridRequest, UiGridResult, ErrorBlockModel };
+import { PersistentMessage } from './persistentMessage';
+export { RequestOptions, ProblemResult, ValidationProblemResult, UiGridRequest, UiGridResult, ErrorBlockModel, PersistentMessage };

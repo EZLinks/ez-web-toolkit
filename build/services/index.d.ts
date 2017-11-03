@@ -6,4 +6,5 @@ import { IProcessingService, ProcessingService } from './processingService';
 import { IServerValidationService, ServerValidationService } from './serverValidationService';
 import { ServiceRequestProcessor } from './serviceRequestProcessor';
 import { IUiGridService, UiGridService } from './uiGridService';
-export { ResponseHandlers, IApiService, ApiService, IModalService, ModalService, INotificationService, NotificationService, IProcessingService, ProcessingService, IServerValidationService, ServerValidationService, ServiceRequestProcessor, IUiGridService, UiGridService };
+import { PersistentNotificationService, IPersistentNotificationService } from './persistentNotificationService';
+export { ResponseHandlers, IApiService, ApiService, IModalService, ModalService, INotificationService, NotificationService, IProcessingService, ProcessingService, IServerValidationService, ServerValidationService, ServiceRequestProcessor, IUiGridService, UiGridService, IPersistentNotificationService, PersistentNotificationService };
