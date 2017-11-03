@@ -2576,7 +2576,7 @@ exports.NotificationViewerController = NotificationViewerController;
 /* 51 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/NotificationViewer/notificationViewer.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
 var html = "<div ng-repeat=\"item in nv.items\" class=\"ui {{ item.type }} message\">\r\n    <i class=\"close icon\" ng-click=\"nv.dismiss(item)\"></i>\r\n    <div>\r\n        {{ item.message }}\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;

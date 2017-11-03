@@ -6,5 +6,5 @@ import { EzGrid } from './ezGrid/ezGrid';
 import { EzModal } from './ezModal/ezModal';
 import { SingleLookup } from './singleLookup/singleLookup';
 import { UploadImage } from './uploadImage/uploadImage';
-import { NotificationViewer } from './NotificationViewer/notificationViewer';
+import { NotificationViewer } from './notificationViewer/notificationViewer';
 export { ConfirmDialog, DatePicker, ErrorBlock, EzGrid, EzModal, SingleLookup, UploadImage, NotificationViewer };
