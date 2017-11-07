@@ -22,7 +22,7 @@
     <div ng-if="em.isInDom" class="content" ng-transclude></div>
 
     <div class="actions">
-        <div class="ui primary button" data-ng-click="em.onPrimaryButtonClick()">{{ em.primaryButtonText }}</div>
-        <div class="ui basic button" data-ng-click="em.onSecondaryButtonClick()">{{ em.secondaryButtonText }}</div>
+        <div class="ui primary button" ng-if="em.primaryButtonText" data-ng-click="em.onPrimaryButtonClick()">{{ em.primaryButtonText }}</div>
+        <div class="ui basic button" ng-if="em.secondaryButtonText" data-ng-click="em.onSecondaryButtonClick()">{{ em.secondaryButtonText }}</div>
     </div>
 </sm-modal>

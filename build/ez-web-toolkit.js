@@ -1788,7 +1788,7 @@ exports.ConfirmDialogController = ConfirmDialogController;
 /* 31 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
 var html = "<ez-modal\r\n    em-class-name=\"confirm-dialog\"\r\n    em-header-text=\"{{cd.title}}\"\r\n    em-primary-button-text=\"Confirm\"\r\n    em-secondary-button-text=\"Cancel\"\r\n    em-is-visible=\"cd.visible\"\r\n    em-on-approve=\"cd.onOk()\"\r\n    em-on-deny=\"cd.onCancel()\"\r\n    em-is-loader-visible=\"cd.loader\"\r\n    em-on-hidden=\"cd.onHidden()\">\r\n\r\n    <div ng-bind=\"cd.body\"></div>\r\n    <div ng-if=\"cd.callout\" class=\"emphasis\" ng-bind=\"cd.callout\"></div>\r\n\r\n    <error-block class=\"margin-t10 dblock\" eb-error=\"cd.errorBlock\"></error-block>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1884,7 +1884,7 @@ exports.DatePickerController = DatePickerController;
 /* 33 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
 var html = "<ul class=\"uib-datepicker-popup dropdown-menu ui uib-position-measure clearing segment\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\r\n    <li ng-transclude></li>\r\n    <li ng-if=\"showButtonBar\" style=\"padding:10px 9px 2px\">\r\n        <span class=\"pull-left\">\r\n            <button type=\"button\" class=\"ui primaryButton button primary\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">\r\n                <span ng-bind=\"getText('current')\"></span>\r\n            </button>\r\n        </span>\r\n        <button type=\"button\" class=\"ui secondaryButton button pull-right\" ng-click=\"close($event)\">\r\n            <span ng-bind=\"getText('close')\"></span>\r\n        </button>\r\n    </li>\r\n</ul>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1893,7 +1893,7 @@ module.exports = path;
 /* 34 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
 var html = "<div class=\"uib-datepicker\" ng-switch=\"datepickerMode\" role=\"application\" ng-keydown=\"keydown($event)\">\r\n  <div uib-daypicker ng-switch-when=\"day\" tabindex=\"0\" template-url=\"day.html\"></div>\r\n  <div uib-monthpicker ng-switch-when=\"month\" tabindex=\"0\" template-url=\"month.html\"></div>\r\n  <div uib-yearpicker ng-switch-when=\"year\" tabindex=\"0\" template-url=\"year.html\"></div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1935,7 +1935,7 @@ module.exports = require("moment");
 /* 39 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/datePicker.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/datePicker/datePicker.html';
 var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" class=\"form-control\"\r\n            uib-datepicker-popup=\"{{::dp.format}}\"\r\n            ng-model=\"dp.date\"\r\n            ng-model-options=\"dp.modelOptions\"\r\n            ng-click=\"dp.toggleCalendar($event)\"\r\n            datepicker-popup=\"{{::dp.format}}\"\r\n            datepicker-popup-template-url=\"{{::dp.popupTemplate}}\"\r\n            datepicker-template-url=\"{{::dp.datePickerTemplate}}\"\r\n            is-open=\"dp.status.opened\"\r\n            min-date=\"dp.minDate\"\r\n            max-date=\"dp.maxDate\"\r\n            datepicker-options=\"dp.dateOptions\"\r\n            on-open-focus=\"false\"\r\n            popup-placement=\"auto\"\r\n            ng-required=\"true\"\r\n            readonly=\"readonly\"\r\n            close-text=\"Close\"\r\n            current-text=\"Today\"/>\r\n    <button class=\"ui icon button\" ng-click=\"dp.toggleCalendar($event)\">\r\n        <i class=\"calendar icon\"></i>\r\n    </button>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1987,7 +1987,7 @@ exports.ErrorBlockController = ErrorBlockController;
 /* 41 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
 var html = "<div ng-if=\"eb.showError\" class=\"ui negative message\">\r\n    <div class=\"header\">\r\n        {{eb.errorBlock.errorTitle}}\r\n    </div>\r\n    <p>\r\n        {{eb.errorBlock.errorMessage}}\r\n    </p>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2090,7 +2090,7 @@ exports.EzGridController = EzGridController;
 /* 43 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
 var html = "<div ui-grid=\"eg.gridOptions\" ui-grid-selection ui-grid-pagination>\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"eg.isRequestRunning\">\r\n        <div class=\"ui large text loader sr-only\"><span>Loading..</span></div>\r\n    </div>\r\n    <div ng-if=\"eg.isRequestError\" class=\"ui active inverted dimmer part-loader gridErrContainer\">\r\n        <div class=\"ui error message gridErrMessage\">\r\n            <div class=\"header\">An error occurred, please try again</div>\r\n            <button type=\"button\" class=\"ui basic icon button gridErrBtn\" ng-click=\"eg.reloadGrid()\"><i class=\"refresh icon\"></i> Reload Data</button>\r\n        </div>\r\n    </div>\r\n    <div ng-show=\"eg.hasNoItems()\" class=\"ui active inverted dimmer part-loader noItemsInfoContainer\">\r\n        <div class=\"ui info message noItemsMessage\">\r\n            <div class=\"header\">No items found.</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2219,8 +2219,8 @@ exports.EzModalController = EzModalController;
 /* 45 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/ezModal/ezModal.html';
-var html = "<sm-modal\r\n    class=\"{{em.className}}\"\r\n    ng-class=\"{ 'data-is-active' : em.isShown, 'data-is-hidden' : !em.isShown }\"\r\n    id=\"{{em.id}}\"\r\n    visible=\"em.isModalVisible\"\r\n    on-show=\"em.onShow\"\r\n    on-hidden=\"em.onHideCallback\"\r\n    on-visible=\"em.onVisibleCallback\"\r\n    settings=\"{\r\n        transition: 'scale',\r\n        closable: false,\r\n        detachable: true,\r\n        observeChanges: true,\r\n        blurring: true\r\n    }\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"em.isLoaderVisible\">\r\n        <div class=\"ui large text loader\"><span>Loading...</span></div>\r\n    </div>\r\n\r\n    <div class=\"header\">{{ em.headerText }}</div>\r\n    <div ng-if=\"em.isInDom\" class=\"content\" ng-transclude></div>\r\n\r\n    <div class=\"actions\">\r\n        <div class=\"ui primary button\" data-ng-click=\"em.onPrimaryButtonClick()\">{{ em.primaryButtonText }}</div>\r\n        <div class=\"ui basic button\" data-ng-click=\"em.onSecondaryButtonClick()\">{{ em.secondaryButtonText }}</div>\r\n    </div>\r\n</sm-modal>";
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/ezModal/ezModal.html';
+var html = "<sm-modal\r\n    class=\"{{em.className}}\"\r\n    ng-class=\"{ 'data-is-active' : em.isShown, 'data-is-hidden' : !em.isShown }\"\r\n    id=\"{{em.id}}\"\r\n    visible=\"em.isModalVisible\"\r\n    on-show=\"em.onShow\"\r\n    on-hidden=\"em.onHideCallback\"\r\n    on-visible=\"em.onVisibleCallback\"\r\n    settings=\"{\r\n        transition: 'scale',\r\n        closable: false,\r\n        detachable: true,\r\n        observeChanges: true,\r\n        blurring: true\r\n    }\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"em.isLoaderVisible\">\r\n        <div class=\"ui large text loader\"><span>Loading...</span></div>\r\n    </div>\r\n\r\n    <div class=\"header\">{{ em.headerText }}</div>\r\n    <div ng-if=\"em.isInDom\" class=\"content\" ng-transclude></div>\r\n\r\n    <div class=\"actions\">\r\n        <div class=\"ui primary button\" ng-if=\"em.primaryButtonText\" data-ng-click=\"em.onPrimaryButtonClick()\">{{ em.primaryButtonText }}</div>\r\n        <div class=\"ui basic button\" ng-if=\"em.secondaryButtonText\" data-ng-click=\"em.onSecondaryButtonClick()\">{{ em.secondaryButtonText }}</div>\r\n    </div>\r\n</sm-modal>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -2437,7 +2437,7 @@ exports.SingleLookupController = SingleLookupController;
 /* 47 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
 var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\">\r\n\r\n            <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                 eg-item-id-field=\"sl.itemIdField\">\r\n        </ez-grid>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2525,7 +2525,7 @@ exports.UploadImageController = UploadImageController;
 /* 49 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
 var html = "<div class=\"ui segment image-uploader-container\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"ui.isRequestRunning\">\r\n        <div class=\"ui large text loader\"><span>Loading..</span></div>\r\n    </div>\r\n\r\n    <img ng-if=\"!ui.hasExistingImage\" class=\"ui small rounded image\"\r\n         ngf-select=\"ui.onImageSelect($file)\"\r\n         ngf-pattern=\"'image/*'\"\r\n         ngf-accept=\"'image/*'\"\r\n         ng-src=\"{{ui.imageSrc}}\">\r\n\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2576,7 +2576,7 @@ exports.NotificationViewerController = NotificationViewerController;
 /* 51 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
 var html = "<div ng-repeat=\"item in nv.items\" class=\"ui {{ item.type }} message\">\r\n    <i class=\"close icon\" ng-click=\"nv.dismiss(item)\"></i>\r\n    <div>\r\n        {{ item.message }}\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2627,7 +2627,7 @@ exports.CustomUiGridConstants = CustomUiGridConstants;
 /* 54 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
 var html = "<style>\r\n    .ui-grid-filter-input {\r\n        display: inline-block;\r\n        position: relative;\r\n        height: 25px !important;\r\n        width: 0 auto;\r\n        min-width: 75% !important;\r\n        width: 100%;\r\n        padding: 0px;\r\n    }\r\n</style>\r\n\r\n<div ng-class=\"{ 'sortable': sortable }\">\r\n    <div class=\"ui-grid-cell-contents\" col-index=\"renderIndex\" title=\"TOOLTIP\">\r\n        <span ng-bind=\"col.displayName CUSTOM_FILTERS\"></span>\r\n\r\n        <span ui-grid-visible=\"col.sort.direction\" ng-class=\"{ 'ui-grid-icon-up-dir': col.sort.direction == asc, 'ui-grid-icon-down-dir': col.sort.direction == desc, 'ui-grid-icon-blank': !col.sort.direction }\">\r\n            &nbsp;\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ui-grid-column-menu-button\" ng-if=\"grid.options.enableColumnMenus && !col.isRowHeader  && col.colDef.enableColumnMenu !== false\" ng-click=\"toggleMenu($event)\" ng-class=\"{'ui-grid-column-menu-button-last-col': isLastCol}\">\r\n        <i class=\"ui-grid-icon-angle-down\">&nbsp;</i>\r\n    </div>\r\n\r\n    <div ui-grid-filter=\"\"></div>\r\n\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2636,7 +2636,7 @@ module.exports = path;
 /* 55 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
 var html = "<div class=\"ui-grid-filter-container\"\r\n    ng-repeat=\"colFilter in col.filters\"\r\n    ng-class=\"{'ui-grid-filter-cancel-button-hidden' : colFilter.disableCancelFilterButton === true }\">\r\n    <div ng-if=\"colFilter.type !== 'select'\">\r\n        <div class=\"ui small icon input ui-grid-filter-input\">\r\n            <input type=\"text\"\r\n                class=\"ui-grid-filter-input-{{$index}}\"\r\n                ng-model=\"colFilter.term\"\r\n                ng-attr-placeholder=\"{{colFilter.placeholder || ''}}\"\r\n                aria-label=\"{{colFilter.ariaLabel || aria.defaultFilterLabel}}\" />\r\n\r\n            <i class=\"search icon\"></i>\r\n        </div>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term !== null && colFilter.term !== ''\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n\r\n    <div ng-if=\"colFilter.type === 'select'\">\r\n        <select class=\"ui-grid-filter-select ui-grid-filter-input-{{$index}}\"\r\n            ng-model=\"colFilter.term\"\r\n            aria-label=\"{{colFilter.ariaLabel || ''}}\"\r\n            ng-options=\"option.value as option.label for option in colFilter.selectOptions\">\r\n            <option value=\"\" disabled selected ng-bind=\"colFilter.placeholder || 'Select an option'\"></option>\r\n        </select>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button-select\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term != null\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2645,7 +2645,7 @@ module.exports = path;
 /* 56 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
+var path = 'C:/programming/work/ezlinks/gitlab/ez-web-toolkit/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
 var html = "<div class=\"ui-grid-cell-contents\" style=\"line-height:{{ grid.options.rowHeight - 10 }}px\" title=\"TOOLTIP\" ng-bind=\"COL_FIELD CUSTOM_FILTERS\"></div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
