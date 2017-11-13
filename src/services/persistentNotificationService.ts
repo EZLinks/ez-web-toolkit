@@ -10,16 +10,23 @@ export class PersistentNotificationService implements IPersistentNotificationSer
     }
 
     public warn(message: string): void {
+        this.addMesage(message, 'warning');
+    }
 
-        let item = new PersistentMessage();
-        item.message = message;
-        item.type = 'warning';
-
-        PersistentNotificationService.items.push(item);
+    public error(message: string): void {
+        this.addMesage(message, 'error');
     }
 
     public dismiss(item: PersistentMessage): void {
         _.remove(PersistentNotificationService.items, (itm) => itm === item);
+    }
+
+    private addMesage(message: string, type: string): void {
+        let item = new PersistentMessage();
+        item.message = message;
+        item.type = type;
+
+        PersistentNotificationService.items.push(item);
     }
 }
 
@@ -28,12 +35,17 @@ export interface IPersistentNotificationService {
     /**
      * get all items in notification queue.
      */
-    items() : Array<PersistentMessage>;
+    items(): Array<PersistentMessage>;
 
     /** 
      * make a warning
      */
     warn(message: string): void;
+
+    /**
+     * make an error message
+     */
+    error(message: string): void;
 
     /**
      * hides the item from list.
