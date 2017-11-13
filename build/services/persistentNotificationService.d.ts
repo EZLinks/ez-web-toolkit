@@ -3,7 +3,9 @@ export declare class PersistentNotificationService implements IPersistentNotific
     static items: PersistentMessage[];
     items(): Array<PersistentMessage>;
     warn(message: string): void;
+    error(message: string): void;
     dismiss(item: PersistentMessage): void;
+    private addMesage(message, type);
 }
 export interface IPersistentNotificationService {
     /**
@@ -14,6 +16,10 @@ export interface IPersistentNotificationService {
      * make a warning
      */
     warn(message: string): void;
+    /**
+     * make an error message
+     */
+    error(message: string): void;
     /**
      * hides the item from list.
      */
