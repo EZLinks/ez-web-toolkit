@@ -191,10 +191,9 @@ export class SingleLookupController extends BaseComponent {
      */
     openModal() {
 
-        if (this.beforePopupOpen && this.beforePopupOpen() !== undefined) {
+        if (this.beforePopupOpen) {
 
             let result = this.beforePopupOpen();
-
             if (result === false) {
                 return;
             }

@@ -2382,7 +2382,7 @@ var SingleLookupController = (function (_super) {
      * Function to open the modal window.
      */
     SingleLookupController.prototype.openModal = function () {
-        if (this.beforePopupOpen && this.beforePopupOpen() !== undefined) {
+        if (this.beforePopupOpen) {
             var result = this.beforePopupOpen();
             if (result === false) {
                 return;
