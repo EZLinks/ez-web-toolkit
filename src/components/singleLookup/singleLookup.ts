@@ -39,6 +39,9 @@ export class SingleLookup implements ng.IComponentOptions {
             // The callback function that returns the selected items id, passed with 'result' as a parameter
             // (result will be the id of the selected item)
             resultCallback: '&resultCallback',
+            
+            // occurs before popup is being opened
+            beforePopupOpen: '&beforePopupOpen',
 
             // The id to use as the current selected item
             selectedId: '<selectedId',
@@ -77,6 +80,7 @@ export class SingleLookupController extends BaseComponent {
     public isModalVisible: boolean;
 
     public resultCallback: Function;
+    public beforePopupOpen: Function;
 
     public commonGridColumnOptions = {
         enableFiltering: true,
@@ -186,6 +190,15 @@ export class SingleLookupController extends BaseComponent {
      * Function to open the modal window.
      */
     openModal() {
+
+        if (this.beforePopupOpen) {
+
+            let result = this.beforePopupOpen();
+
+            if (!result) {
+                return;
+            }
+        }
 
         this.isModalVisible = true;
 

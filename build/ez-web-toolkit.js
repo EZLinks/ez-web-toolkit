@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["lodash", "jquery", "angular", "angular-typescript-validation", "moment", "toastr"], factory);
 	else if(typeof exports === 'object')
-		exports["ez-web-toolkit"] = factory();
+		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
 	else
-		root["ez-web-toolkit"] = factory();
-})(this, function() {
+		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_17__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_68__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -87,7 +87,7 @@ module.exports = require("lodash");
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
-var BaseComponent = /** @class */ (function () {
+var BaseComponent = (function () {
     function BaseComponent($scope, additionalDestruction) {
         var _this = this;
         this.unwatchArray = new Array();
@@ -141,7 +141,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * The event constants.
  */
-var EventConsts = /** @class */ (function () {
+var EventConsts = (function () {
     function EventConsts() {
     }
     /**
@@ -178,7 +178,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseComponent_1 = __webpack_require__(1);
 var eventConsts_1 = __webpack_require__(3);
-var BaseLookupController = /** @class */ (function (_super) {
+var BaseLookupController = (function (_super) {
     __extends(BaseLookupController, _super);
     //#endregion
     //#region Constructor
@@ -213,7 +213,7 @@ exports.BaseLookupController = BaseLookupController;
 Object.defineProperty(exports, "__esModule", { value: true });
 var managerState_1 = __webpack_require__(7);
 var editorState_1 = __webpack_require__(2);
-var BaseManagerController = /** @class */ (function () {
+var BaseManagerController = (function () {
     function BaseManagerController($scope, $timeout, notificationService) {
         this.$scope = $scope;
         this.$timeout = $timeout;
@@ -333,7 +333,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseComponent_1 = __webpack_require__(1);
-var BaseModalController = /** @class */ (function (_super) {
+var BaseModalController = (function (_super) {
     __extends(BaseModalController, _super);
     //#region Constructor
     function BaseModalController($scope, modalService) {
@@ -384,7 +384,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * type constants.
  */
-var TypeConsts = /** @class */ (function () {
+var TypeConsts = (function () {
     function TypeConsts() {
     }
     /**
@@ -727,7 +727,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Response error exception.
  */
-var ResponseError = /** @class */ (function (_super) {
+var ResponseError = (function (_super) {
     __extends(ResponseError, _super);
     /**
      * Creates a new response error.
@@ -755,7 +755,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * The request options to be passed to the api service request function.
  */
-var RequestOptions = /** @class */ (function () {
+var RequestOptions = (function () {
     // TODO: Reverse order of url, string params.
     function RequestOptions(url, method, baseUrl) {
         if (baseUrl === void 0) { baseUrl = './'; }
@@ -778,7 +778,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * problem result
  */
-var ProblemResult = /** @class */ (function () {
+var ProblemResult = (function () {
     function ProblemResult() {
     }
     return ProblemResult;
@@ -796,7 +796,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the grid request model.
  */
-var UiGridRequest = /** @class */ (function () {
+var UiGridRequest = (function () {
     function UiGridRequest() {
     }
     return UiGridRequest;
@@ -805,7 +805,7 @@ exports.UiGridRequest = UiGridRequest;
 /**
  * sort request model.
  */
-var SortRequest = /** @class */ (function () {
+var SortRequest = (function () {
     function SortRequest() {
     }
     return SortRequest;
@@ -814,7 +814,7 @@ exports.SortRequest = SortRequest;
 /**
  * filter request.
  */
-var FilterRequest = /** @class */ (function () {
+var FilterRequest = (function () {
     function FilterRequest() {
     }
     return FilterRequest;
@@ -832,7 +832,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the persistent message class.
  */
-var PersistentMessage = /** @class */ (function () {
+var PersistentMessage = (function () {
     function PersistentMessage() {
     }
     return PersistentMessage;
@@ -904,7 +904,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var angular_typescript_validation_1 = __webpack_require__(21);
 var editorState_1 = __webpack_require__(2);
 var validationProcessor_1 = __webpack_require__(22);
-var BaseEditorController = /** @class */ (function () {
+var BaseEditorController = (function () {
     function BaseEditorController($scope, $timeout, notificationService, validator) {
         this.$timeout = $timeout;
         this.notificationService = notificationService;
@@ -1034,7 +1034,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * validation processing tasks.
  */
-var ValidationProcessor = /** @class */ (function () {
+var ValidationProcessor = (function () {
     function ValidationProcessor() {
     }
     /**
@@ -1086,7 +1086,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseManagerController_1 = __webpack_require__(6);
 var eventConsts_1 = __webpack_require__(3);
-var BaseManagerDeletableController = /** @class */ (function (_super) {
+var BaseManagerDeletableController = (function (_super) {
     __extends(BaseManagerDeletableController, _super);
     function BaseManagerDeletableController() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -1745,7 +1745,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the confirm dialog component.
  */
-var ConfirmDialog = /** @class */ (function () {
+var ConfirmDialog = (function () {
     /**
      * inits component.
      */
@@ -1770,7 +1770,7 @@ exports.ConfirmDialog = ConfirmDialog;
 /**
  * controller for confirm dialog component.
  */
-var ConfirmDialogController = /** @class */ (function () {
+var ConfirmDialogController = (function () {
     function ConfirmDialogController() {
         var _this = this;
         this.onHidden = function () {
@@ -1788,7 +1788,7 @@ exports.ConfirmDialogController = ConfirmDialogController;
 /* 31 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
 var html = "<ez-modal\r\n    em-class-name=\"confirm-dialog\"\r\n    em-header-text=\"{{cd.title}}\"\r\n    em-primary-button-text=\"Confirm\"\r\n    em-secondary-button-text=\"Cancel\"\r\n    em-is-visible=\"cd.visible\"\r\n    em-on-approve=\"cd.onOk()\"\r\n    em-on-deny=\"cd.onCancel()\"\r\n    em-is-loader-visible=\"cd.loader\"\r\n    em-on-hidden=\"cd.onHidden()\">\r\n\r\n    <div ng-bind=\"cd.body\"></div>\r\n    <div ng-if=\"cd.callout\" class=\"emphasis\" ng-bind=\"cd.callout\"></div>\r\n\r\n    <error-block class=\"margin-t10 dblock\" eb-error=\"cd.errorBlock\"></error-block>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1809,7 +1809,7 @@ __webpack_require__(35);
 __webpack_require__(36);
 __webpack_require__(37);
 var moment = __webpack_require__(38);
-var DatePicker = /** @class */ (function () {
+var DatePicker = (function () {
     function DatePicker() {
         this.templateUrl = __webpack_require__(39);
         this.controller = DatePickerController;
@@ -1825,7 +1825,7 @@ var DatePicker = /** @class */ (function () {
     return DatePicker;
 }());
 exports.DatePicker = DatePicker;
-var DatePickerController = /** @class */ (function () {
+var DatePickerController = (function () {
     function DatePickerController() {
         this.status = {
             opened: false
@@ -1884,7 +1884,7 @@ exports.DatePickerController = DatePickerController;
 /* 33 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
 var html = "<ul class=\"uib-datepicker-popup dropdown-menu ui uib-position-measure clearing segment\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\r\n    <li ng-transclude></li>\r\n    <li ng-if=\"showButtonBar\" style=\"padding:10px 9px 2px\">\r\n        <span class=\"pull-left\">\r\n            <button type=\"button\" class=\"ui primaryButton button primary\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">\r\n                <span ng-bind=\"getText('current')\"></span>\r\n            </button>\r\n        </span>\r\n        <button type=\"button\" class=\"ui secondaryButton button pull-right\" ng-click=\"close($event)\">\r\n            <span ng-bind=\"getText('close')\"></span>\r\n        </button>\r\n    </li>\r\n</ul>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1893,7 +1893,7 @@ module.exports = path;
 /* 34 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
 var html = "<div class=\"uib-datepicker\" ng-switch=\"datepickerMode\" role=\"application\" ng-keydown=\"keydown($event)\">\r\n  <div uib-daypicker ng-switch-when=\"day\" tabindex=\"0\" template-url=\"day.html\"></div>\r\n  <div uib-monthpicker ng-switch-when=\"month\" tabindex=\"0\" template-url=\"month.html\"></div>\r\n  <div uib-yearpicker ng-switch-when=\"year\" tabindex=\"0\" template-url=\"year.html\"></div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1935,7 +1935,7 @@ module.exports = require("moment");
 /* 39 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/datePicker/datePicker.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/datePicker/datePicker.html';
 var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" class=\"form-control\"\r\n            uib-datepicker-popup=\"{{::dp.format}}\"\r\n            ng-model=\"dp.date\"\r\n            ng-model-options=\"dp.modelOptions\"\r\n            ng-click=\"dp.toggleCalendar($event)\"\r\n            datepicker-popup=\"{{::dp.format}}\"\r\n            datepicker-popup-template-url=\"{{::dp.popupTemplate}}\"\r\n            datepicker-template-url=\"{{::dp.datePickerTemplate}}\"\r\n            is-open=\"dp.status.opened\"\r\n            min-date=\"dp.minDate\"\r\n            max-date=\"dp.maxDate\"\r\n            datepicker-options=\"dp.dateOptions\"\r\n            on-open-focus=\"false\"\r\n            popup-placement=\"auto\"\r\n            ng-required=\"true\"\r\n            readonly=\"readonly\"\r\n            close-text=\"Close\"\r\n            current-text=\"Today\"/>\r\n    <button class=\"ui icon button\" ng-click=\"dp.toggleCalendar($event)\">\r\n        <i class=\"calendar icon\"></i>\r\n    </button>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -1950,7 +1950,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the error block component.
  */
-var ErrorBlock = /** @class */ (function () {
+var ErrorBlock = (function () {
     /**
      * inits component.
      */
@@ -1968,7 +1968,7 @@ exports.ErrorBlock = ErrorBlock;
 /**
  * controller for error block component.
  */
-var ErrorBlockController = /** @class */ (function () {
+var ErrorBlockController = (function () {
     function ErrorBlockController() {
     }
     Object.defineProperty(ErrorBlockController.prototype, "showError", {
@@ -1987,7 +1987,7 @@ exports.ErrorBlockController = ErrorBlockController;
 /* 41 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
 var html = "<div ng-if=\"eb.showError\" class=\"ui negative message\">\r\n    <div class=\"header\">\r\n        {{eb.errorBlock.errorTitle}}\r\n    </div>\r\n    <p>\r\n        {{eb.errorBlock.errorMessage}}\r\n    </p>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2010,7 +2010,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseLookupController_1 = __webpack_require__(5);
-var EzGrid = /** @class */ (function () {
+var EzGrid = (function () {
     function EzGrid() {
         this.templateUrl = __webpack_require__(43);
         this.controller = EzGridController;
@@ -2044,7 +2044,7 @@ var EzGrid = /** @class */ (function () {
     return EzGrid;
 }());
 exports.EzGrid = EzGrid;
-var EzGridController = /** @class */ (function (_super) {
+var EzGridController = (function (_super) {
     __extends(EzGridController, _super);
     function EzGridController($scope, uiGridService) {
         var _this = _super.call(this, $scope) || this;
@@ -2090,7 +2090,7 @@ exports.EzGridController = EzGridController;
 /* 43 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
 var html = "<div ui-grid=\"eg.gridOptions\" ui-grid-selection ui-grid-pagination>\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"eg.isRequestRunning\">\r\n        <div class=\"ui large text loader sr-only\"><span>Loading..</span></div>\r\n    </div>\r\n    <div ng-if=\"eg.isRequestError\" class=\"ui active inverted dimmer part-loader gridErrContainer\">\r\n        <div class=\"ui error message gridErrMessage\">\r\n            <div class=\"header\">An error occurred, please try again</div>\r\n            <button type=\"button\" class=\"ui basic icon button gridErrBtn\" ng-click=\"eg.reloadGrid()\"><i class=\"refresh icon\"></i> Reload Data</button>\r\n        </div>\r\n    </div>\r\n    <div ng-show=\"eg.hasNoItems()\" class=\"ui active inverted dimmer part-loader noItemsInfoContainer\">\r\n        <div class=\"ui info message noItemsMessage\">\r\n            <div class=\"header\">No items found.</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2113,7 +2113,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseModalController_1 = __webpack_require__(8);
-var EzModal = /** @class */ (function () {
+var EzModal = (function () {
     function EzModal() {
         this.templateUrl = __webpack_require__(45);
         this.controller = EzModalController;
@@ -2160,7 +2160,7 @@ var EzModal = /** @class */ (function () {
     return EzModal;
 }());
 exports.EzModal = EzModal;
-var EzModalController = /** @class */ (function (_super) {
+var EzModalController = (function (_super) {
     __extends(EzModalController, _super);
     function EzModalController($scope, $timeout, modalService) {
         var _this = _super.call(this, $scope, modalService) || this;
@@ -2219,7 +2219,7 @@ exports.EzModalController = EzModalController;
 /* 45 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/ezModal/ezModal.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/ezModal/ezModal.html';
 var html = "<sm-modal\r\n    class=\"{{em.className}}\"\r\n    ng-class=\"{ 'data-is-active' : em.isShown, 'data-is-hidden' : !em.isShown }\"\r\n    id=\"{{em.id}}\"\r\n    visible=\"em.isModalVisible\"\r\n    on-show=\"em.onShow\"\r\n    on-hidden=\"em.onHideCallback\"\r\n    on-visible=\"em.onVisibleCallback\"\r\n    settings=\"{\r\n        transition: 'scale',\r\n        closable: false,\r\n        detachable: true,\r\n        observeChanges: true,\r\n        blurring: true\r\n    }\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"em.isLoaderVisible\">\r\n        <div class=\"ui large text loader\"><span>Loading...</span></div>\r\n    </div>\r\n\r\n    <div class=\"header\">{{ em.headerText }}</div>\r\n    <div ng-if=\"em.isInDom\" class=\"content\" ng-transclude></div>\r\n\r\n    <div class=\"actions\">\r\n        <div class=\"ui primary button\" ng-if=\"em.primaryButtonText\" data-ng-click=\"em.onPrimaryButtonClick()\">{{ em.primaryButtonText }}</div>\r\n        <div class=\"ui basic button\" ng-if=\"em.secondaryButtonText\" data-ng-click=\"em.onSecondaryButtonClick()\">{{ em.secondaryButtonText }}</div>\r\n    </div>\r\n</sm-modal>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2244,7 +2244,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var baseComponent_1 = __webpack_require__(1);
 var typeConsts_1 = __webpack_require__(9);
-var SingleLookup = /** @class */ (function () {
+var SingleLookup = (function () {
     function SingleLookup() {
         this.templateUrl = __webpack_require__(47);
         this.controller = SingleLookupController;
@@ -2265,6 +2265,8 @@ var SingleLookup = /** @class */ (function () {
             // The callback function that returns the selected items id, passed with 'result' as a parameter
             // (result will be the id of the selected item)
             resultCallback: '&resultCallback',
+            // occurs before popup is being opened
+            beforePopupOpen: '&beforePopupOpen',
             // The id to use as the current selected item
             selectedId: '<selectedId',
             // The title for the lookup window
@@ -2279,7 +2281,7 @@ var SingleLookup = /** @class */ (function () {
     return SingleLookup;
 }());
 exports.SingleLookup = SingleLookup;
-var SingleLookupController = /** @class */ (function (_super) {
+var SingleLookupController = (function (_super) {
     __extends(SingleLookupController, _super);
     function SingleLookupController($scope, $timeout, notificationService, customUiGridConstants, uiGridConstants) {
         var _this = _super.call(this, $scope) || this;
@@ -2380,6 +2382,12 @@ var SingleLookupController = /** @class */ (function (_super) {
      * Function to open the modal window.
      */
     SingleLookupController.prototype.openModal = function () {
+        if (this.beforePopupOpen) {
+            var result = this.beforePopupOpen();
+            if (!result) {
+                return;
+            }
+        }
         this.isModalVisible = true;
         if (this.selectedItem) {
             this.originalItem = _.cloneDeep(this.selectedItem);
@@ -2437,7 +2445,7 @@ exports.SingleLookupController = SingleLookupController;
 /* 47 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
 var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\">\r\n\r\n            <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                 eg-item-id-field=\"sl.itemIdField\">\r\n        </ez-grid>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2452,7 +2460,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * The upload image component.
  */
-var UploadImage = /** @class */ (function () {
+var UploadImage = (function () {
     /**
      * inits component.
      */
@@ -2471,7 +2479,7 @@ exports.UploadImage = UploadImage;
 /**
  * The upload image controller.
  */
-var UploadImageController = /** @class */ (function () {
+var UploadImageController = (function () {
     /**
      * inits controller.
      * @param $timeout
@@ -2525,7 +2533,7 @@ exports.UploadImageController = UploadImageController;
 /* 49 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
 var html = "<div class=\"ui segment image-uploader-container\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"ui.isRequestRunning\">\r\n        <div class=\"ui large text loader\"><span>Loading..</span></div>\r\n    </div>\r\n\r\n    <img ng-if=\"!ui.hasExistingImage\" class=\"ui small rounded image\"\r\n         ngf-select=\"ui.onImageSelect($file)\"\r\n         ngf-pattern=\"'image/*'\"\r\n         ngf-accept=\"'image/*'\"\r\n         ng-src=\"{{ui.imageSrc}}\">\r\n\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2537,7 +2545,7 @@ module.exports = path;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var NotificationViewer = /** @class */ (function () {
+var NotificationViewer = (function () {
     function NotificationViewer() {
         this.templateUrl = __webpack_require__(51);
         this.controller = NotificationViewerController;
@@ -2547,7 +2555,7 @@ var NotificationViewer = /** @class */ (function () {
     return NotificationViewer;
 }());
 exports.NotificationViewer = NotificationViewer;
-var NotificationViewerController = /** @class */ (function () {
+var NotificationViewerController = (function () {
     function NotificationViewerController(service) {
         this.service = service;
     }
@@ -2576,7 +2584,7 @@ exports.NotificationViewerController = NotificationViewerController;
 /* 51 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
 var html = "<div ng-repeat=\"item in nv.items\" class=\"ui {{ item.type }} message\">\r\n    <i class=\"close icon\" ng-click=\"nv.dismiss(item)\"></i>\r\n    <div>\r\n        {{ item.message }}\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2603,7 +2611,7 @@ exports.TypeConsts = typeConsts_1.TypeConsts;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var CustomUiGridConstants = /** @class */ (function () {
+var CustomUiGridConstants = (function () {
     function CustomUiGridConstants() {
     }
     Object.defineProperty(CustomUiGridConstants, "Default", {
@@ -2627,7 +2635,7 @@ exports.CustomUiGridConstants = CustomUiGridConstants;
 /* 54 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
 var html = "<style>\r\n    .ui-grid-filter-input {\r\n        display: inline-block;\r\n        position: relative;\r\n        height: 25px !important;\r\n        width: 0 auto;\r\n        min-width: 75% !important;\r\n        width: 100%;\r\n        padding: 0px;\r\n    }\r\n</style>\r\n\r\n<div ng-class=\"{ 'sortable': sortable }\">\r\n    <div class=\"ui-grid-cell-contents\" col-index=\"renderIndex\" title=\"TOOLTIP\">\r\n        <span ng-bind=\"col.displayName CUSTOM_FILTERS\"></span>\r\n\r\n        <span ui-grid-visible=\"col.sort.direction\" ng-class=\"{ 'ui-grid-icon-up-dir': col.sort.direction == asc, 'ui-grid-icon-down-dir': col.sort.direction == desc, 'ui-grid-icon-blank': !col.sort.direction }\">\r\n            &nbsp;\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ui-grid-column-menu-button\" ng-if=\"grid.options.enableColumnMenus && !col.isRowHeader  && col.colDef.enableColumnMenu !== false\" ng-click=\"toggleMenu($event)\" ng-class=\"{'ui-grid-column-menu-button-last-col': isLastCol}\">\r\n        <i class=\"ui-grid-icon-angle-down\">&nbsp;</i>\r\n    </div>\r\n\r\n    <div ui-grid-filter=\"\"></div>\r\n\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2636,7 +2644,7 @@ module.exports = path;
 /* 55 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
 var html = "<div class=\"ui-grid-filter-container\"\r\n    ng-repeat=\"colFilter in col.filters\"\r\n    ng-class=\"{'ui-grid-filter-cancel-button-hidden' : colFilter.disableCancelFilterButton === true }\">\r\n    <div ng-if=\"colFilter.type !== 'select'\">\r\n        <div class=\"ui small icon input ui-grid-filter-input\">\r\n            <input type=\"text\"\r\n                class=\"ui-grid-filter-input-{{$index}}\"\r\n                ng-model=\"colFilter.term\"\r\n                ng-attr-placeholder=\"{{colFilter.placeholder || ''}}\"\r\n                aria-label=\"{{colFilter.ariaLabel || aria.defaultFilterLabel}}\" />\r\n\r\n            <i class=\"search icon\"></i>\r\n        </div>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term !== null && colFilter.term !== ''\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n\r\n    <div ng-if=\"colFilter.type === 'select'\">\r\n        <select class=\"ui-grid-filter-select ui-grid-filter-input-{{$index}}\"\r\n            ng-model=\"colFilter.term\"\r\n            aria-label=\"{{colFilter.ariaLabel || ''}}\"\r\n            ng-options=\"option.value as option.label for option in colFilter.selectOptions\">\r\n            <option value=\"\" disabled selected ng-bind=\"colFilter.placeholder || 'Select an option'\"></option>\r\n        </select>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button-select\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term != null\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2645,7 +2653,7 @@ module.exports = path;
 /* 56 */
 /***/ (function(module, exports) {
 
-var path = 'C:/Code/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
+var path = 'C:/Users/Optimus/Desktop/Work/ewt/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
 var html = "<div class=\"ui-grid-cell-contents\" style=\"line-height:{{ grid.options.rowHeight - 10 }}px\" title=\"TOOLTIP\" ng-bind=\"COL_FIELD CUSTOM_FILTERS\"></div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2722,7 +2730,7 @@ var problemResult_1 = __webpack_require__(14);
 /**
  * validaiton problem result.
  */
-var ValidationProblemResult = /** @class */ (function (_super) {
+var ValidationProblemResult = (function (_super) {
     __extends(ValidationProblemResult, _super);
     function ValidationProblemResult() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -2739,7 +2747,7 @@ exports.ValidationProblemResult = ValidationProblemResult;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var UiGridResult = /** @class */ (function () {
+var UiGridResult = (function () {
     function UiGridResult() {
     }
     return UiGridResult;
@@ -2757,7 +2765,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the error block model.
  */
-var ErrorBlockModel = /** @class */ (function () {
+var ErrorBlockModel = (function () {
     function ErrorBlockModel() {
     }
     return ErrorBlockModel;
@@ -2810,7 +2818,7 @@ var successStatusCodes = [
 /**
  * Generic response handlers.
  */
-var ResponseHandlers = /** @class */ (function () {
+var ResponseHandlers = (function () {
     function ResponseHandlers(notification) {
         this.notification = notification;
     }
@@ -2891,7 +2899,7 @@ exports.ResponseHandlers = ResponseHandlers;
 Object.defineProperty(exports, "__esModule", { value: true });
 var angular = __webpack_require__(17);
 var requestOptions_1 = __webpack_require__(13);
-var ApiService = /** @class */ (function () {
+var ApiService = (function () {
     function ApiService($http, responseHandlers) {
         this.$http = $http;
         this.responseHandlers = responseHandlers;
@@ -2990,7 +2998,7 @@ exports.ApiService = ApiService;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
-var ModalService = /** @class */ (function () {
+var ModalService = (function () {
     function ModalService($timeout) {
         this.$timeout = $timeout;
         this.stack = [];
@@ -3096,7 +3104,7 @@ var toastr = __webpack_require__(68);
 /**
  * notification service implementation
  */
-var NotificationService = /** @class */ (function () {
+var NotificationService = (function () {
     function NotificationService() {
     }
     NotificationService.prototype.success = function (message) {
@@ -3132,7 +3140,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @returns {Object}
  */
 // ReSharper disable once InconsistentNaming
-var ProcessingService = /** @class */ (function () {
+var ProcessingService = (function () {
     function ProcessingService() {
         /**
          * Whether or not to show the text of the overlay.
@@ -3181,7 +3189,7 @@ exports.ProcessingService = ProcessingService;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var angular = __webpack_require__(17);
-var ServerValidationService = /** @class */ (function () {
+var ServerValidationService = (function () {
     function ServerValidationService() {
         this.errs = {};
     }
@@ -3251,7 +3259,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the service request processor.
  */
-var ServiceRequestProcessor = /** @class */ (function () {
+var ServiceRequestProcessor = (function () {
     function ServiceRequestProcessor($timeout, request, handleCallback) {
         this.$timeout = $timeout;
         this.request = request;
@@ -3292,7 +3300,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var uiGridRequest_1 = __webpack_require__(15);
 // TODO: Update comments.
-var UiGridService = /** @class */ (function () {
+var UiGridService = (function () {
     function UiGridService($timeout) {
         this.$timeout = $timeout;
         this.selectAllItems = function (controller) {
@@ -3581,7 +3589,7 @@ exports.UiGridService = UiGridService;
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var persistentMessage_1 = __webpack_require__(16);
-var PersistentNotificationService = /** @class */ (function () {
+var PersistentNotificationService = (function () {
     function PersistentNotificationService() {
     }
     PersistentNotificationService.prototype.items = function () {
@@ -3629,7 +3637,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Makes a focus on element while loaded.
  */
-var FocusElement = /** @class */ (function () {
+var FocusElement = (function () {
     function FocusElement($timeout) {
         this.$timeout = $timeout;
         this.restrict = 'A';
@@ -3690,7 +3698,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * activator class.
  *
  */
-var Activator = /** @class */ (function () {
+var Activator = (function () {
     function Activator() {
     }
     /**
@@ -3716,7 +3724,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Methods for helping deal with arrays.
  */
-var ArrayHelper = /** @class */ (function () {
+var ArrayHelper = (function () {
     function ArrayHelper() {
     }
     /**
@@ -3749,7 +3757,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * copies object properties from one object to another.
  */
-var ObjectCopier = /** @class */ (function () {
+var ObjectCopier = (function () {
     function ObjectCopier() {
     }
     /**
@@ -3783,7 +3791,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the service request processor.
  */
-var ServiceRequestProcessor = /** @class */ (function () {
+var ServiceRequestProcessor = (function () {
     function ServiceRequestProcessor($timeout, request, handleCallback) {
         this.$timeout = $timeout;
         this.request = request;
@@ -3824,7 +3832,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * validation processing tasks.
  */
-var ValidationProcessor = /** @class */ (function () {
+var ValidationProcessor = (function () {
     function ValidationProcessor() {
     }
     /**

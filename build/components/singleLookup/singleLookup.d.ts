@@ -30,6 +30,7 @@ export declare class SingleLookupController extends BaseComponent {
     originalItem: any;
     isModalVisible: boolean;
     resultCallback: Function;
+    beforePopupOpen: Function;
     commonGridColumnOptions: {
         enableFiltering: boolean;
         filter: {
