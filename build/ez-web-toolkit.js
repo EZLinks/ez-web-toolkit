@@ -3409,7 +3409,7 @@ var UiGridService = (function () {
         request.pageSize = gridOptions.paginationPageSize;
         request.page = 1;
         request.sort = null;
-        request.filters = [];
+        request.filters = this.constructFilters(gridOptions.columnDefs);
         return request;
     };
     UiGridService.prototype.doSearch = function (controller, isScrollPaging) {
@@ -3519,20 +3519,8 @@ var UiGridService = (function () {
             });
         }
         gridApi.core.on.filterChanged(controller.$scope, function () {
-            var filters = [];
             controller.filterRequest.page = 1;
-            controller.filterRequest.filters = filters;
-            gridApi.grid.columns.forEach(function (column) {
-                if (_.has(column, 'filters[0].term') && _.has(column, 'filters[0].condition')) {
-                    if (column.filters[0].term !== null && column.filters[0].term !== undefined) {
-                        filters.push({
-                            memberName: column.field,
-                            value: column.filters[0].term,
-                            condition: column.filters[0].condition
-                        });
-                    }
-                }
-            });
+            controller.filterRequest.filters = _this.constructFilters(gridApi.grid.columns);
             gridApi.pagination.seek(1);
             _this.gridFilterChanged(controller, false, function (ctrl, isScrollPaging) { return callback(ctrl, isScrollPaging); });
         });
@@ -3559,6 +3547,21 @@ var UiGridService = (function () {
                 }
             }
         });
+    };
+    UiGridService.prototype.constructFilters = function (columns) {
+        var filters = [];
+        columns.forEach(function (column) {
+            if (_.has(column, 'filter.term') && _.has(column, 'filter.condition')) {
+                if (column.filter.term !== null && column.filter.term !== undefined) {
+                    filters.push({
+                        memberName: column.name,
+                        value: column.filter.term,
+                        condition: column.filter.condition
+                    });
+                }
+            }
+        });
+        return filters;
     };
     UiGridService.prototype.gridFilterChanged = function (controller, isScrollPaging, callback) {
         if (controller.filterChangedTimeout) {

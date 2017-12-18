@@ -46,6 +46,7 @@ export declare class UiGridService<T> implements IUiGridService<T> {
     private handleUiGridCallbacks(gridApi, controller, callback);
     selectAllItems: (controller: BaseLookupController<T>) => void;
     unselectAllItems: (controller: BaseLookupController<T>) => void;
+    private constructFilters(columns);
     private gridFilterChanged(controller, isScrollPaging, callback);
     /**
      * Resize the grid according to the number of rows retrieved from the data

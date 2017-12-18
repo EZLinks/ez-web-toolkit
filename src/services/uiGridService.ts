@@ -26,7 +26,7 @@ export class UiGridService<T> implements IUiGridService<T> {
     };
 
     static rowTemplate: string =
-    `<div
+        `<div
         ng-dblclick="grid.appScope.rowDblClick(row)"
         ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name"
         class="ui-grid-cell"
@@ -100,12 +100,12 @@ export class UiGridService<T> implements IUiGridService<T> {
         request.pageSize = gridOptions.paginationPageSize;
         request.page = 1;
         request.sort = null;
-        request.filters = [];
+        request.filters = this.constructFilters(gridOptions.columnDefs);
 
         return request;
     }
 
-    public doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean = false): Promise<any>|void {
+    public doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean = false): Promise<any> | void {
 
         if (controller.isRequestRunning) { return; }
         if (isScrollPaging && controller.allDataFetched) { return; }
@@ -238,24 +238,8 @@ export class UiGridService<T> implements IUiGridService<T> {
 
         gridApi.core.on.filterChanged(controller.$scope, () => {
 
-            var filters = [];
-
             controller.filterRequest.page = 1;
-            controller.filterRequest.filters = filters;
-
-            gridApi.grid.columns.forEach((column) => {
-
-                if (_.has(column, 'filters[0].term') && _.has(column, 'filters[0].condition')) {
-
-                    if (column.filters[0].term !== null && column.filters[0].term !== undefined) {
-                        filters.push({
-                            memberName: column.field,
-                            value: column.filters[0].term,
-                            condition: column.filters[0].condition
-                        });
-                    }
-                }
-            });
+            controller.filterRequest.filters = this.constructFilters(gridApi.grid.columns);
 
             gridApi.pagination.seek(1);
             this.gridFilterChanged(controller, false, (ctrl, isScrollPaging) => callback(ctrl, isScrollPaging));
@@ -313,6 +297,25 @@ export class UiGridService<T> implements IUiGridService<T> {
         controller.selectedItemIds = [];
     }
 
+    private constructFilters(columns: any): Array<any> {
+
+        var filters = [];
+        columns.forEach((column) => {
+
+            if (_.has(column, 'filter.term') && _.has(column, 'filter.condition')) {
+
+                if (column.filter.term !== null && column.filter.term !== undefined) {
+                    filters.push({
+                        memberName: column.name,
+                        value: column.filter.term,
+                        condition: column.filter.condition
+                    });
+                }
+            }
+        });
+
+        return filters;
+    }
 
     private gridFilterChanged(
         controller: BaseLookupController<T>,
@@ -390,7 +393,7 @@ export interface IUiGridService<T> {
     /**
      * makes a call to api to get the data.
      */
-    doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean): Promise<any>|void;
+    doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean): Promise<any> | void;
 
     /**
      * destroys grid variables linked to controller.
