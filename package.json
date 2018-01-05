@@ -66,7 +66,7 @@
     "typescript": "^2.1.4",
     "vanilla-typescript": "^0.3.2",
     "webpack": "^3.0.0",
-    "webpack-build-notifier": "^0.1.13",
+    "webpack-build-notifier": "^0.1.21",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
