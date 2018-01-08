@@ -1,15 +1,22 @@
 /**
- * The state of the editor component.
+ * @namespace toolkit.enums
+ */
+ 
+ /**
+ * @class toolkit.enums.EditorState
+ * @classdesc States of editor.
  */
 export enum EditorState {
 
     /**
-     * Adding a new item.
-     */
+     * The add state.
+     * @member {number} toolkit.enums.EditorState#Add
+     */  
     Add,
 
     /**
-     * Editing an existing item.    
-     */
+     * The edit state.
+     * @member {number} toolkit.enums.EditorState#Edit
+     */  
     Edit
 }

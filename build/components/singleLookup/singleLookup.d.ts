@@ -10,6 +10,10 @@ export declare class SingleLookup implements ng.IComponentOptions {
     bindings: any;
     constructor();
 }
+/**
+ * @class toolkit.components.SingleLookupController
+ * @classdesc A single lookup component.
+ */
 export declare class SingleLookupController extends BaseComponent {
     $scope: any;
     private $timeout;

@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 import { BaseLookupController } from '../../baseClasses/baseLookupController';
 import { IUiGridService } from '../../services/uiGridService';
 export declare class EzGrid implements ng.IComponentOptions {
@@ -7,6 +10,10 @@ export declare class EzGrid implements ng.IComponentOptions {
     bindings: any;
     constructor();
 }
+/**
+ * @class toolkit.components.EzGridController
+ * @classdesc A grid component.
+ */
 export declare class EzGridController extends BaseLookupController<any> {
     private uiGridService;
     static $inject: string[];

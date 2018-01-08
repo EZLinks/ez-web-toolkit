@@ -1,13 +1,19 @@
 /**
- * The state of the manager component.
+ * @namespace toolkit.enums
  */
+/**
+* @class toolkit.enums.ManagerState
+* @classdesc States for manager.
+*/
 export declare enum ManagerState {
     /**
-     * Display the lookup grid.
+     * Shows the lookup grid.
+     * @member {number} toolkit.enums.ManagerState#Lookup
      */
     Lookup = 0,
     /**
-     * Display the editor.
+     * Shows the editor.
+     * @member {number} toolkit.enums.ManagerState#Editor
      */
     Editor = 1,
 }

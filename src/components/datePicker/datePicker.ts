@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 
 let popupTemplate = require('ngtemplate-loader!html-loader!./template/datepicker/popup.html');
 let datePickerTemplate = require('ngtemplate-loader!html-loader!./template/datepicker/datepicker.html');
@@ -31,6 +34,10 @@ export class DatePicker implements ng.IComponentOptions {
     }
 }
 
+/**
+ * @class toolkit.components.DatePickerController
+ * @classdesc Methods for showing date picker component.
+ */
 export class DatePickerController {
 
     public bindings: any;

@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 
 import * as _ from 'lodash';
 
@@ -59,6 +62,10 @@ export class SingleLookup implements ng.IComponentOptions {
     }
 }
 
+/**
+ * @class toolkit.components.SingleLookupController
+ * @classdesc A single lookup component.
+ */
 export class SingleLookupController extends BaseComponent {
 
     public getData: (request) => Promise<any>;

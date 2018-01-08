@@ -5,6 +5,10 @@ export declare class DatePicker implements ng.IComponentOptions {
     bindings: any;
     constructor();
 }
+/**
+ * @class toolkit.components.DatePickerController
+ * @classdesc Methods for showing date picker component.
+ */
 export declare class DatePickerController {
     bindings: any;
     format: string;

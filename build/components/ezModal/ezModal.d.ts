@@ -1,5 +1,8 @@
 /// <reference types="angular" />
 /// <reference types="angular-mocks" />
+/**
+ * @namespace toolkit.components
+ */
 import { BaseModalController } from '../../baseClasses/baseModalController';
 import { IModalService } from '../../services/modalService';
 export declare class EzModal implements ng.IComponentOptions {
@@ -10,6 +13,10 @@ export declare class EzModal implements ng.IComponentOptions {
     transclude: boolean;
     constructor();
 }
+/**
+ * @class toolkit.components.EzModalController
+ * @classdesc A modal component.
+ */
 export declare class EzModalController extends BaseModalController {
     private $timeout;
     onApprove: Function;

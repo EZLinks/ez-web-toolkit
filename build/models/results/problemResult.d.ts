@@ -1,6 +1,10 @@
+/**
+ * @namespace toolkit.models
+ */
 import { HttpStatusCode } from '../../enums/httpStatusCode';
 /**
- * problem result
+ * @class toolkit.models.ProblemResult
+ * @classdesc The problem result.
  */
 export declare class ProblemResult {
     /**

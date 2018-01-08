@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.baseClasses
+ */
+
 import { ManagerState } from '../enums/managerState';
 import { EditorState } from '../enums/editorState';
 
@@ -8,9 +12,28 @@ export abstract class BaseManagerController<T> {
     ManagerState = ManagerState;
     EditorState = EditorState;
 
+    /**
+     * State of the manager editor or lookup.
+     * @member {ManagerState} toolkit.baseClasses.BaseManagerController#managerState
+     */
     public managerState: ManagerState;
+
+    /**
+     * State of the editor add/edit.
+     * @member {EditorState} toolkit.baseClasses.BaseManagerController#editorState
+     */
     public editorState: EditorState;
+
+    /**
+     * The selected item in grid.
+     * @member {T} toolkit.baseClasses.BaseManagerController#selectedItem
+     */
     public selectedItem: T;
+
+    /**
+     * Whether any request is running.
+     * @member {boolean} toolkit.baseClasses.BaseManagerController#isRequestRunning
+     */
     public isRequestRunning: boolean;
 
     get state(): ManagerState {
@@ -26,6 +49,14 @@ export abstract class BaseManagerController<T> {
         });
     }
 
+    /**
+     * @class toolkit.baseClasses.BaseManagerController<T extends Object>
+     * @abstract
+     * @classdesc Methods for manager page where user can delete/create/edit items from grid.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {ng.ITimoutService} $timeout Angular timeout.
+     * @param {INotificationService} notificationService Ez notification service.
+     */
     constructor(
         public $scope,
         public $timeout,
@@ -35,9 +66,10 @@ export abstract class BaseManagerController<T> {
         this.state = ManagerState.Lookup;
     }
 
-    /*
-    * Opens editor to create a new code certificate.
-    */
+    /**
+     * Switches to add editor state and editor manager state.
+     * @method toolkit.baseClasses.BaseManagerController#newItem
+     */
     newItem() {
         this.selectedItem = this.prepareNewItem();
         this.editorState = EditorState.Add;
@@ -45,19 +77,23 @@ export abstract class BaseManagerController<T> {
     }
 
     /**
-     * Retrieve the selected item.
+     * Request to sever call to get an item.
+     * @abstract
+     * @method toolkit.baseClasses.BaseManagerController#getItem
      */
     public abstract getItem(): Promise<T>;
 
     /**
-     * prepares new item to be passed to editor in the add state.
+     * Prepares new item to use it in the add editor.
+     * @abstract
+     * @method toolkit.baseClasses.BaseManagerController#prepareNewItem
      */
     public abstract prepareNewItem(): T;
 
     /**
      * Edit the selected item - retrieve the selected item then load the editor page.
-     *
-     * @returns {Promise<any>} - A promise to the result of retrieving the item
+     * @method toolkit.baseClasses.BaseManagerController#editItem
+     * @returns {Promise<any>} A promise to the result of retrieving the item
      * and moving to the editor page.
      */
     editItem(): Promise<any>|void {
@@ -83,16 +119,18 @@ export abstract class BaseManagerController<T> {
         }
     }
 
-    /*
-    * Clears selected certificate code id and object.
-    */
+    /**
+     * Clears the selected item.
+     * @method toolkit.baseClasses.BaseManagerController#clearSelected
+     */
     clearSelected() {
         this.selectedItem = null;
     }
 
-    /*
-    * Callback executes when add/edit editor is closing.
-    */
+    /**
+     * Callback executes when add/edit editor is closing.
+     * @method toolkit.baseClasses.BaseManagerController#closeEditor
+     */
     closeEditor() {
         this.clearSelected();
         this.state = ManagerState.Lookup;

@@ -1,4 +1,7 @@
 /// <reference types="angular" />
+/**
+ * @namespace toolkit.components
+ */
 import { INotificationService } from '../../services/notificationService';
 /**
  * The upload image component.
@@ -17,7 +20,8 @@ export declare class UploadImage implements ng.IComponentOptions {
     constructor();
 }
 /**
- * The upload image controller.
+ * @class toolkit.components.UploadImageController
+ * @classdesc An image uploader component.
  */
 export declare class UploadImageController {
     private $scope;

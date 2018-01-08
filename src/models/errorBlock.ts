@@ -1,5 +1,10 @@
 /**
- * the error block model.
+ * @namespace toolkit.models
+ */
+ 
+ /**
+ * @class toolkit.models.ErrorBlockModel
+ * @classdesc The error model for error block component.
  */
 export class ErrorBlockModel {
 

@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.services
+ */
+
 import * as angular from 'angular';
 import * as _ from 'lodash';
 
@@ -369,22 +373,27 @@ export class UiGridService<T> implements IUiGridService<T> {
 }
 
 /**
- * uigrid service.
- */
+* @interface
+* @class toolkit.services.IUiGridService
+* @classdesc Methods to work with angular ui grid. Search, initialization of options, item selects.
+*/
 export interface IUiGridService<T> {
 
     /**
      * inits grid options for scroll paging grid.
+     * @method toolkit.services.IUiGridService#initScrollPagedGridOptions
      */
     initScrollPagedGridOptions(controller: BaseLookupController<T>, columnDefs: Array<any>);
 
     /**
      * inits grid options for non-scrolling paging grid.
+     * @method toolkit.services.IUiGridService#initPagedGridOptions
      */
     initPagedGridOptions(controller: BaseLookupController<T>, columnDefs: Array<any>);
 
     /**
      * inits filter request object for ui-grid
+     * @method toolkit.services.IUiGridService#initFilterRequest
      * @param {Object} gridOptions - grid options object
      * @returns {Object} filter request Obj
      */
@@ -392,24 +401,26 @@ export interface IUiGridService<T> {
 
     /**
      * makes a call to api to get the data.
+     * @method toolkit.services.IUiGridService#doSearch
      */
     doSearch(controller: BaseLookupController<T>, isScrollPaging: boolean): Promise<any> | void;
 
     /**
      * destroys grid variables linked to controller.
+     * @method toolkit.services.IUiGridService#destroyGrid
      */
     destroyGrid(controller: BaseLookupController<T>): void;
 
     /**
      * Selects all the items that can appear on the grid regardless of filter.
-     *
+     * @method toolkit.services.IUiGridService#selectAllItems
      * @param {BaseLookupController<T>} controller
      */
     selectAllItems(controller: BaseLookupController<T>): void;
 
     /**
      * Unselects all the items that can appear on the grid regardless of filter.
-     *
+     * @method toolkit.services.IUiGridService#unselectAllItems
      * @param {BaseLookupController<T>} controller
      */
     unselectAllItems(controller: BaseLookupController<T>): void;

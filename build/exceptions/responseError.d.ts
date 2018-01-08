@@ -1,7 +1,11 @@
+/**
+ * @namespace toolkit.exceptions
+ */
 import { ErrorResponseType } from '../enums/errorResponseType';
 /**
- * Response error exception.
- */
+* @class toolkit.exceptions.ResponseError
+* @classdesc Occurs on response error.
+*/
 export declare class ResponseError extends Error {
     type: ErrorResponseType;
     data: any;

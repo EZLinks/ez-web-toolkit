@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.services
+ */
+
 import * as toastr from 'toastr';
 import * as angular from 'angular';
 
@@ -61,22 +65,36 @@ export class NotificationService implements INotificationService {
 }
 
 /**
- * notification service interface
+ * @interface
+ * @class toolkit.services.INotificationService
+ * @classdesc Makes a notification toasts for a user. Om-nom-nom.
  */
 export interface INotificationService {
 
-    /**
-     * success notification
+     /**
+     * Success notification.
+     * @method toolkit.services.INotificationService#success
+     * @param {String} message - messsage.
+     * @param {String} title - title, optional.
+     * @param {any} optionsOverride - overrides toastr options.
      */
     success(message: String, title?: string, optionsOverride?: any): void;
 
-    /**
-     * error notification
+     /**
+     * Error notification.
+     * @method toolkit.services.INotificationService#error
+     * @param {String} message - messsage.
+     * @param {String} title - title, optional.
+     * @param {any} optionsOverride - overrides toastr options.
      */
     error(message: String, title?: string, optionsOverride?: any): void;
 
-    /**
-     * info notification
+     /**
+     * Info notification.
+     * @method toolkit.services.INotificationService#info
+     * @param {String} message - messsage.
+     * @param {String} title - title, optional.
+     * @param {any} optionsOverride - overrides toastr options.
      */
     info(message: String, title?: string, optionsOverride?: any): void;
 }

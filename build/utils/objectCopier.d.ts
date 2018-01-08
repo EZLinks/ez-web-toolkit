@@ -1,5 +1,9 @@
 /**
- * copies object properties from one object to another.
+ * @namespace toolkit.utils
+ */
+/**
+ * @class toolkit.utils.ObjectCopier
+ * @classdesc Copies object properties from one object to another.
  */
 export declare class ObjectCopier {
     /**

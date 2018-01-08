@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 
 import { INotificationService } from '../../services/notificationService';
 
@@ -28,7 +31,8 @@ export class UploadImage implements ng.IComponentOptions {
 }
 
 /**
- * The upload image controller.
+ * @class toolkit.components.UploadImageController
+ * @classdesc An image uploader component.
  */
 export class UploadImageController {
 

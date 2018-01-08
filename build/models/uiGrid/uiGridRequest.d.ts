@@ -1,6 +1,10 @@
 /**
- * the grid request model.
+ * @namespace toolkit.models
  */
+/**
+* @class toolkit.models.UiGridRequest
+* @classdesc Request with filterin for angular ui grid.
+*/
 export declare class UiGridRequest {
     /**
      * page number

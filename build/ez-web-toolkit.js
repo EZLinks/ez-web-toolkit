@@ -85,9 +85,18 @@ module.exports = require("lodash");
 
 "use strict";
 
+/**
+ * @namespace toolkit.baseClasses
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var BaseComponent = (function () {
+    /**
+     * @class toolkit.baseClasses.BaseComponent
+     * @classdesc Automatically handles the scope destroy callbacks and watches.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {Function} additionalDestruction Callback which would be called on scope destroy.
+     */
     function BaseComponent($scope, additionalDestruction) {
         var _this = this;
         this.unwatchArray = new Array();
@@ -114,18 +123,24 @@ exports.BaseComponent = BaseComponent;
 
 "use strict";
 
+/**
+ * @namespace toolkit.enums
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * The state of the editor component.
- */
+* @class toolkit.enums.EditorState
+* @classdesc States of editor.
+*/
 var EditorState;
 (function (EditorState) {
     /**
-     * Adding a new item.
+     * The add state.
+     * @member {number} toolkit.enums.EditorState#Add
      */
     EditorState[EditorState["Add"] = 0] = "Add";
     /**
-     * Editing an existing item.
+     * The edit state.
+     * @member {number} toolkit.enums.EditorState#Edit
      */
     EditorState[EditorState["Edit"] = 1] = "Edit";
 })(EditorState = exports.EditorState || (exports.EditorState = {}));
@@ -137,15 +152,20 @@ var EditorState;
 
 "use strict";
 
+/**
+ * @namespace toolkit.constants
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * The event constants.
- */
+* @class toolkit.constants.EventConsts
+* @classdesc An event constants.
+*/
 var EventConsts = (function () {
     function EventConsts() {
     }
     /**
      * The reload grid event name.
+     * @member {string} toolkit.constants.EventConsts#reloadGridEvent
      */
     EventConsts.reloadGridEvent = 'reloadGrid';
     return EventConsts;
@@ -171,6 +191,9 @@ module.exports = require("angular");
 
 "use strict";
 
+/**
+ * @namespace toolkit.baseClasses
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -188,6 +211,13 @@ var BaseLookupController = (function (_super) {
     __extends(BaseLookupController, _super);
     //#endregion
     //#region Constructor
+    /**
+     * @class toolkit.baseClasses.BaseLookupController<T extends Object>
+     * @extends BaseComponent
+     * @abstract
+     * @classdesc Methods for handling an angular ng-grid component.
+     * @param {ng.IScope} $scope Scope of the component.
+     */
     function BaseLookupController($scope) {
         var _this = _super.call(this, $scope) || this;
         _this.$scope = $scope;
@@ -198,8 +228,8 @@ var BaseLookupController = (function (_super) {
         return _this;
     }
     /**
-     * Opens the editor when an item is double clicked.
-     * @param {T} selectedItem - The selected (double-clicked) item.
+     * Calls an onDoubleClick callback and assigns the selected item.
+     * @method toolkit.baseClasses.BaseLookupController#onDoubleClickEvent
      */
     BaseLookupController.prototype.onDoubleClickEvent = function (selectedItem) {
         this.selectedItem = selectedItem;
@@ -216,10 +246,21 @@ exports.BaseLookupController = BaseLookupController;
 
 "use strict";
 
+/**
+ * @namespace toolkit.baseClasses
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var managerState_1 = __webpack_require__(8);
 var editorState_1 = __webpack_require__(2);
 var BaseManagerController = (function () {
+    /**
+     * @class toolkit.baseClasses.BaseManagerController<T extends Object>
+     * @abstract
+     * @classdesc Methods for manager page where user can delete/create/edit items from grid.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {ng.ITimoutService} $timeout Angular timeout.
+     * @param {INotificationService} notificationService Ez notification service.
+     */
     function BaseManagerController($scope, $timeout, notificationService) {
         this.$scope = $scope;
         this.$timeout = $timeout;
@@ -245,9 +286,10 @@ var BaseManagerController = (function () {
         enumerable: true,
         configurable: true
     });
-    /*
-    * Opens editor to create a new code certificate.
-    */
+    /**
+     * Switches to add editor state and editor manager state.
+     * @method toolkit.baseClasses.BaseManagerController#newItem
+     */
     BaseManagerController.prototype.newItem = function () {
         this.selectedItem = this.prepareNewItem();
         this.editorState = editorState_1.EditorState.Add;
@@ -255,8 +297,8 @@ var BaseManagerController = (function () {
     };
     /**
      * Edit the selected item - retrieve the selected item then load the editor page.
-     *
-     * @returns {Promise<any>} - A promise to the result of retrieving the item
+     * @method toolkit.baseClasses.BaseManagerController#editItem
+     * @returns {Promise<any>} A promise to the result of retrieving the item
      * and moving to the editor page.
      */
     BaseManagerController.prototype.editItem = function () {
@@ -280,15 +322,17 @@ var BaseManagerController = (function () {
             });
         }
     };
-    /*
-    * Clears selected certificate code id and object.
-    */
+    /**
+     * Clears the selected item.
+     * @method toolkit.baseClasses.BaseManagerController#clearSelected
+     */
     BaseManagerController.prototype.clearSelected = function () {
         this.selectedItem = null;
     };
-    /*
-    * Callback executes when add/edit editor is closing.
-    */
+    /**
+     * Callback executes when add/edit editor is closing.
+     * @method toolkit.baseClasses.BaseManagerController#closeEditor
+     */
     BaseManagerController.prototype.closeEditor = function () {
         this.clearSelected();
         this.state = managerState_1.ManagerState.Lookup;
@@ -304,18 +348,24 @@ exports.BaseManagerController = BaseManagerController;
 
 "use strict";
 
+/**
+ * @namespace toolkit.enums
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * The state of the manager component.
- */
+* @class toolkit.enums.ManagerState
+* @classdesc States for manager.
+*/
 var ManagerState;
 (function (ManagerState) {
     /**
-     * Display the lookup grid.
+     * Shows the lookup grid.
+     * @member {number} toolkit.enums.ManagerState#Lookup
      */
     ManagerState[ManagerState["Lookup"] = 0] = "Lookup";
     /**
-     * Display the editor.
+     * Shows the editor.
+     * @member {number} toolkit.enums.ManagerState#Editor
      */
     ManagerState[ManagerState["Editor"] = 1] = "Editor";
 })(ManagerState = exports.ManagerState || (exports.ManagerState = {}));
@@ -327,6 +377,9 @@ var ManagerState;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
+/**
+ * @namespace toolkit.baseClasses
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -342,6 +395,13 @@ var baseComponent_1 = __webpack_require__(1);
 var BaseModalController = (function (_super) {
     __extends(BaseModalController, _super);
     //#region Constructor
+    /**
+     * @class toolkit.baseClasses.BaseModalController
+     * @extends BaseComponent
+     * @classdesc Methods for manage modals.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {IModalService} modalService The modal service.
+     */
     function BaseModalController($scope, modalService) {
         var _this = _super.call(this, $scope) || this;
         _this.$scope = $scope;
@@ -386,15 +446,20 @@ exports.BaseModalController = BaseModalController;
 
 "use strict";
 
+/**
+ * @namespace toolkit.constants
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * type constants.
- */
+* @class toolkit.constants.TypeConsts
+* @classdesc The type constants.
+*/
 var TypeConsts = (function () {
     function TypeConsts() {
     }
     /**
-     * The empty guid value.
+     * The empty guid constant.
+     * @member {string} toolkit.constants.TypeConsts#emptyGuid
      */
     TypeConsts.emptyGuid = '00000000-0000-0000-0000-000000000000';
     return TypeConsts;
@@ -408,14 +473,30 @@ exports.TypeConsts = TypeConsts;
 
 "use strict";
 
+/**
+ * @namespace toolkit.enums
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Error response types.
- */
+* @class toolkit.enums.ErrorResponseType
+* @classdesc An error reponses.
+*/
 var ErrorResponseType;
 (function (ErrorResponseType) {
+    /**
+     * The connection lost.
+     * @member {number} toolkit.enums.ErrorResponseType#ConnectionLost
+     */
     ErrorResponseType[ErrorResponseType["ConnectionLost"] = 0] = "ConnectionLost";
+    /**
+     * The result has a problem.
+     * @member {number} toolkit.enums.ErrorResponseType#ProblemResult
+     */
     ErrorResponseType[ErrorResponseType["ProblemResult"] = 1] = "ProblemResult";
+    /**
+     * The result has validation problem.
+     * @member {number} toolkit.enums.ErrorResponseType#ValidationProblemResult
+     */
     ErrorResponseType[ErrorResponseType["ValidationProblemResult"] = 2] = "ValidationProblemResult";
 })(ErrorResponseType = exports.ErrorResponseType || (exports.ErrorResponseType = {}));
 
@@ -426,10 +507,14 @@ var ErrorResponseType;
 
 "use strict";
 
+/**
+ * @namespace toolkit.enums
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Http status code.
- */
+* @class toolkit.enums.HttpStatusCode
+* @classdesc Enumeration of http status codes.
+*/
 var HttpStatusCode;
 (function (HttpStatusCode) {
     //
@@ -719,6 +804,9 @@ var HttpStatusCode;
 
 "use strict";
 
+/**
+ * @namespace toolkit.exceptions
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -731,8 +819,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Response error exception.
- */
+* @class toolkit.exceptions.ResponseError
+* @classdesc Occurs on response error.
+*/
 var ResponseError = (function (_super) {
     __extends(ResponseError, _super);
     /**
@@ -757,10 +846,14 @@ exports.ResponseError = ResponseError;
 
 "use strict";
 
+/**
+ * @namespace toolkit.models
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * The request options to be passed to the api service request function.
- */
+* @class toolkit.models.RequestOptions
+* @classdesc The request options to be passed to the api service request function.
+*/
 var RequestOptions = (function () {
     // TODO: Reverse order of url, string params.
     function RequestOptions(url, method, baseUrl) {
@@ -780,9 +873,13 @@ exports.RequestOptions = RequestOptions;
 
 "use strict";
 
+/**
+ * @namespace toolkit.models
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * problem result
+ * @class toolkit.models.ProblemResult
+ * @classdesc The problem result.
  */
 var ProblemResult = (function () {
     function ProblemResult() {
@@ -798,10 +895,14 @@ exports.ProblemResult = ProblemResult;
 
 "use strict";
 
+/**
+ * @namespace toolkit.models
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * the grid request model.
- */
+* @class toolkit.models.UiGridRequest
+* @classdesc Request with filterin for angular ui grid.
+*/
 var UiGridRequest = (function () {
     function UiGridRequest() {
     }
@@ -900,14 +1001,30 @@ exports.BaseModalController = baseModalController_1.BaseModalController;
 
 "use strict";
 
+/**
+ * @namespace toolkit.baseClasses
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var angular_typescript_validation_1 = __webpack_require__(21);
 var editorState_1 = __webpack_require__(2);
 var validationProcessor_1 = __webpack_require__(22);
 var BaseEditorController = (function () {
+    /**
+     * @class toolkit.baseClasses.BaseEditorController<T extends Object>
+     * @implements IValidatableController
+     * @classdesc Provides methods for validating request before server call, the editor states.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {ng.ITimeoutService} $timeout Angular timeout.
+     * @param {INotificationService} notificationService Ez notification service.
+     * @param {IValidator} validator Validator for item which should be edited.
+     */
     function BaseEditorController($scope, $timeout, notificationService, validator) {
         this.$timeout = $timeout;
         this.notificationService = notificationService;
+        /**
+         * Whether to clear item on close or not. Close occurs automatically after success submit.
+         * @member {boolean} toolkit.baseClasses.BaseEditorController#clearItemOnClose
+         */
         this.clearItemOnClose = true;
         this.validationService = new angular_typescript_validation_1.ValidationService(this, $scope);
         this.rulesCustomizer = validator.rulesCustomizer;
@@ -916,7 +1033,8 @@ var BaseEditorController = (function () {
     }
     Object.defineProperty(BaseEditorController.prototype, "model", {
         /**
-         * gets the model.
+         * Obsolete. Do not use this property. Returns item.
+         * @member {T} toolkit.baseClasses.BaseEditorController#model
          */
         get: function () {
             return this.item;
@@ -925,6 +1043,10 @@ var BaseEditorController = (function () {
         configurable: true
     });
     Object.defineProperty(BaseEditorController.prototype, "isRequestRunning", {
+        /**
+         * Checks if request for validating or edit item is currently running.
+         * @member {boolean} toolkit.baseClasses.BaseEditorController#isRequestRunning
+         */
         get: function () {
             return this.isReqRunning || this.isValidationRequestRunning;
         },
@@ -938,7 +1060,8 @@ var BaseEditorController = (function () {
         configurable: true
     });
     /**
-     * Close the editor.
+     * Closes the editor. Clears item on close by default and calls onClose callback.
+     * @method toolkit.baseClasses.BaseEditorController#close
      */
     BaseEditorController.prototype.close = function () {
         if (this.clearItemOnClose) {
@@ -949,17 +1072,23 @@ var BaseEditorController = (function () {
         }
     };
     /**
-     * Occurs on success response.
+     * Occurs on response success. Could be overriden.
+     * @method toolkit.baseClasses.BaseEditorController#onResponseSuccess
+     * @param {any} response The response from the server.
      */
     BaseEditorController.prototype.onResponseSuccess = function (response) {
         // could be overriden
     };
+    /**
+     * Notifies user about success save. Could be overriden to provide different notification.
+     * @method toolkit.baseClasses.BaseEditorController#successNotification
+     */
     BaseEditorController.prototype.successNotification = function () {
         this.notificationService.success('Successfully saved.');
     };
     /**
-     * Submit the form, save the item. Handles loading animation, notifications
-     * and validation.
+     * Validates an item, in case of success, makes request to server in order to save item.
+     * @method toolkit.baseClasses.BaseEditorController#submit
      */
     BaseEditorController.prototype.submit = function () {
         var _this = this;
@@ -996,19 +1125,22 @@ var BaseEditorController = (function () {
         });
     };
     /**
-     * True if the editor state is in the add state.
+     * Whether editor is in add state.
+     * @method toolkit.baseClasses.BaseEditorController#isInAddState
      */
     BaseEditorController.prototype.isInAddState = function () {
         return this.state === editorState_1.EditorState.Add;
     };
     /**
-     * True if the editor state is in the edit state.
+     * Whether editor is in edit state.
+     * @method toolkit.baseClasses.BaseEditorController#isInEditState
      */
     BaseEditorController.prototype.isInEditState = function () {
         return this.state === editorState_1.EditorState.Edit;
     };
     /**
-     * Clear the item.
+     * Nulls an item.
+     * @method toolkit.baseClasses.BaseEditorController#clearItem
      */
     BaseEditorController.prototype.clearItem = function () {
         this.item = null;
@@ -1030,10 +1162,14 @@ module.exports = require("angular-typescript-validation");
 
 "use strict";
 
+/**
+ * @namespace toolkit.services
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * validation processing tasks.
- */
+* @class toolkit.services.ValidationProcessor
+* @classdesc Methods for porocessing our validation response.
+*/
 var ValidationProcessor = (function () {
     function ValidationProcessor() {
     }
@@ -1073,6 +1209,9 @@ exports.ValidationProcessor = ValidationProcessor;
 
 "use strict";
 
+/**
+ * @namespace toolkit.baseClasses
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1086,13 +1225,20 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseManagerController_1 = __webpack_require__(7);
 var eventConsts_1 = __webpack_require__(3);
+/**
+ * @class toolkit.baseClasses.BaseManagerDeletableController<T extends Object>
+ * @abstract
+ * @extends BaseManagerController
+ * @classdesc Methods for manager and extra methods for deleting an item.
+ */
 var BaseManagerDeletableController = (function (_super) {
     __extends(BaseManagerDeletableController, _super);
     function BaseManagerDeletableController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * The delete item request.
+     * Deletes an item.
+     * @method toolkit.baseClasses.BaseManagerDeletableController#deleteItem
      */
     BaseManagerDeletableController.prototype.deleteItem = function () {
         var _this = this;
@@ -1114,11 +1260,18 @@ var BaseManagerDeletableController = (function (_super) {
             });
         }
     };
+    /**
+     * Delete error handling. Could be overriden.
+     * @param {any} reject The sever side data.
+     * @method toolkit.baseClasses.BaseManagerDeletableController#handleDeleteError
+     */
     BaseManagerDeletableController.prototype.handleDeleteError = function (reject) {
         // could be overriden
     };
     /**
-     * Toggles the delete item prompt.
+     * Toggles the delete prompt.
+     * @param {boolean} value Yes or no.
+     * @method toolkit.baseClasses.BaseManagerDeletableController#toggleDeleteItemPrompt
      */
     BaseManagerDeletableController.prototype.toggleDeleteItemPrompt = function (value) {
         this.isDeleteItemPromptVisible = value;
@@ -1741,6 +1894,9 @@ module.exports = function (css) {
 
 "use strict";
 
+/**
+ * @namespace toolkit.components
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the confirm dialog component.
@@ -1768,11 +1924,16 @@ var ConfirmDialog = (function () {
 }());
 exports.ConfirmDialog = ConfirmDialog;
 /**
- * controller for confirm dialog component.
+ * @class toolkit.components.ConfirmDialogController
+ * @classdesc Methods for showing confirm dialog popup.
  */
 var ConfirmDialogController = (function () {
     function ConfirmDialogController() {
         var _this = this;
+        /**
+         * Hides the error block on popup hide.
+         * @method toolkit.baseClasses.ConfirmDialogController#onHidden
+         */
         this.onHidden = function () {
             if (_this.errorBlock) {
                 _this.errorBlock.showError = false;
@@ -1799,6 +1960,9 @@ module.exports = path;
 
 "use strict";
 
+/**
+ * @namespace toolkit.components
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var popupTemplate = __webpack_require__(33);
 var datePickerTemplate = __webpack_require__(34);
@@ -1825,6 +1989,10 @@ var DatePicker = (function () {
     return DatePicker;
 }());
 exports.DatePicker = DatePicker;
+/**
+ * @class toolkit.components.DatePickerController
+ * @classdesc Methods for showing date picker component.
+ */
 var DatePickerController = (function () {
     function DatePickerController() {
         this.status = {
@@ -1946,10 +2114,10 @@ module.exports = path;
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * the error block component.
+ * @namespace toolkit.components
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 var ErrorBlock = (function () {
     /**
      * inits component.
@@ -1966,7 +2134,8 @@ var ErrorBlock = (function () {
 }());
 exports.ErrorBlock = ErrorBlock;
 /**
- * controller for error block component.
+ * @class toolkit.components.ErrorBlockController
+ * @classdesc Methods for showing errors in popup.
  */
 var ErrorBlockController = (function () {
     function ErrorBlockController() {
@@ -1998,6 +2167,9 @@ module.exports = path;
 
 "use strict";
 
+/**
+ * @namespace toolkit.components
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2044,6 +2216,10 @@ var EzGrid = (function () {
     return EzGrid;
 }());
 exports.EzGrid = EzGrid;
+/**
+ * @class toolkit.components.EzGridController
+ * @classdesc A grid component.
+ */
 var EzGridController = (function (_super) {
     __extends(EzGridController, _super);
     function EzGridController($scope, uiGridService) {
@@ -2101,6 +2277,9 @@ module.exports = path;
 
 "use strict";
 
+/**
+ * @namespace toolkit.components
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2160,6 +2339,10 @@ var EzModal = (function () {
     return EzModal;
 }());
 exports.EzModal = EzModal;
+/**
+ * @class toolkit.components.EzModalController
+ * @classdesc A modal component.
+ */
 var EzModalController = (function (_super) {
     __extends(EzModalController, _super);
     function EzModalController($scope, $timeout, modalService) {
@@ -2230,6 +2413,9 @@ module.exports = path;
 
 "use strict";
 
+/**
+ * @namespace toolkit.components
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2281,6 +2467,10 @@ var SingleLookup = (function () {
     return SingleLookup;
 }());
 exports.SingleLookup = SingleLookup;
+/**
+ * @class toolkit.components.SingleLookupController
+ * @classdesc A single lookup component.
+ */
 var SingleLookupController = (function (_super) {
     __extends(SingleLookupController, _super);
     function SingleLookupController($scope, $timeout, notificationService, customUiGridConstants, uiGridConstants) {
@@ -2456,6 +2646,9 @@ module.exports = path;
 
 "use strict";
 
+/**
+ * @namespace toolkit.components
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * The upload image component.
@@ -2477,7 +2670,8 @@ var UploadImage = (function () {
 }());
 exports.UploadImage = UploadImage;
 /**
- * The upload image controller.
+ * @class toolkit.components.UploadImageController
+ * @classdesc An image uploader component.
  */
 var UploadImageController = (function () {
     /**
@@ -2610,7 +2804,14 @@ exports.TypeConsts = typeConsts_1.TypeConsts;
 
 "use strict";
 
+/**
+ * @namespace toolkit.constants
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+* @class toolkit.constants.CustomUiGridConstants
+* @classdesc An angular ui-grid constants.
+*/
 var CustomUiGridConstants = (function () {
     function CustomUiGridConstants() {
     }
@@ -2715,6 +2916,9 @@ exports.PersistentMessage = persistentMessage_1.PersistentMessage;
 
 "use strict";
 
+/**
+ * @namespace toolkit.models
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2728,8 +2932,9 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var problemResult_1 = __webpack_require__(15);
 /**
- * validaiton problem result.
- */
+* @class toolkit.models.ValidationProblemResult
+* @classdesc The validation problem result.
+*/
 var ValidationProblemResult = (function (_super) {
     __extends(ValidationProblemResult, _super);
     function ValidationProblemResult() {
@@ -2746,7 +2951,14 @@ exports.ValidationProblemResult = ValidationProblemResult;
 
 "use strict";
 
+/**
+ * @namespace toolkit.models
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+* @class toolkit.models.UiGridResult<T>
+* @classdesc The result of angular ui grid request.
+*/
 var UiGridResult = (function () {
     function UiGridResult() {
     }
@@ -2761,10 +2973,14 @@ exports.UiGridResult = UiGridResult;
 
 "use strict";
 
+/**
+ * @namespace toolkit.models
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * the error block model.
- */
+* @class toolkit.models.ErrorBlockModel
+* @classdesc The error model for error block component.
+*/
 var ErrorBlockModel = (function () {
     function ErrorBlockModel() {
     }
@@ -2896,6 +3112,9 @@ exports.ResponseHandlers = ResponseHandlers;
 
 "use strict";
 
+/**
+ * @namespace toolkit.services
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var angular = __webpack_require__(5);
 var requestOptions_1 = __webpack_require__(14);
@@ -2996,6 +3215,9 @@ exports.ApiService = ApiService;
 
 "use strict";
 
+/**
+ * @namespace toolkit.services
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var ModalService = (function () {
@@ -3099,6 +3321,9 @@ exports.ModalService = ModalService;
 
 "use strict";
 
+/**
+ * @namespace toolkit.services
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var toastr = __webpack_require__(68);
 var angular = __webpack_require__(5);
@@ -3294,10 +3519,14 @@ exports.ServerValidationService = ServerValidationService;
 
 "use strict";
 
+/**
+ * @namespace toolkit.services
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * the service request processor.
- */
+* @class toolkit.services.ServiceRequestProcessor
+* @classdesc Handles loading indication in requests automatically.
+*/
 var ServiceRequestProcessor = (function () {
     function ServiceRequestProcessor($timeout, request, handleCallback) {
         this.$timeout = $timeout;
@@ -3335,6 +3564,9 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
+/**
+ * @namespace toolkit.services
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var uiGridRequest_1 = __webpack_require__(16);
@@ -3675,10 +3907,14 @@ exports.FocusElement = focusElement_1.FocusElement;
 
 "use strict";
 
+/**
+ * @namespace toolkit.directives
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Makes a focus on element while loaded.
- */
+* @class toolkit.directives.FocusElement
+* @classdesc Makes a focus on element while loaded.
+*/
 var FocusElement = (function () {
     function FocusElement($timeout) {
         this.$timeout = $timeout;
@@ -3735,10 +3971,13 @@ exports.ValidationProcessor = validationProcessor_1.ValidationProcessor;
 
 "use strict";
 
+/**
+ * @namespace toolkit.utils
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * activator class.
- *
+ * @class toolkit.utils.Activator
+ * @classdesc Creates instances of provided class types.
  */
 var Activator = (function () {
     function Activator() {
@@ -3762,9 +4001,13 @@ exports.Activator = Activator;
 
 "use strict";
 
+/**
+ * @namespace toolkit.utils
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Methods for helping deal with arrays.
+ * @class toolkit.utils.ArrayHelper
+ * @classdesc Methods for helping deal with arrays.
  */
 var ArrayHelper = (function () {
     function ArrayHelper() {
@@ -3795,9 +4038,13 @@ exports.ArrayHelper = ArrayHelper;
 
 "use strict";
 
+/**
+ * @namespace toolkit.utils
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * copies object properties from one object to another.
+ * @class toolkit.utils.ObjectCopier
+ * @classdesc Copies object properties from one object to another.
  */
 var ObjectCopier = (function () {
     function ObjectCopier() {

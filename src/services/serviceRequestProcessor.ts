@@ -1,6 +1,11 @@
 /**
- * the service request processor.
+ * @namespace toolkit.services
  */
+
+/**
+* @class toolkit.services.ServiceRequestProcessor
+* @classdesc Handles loading indication in requests automatically.
+*/
 export class ServiceRequestProcessor {
 
     public isRequestRunning: boolean;

@@ -11,10 +11,16 @@ export declare class ApiService implements IApiService {
     urlEncoded(method: string, url: any, data: any): Promise<any>;
     request(opts: RequestOptions): Promise<any | void>;
 }
+/**
+ * @interface
+ * @class toolkit.services.IApiService
+ * @classdesc The common service for requesting server.
+ */
 export interface IApiService {
     /**
      * Execute an api request and, after some error checking, return a promise
      * to the response body.
+     * @method toolkit.services.IApiService#req
      * @param {string} method - The http method.
      * @param {string} url - The url to http.
      * @param {any} data - (Optional) The request data.
@@ -24,11 +30,12 @@ export interface IApiService {
     /**
      * Execute an api request and, after some error checking, return a promise
      * to the response body.
+     * @method toolkit.services.IApiService#request
      */
     request(opts: RequestOptions): Promise<any | void>;
     /**
      * Uploads file to server.
-     *
+     * @method toolkit.services.IApiService#upload
      * @param {string} method - The http method.
      * @param {string} url - The url to http.
      * @param {any} file - The file needed to be uploaded.
@@ -38,6 +45,7 @@ export interface IApiService {
     upload(method: string, url: any, file: any, data?: any): Promise<any>;
     /**
      * Executes a url encoded http request.
+     * @method toolkit.services.IApiService#urlEncoded
      * @param {string} method - The http method.
      * @param {string} url - The url to http.
      * @param {any} data - The request data.

@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 
 import { BaseLookupController } from '../../baseClasses/baseLookupController';
 import { IUiGridService } from '../../services/uiGridService';
@@ -47,6 +50,10 @@ export class EzGrid implements ng.IComponentOptions {
     }
 }
 
+/**
+ * @class toolkit.components.EzGridController
+ * @classdesc A grid component.
+ */
 export class EzGridController extends BaseLookupController<any> {
 
     //#region Constructor

@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 
 import { ErrorBlockModel } from '../../models/errorBlock';
 
@@ -33,10 +36,15 @@ export class ConfirmDialog {
 }
 
 /**
- * controller for confirm dialog component.
+ * @class toolkit.components.ConfirmDialogController
+ * @classdesc Methods for showing confirm dialog popup.
  */
 export class ConfirmDialogController {
 
+    /**
+     * Hides the error block on popup hide.
+     * @method toolkit.baseClasses.ConfirmDialogController#onHidden
+     */
     onHidden = () => {
         if (this.errorBlock) {
             this.errorBlock.showError = false;
@@ -44,42 +52,50 @@ export class ConfirmDialogController {
     }
 
     /**
-     * the title of modal.
+     * The title of modal.
+     * @member {string} toolkit.baseClasses.ConfirmDialogController#title
      */
     public title: string;
 
     /**
-     * the text within modal body.
+     * The text inside modal body.
+     * @member {string} toolkit.baseClasses.ConfirmDialogController#body
      */
     public body: string;
 
     /**
-     * additional body text with additional emphasis.
-     */
+     * Additional body text with additional emphasis.
+     * @member {string} toolkit.baseClasses.ConfirmDialogController#callout
+     */    
     public callout: string;
 
     /**
-     * on ok button pressed callback.
-     */
+     * On ok button pressed callback.
+     * @member {Function} toolkit.baseClasses.ConfirmDialogController#onOk
+     */    
     public onOk: Function;
 
     /**
-     * on cancel button pressed callback.
-     */
-    public onCancel: Function;
+     * On cancel button pressed callback.
+     * @member {Function} toolkit.baseClasses.ConfirmDialogController#onCancel
+     */        
+     public onCancel: Function;
 
     /**
-     * shows or hides the overlay loader indicator.
-     */
-    public loader: boolean;
+     * Shows or hides the overlay loader indicator.
+     * @member {boolean} toolkit.baseClasses.ConfirmDialogController#loader
+     */          
+     public loader: boolean;
 
     /**
-     * shows or hides the confirm dialog.
-     */
+     * Shows or hides the confirm dialog.
+     * @member {boolean} toolkit.baseClasses.ConfirmDialogController#visible
+     */              
     public visible: boolean;
 
     /**
-     * the error block.
-     */
+     * The error block.
+     * @member {ErrorBlockModel} toolkit.baseClasses.ConfirmDialogController#errorBlock
+     */            
     public errorBlock: ErrorBlockModel;
 }

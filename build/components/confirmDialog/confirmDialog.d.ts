@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 import { ErrorBlockModel } from '../../models/errorBlock';
 /**
  * the confirm dialog component.
@@ -13,40 +16,53 @@ export declare class ConfirmDialog {
     constructor();
 }
 /**
- * controller for confirm dialog component.
+ * @class toolkit.components.ConfirmDialogController
+ * @classdesc Methods for showing confirm dialog popup.
  */
 export declare class ConfirmDialogController {
+    /**
+     * Hides the error block on popup hide.
+     * @method toolkit.baseClasses.ConfirmDialogController#onHidden
+     */
     onHidden: () => void;
     /**
-     * the title of modal.
+     * The title of modal.
+     * @member {string} toolkit.baseClasses.ConfirmDialogController#title
      */
     title: string;
     /**
-     * the text within modal body.
+     * The text inside modal body.
+     * @member {string} toolkit.baseClasses.ConfirmDialogController#body
      */
     body: string;
     /**
-     * additional body text with additional emphasis.
+     * Additional body text with additional emphasis.
+     * @member {string} toolkit.baseClasses.ConfirmDialogController#callout
      */
     callout: string;
     /**
-     * on ok button pressed callback.
+     * On ok button pressed callback.
+     * @member {Function} toolkit.baseClasses.ConfirmDialogController#onOk
      */
     onOk: Function;
     /**
-     * on cancel button pressed callback.
+     * On cancel button pressed callback.
+     * @member {Function} toolkit.baseClasses.ConfirmDialogController#onCancel
      */
     onCancel: Function;
     /**
-     * shows or hides the overlay loader indicator.
+     * Shows or hides the overlay loader indicator.
+     * @member {boolean} toolkit.baseClasses.ConfirmDialogController#loader
      */
     loader: boolean;
     /**
-     * shows or hides the confirm dialog.
+     * Shows or hides the confirm dialog.
+     * @member {boolean} toolkit.baseClasses.ConfirmDialogController#visible
      */
     visible: boolean;
     /**
-     * the error block.
+     * The error block.
+     * @member {ErrorBlockModel} toolkit.baseClasses.ConfirmDialogController#errorBlock
      */
     errorBlock: ErrorBlockModel;
 }

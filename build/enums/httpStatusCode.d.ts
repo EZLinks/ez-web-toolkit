@@ -1,6 +1,10 @@
 /**
- * Http status code.
+ * @namespace toolkit.enums
  */
+/**
+* @class toolkit.enums.HttpStatusCode
+* @classdesc Enumeration of http status codes.
+*/
 export declare enum HttpStatusCode {
     Continue = 100,
     SwitchingProtocols = 101,

@@ -1,7 +1,11 @@
+/**
+ * @namespace toolkit.models
+ */
 import { ProblemResult } from './problemResult';
 /**
- * validaiton problem result.
- */
+* @class toolkit.models.ValidationProblemResult
+* @classdesc The validation problem result.
+*/
 export declare class ValidationProblemResult extends ProblemResult {
     /**
      * errors field.

@@ -1,9 +1,24 @@
+/**
+ * @namespace toolkit.baseClasses
+ */
+
 import * as _ from 'lodash';
 
 export class BaseComponent {
-    public unwatchArray: Array<Function>;
-    public destroy: () => void;
 
+    /**
+     * Array of watch callbacks which would be unwatched on scope destroy.
+     * @member {Array<Function>} toolkit.baseClasses.BaseComponent#unwatchArray
+     */
+    public unwatchArray: Array<Function>;
+    private destroy: () => void;
+
+    /**
+     * @class toolkit.baseClasses.BaseComponent
+     * @classdesc Automatically handles the scope destroy callbacks and watches.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {Function} additionalDestruction Callback which would be called on scope destroy.
+     */
     constructor($scope: ng.IScope, additionalDestruction?: Function) {
         this.unwatchArray = new Array<Function>();
 

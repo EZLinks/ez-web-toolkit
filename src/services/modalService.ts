@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.services
+ */
+
 import * as _ from 'lodash';
 
 import { BaseModalController } from '../baseClasses/baseModalController';
@@ -124,9 +128,24 @@ export class ModalService implements IModalService {
     //#endregion
 }
 
+/**
+ * @interface
+ * @class toolkit.services.IModalService
+ * @classdesc The common service for showing and hiding modals.
+ */	 
 export interface IModalService {
 
+    /**
+     * Shows a modal.
+     * @method toolkit.services.IModalService#show
+     * @param {BaseModalController} modal - The modal to show.
+     */
     show(modal: BaseModalController);
 
+    /**
+     * Hides a modal.
+     * @method toolkit.services.IModalService#hide
+     * @param {BaseModalController} modal - The modal to hide.
+     */
     hide(modal: BaseModalController);
 }

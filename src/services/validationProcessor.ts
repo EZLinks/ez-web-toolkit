@@ -1,6 +1,11 @@
 /**
- * validation processing tasks.
+ * @namespace toolkit.services
  */
+
+/**
+* @class toolkit.services.ValidationProcessor
+* @classdesc Methods for porocessing our validation response.
+*/
 export class ValidationProcessor {
 
     /**

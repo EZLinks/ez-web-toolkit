@@ -2,23 +2,6 @@
 # ez-web-toolkit
 
 A collection of typed things.
-
-## Contents
-
-### Base Classes
-
-A set of base classes - mostly for angular component controller classes.
-
-### Components
-
-A set of angular components.
-
-### Constants
-### Enums
-### Exceptions
-### Models
-### Services
-
 A set of services ranging from HTTP API access to managing Semantic modals.
 
 ## Dependencies

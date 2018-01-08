@@ -1,4 +1,3 @@
-
 /**
  * A service responsible for indicating processing of operations on pages (not refreshing data).
  *

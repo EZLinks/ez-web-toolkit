@@ -1,6 +1,10 @@
-
 /**
- * Http status code.
+ * @namespace toolkit.enums
+ */
+ 
+ /**
+ * @class toolkit.enums.HttpStatusCode
+ * @classdesc Enumeration of http status codes.
  */
 export enum HttpStatusCode {
     //

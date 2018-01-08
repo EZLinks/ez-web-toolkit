@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.components
+ */
+
 import { BaseModalController } from '../../baseClasses/baseModalController';
 import { IModalService } from '../../services/modalService';
 
@@ -65,6 +69,10 @@ export class EzModal implements ng.IComponentOptions {
     }
 }
 
+/**
+ * @class toolkit.components.EzModalController
+ * @classdesc A modal component.
+ */
 export class EzModalController extends BaseModalController {
 
     //#region Properties

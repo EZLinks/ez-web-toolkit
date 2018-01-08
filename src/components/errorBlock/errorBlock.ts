@@ -1,8 +1,9 @@
+/**
+ * @namespace toolkit.components
+ */
+
 import { ErrorBlockModel } from '../../models/errorBlock';
 
-/**
- * the error block component.
- */
 export class ErrorBlock {
 
     public templateUrl: string;
@@ -25,7 +26,8 @@ export class ErrorBlock {
 }
 
 /**
- * controller for error block component.
+ * @class toolkit.components.ErrorBlockController
+ * @classdesc Methods for showing errors in popup.
  */
 export class ErrorBlockController {
 

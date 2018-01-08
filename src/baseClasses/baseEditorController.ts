@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.baseClasses
+ */
+
 import * as _ from 'lodash';
 import { IValidatableController, ValidationService, IValidationService, IRulesCustomizer, IValidator } from 'angular-typescript-validation';
 
@@ -9,29 +13,31 @@ import { ValidationProcessor } from '../services/validationProcessor';
 
 export abstract class BaseEditorController<T> implements IValidatableController {
 
-    /**
-     * the validation service.
-     */
     private validationService: IValidationService;
+    private isReqRunning: boolean;
+    private isValidationRequestRunning: boolean;
 
     /**
-     * rulez of controller.
+     * Rules for validating our item with.
+     * @member {IRulesCustomizer} toolkit.baseClasses.BaseEditorController#rulesCustomizer
      */
     public rulesCustomizer: IRulesCustomizer;
 
     /**
-     * The form element.
+     * Form element. Used in validation scenario.
+     * @member {any} toolkit.baseClasses.BaseEditorController#form
      */
     public form: any;
 
     /**
-     * The one and only item
-     * @binding
+     * Item which is validated.
+     * @member {T} toolkit.baseClasses.BaseEditorController#item
      */
     public item: T;
 
     /**
-     * gets the model.
+     * Obsolete. Do not use this property. Returns item.
+     * @member {T} toolkit.baseClasses.BaseEditorController#model
      */
     public get model() {
         return this.item;
@@ -39,21 +45,14 @@ export abstract class BaseEditorController<T> implements IValidatableController 
 
     /**
      * The callback function to execute when the editor is closed.
-     * @binding
+     * @member {Function} toolkit.baseClasses.BaseEditorController#onClose
      */
     public onClose: Function;
 
     /**
-     * Is a request currently running? Used to show loading animation and block
-     * additional requests.
+     * Checks if request for validating or edit item is currently running.
+     * @member {boolean} toolkit.baseClasses.BaseEditorController#isRequestRunning
      */
-    private isReqRunning: boolean;
-
-    /**
-     * Indicates if validation request is running.
-     */
-    private isValidationRequestRunning: boolean;
-
     public get isRequestRunning(): boolean {
         return this.isReqRunning || this.isValidationRequestRunning;
     }
@@ -65,12 +64,26 @@ export abstract class BaseEditorController<T> implements IValidatableController 
     }
 
     /**
-     * The state of the editor.
+     * The state of the editor add/edit.
+     * @member {EditorState} toolkit.baseClasses.BaseEditorController#state
      */
     public state: EditorState;
 
+    /**
+     * Whether to clear item on close or not. Close occurs automatically after success submit.
+     * @member {boolean} toolkit.baseClasses.BaseEditorController#clearItemOnClose
+     */
     public clearItemOnClose: boolean = true;
 
+    /**
+     * @class toolkit.baseClasses.BaseEditorController<T extends Object>
+     * @implements IValidatableController
+     * @classdesc Provides methods for validating request before server call, the editor states.
+     * @param {ng.IScope} $scope Scope of the component.
+     * @param {ng.ITimeoutService} $timeout Angular timeout.
+     * @param {INotificationService} notificationService Ez notification service.
+     * @param {IValidator} validator Validator for item which should be edited.
+     */
     constructor(
         $scope: any,
         public $timeout: ng.ITimeoutService,
@@ -84,13 +97,16 @@ export abstract class BaseEditorController<T> implements IValidatableController 
     }
 
     /**
-     * Do the actual save.
-     * @returns {Promise<any>} - A promise to the result of saving the item.
+     * Provide your promise method which calls server side to save item.
+     * @abstract
+     * @method toolkit.baseClasses.BaseEditorController#save
+     * @return {Promise<any>}
      */
     public abstract save(): Promise<any>;
 
     /**
-     * Close the editor.
+     * Closes the editor. Clears item on close by default and calls onClose callback.
+     * @method toolkit.baseClasses.BaseEditorController#close
      */
     public close() {
 
@@ -105,19 +121,25 @@ export abstract class BaseEditorController<T> implements IValidatableController 
     }
 
     /**
-     * Occurs on success response.
+     * Occurs on response success. Could be overriden.
+     * @method toolkit.baseClasses.BaseEditorController#onResponseSuccess
+     * @param {any} response The response from the server.
      */
     protected onResponseSuccess(response: any) {
         // could be overriden
     }
 
+    /**
+     * Notifies user about success save. Could be overriden to provide different notification.
+     * @method toolkit.baseClasses.BaseEditorController#successNotification
+     */
     protected successNotification(): void {
         this.notificationService.success('Successfully saved.');
     }
 
     /**
-     * Submit the form, save the item. Handles loading animation, notifications
-     * and validation.
+     * Validates an item, in case of success, makes request to server in order to save item.
+     * @method toolkit.baseClasses.BaseEditorController#submit
      */
     public submit(): void {
 
@@ -169,21 +191,24 @@ export abstract class BaseEditorController<T> implements IValidatableController 
     }
 
     /**
-     * True if the editor state is in the add state.
+     * Whether editor is in add state.
+     * @method toolkit.baseClasses.BaseEditorController#isInAddState
      */
     public isInAddState(): boolean {
         return this.state === EditorState.Add;
     }
 
     /**
-     * True if the editor state is in the edit state.
+     * Whether editor is in edit state.
+     * @method toolkit.baseClasses.BaseEditorController#isInEditState
      */
     public isInEditState(): boolean {
         return this.state === EditorState.Edit;
     }
 
     /**
-     * Clear the item.
+     * Nulls an item.
+     * @method toolkit.baseClasses.BaseEditorController#clearItem
      */
     public clearItem() {
         this.item = null;

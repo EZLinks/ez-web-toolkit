@@ -1,6 +1,10 @@
 /**
- * the service request processor.
+ * @namespace toolkit.services
  */
+/**
+* @class toolkit.services.ServiceRequestProcessor
+* @classdesc Handles loading indication in requests automatically.
+*/
 export declare class ServiceRequestProcessor {
     private $timeout;
     private request;

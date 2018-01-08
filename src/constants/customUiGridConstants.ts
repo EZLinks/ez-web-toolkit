@@ -1,3 +1,11 @@
+/**
+ * @namespace toolkit.constants
+ */
+
+ /**
+ * @class toolkit.constants.CustomUiGridConstants
+ * @classdesc An angular ui-grid constants.
+ */
 export class CustomUiGridConstants {
     static get Default(): any {
         return {

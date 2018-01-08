@@ -1,5 +1,9 @@
 /**
- * Methods for helping deal with arrays.
+ * @namespace toolkit.utils
+ */
+/**
+ * @class toolkit.utils.ArrayHelper
+ * @classdesc Methods for helping deal with arrays.
  */
 export declare class ArrayHelper {
     /**

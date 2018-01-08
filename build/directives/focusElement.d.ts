@@ -1,8 +1,12 @@
 /// <reference types="angular" />
 /// <reference types="angular-mocks" />
 /**
- * Makes a focus on element while loaded.
+ * @namespace toolkit.directives
  */
+/**
+* @class toolkit.directives.FocusElement
+* @classdesc Makes a focus on element while loaded.
+*/
 export declare class FocusElement implements ng.IDirective {
     private $timeout;
     restrict: string;

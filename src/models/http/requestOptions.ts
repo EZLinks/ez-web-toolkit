@@ -1,5 +1,10 @@
 /**
- * The request options to be passed to the api service request function.
+ * @namespace toolkit.models
+ */
+ 
+ /**
+ * @class toolkit.models.RequestOptions
+ * @classdesc The request options to be passed to the api service request function.
  */
 export class RequestOptions {
 

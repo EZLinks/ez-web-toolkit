@@ -1,5 +1,10 @@
 /**
- * Makes a focus on element while loaded.
+ * @namespace toolkit.directives
+ */
+ 
+ /**
+ * @class toolkit.directives.FocusElement
+ * @classdesc Makes a focus on element while loaded.
  */
 export class FocusElement implements ng.IDirective {
     
