@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<title>ez-web-toolkit Source: constants/typeConsts.ts</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+	<style>
+		.sideMenu
+		{
+			margin-left: 320px!important;
+
+		}
+		#main
+		{
+			margin-top: 46px;
+		}
+		#mainMenu
+		{
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			
+		}
+
+		#searchBox
+		{
+			vertical-align: none !important;
+			padding-right: 0px;
+			width:238px;
+
+		}
+		.sideMargin
+		{
+			margin-left: 15px;
+		}
+		.sunlight-code-container
+		{
+			border:none!important;
+		}
+		.navTitle
+		{
+			font-size:15px;
+			padding:0px;
+
+		}
+		.nav-list
+		{
+			width: 100%;
+		}
+		.nav-list
+		{
+			padding-left:20px;
+		}		
+		.nav-list li
+		{
+			line-height: 16px;
+		}
+		.handCursor
+		{
+			cursor: pointer;
+		}
+		.nav-pills > li > a {
+			padding-top: 0px;
+			padding-bottom: 0px;
+		}
+
+		#projectTitle
+		{
+			position: fixed;
+			padding-left: 10px;
+			padding-top: 5px;
+			font-size: 26px;
+			font-weight: lighter;
+			letter-spacing: -1px;
+			background-color: #FFF;
+			width: 100%;
+			height: 35px;
+			line-height: 18px;
+			color: #000;
+			border-bottom: 1px solid rgba(0,0,0,.2);
+			z-index: 10;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Helvetica Neue';
+			font-weight: lighter;
+		}
+		h3
+		{
+			font-size: 22px;
+			font-weight: lighter;
+		}
+		.page-title
+		{
+			font-weight: lighter;
+			font-size: 28px;
+			letter-spacing: -2px;
+			padding-top:0px;
+		}
+
+		.well
+		{
+			padding: 5px;
+			width:280px;
+			margin-left:0px;
+		}
+
+
+		.menuFrame
+		{
+			margin-top: 20px;
+			overflow:hidden; 
+			overflow-y:auto;
+		}
+		.menuFrame::-webkit-scrollbar {
+		    -webkit-appearance: none;
+		}
+
+		.menuFrame::-webkit-scrollbar:vertical {
+		    width: 11px;
+		}
+
+		.menuFrame::-webkit-scrollbar:horizontal {
+		    height: 11px;
+		}
+
+		.menuFrame::-webkit-scrollbar-thumb {
+		    border-radius: 8px;
+		    border: 2px solid white; /* should match background, can't be transparent */
+		    background-color: rgba(0, 0, 0, .5);
+		}
+		
+		.container-fluid
+		{
+			padding-left: 10px;
+		}
+
+		#side-menu
+		{
+			height: 415px;
+			box-shadow: inset 0 0 10px rgba(0,0,0,.5);
+			border: 1px solid #999;
+		}
+
+		#menuAside
+		{
+			margin-top:50px;
+			position:fixed;
+		}
+
+		.member {
+			font-size: 14px;
+			color:#000;
+			background-color:#FFF;
+			border:1px solid #2fa4e7;
+		}
+		.member:hover {
+
+			background-color:#F6F6F6;
+		}		
+		.member-open .paramSignature{
+			font-size: 14px;
+			color: #2fa4e7;
+		}
+		.member-collapsed .paramSignature{
+			font-size: 14px;
+			color: #2fa4e7;
+		}
+		.routeTitle{
+		    cursor: pointer;
+		}
+
+		.genericAnnotation
+		{
+		    color:#2fa4e7;
+		}
+
+		.sourceBar
+		{
+			margin-top: -5px;
+		}
+
+
+
+.twitter-typeahead
+{
+	top: -5px;
+}
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+  margin-bottom: 0;
+  background-color: #F00;
+  border-radius: 20px;
+
+}
+
+.tt-hint
+{
+	top: 2px!important;
+
+    padding-left: 10px!important;  
+    width: 188px;
+    text-indent: 4px;
+}
+.tt-dropdown-menu {
+  min-width: 160px;
+  margin-top: 2px;
+  padding: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+}
+
+.tt-suggestion.tt-is-under-cursor a {
+  color: #fff;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+	</style>
+</head>
+
+<body>
+<div id="projectTitle">
+	<div id="btnCollapse" class="btn collapseSidebarButton btn-primary"><i class="icon-th-list icon-white"></i></div>
+	ez-web-toolkit
+</div>	
+<div class="container-fluid">
+
+	<div id="menuAside">
+    <aside class="well span3 oc" id="side-menu" role="navigation">
+
+    	<div style="margin-left: 10px; margin-top: 10px;">
+			<input type="text" id="searchBox" class="search-query typeahead" placeholder="Search">
+		</div>
+		<div class="menuFrame" id="sideMenuFrame">
+		<ul id="menuContainer" class="nav nav-pills nav-stacked">
+			<li class="nav-header navTitle"><a href="index.html">INDEX</a></li>
+				<li class="divider"></li>
+				
+				
+					    <li id="navTitle_Namespaces" class="nav-header navTitle">
+                            <a class="handCursor" data-toggle="collapse" data-id="T_Namespaces" data-target="#collapse_Namespaces">Namespaces<span class="badge badge-info pull-right">9</span></a>
+                        </li>
+                        <li id="navContents_Namespaces">
+                            <div id="collapse_Namespaces" class="collapse">
+                                <ul class="nav nav-list" style="width:100%;margin-left:-8px;">
+                                    
+                                        <?j
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.baseClasses.html">toolkit.baseClasses</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.components.html">toolkit.components</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.constants.html">toolkit.constants</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.directives.html">toolkit.directives</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.enums.html">toolkit.enums</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.exceptions.html">toolkit.exceptions</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.models.html">toolkit.models</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.services.html">toolkit.services</a>
+                                        
+                                    </li>
+                                    
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.utils.html">toolkit.utils</a>
+                                        
+                                    </li>
+                                    
+                             <li class="divider"></li>
+                        
+                                    </ul>
+                                </div>
+                            </li>
+                        
+					    <li id="navTitle_Classes" class="nav-header navTitle">
+                            <a class="handCursor" data-toggle="collapse" data-id="T_Classes" data-target="#collapse_Classes">Classes<span class="badge badge-info pull-right">37</span></a>
+                        </li>
+                        <li id="navContents_Classes">
+                            <div id="collapse_Classes" class="collapse">
+                                <ul class="nav nav-list" style="width:100%;margin-left:-8px;">
+                                    <li><div class="routeTitle">toolkit</div><ul class="children nav nav-list"><li><div class="routeTitle">baseClasses</div><ul class="children nav nav-list"><li><a href="toolkit.baseClasses.BaseComponent.html">BaseComponent</a></li><li><a href="toolkit.baseClasses.BaseEditorController.html">BaseEditorController</a></li><li><a href="toolkit.baseClasses.BaseLookupController.html">BaseLookupController</a></li><li><a href="toolkit.baseClasses.BaseManagerController.html">BaseManagerController</a></li><li><a href="toolkit.baseClasses.BaseManagerDeletableController.html">BaseManagerDeletableController</a></li><li><a href="toolkit.baseClasses.BaseModalController.html">BaseModalController</a></li></ul></li><li><div class="routeTitle">components</div><ul class="children nav nav-list"><li><a href="toolkit.components.ConfirmDialogController.html">ConfirmDialogController</a></li><li><a href="toolkit.components.DatePickerController.html">DatePickerController</a></li><li><a href="toolkit.components.ErrorBlockController.html">ErrorBlockController</a></li><li><a href="toolkit.components.EzGridController.html">EzGridController</a></li><li><a href="toolkit.components.EzModalController.html">EzModalController</a></li><li><a href="toolkit.components.SingleLookupController.html">SingleLookupController</a></li><li><a href="toolkit.components.UploadImageController.html">UploadImageController</a></li></ul></li><li><div class="routeTitle">constants</div><ul class="children nav nav-list"><li><a href="toolkit.constants.CustomUiGridConstants.html">CustomUiGridConstants</a></li><li><a href="toolkit.constants.EventConsts.html">EventConsts</a></li><li><a href="toolkit.constants.TypeConsts.html">TypeConsts</a></li></ul></li><li><div class="routeTitle">directives</div><ul class="children nav nav-list"><li><a href="toolkit.directives.FocusElement.html">FocusElement</a></li></ul></li><li><div class="routeTitle">enums</div><ul class="children nav nav-list"><li><a href="toolkit.enums.EditorState.html">EditorState</a></li><li><a href="toolkit.enums.ErrorResponseType.html">ErrorResponseType</a></li><li><a href="toolkit.enums.HttpStatusCode.html">HttpStatusCode</a></li><li><a href="toolkit.enums.ManagerState.html">ManagerState</a></li></ul></li><li><div class="routeTitle">exceptions</div><ul class="children nav nav-list"><li><a href="toolkit.exceptions.ResponseError.html">ResponseError</a></li></ul></li><li><div class="routeTitle">models</div><ul class="children nav nav-list"><li><a href="toolkit.models.ErrorBlockModel.html">ErrorBlockModel</a></li><li><a href="toolkit.models.ProblemResult.html">ProblemResult</a></li><li><a href="toolkit.models.RequestOptions.html">RequestOptions</a></li><li><a href="toolkit.models.UiGridRequest.html">UiGridRequest</a></li><li><a href="toolkit.models.UiGridResult.html">UiGridResult</a></li><li><a href="toolkit.models.ValidationProblemResult.html">ValidationProblemResult</a></li></ul></li><li><div class="routeTitle">services</div><ul class="children nav nav-list"><li><a href="toolkit.services.IApiService.html">IApiService</a></li><li><a href="toolkit.services.IModalService.html">IModalService</a></li><li><a href="toolkit.services.INotificationService.html">INotificationService</a></li><li><a href="toolkit.services.IUiGridService.html">IUiGridService</a></li><li><a href="toolkit.services.ServiceRequestProcessor.html">ServiceRequestProcessor</a></li><li><a href="toolkit.services.ValidationProcessor.html">ValidationProcessor</a></li></ul></li><li><div class="routeTitle">utils</div><ul class="children nav nav-list"><li><a href="toolkit.utils.Activator.html">Activator</a></li><li><a href="toolkit.utils.ArrayHelper.html">ArrayHelper</a></li><li><a href="toolkit.utils.ObjectCopier.html">ObjectCopier</a></li></ul></li></ul></li>
+                            
+                                    </ul>
+                                </div>
+                            </li>
+                        
+
+		</ul>
+		</div>
+
+		<script>
+			var searchMembers = [{"realName":"toolkit.baseClasses","link":"toolkit.baseClasses"},{"realName":"toolkit.components","link":"toolkit.components"},{"realName":"toolkit.constants","link":"toolkit.constants"},{"realName":"toolkit.directives","link":"toolkit.directives"},{"realName":"toolkit.enums","link":"toolkit.enums"},{"realName":"toolkit.exceptions","link":"toolkit.exceptions"},{"realName":"toolkit.models","link":"toolkit.models"},{"realName":"toolkit.services","link":"toolkit.services"},{"realName":"toolkit.utils","link":"toolkit.utils"},{"realName":"toolkit.baseClasses.BaseComponent","link":"toolkit.baseClasses.BaseComponent"},{"realName":"toolkit.baseClasses.BaseEditorController","link":"toolkit.baseClasses.BaseEditorController"},{"realName":"toolkit.baseClasses.BaseLookupController","link":"toolkit.baseClasses.BaseLookupController"},{"realName":"toolkit.baseClasses.BaseManagerController","link":"toolkit.baseClasses.BaseManagerController"},{"realName":"toolkit.baseClasses.BaseManagerDeletableController","link":"toolkit.baseClasses.BaseManagerDeletableController"},{"realName":"toolkit.baseClasses.BaseModalController","link":"toolkit.baseClasses.BaseModalController"},{"realName":"toolkit.components.ConfirmDialogController","link":"toolkit.components.ConfirmDialogController"},{"realName":"toolkit.components.DatePickerController","link":"toolkit.components.DatePickerController"},{"realName":"toolkit.components.ErrorBlockController","link":"toolkit.components.ErrorBlockController"},{"realName":"toolkit.components.EzGridController","link":"toolkit.components.EzGridController"},{"realName":"toolkit.components.EzModalController","link":"toolkit.components.EzModalController"},{"realName":"toolkit.components.SingleLookupController","link":"toolkit.components.SingleLookupController"},{"realName":"toolkit.components.UploadImageController","link":"toolkit.components.UploadImageController"},{"realName":"toolkit.constants.CustomUiGridConstants","link":"toolkit.constants.CustomUiGridConstants"},{"realName":"toolkit.constants.EventConsts","link":"toolkit.constants.EventConsts"},{"realName":"toolkit.constants.TypeConsts","link":"toolkit.constants.TypeConsts"},{"realName":"toolkit.directives.FocusElement","link":"toolkit.directives.FocusElement"},{"realName":"toolkit.enums.EditorState","link":"toolkit.enums.EditorState"},{"realName":"toolkit.enums.ErrorResponseType","link":"toolkit.enums.ErrorResponseType"},{"realName":"toolkit.enums.HttpStatusCode","link":"toolkit.enums.HttpStatusCode"},{"realName":"toolkit.enums.ManagerState","link":"toolkit.enums.ManagerState"},{"realName":"toolkit.exceptions.ResponseError","link":"toolkit.exceptions.ResponseError"},{"realName":"toolkit.models.ErrorBlockModel","link":"toolkit.models.ErrorBlockModel"},{"realName":"toolkit.models.ProblemResult","link":"toolkit.models.ProblemResult"},{"realName":"toolkit.models.RequestOptions","link":"toolkit.models.RequestOptions"},{"realName":"toolkit.models.UiGridRequest","link":"toolkit.models.UiGridRequest"},{"realName":"toolkit.models.UiGridResult","link":"toolkit.models.UiGridResult"},{"realName":"toolkit.models.ValidationProblemResult","link":"toolkit.models.ValidationProblemResult"},{"realName":"toolkit.services.IApiService","link":"toolkit.services.IApiService"},{"realName":"toolkit.services.IModalService","link":"toolkit.services.IModalService"},{"realName":"toolkit.services.INotificationService","link":"toolkit.services.INotificationService"},{"realName":"toolkit.services.IUiGridService","link":"toolkit.services.IUiGridService"},{"realName":"toolkit.services.ServiceRequestProcessor","link":"toolkit.services.ServiceRequestProcessor"},{"realName":"toolkit.services.ValidationProcessor","link":"toolkit.services.ValidationProcessor"},{"realName":"toolkit.utils.Activator","link":"toolkit.utils.Activator"},{"realName":"toolkit.utils.ArrayHelper","link":"toolkit.utils.ArrayHelper"},{"realName":"toolkit.utils.ObjectCopier","link":"toolkit.utils.ObjectCopier"}];
+		</script>
+    </aside>
+	</div>
+    <div id="docContents" class="sideMenu sideMargin">
+
+		
+			<div style="width:100%">
+		
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: constants/typeConsts.ts</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">/**
+ * @namespace toolkit.constants
+ */
+ 
+ /**
+ * @class toolkit.constants.TypeConsts
+ * @classdesc The type constants.
+ */
+export class TypeConsts {
+
+    /**
+     * The empty guid constant.
+     * @member {string} toolkit.constants.TypeConsts#emptyGuid
+     */   
+    public static emptyGuid: string = '00000000-0000-0000-0000-000000000000';
+}</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+						<span class="copyright">
+						ez-web-toolkit Copyright © 2018 V.
+						</span>
+									<br />
+									
+						<span class="jsdoc-message">
+						Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+						on Mon Jan 08 2018 15:16:25 GMT+0300 (Russia TZ 2 Standard Time) using the <a href="https://github.com/xperiments/TSDoc">TSDoc template</a>.
+						</span>
+				</footer>
+			</div>
+			<!--
+			
+			-->
+			<br clear="both">
+		</div>
+
+	</div>
+
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+
+			var searchItems = [];
+			var searchMap = {};
+			var mapName = "";
+			for( var i=0; i<searchMembers.length; i++ )
+			{
+				realName = searchMembers[i].realName;
+				searchItems.push( realName );
+				searchMap[ realName ] = searchMembers[ i ];
+			}
+
+
+			$('.typeahead').typeahead({
+			  source: searchItems,
+			  matcher: function(item) {
+			  	//console.log('aaa'+item, this.query, item.indexOf( this.query.toLowerCase() )==-1?false:true)
+                // evaluate item variable and return true if the item was matched.
+                return item.toLowerCase().indexOf( this.query.toLowerCase() )==-1?false:true;
+             },
+			  updater: function (item) {
+					window.location.href = searchMap[ item ].link+'.html';
+			  }
+
+			});
+
+
+            // Move Tutorials to bottom
+            //$('#menuContainer').append($('#navTitle_Tutorials'));
+            //$('#menuContainer').append($('#navContents_Tutorials'));
+			$(window).resize(function() {
+			  $('#side-menu').height( $(window).height()-70 );
+			  $('#sideMenuFrame').height( $(window).height()-140 );
+			  if( $(window).width() <480 )
+			  {
+			  	$('#side-menu').hide();
+				$('#docContents').removeClass('sideMenu');
+			  }
+			});
+
+			$(window).trigger('resize')
+			$('#btnCollapse').click(function()
+			{
+				$('#side-menu').toggle();
+				$('#docContents').toggleClass('sideMenu');
+
+			})
+			$('#btnHome').click(function()
+			{
+				document.location.href="index.html"
+
+			})		
+
+			$('.sourceBar').click(function(){})
+			var lastMenuSelection = window.localStorage.getItem('lastMenuSelection') || null;
+			if( lastMenuSelection ) $('a[data-id='+lastMenuSelection+']').click();
+			$('a[data-toggle=collapse]').click(function(){
+				if( lastMenuSelection == $(this).attr('data-id') ) return;
+				if( lastMenuSelection ) $('a[data-id='+lastMenuSelection+']').click();
+				lastMenuSelection = $(this).attr('data-id');
+				window.localStorage.setItem('lastMenuSelection', lastMenuSelection )
+			});	
+
+
+		} );
+	</script>
+
+	
+	<script>
+		$( function () {
+			$('#main').localScroll({
+				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
+			});
+			$(".routeTitle").on('click', function(){
+			    $(this).next().slideToggle();
+			});
+			$( "dt h4.name" ).each( function () {
+				var $this = $( this );
+				//var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" );
+				var dt = $this.parents( "dt" );
+				var children = dt.next( "dd" );
+
+				//$this.append( icon ).css( {cursor : "pointer"} );
+				$this.addClass( "member-collapsed" ).addClass( "member" );
+
+				children.hide();
+				$this.toggle( function () {
+					//icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" );
+					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
+					children.slideDown();
+				}, function () {
+					//icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" );
+					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
+					children.slideUp();
+				} );
+			} );
+			$('.sourceBar').click(function(event){event.stopPropagation();})
+		} );
+	</script>
+	
+
+</body>
+</html>

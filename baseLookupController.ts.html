@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<title>ez-web-toolkit Source: baseLookupController.ts</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+	<style>
+		.sideMenu
+		{
+			margin-left: 320px!important;
+
+		}
+		#main
+		{
+			margin-top: 46px;
+		}
+		#mainMenu
+		{
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			
+		}
+
+		#searchBox
+		{
+			vertical-align: none !important;
+			padding-right: 0px;
+			width:238px;
+
+		}
+		.sideMargin
+		{
+			margin-left: 15px;
+		}
+		.sunlight-code-container
+		{
+			border:none!important;
+		}
+		.navTitle
+		{
+			font-size:15px;
+			padding:0px;
+
+		}
+		.nav-list
+		{
+			width: 100%;
+		}
+		.nav-list
+		{
+			padding-left:20px;
+		}		
+		.nav-list li
+		{
+			line-height: 16px;
+		}
+		.handCursor
+		{
+			cursor: pointer;
+		}
+		.nav-pills > li > a {
+			padding-top: 0px;
+			padding-bottom: 0px;
+		}
+
+		#projectTitle
+		{
+			position: fixed;
+			padding-left: 10px;
+			padding-top: 5px;
+			font-size: 26px;
+			font-weight: lighter;
+			letter-spacing: -1px;
+			background-color: #FFF;
+			width: 100%;
+			height: 35px;
+			line-height: 18px;
+			color: #000;
+			border-bottom: 1px solid rgba(0,0,0,.2);
+			z-index: 10;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Helvetica Neue';
+			font-weight: lighter;
+		}
+		h3
+		{
+			font-size: 22px;
+			font-weight: lighter;
+		}
+		.page-title
+		{
+			font-weight: lighter;
+			font-size: 28px;
+			letter-spacing: -2px;
+			padding-top:0px;
+		}
+
+		.well
+		{
+			padding: 5px;
+			width:280px;
+			margin-left:0px;
+		}
+
+
+		.menuFrame
+		{
+			margin-top: 20px;
+			overflow:hidden; 
+			overflow-y:auto;
+		}
+		.menuFrame::-webkit-scrollbar {
+		    -webkit-appearance: none;
+		}
+
+		.menuFrame::-webkit-scrollbar:vertical {
+		    width: 11px;
+		}
+
+		.menuFrame::-webkit-scrollbar:horizontal {
+		    height: 11px;
+		}
+
+		.menuFrame::-webkit-scrollbar-thumb {
+		    border-radius: 8px;
+		    border: 2px solid white; /* should match background, can't be transparent */
+		    background-color: rgba(0, 0, 0, .5);
+		}
+		
+		.container-fluid
+		{
+			padding-left: 10px;
+		}
+
+		#side-menu
+		{
+			height: 415px;
+			box-shadow: inset 0 0 10px rgba(0,0,0,.5);
+			border: 1px solid #999;
+		}
+
+		#menuAside
+		{
+			margin-top:50px;
+			position:fixed;
+		}
+
+		.member {
+			font-size: 14px;
+			color:#000;
+			background-color:#FFF;
+			border:1px solid #2fa4e7;
+		}
+		.member:hover {
+
+			background-color:#F6F6F6;
+		}		
+		.member-open .paramSignature{
+			font-size: 14px;
+			color: #2fa4e7;
+		}
+		.member-collapsed .paramSignature{
+			font-size: 14px;
+			color: #2fa4e7;
+		}
+		.routeTitle{
+		    cursor: pointer;
+		}
+
+		.genericAnnotation
+		{
+		    color:#2fa4e7;
+		}
+
+		.sourceBar
+		{
+			margin-top: -5px;
+		}
+
+
+
+.twitter-typeahead
+{
+	top: -5px;
+}
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+  margin-bottom: 0;
+  background-color: #F00;
+  border-radius: 20px;
+
+}
+
+.tt-hint
+{
+	top: 2px!important;
+
+    padding-left: 10px!important;  
+    width: 188px;
+    text-indent: 4px;
+}
+.tt-dropdown-menu {
+  min-width: 160px;
+  margin-top: 2px;
+  padding: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+}
+
+.tt-suggestion.tt-is-under-cursor a {
+  color: #fff;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+	</style>
+</head>
+
+<body>
+<div id="projectTitle">
+	<div id="btnCollapse" class="btn collapseSidebarButton btn-primary"><i class="icon-th-list icon-white"></i></div>
+	ez-web-toolkit
+</div>	
+<div class="container-fluid">
+
+	<div id="menuAside">
+    <aside class="well span3 oc" id="side-menu" role="navigation">
+
+    	<div style="margin-left: 10px; margin-top: 10px;">
+			<input type="text" id="searchBox" class="search-query typeahead" placeholder="Search">
+		</div>
+		<div class="menuFrame" id="sideMenuFrame">
+		<ul id="menuContainer" class="nav nav-pills nav-stacked">
+			<li class="nav-header navTitle"><a href="index.html">INDEX</a></li>
+				<li class="divider"></li>
+				
+				
+					    <li id="navTitle_Namespaces" class="nav-header navTitle">
+                            <a class="handCursor" data-toggle="collapse" data-id="T_Namespaces" data-target="#collapse_Namespaces">Namespaces<span class="badge badge-info pull-right">1</span></a>
+                        </li>
+                        <li id="navContents_Namespaces">
+                            <div id="collapse_Namespaces" class="collapse">
+                                <ul class="nav nav-list" style="width:100%;margin-left:-8px;">
+                                    
+                                        <?j
+                                    <li>
+                                        
+                                        
+                                        	<a href="toolkit.baseClasses.html">toolkit.baseClasses</a>
+                                        
+                                    </li>
+                                    
+                             <li class="divider"></li>
+                        
+                                    </ul>
+                                </div>
+                            </li>
+                        
+					    <li id="navTitle_Classes" class="nav-header navTitle">
+                            <a class="handCursor" data-toggle="collapse" data-id="T_Classes" data-target="#collapse_Classes">Classes<span class="badge badge-info pull-right">5</span></a>
+                        </li>
+                        <li id="navContents_Classes">
+                            <div id="collapse_Classes" class="collapse">
+                                <ul class="nav nav-list" style="width:100%;margin-left:-8px;">
+                                    <li><div class="routeTitle">toolkit</div><ul class="children nav nav-list"><li><div class="routeTitle">baseClasses</div><ul class="children nav nav-list"><li><a href="toolkit.baseClasses.BaseComponent.html">BaseComponent</a></li><li><a href="toolkit.baseClasses.BaseEditorController.html">BaseEditorController</a></li><li><a href="toolkit.baseClasses.BaseLookupController.html">BaseLookupController</a></li><li><a href="toolkit.baseClasses.BaseManagerController.html">BaseManagerController</a></li><li><a href="toolkit.baseClasses.BaseManagerDeletableController.html">BaseManagerDeletableController</a></li></ul></li></ul></li>
+                            
+                                    </ul>
+                                </div>
+                            </li>
+                        
+
+		</ul>
+		</div>
+
+		<script>
+			var searchMembers = [{"realName":"toolkit.baseClasses","link":"toolkit.baseClasses"},{"realName":"toolkit.baseClasses.BaseComponent","link":"toolkit.baseClasses.BaseComponent"},{"realName":"toolkit.baseClasses.BaseEditorController","link":"toolkit.baseClasses.BaseEditorController"},{"realName":"toolkit.baseClasses.BaseLookupController","link":"toolkit.baseClasses.BaseLookupController"},{"realName":"toolkit.baseClasses.BaseManagerController","link":"toolkit.baseClasses.BaseManagerController"},{"realName":"toolkit.baseClasses.BaseManagerDeletableController","link":"toolkit.baseClasses.BaseManagerDeletableController"}];
+		</script>
+    </aside>
+	</div>
+    <div id="docContents" class="sideMenu sideMargin">
+
+		
+			<div style="width:100%">
+		
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: baseLookupController.ts</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">/**
+ * @namespace toolkit.baseClasses
+ */
+
+import { UiGridRequest } from '../models/uiGrid/uiGridRequest';
+import { UiGridResult } from '../models/uiGrid/uiGridResult';
+import { BaseComponent } from '../baseClasses/baseComponent';
+import { EventConsts } from '../constants/eventConsts';
+
+export abstract class BaseLookupController&lt;T> extends BaseComponent {
+
+    //#region Properties
+
+    /**
+     * Ng-grid api.
+     * @member {any} toolkit.baseClasses.BaseLookupController#gridApi
+     */
+    gridApi: any;
+
+    /**
+     * Ng-grid options.
+     * @member {any} toolkit.baseClasses.BaseLookupController#gridOptions
+     */
+    gridOptions: any;
+
+    /**
+     * Ng-grid columns.
+     * @member {any} toolkit.baseClasses.BaseLookupController#gridColumns
+     */
+    gridColumns: any;
+
+    /**
+     * The filter request which would be sent to server.
+     * @member {UiGridRequest} toolkit.baseClasses.BaseLookupController#filterRequest
+     */
+    filterRequest: UiGridRequest;
+
+    /**
+     * Whether all data has been fetched and no request should be made to server any more.
+     * @member {boolean} toolkit.baseClasses.BaseLookupController#allDataFetched
+     */
+    allDataFetched: boolean;
+
+    /**
+     * Whether request to server is running to fill the grid with items.
+     * @member {boolean} toolkit.baseClasses.BaseLookupController#isRequestRunning
+     */
+    isRequestRunning: boolean;
+
+    /**
+     * Whether request failed on the server.
+     * @member {boolean} toolkit.baseClasses.BaseLookupController#isRequestError
+     */
+    isRequestError: boolean;
+
+    /**
+     * The timeout for changing the filters.
+     * @member {any} toolkit.baseClasses.BaseLookupController#filterChangedTimeout
+     */
+    filterChangedTimeout: any;
+
+    /**
+     * The currently selected item in grid.
+     * @member {T} toolkit.baseClasses.BaseLookupController#selectedItem
+     */    
+    selectedItem: T;
+
+    /**
+     * The currently selected item ids grid.
+     * @member {Array&lt;any>} toolkit.baseClasses.BaseLookupController#selectedItemIds
+     */    
+    selectedItemIds: Array&lt;any>;
+
+    /**
+     * The id field of an item which is fetched from the server.
+     * @member {Array&lt;any>} toolkit.baseClasses.BaseLookupController#itemIdField
+     */    
+    itemIdField: string;
+
+    /**
+     * The id field of an item which is fetched from the server.
+     * @member {Function} toolkit.baseClasses.BaseLookupController#onDoubleClick
+     */    
+    onDoubleClick: Function;
+
+    /**
+     * Th callback for fetching items from the server.
+     * @member {Function} toolkit.baseClasses.BaseLookupController#getItems
+     */    
+    getItems: Function;
+
+    //#endregion
+
+    //#region Constructor
+
+    /**
+     * @class toolkit.baseClasses.BaseLookupController&lt;T extends Object>
+     * @extends BaseComponent
+     * @abstract
+     * @classdesc Methods for handling an angular ng-grid component.
+     * @param {ng.IScope} $scope Scope of the component.
+     */
+    constructor(public $scope) {
+        super($scope);
+
+        $scope.rowDblClick = (row) => this.onDoubleClickEvent(row.entity);
+
+        $scope.$on(EventConsts.reloadGridEvent, () => {
+            this.reloadGrid();
+        });
+    }
+
+    //#endregion
+
+    //#region Functions
+
+    /**
+     * Reloads the grid, makes a server side request to fetch items once again.
+     * @abstract
+     * @method toolkit.baseClasses.BaseLookupController#reloadGrid
+     */
+    abstract reloadGrid(): Promise&lt;any>;
+
+    /**
+     * Calls an onDoubleClick callback and assigns the selected item.
+     * @method toolkit.baseClasses.BaseLookupController#onDoubleClickEvent
+     */
+     onDoubleClickEvent(selectedItem): void {
+        this.selectedItem = selectedItem as T;
+        this.onDoubleClick();
+    }
+
+    //#endregion
+}
+</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+						<span class="copyright">
+						ez-web-toolkit Copyright © 2018 V.
+						</span>
+									<br />
+									
+						<span class="jsdoc-message">
+						Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+						on Mon Jan 08 2018 18:34:14 GMT+0800 (Malay Peninsula Standard Time) using the <a href="https://github.com/xperiments/TSDoc">TSDoc template</a>.
+						</span>
+				</footer>
+			</div>
+			<!--
+			
+			-->
+			<br clear="both">
+		</div>
+
+	</div>
+
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+
+			var searchItems = [];
+			var searchMap = {};
+			var mapName = "";
+			for( var i=0; i<searchMembers.length; i++ )
+			{
+				realName = searchMembers[i].realName;
+				searchItems.push( realName );
+				searchMap[ realName ] = searchMembers[ i ];
+			}
+
+
+			$('.typeahead').typeahead({
+			  source: searchItems,
+			  matcher: function(item) {
+			  	//console.log('aaa'+item, this.query, item.indexOf( this.query.toLowerCase() )==-1?false:true)
+                // evaluate item variable and return true if the item was matched.
+                return item.toLowerCase().indexOf( this.query.toLowerCase() )==-1?false:true;
+             },
+			  updater: function (item) {
+					window.location.href = searchMap[ item ].link+'.html';
+			  }
+
+			});
+
+
+            // Move Tutorials to bottom
+            //$('#menuContainer').append($('#navTitle_Tutorials'));
+            //$('#menuContainer').append($('#navContents_Tutorials'));
+			$(window).resize(function() {
+			  $('#side-menu').height( $(window).height()-70 );
+			  $('#sideMenuFrame').height( $(window).height()-140 );
+			  if( $(window).width() <480 )
+			  {
+			  	$('#side-menu').hide();
+				$('#docContents').removeClass('sideMenu');
+			  }
+			});
+
+			$(window).trigger('resize')
+			$('#btnCollapse').click(function()
+			{
+				$('#side-menu').toggle();
+				$('#docContents').toggleClass('sideMenu');
+
+			})
+			$('#btnHome').click(function()
+			{
+				document.location.href="index.html"
+
+			})		
+
+			$('.sourceBar').click(function(){})
+			var lastMenuSelection = window.localStorage.getItem('lastMenuSelection') || null;
+			if( lastMenuSelection ) $('a[data-id='+lastMenuSelection+']').click();
+			$('a[data-toggle=collapse]').click(function(){
+				if( lastMenuSelection == $(this).attr('data-id') ) return;
+				if( lastMenuSelection ) $('a[data-id='+lastMenuSelection+']').click();
+				lastMenuSelection = $(this).attr('data-id');
+				window.localStorage.setItem('lastMenuSelection', lastMenuSelection )
+			});	
+
+
+		} );
+	</script>
+
+	
+	<script>
+		$( function () {
+			$('#main').localScroll({
+				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
+			});
+			$(".routeTitle").on('click', function(){
+			    $(this).next().slideToggle();
+			});
+			$( "dt h4.name" ).each( function () {
+				var $this = $( this );
+				//var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" );
+				var dt = $this.parents( "dt" );
+				var children = dt.next( "dd" );
+
+				//$this.append( icon ).css( {cursor : "pointer"} );
+				$this.addClass( "member-collapsed" ).addClass( "member" );
+
+				children.hide();
+				$this.toggle( function () {
+					//icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" );
+					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
+					children.slideDown();
+				}, function () {
+					//icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" );
+					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
+					children.slideUp();
+				} );
+			} );
+			$('.sourceBar').click(function(event){event.stopPropagation();})
+		} );
+	</script>
+	
+
+</body>
+</html>

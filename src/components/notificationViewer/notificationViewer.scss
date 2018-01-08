@@ -1,8 +1,0 @@
-// NOTE: If this is an ezModal component our normal css targeting will not work.
-// The modals are detachable, so they do not exist within the component element
-// in the DOM. You need to set this top level selector to a class name (ideally
-// by just simply converting the component name to a class name) and pass that
-// class name into ezModal's em-class-name binding.
-notification-viewer {
-
-}
