@@ -17,3 +17,7 @@ Dependencies are not included in the build - they must be included in the parent
 ## License
 
 MIT
+
+## Documentation
+
+Documentation with classes overview could be found [here](https://ezlinks.github.io/ez-web-toolkit/)
