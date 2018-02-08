@@ -1,4 +1,4 @@
-<div class="ui action input">
+<div class="ui action input" ng-class="::{ 'fluid' : dp.isFluent }">
     <input type="text" class="form-control"
             uib-datepicker-popup="{{::dp.format}}"
             ng-model="dp.date"
@@ -12,7 +12,7 @@
             max-date="dp.maxDate"
             datepicker-options="dp.dateOptions"
             on-open-focus="false"
-            popup-placement="auto"
+            popup-placement="{{::dp.placement}}"
             ng-required="true"
             readonly="readonly"
             close-text="Close"

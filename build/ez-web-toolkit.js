@@ -1983,7 +1983,9 @@ var DatePicker = (function () {
             onDateChange: '&onDateChange',
             depth: '=?depth',
             depthMin: '=?depthMin',
-            format: '=?format '
+            format: '=?format ',
+            placement: '@placement',
+            isFluent: '<fluent'
         };
     }
     return DatePicker;
@@ -2020,6 +2022,9 @@ var DatePickerController = (function () {
         }
         if (this.format === undefined) {
             this.format = 'mediumDate';
+        }
+        if (!this.placement) {
+            this.placement = 'auto';
         }
         this.dateOptions.datepickerMode = this.depth;
         this.dateOptions.minMode = this.depthMin;
@@ -2104,7 +2109,7 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/datePicker/datePicker.html';
-var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" class=\"form-control\"\r\n            uib-datepicker-popup=\"{{::dp.format}}\"\r\n            ng-model=\"dp.date\"\r\n            ng-model-options=\"dp.modelOptions\"\r\n            ng-click=\"dp.toggleCalendar($event)\"\r\n            datepicker-popup=\"{{::dp.format}}\"\r\n            datepicker-popup-template-url=\"{{::dp.popupTemplate}}\"\r\n            datepicker-template-url=\"{{::dp.datePickerTemplate}}\"\r\n            is-open=\"dp.status.opened\"\r\n            min-date=\"dp.minDate\"\r\n            max-date=\"dp.maxDate\"\r\n            datepicker-options=\"dp.dateOptions\"\r\n            on-open-focus=\"false\"\r\n            popup-placement=\"auto\"\r\n            ng-required=\"true\"\r\n            readonly=\"readonly\"\r\n            close-text=\"Close\"\r\n            current-text=\"Today\"/>\r\n    <button class=\"ui icon button\" ng-click=\"dp.toggleCalendar($event)\">\r\n        <i class=\"calendar icon\"></i>\r\n    </button>\r\n</div>";
+var html = "<div class=\"ui action input\" ng-class=\"::{ 'fluid' : dp.isFluent }\">\r\n    <input type=\"text\" class=\"form-control\"\r\n            uib-datepicker-popup=\"{{::dp.format}}\"\r\n            ng-model=\"dp.date\"\r\n            ng-model-options=\"dp.modelOptions\"\r\n            ng-click=\"dp.toggleCalendar($event)\"\r\n            datepicker-popup=\"{{::dp.format}}\"\r\n            datepicker-popup-template-url=\"{{::dp.popupTemplate}}\"\r\n            datepicker-template-url=\"{{::dp.datePickerTemplate}}\"\r\n            is-open=\"dp.status.opened\"\r\n            min-date=\"dp.minDate\"\r\n            max-date=\"dp.maxDate\"\r\n            datepicker-options=\"dp.dateOptions\"\r\n            on-open-focus=\"false\"\r\n            popup-placement=\"{{::dp.placement}}\"\r\n            ng-required=\"true\"\r\n            readonly=\"readonly\"\r\n            close-text=\"Close\"\r\n            current-text=\"Today\"/>\r\n    <button class=\"ui icon button\" ng-click=\"dp.toggleCalendar($event)\">\r\n        <i class=\"calendar icon\"></i>\r\n    </button>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 

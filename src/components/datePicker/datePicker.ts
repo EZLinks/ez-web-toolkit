@@ -29,7 +29,9 @@ export class DatePicker implements ng.IComponentOptions {
             onDateChange: '&onDateChange',
             depth: '=?depth',
             depthMin: '=?depthMin',
-            format: '=?format '
+            format: '=?format ',
+            placement: '@placement',
+            isFluent: '<fluent'
         };
     }
 }
@@ -74,6 +76,9 @@ export class DatePickerController {
 
     depthMin: string;
 
+    public placement: string;
+    public isFluent: boolean;
+
     popupTemplate = popupTemplate;
     datePickerTemplate = datePickerTemplate;
 
@@ -87,6 +92,11 @@ export class DatePickerController {
         if (this.format === undefined){
             this.format = 'mediumDate';
         }
+
+        if (!this.placement) {
+            this.placement = 'auto';
+        }
+
         this.dateOptions.datepickerMode = this.depth;
         this.dateOptions.minMode = this.depthMin;
     }

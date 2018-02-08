@@ -25,6 +25,8 @@ export declare class DatePickerController {
     onDateChange: Function;
     depth: string;
     depthMin: string;
+    placement: string;
+    isFluent: boolean;
     popupTemplate: any;
     datePickerTemplate: any;
     $onInit(): void;
