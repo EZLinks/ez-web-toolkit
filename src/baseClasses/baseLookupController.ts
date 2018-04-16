@@ -62,31 +62,31 @@ export abstract class BaseLookupController<T> extends BaseComponent {
     /**
      * The currently selected item in grid.
      * @member {T} toolkit.baseClasses.BaseLookupController#selectedItem
-     */    
+     */
     selectedItem: T;
 
     /**
      * The currently selected item ids grid.
      * @member {Array<any>} toolkit.baseClasses.BaseLookupController#selectedItemIds
-     */    
+     */
     selectedItemIds: Array<any>;
 
     /**
      * The id field of an item which is fetched from the server.
      * @member {Array<any>} toolkit.baseClasses.BaseLookupController#itemIdField
-     */    
+     */
     itemIdField: string;
 
     /**
      * The id field of an item which is fetched from the server.
      * @member {Function} toolkit.baseClasses.BaseLookupController#onDoubleClick
-     */    
+     */
     onDoubleClick: Function;
 
     /**
      * Th callback for fetching items from the server.
      * @member {Function} toolkit.baseClasses.BaseLookupController#getItems
-     */    
+     */
     getItems: Function;
 
     //#endregion
@@ -125,9 +125,11 @@ export abstract class BaseLookupController<T> extends BaseComponent {
      * Calls an onDoubleClick callback and assigns the selected item.
      * @method toolkit.baseClasses.BaseLookupController#onDoubleClickEvent
      */
-     onDoubleClickEvent(selectedItem): void {
+    onDoubleClickEvent(selectedItem): void {
         this.selectedItem = selectedItem as T;
-        this.onDoubleClick();
+        if (this.onDoubleClick) {
+            this.onDoubleClick();
+        }
     }
 
     //#endregion
