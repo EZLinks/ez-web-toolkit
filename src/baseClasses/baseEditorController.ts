@@ -75,6 +75,10 @@ export abstract class BaseEditorController<T> implements IValidatableController 
      */
     public clearItemOnClose: boolean = true;
 
+    public showMessageOnSuccess: boolean = true;
+
+    public successMessage: string = 'Successfully saved.';
+
     /**
      * @class toolkit.baseClasses.BaseEditorController<T extends Object>
      * @implements IValidatableController
@@ -134,7 +138,9 @@ export abstract class BaseEditorController<T> implements IValidatableController 
      * @method toolkit.baseClasses.BaseEditorController#successNotification
      */
     protected successNotification(): void {
-        this.notificationService.success('Successfully saved.');
+        if (this.showMessageOnSuccess) {
+            this.notificationService.success(this.successMessage);
+        }
     }
 
     /**

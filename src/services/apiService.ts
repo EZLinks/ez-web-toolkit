@@ -1,7 +1,7 @@
 /**
  * @namespace toolkit.services
  */
- 
+
 import * as angular from 'angular';
 
 import { IResponseHandlers } from './handlers/responseHandlers';
@@ -52,7 +52,7 @@ export class ApiService implements IApiService {
 
                 angular.forEach(requestData,
                     (value, key) => {
-                        formData.append(key, value);
+                        formData.append(key.toString(), value);
                     });
             }
 
@@ -150,7 +150,7 @@ export interface IApiService {
      * to the response body.
      * @method toolkit.services.IApiService#request
      */
-    request(opts: RequestOptions) : Promise<any|void>;
+    request(opts: RequestOptions): Promise<any | void>;
 
     /**
      * Uploads file to server.

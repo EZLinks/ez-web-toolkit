@@ -49,6 +49,8 @@ export declare abstract class BaseEditorController<T> implements IValidatableCon
      * @member {boolean} toolkit.baseClasses.BaseEditorController#clearItemOnClose
      */
     clearItemOnClose: boolean;
+    showMessageOnSuccess: boolean;
+    successMessage: string;
     /**
      * @class toolkit.baseClasses.BaseEditorController<T extends Object>
      * @implements IValidatableController
