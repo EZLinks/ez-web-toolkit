@@ -144,6 +144,15 @@ export abstract class BaseEditorController<T> implements IValidatableController 
     }
 
     /**
+     * Method is called after validation is occured, if false the do not call the save method.
+     * @method toolkit.baseClasses.BaseEditorController#afterValidation
+     * @param {boolean} validationResult The validation result.
+     */
+    public afterValidation(validationResult: boolean): boolean {
+        return true;
+    }
+
+    /**
      * Validates an item, in case of success, makes request to server in order to save item.
      * @method toolkit.baseClasses.BaseEditorController#submit
      */
@@ -164,6 +173,11 @@ export abstract class BaseEditorController<T> implements IValidatableController 
             this.$timeout(() => {
                 this.isValidationRequestRunning = false;
             });
+
+            if (!this.afterValidation(result))
+            {
+                return;
+            }
 
             if (result) {
 

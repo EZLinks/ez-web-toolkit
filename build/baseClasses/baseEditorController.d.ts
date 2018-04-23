@@ -85,6 +85,12 @@ export declare abstract class BaseEditorController<T> implements IValidatableCon
      */
     protected successNotification(): void;
     /**
+     * Method is called after validation is occured, if false the do not call the save method.
+     * @method toolkit.baseClasses.BaseEditorController#afterValidation
+     * @param {boolean} validationResult The validation result.
+     */
+    afterValidation(validationResult: boolean): boolean;
+    /**
      * Validates an item, in case of success, makes request to server in order to save item.
      * @method toolkit.baseClasses.BaseEditorController#submit
      */
