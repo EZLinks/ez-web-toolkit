@@ -11,7 +11,7 @@ export declare class ResponseHandlers {
      *
      * @param {boolean} rethrow - Whether or not to rethrow the error.
      */
-    error(rethrow?: boolean): void;
+    error(rethrow?: boolean, hideErrorMessage?: boolean): void;
     /**
      * Handles error in response.
      *
@@ -21,7 +21,7 @@ export declare class ResponseHandlers {
      * @param {any} jsonData - The json data object.
      * @param {boolean} rethrow - Whether or not to rethrow the error.
      */
-    handleProblem(jsonData: any, rethrow?: boolean): void;
+    handleProblem(jsonData: any, rethrow?: boolean, hideErrorMessage?: boolean): void;
     /**
      * Checks if response is success.
      *
@@ -38,6 +38,6 @@ export declare class ResponseHandlers {
     private getErrorResponseType(jsonData);
 }
 export interface IResponseHandlers {
-    error(rethrow: boolean): any;
-    handleProblem(jsonData: any, rethrow: boolean): any;
+    error(rethrow: boolean, hideErrorMessage: boolean): any;
+    handleProblem(jsonData: any, rethrow: boolean, hideErrorMessage: boolean): any;
 }

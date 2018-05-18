@@ -52,6 +52,11 @@ export class RequestOptions {
      * Whether or not to rethrow any error encountered.
      */
     public rethrow: boolean;
+    
+    /**
+     * Whether to hide error message.
+     */
+    public hideErrorMessage: boolean;
 
     /**
      * The transform request option.

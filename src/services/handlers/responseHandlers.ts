@@ -26,9 +26,13 @@ export class ResponseHandlers {
      *
      * @param {boolean} rethrow - Whether or not to rethrow the error.
      */
-    public error(rethrow: boolean = true) {
+    public error(rethrow: boolean = true, hideErrorMessage: boolean = false) {
+        
         const message = 'An error occurred.';
-        this.notification.error(message);
+        if (!hideErrorMessage) {
+            this.notification.error(message);
+        }
+
         if (rethrow) {
             throw new ResponseError(ErrorResponseType.ConnectionLost, message);
         }
@@ -43,15 +47,17 @@ export class ResponseHandlers {
      * @param {any} jsonData - The json data object.
      * @param {boolean} rethrow - Whether or not to rethrow the error.
      */
-    public handleProblem(jsonData: any, rethrow: boolean = true) {
+    public handleProblem(jsonData: any, rethrow: boolean = true, hideErrorMessage: boolean = false) {
 
         const message = jsonData.detail as string;
 
         if (message) {
-            this.notification.error(message);
+            if (!hideErrorMessage) {
+                this.notification.error(message);
+            }
         }
         else {
-            this.error(rethrow);
+            this.error(rethrow, hideErrorMessage);
         }
 
         const errorResponseType = this.getErrorResponseType(jsonData);
@@ -89,6 +95,6 @@ export class ResponseHandlers {
 }
 
 export interface IResponseHandlers {
-    error(rethrow: boolean);
-    handleProblem(jsonData: any, rethrow: boolean);
+    error(rethrow: boolean, hideErrorMessage: boolean);
+    handleProblem(jsonData: any, rethrow: boolean, hideErrorMessage: boolean);
 }

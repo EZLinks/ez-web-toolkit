@@ -3065,10 +3065,13 @@ var ResponseHandlers = (function () {
      *
      * @param {boolean} rethrow - Whether or not to rethrow the error.
      */
-    ResponseHandlers.prototype.error = function (rethrow) {
+    ResponseHandlers.prototype.error = function (rethrow, hideErrorMessage) {
         if (rethrow === void 0) { rethrow = true; }
+        if (hideErrorMessage === void 0) { hideErrorMessage = false; }
         var message = 'An error occurred.';
-        this.notification.error(message);
+        if (!hideErrorMessage) {
+            this.notification.error(message);
+        }
         if (rethrow) {
             throw new responseError_1.ResponseError(errorResponseType_1.ErrorResponseType.ConnectionLost, message);
         }
@@ -3082,14 +3085,17 @@ var ResponseHandlers = (function () {
      * @param {any} jsonData - The json data object.
      * @param {boolean} rethrow - Whether or not to rethrow the error.
      */
-    ResponseHandlers.prototype.handleProblem = function (jsonData, rethrow) {
+    ResponseHandlers.prototype.handleProblem = function (jsonData, rethrow, hideErrorMessage) {
         if (rethrow === void 0) { rethrow = true; }
+        if (hideErrorMessage === void 0) { hideErrorMessage = false; }
         var message = jsonData.detail;
         if (message) {
-            this.notification.error(message);
+            if (!hideErrorMessage) {
+                this.notification.error(message);
+            }
         }
         else {
-            this.error(rethrow);
+            this.error(rethrow, hideErrorMessage);
         }
         var errorResponseType = this.getErrorResponseType(jsonData);
         if (rethrow) {
@@ -3208,10 +3214,10 @@ var ApiService = (function () {
             .catch(function (err) {
             // If a response was received and it contains some useful information.
             if (err.data) {
-                _this.responseHandlers.handleProblem(err.data, opts.rethrow);
+                _this.responseHandlers.handleProblem(err.data, opts.rethrow, opts.hideErrorMessage);
             }
             else {
-                _this.responseHandlers.error(opts.rethrow);
+                _this.responseHandlers.error(opts.rethrow, opts.hideErrorMessage);
             }
         })
             .then(function (res) {

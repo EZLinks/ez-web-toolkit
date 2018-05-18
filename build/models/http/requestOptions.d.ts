@@ -38,6 +38,10 @@ export declare class RequestOptions {
      */
     rethrow: boolean;
     /**
+     * Whether to hide error message.
+     */
+    hideErrorMessage: boolean;
+    /**
      * The transform request option.
      */
     transformRequest: any;

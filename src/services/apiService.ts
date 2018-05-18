@@ -107,11 +107,11 @@ export class ApiService implements IApiService {
 
                 // If a response was received and it contains some useful information.
                 if (err.data) {
-                    this.responseHandlers.handleProblem(err.data, opts.rethrow);
+                    this.responseHandlers.handleProblem(err.data, opts.rethrow, opts.hideErrorMessage);
                 }
                 // Otherwise, just throw a generic error.
                 else {
-                    this.responseHandlers.error(opts.rethrow);
+                    this.responseHandlers.error(opts.rethrow, opts.hideErrorMessage);
                 }
             })
             // Return response json data.
