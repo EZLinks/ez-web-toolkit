@@ -1,6 +1,6 @@
 {
   "name": "ez-web-toolkit",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "description": "EZ Web Toolkit",
   "main": "build/ez-web-toolkit.js",
   "files": [
@@ -70,7 +70,7 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
-    "angular": "1.7.0",
+    "angular": "1.7.2",
     "angular-typescript-validation": "1.8.1",
     "angular-ui-grid": "4.0.6",
     "moment": "^2.22.2",
