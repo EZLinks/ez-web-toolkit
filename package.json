@@ -52,7 +52,7 @@
     "karma-webpack": "^2.0.4",
     "mocha": "^3.2.0",
     "ngtemplate-loader": "^2.0.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.0",
     "postcss-calc": "^6.0.0",
     "postcss-css-variables": "^0.7.0",
     "postcss-custom-media": "^6.0.0",
@@ -70,10 +70,10 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
-    "angular": "1.6.3",
-    "angular-typescript-validation": "1.6.3",
+    "angular": "1.7.0",
+    "angular-typescript-validation": "1.8.1",
     "angular-ui-grid": "4.0.6",
-    "moment": "2.18.1",
+    "moment": "^2.22.2",
     "semantic-ui-angular": "0.3.0",
     "toastr": "2.1.2"
   }
