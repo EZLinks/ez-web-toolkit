@@ -1085,7 +1085,7 @@ var BaseEditorController = (function () {
     };
     BaseEditorController.prototype.handleWarnResponse = function (response) {
         if (response.hasWarning) {
-            this.notificationService.info(response.detail);
+            this.notificationService.warn(response.detail);
         }
         else {
             this.notificationService.success(this.successMessage);
