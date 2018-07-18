@@ -79,6 +79,7 @@ export declare abstract class BaseEditorController<T> implements IValidatableCon
      * @param {any} response The response from the server.
      */
     protected onResponseSuccess(response: any): void;
+    protected handleWarnResponse(response: any): void;
     /**
      * Notifies user about success save. Could be overriden to provide different notification.
      * @method toolkit.baseClasses.BaseEditorController#successNotification

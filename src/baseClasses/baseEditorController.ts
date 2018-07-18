@@ -133,6 +133,14 @@ export abstract class BaseEditorController<T> implements IValidatableController 
         // could be overriden
     }
 
+    protected handleWarnResponse(response: any) {
+        if (response.hasWarning) {
+            this.notificationService.info(response.detail);
+        } else {
+            this.notificationService.success(this.successMessage);
+        }
+    }
+
     /**
      * Notifies user about success save. Could be overriden to provide different notification.
      * @method toolkit.baseClasses.BaseEditorController#successNotification

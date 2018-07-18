@@ -6,6 +6,7 @@ export declare class NotificationService implements INotificationService {
     success(message: string, title?: string, optionsOverride?: any): void;
     error(message: string, title?: string, optionsOverride?: any): void;
     info(message: string, title?: string, optionsOverride?: any): void;
+    warn(message: String, title?: string, optionsOverride?: any): void;
 }
 /**
  * @interface
@@ -37,4 +38,12 @@ export interface INotificationService {
     * @param {any} optionsOverride - overrides toastr options.
     */
     info(message: String, title?: string, optionsOverride?: any): void;
+    /**
+     * Warning notification.
+     * @method toolkit.services.INotificationService#info
+     * @param {String} message - messsage.
+     * @param {String} title - title, optional.
+     * @param {any} optionsOverride - overrides toastr options.
+     */
+    warn(message: String, title?: string, optionsOverride?: any): void;
 }
