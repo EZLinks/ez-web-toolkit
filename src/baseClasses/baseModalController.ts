@@ -32,7 +32,11 @@ export class BaseModalController extends BaseComponent {
 
         this.unwatchArray.push(() => {
             this.modalService.hide(this);
-            $(`#${this.id}`).modal('hide');
+            
+            if ($(`#${this.id}`).modal) {
+                $(`#${this.id}`).modal('hide');
+            }
+            
             $(`#${this.id}`).remove();
         });
     }

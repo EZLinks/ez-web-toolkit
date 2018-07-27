@@ -425,7 +425,9 @@ var BaseModalController = (function (_super) {
         this.id = Math.random().toString(36).substr(2, 9);
         this.unwatchArray.push(function () {
             _this.modalService.hide(_this);
-            $("#" + _this.id).modal('hide');
+            if ($("#" + _this.id).modal) {
+                $("#" + _this.id).modal('hide');
+            }
             $("#" + _this.id).remove();
         });
     };
