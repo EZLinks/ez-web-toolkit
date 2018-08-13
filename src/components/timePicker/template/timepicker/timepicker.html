@@ -1,0 +1,72 @@
+<table>
+    <!-- Up button row -->
+    <tr>
+        <td>
+            <button 
+                class="ui fluid basic icon button"
+                ng-click="incrementHours()">
+                <i class="angle up icon"></i>
+            </button>
+        </td>
+        <td></td>
+        <td>
+            <button 
+                class="ui fluid basic icon button"
+                ng-click="incrementMinutes()">
+                <i class="angle up icon"></i>
+            </button>
+        </td>
+    </tr>
+    <!-- Time row -->
+    <tr>
+        <td class="form-group uib-time hours">
+            <input 
+                type="text" 
+                placeholder="HH" 
+                ng-model="hours" 
+                ng-change="updateHours()" 
+                class="form-control text-center ng-pristine ng-valid ng-valid-hours ng-empty ng-valid-maxlength ng-touched" 
+                ng-readonly="::readonlyInput" 
+                maxlength="2" 
+                tabindex="0" 
+                ng-disabled="noIncrementHours()" 
+                ng-blur="blur()">
+        </td>
+        <td class="uib-separator">:</td>
+        <td class="form-group uib-time minutes">
+            <input 
+                type="text" 
+                placeholder="MM" 
+                ng-model="minutes" 
+                ng-change="updateMinutes()" 
+                class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-minutes ng-empty ng-valid-maxlength" ng-readonly="::readonlyInput" maxlength="2" tabindex="0" ng-disabled="noIncrementMinutes()" 
+                ng-blur="blur()">
+        </td>
+        <td ng-if="showMeridian" class="meridian-column">
+            <button 
+                class="ui fluid basic button"
+                ng-click="toggleMeridian()"
+                ng-disabled="noToggleMeridian()">
+                {{meridian}}
+            </button>
+        </td>
+    </tr>
+    <!-- Down button row -->
+    <tr>
+        <td>
+            <button 
+                class="ui fluid basic icon button"
+                ng-click="decrementHours()">
+                <i class="angle down icon"></i>
+            </button>
+        </td>
+        <td></td>
+        <td>
+            <button 
+                class="ui fluid basic icon button"
+                ng-click="decrementMinutes()">
+                <i class="angle down icon"></i>
+            </button>
+        </td>
+    </tr>
+</tabl>
