@@ -3,20 +3,24 @@ import './index.scss';
 
 import { ConfirmDialog } from './confirmDialog/confirmDialog';
 import { DatePicker } from './datePicker/datePicker';
+import { TimePicker } from './timePicker/timePicker';
 import { ErrorBlock } from './errorBlock/errorBlock';
 import { EzGrid } from './ezGrid/ezGrid';
 import { EzModal } from './ezModal/ezModal';
 import { SingleLookup } from './singleLookup/singleLookup';
 import { UploadImage } from './uploadImage/uploadImage';
 import { NotificationViewer } from './notificationViewer/notificationViewer';
+import { ColorPicker } from './colorPicker/colorPicker';
 
 export {
     ConfirmDialog,
     DatePicker,
+    TimePicker,
     ErrorBlock,
     EzGrid,
     EzModal,
     SingleLookup,
     UploadImage,
-    NotificationViewer
+    NotificationViewer,
+    ColorPicker
 }

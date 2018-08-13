@@ -7,7 +7,7 @@
 		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
 	else
 		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_68__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_73__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -962,19 +962,19 @@ var BaseClasses = __webpack_require__(19);
 exports.BaseClasses = BaseClasses;
 var Components = __webpack_require__(24);
 exports.Components = Components;
-var Constants = __webpack_require__(52);
+var Constants = __webpack_require__(57);
 exports.Constants = Constants;
-var Enums = __webpack_require__(57);
+var Enums = __webpack_require__(62);
 exports.Enums = Enums;
-var Exceptions = __webpack_require__(58);
+var Exceptions = __webpack_require__(63);
 exports.Exceptions = Exceptions;
-var Models = __webpack_require__(59);
+var Models = __webpack_require__(64);
 exports.Models = Models;
-var Services = __webpack_require__(63);
+var Services = __webpack_require__(68);
 exports.Services = Services;
-var Directives = __webpack_require__(74);
+var Directives = __webpack_require__(79);
 exports.Directives = Directives;
-var Utils = __webpack_require__(76);
+var Utils = __webpack_require__(81);
 exports.Utils = Utils;
 
 
@@ -1320,18 +1320,22 @@ var confirmDialog_1 = __webpack_require__(30);
 exports.ConfirmDialog = confirmDialog_1.ConfirmDialog;
 var datePicker_1 = __webpack_require__(32);
 exports.DatePicker = datePicker_1.DatePicker;
-var errorBlock_1 = __webpack_require__(40);
+var timePicker_1 = __webpack_require__(40);
+exports.TimePicker = timePicker_1.TimePicker;
+var errorBlock_1 = __webpack_require__(43);
 exports.ErrorBlock = errorBlock_1.ErrorBlock;
-var ezGrid_1 = __webpack_require__(42);
+var ezGrid_1 = __webpack_require__(45);
 exports.EzGrid = ezGrid_1.EzGrid;
-var ezModal_1 = __webpack_require__(44);
+var ezModal_1 = __webpack_require__(47);
 exports.EzModal = ezModal_1.EzModal;
-var singleLookup_1 = __webpack_require__(46);
+var singleLookup_1 = __webpack_require__(49);
 exports.SingleLookup = singleLookup_1.SingleLookup;
-var uploadImage_1 = __webpack_require__(48);
+var uploadImage_1 = __webpack_require__(51);
 exports.UploadImage = uploadImage_1.UploadImage;
-var notificationViewer_1 = __webpack_require__(50);
+var notificationViewer_1 = __webpack_require__(53);
 exports.NotificationViewer = notificationViewer_1.NotificationViewer;
+var colorPicker_1 = __webpack_require__(55);
+exports.ColorPicker = colorPicker_1.ColorPicker;
 
 
 /***/ }),
@@ -1374,7 +1378,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n\n/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n\nez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n\nsingle-lookup input.action.input {\n  max-height: 40px; }\n\nupload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n", ""]);
+exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n\n/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n\nez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n\nsingle-lookup input.action.input {\n  max-height: 40px; }\n\nupload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n\ncolor-picker .colorpicker.dropdown {\n  background-color: white; }\n  color-picker .colorpicker.dropdown button {\n    float: right;\n    border: 0;\n    background-color: white;\n    padding: 0;\n    font-size: x-large;\n    cursor: pointer; }\n\ncolor-picker .ui.labeled.button {\n  width: 100%; }\n", ""]);
 
 // exports
 
@@ -1976,7 +1980,7 @@ exports.ConfirmDialogController = ConfirmDialogController;
 /* 31 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/confirmDialog/confirmDialog.html';
 var html = "<ez-modal\r\n    em-class-name=\"confirm-dialog\"\r\n    em-header-text=\"{{cd.title}}\"\r\n    em-primary-button-text=\"Confirm\"\r\n    em-secondary-button-text=\"Cancel\"\r\n    em-is-visible=\"cd.visible\"\r\n    em-on-approve=\"cd.onOk()\"\r\n    em-on-deny=\"cd.onCancel()\"\r\n    em-is-loader-visible=\"cd.loader\"\r\n    em-on-hidden=\"cd.onHidden()\">\r\n\r\n    <div ng-bind=\"cd.body\"></div>\r\n    <div ng-if=\"cd.callout\" class=\"emphasis\" ng-bind=\"cd.callout\"></div>\r\n\r\n    <error-block class=\"margin-t10 dblock\" eb-error=\"cd.errorBlock\"></error-block>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2084,7 +2088,7 @@ exports.DatePickerController = DatePickerController;
 /* 33 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/datePicker/template/datepicker/popup.html';
 var html = "<ul class=\"uib-datepicker-popup dropdown-menu ui uib-position-measure clearing segment\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\r\n    <li ng-transclude></li>\r\n    <li ng-if=\"showButtonBar\" style=\"padding:10px 9px 2px\">\r\n        <span class=\"pull-left\">\r\n            <button type=\"button\" class=\"ui primaryButton button primary\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">\r\n                <span ng-bind=\"getText('current')\"></span>\r\n            </button>\r\n        </span>\r\n        <button type=\"button\" class=\"ui secondaryButton button pull-right\" ng-click=\"close($event)\">\r\n            <span ng-bind=\"getText('close')\"></span>\r\n        </button>\r\n    </li>\r\n</ul>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2093,7 +2097,7 @@ module.exports = path;
 /* 34 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/datePicker/template/datepicker/datepicker.html';
 var html = "<div class=\"uib-datepicker\" ng-switch=\"datepickerMode\" role=\"application\" ng-keydown=\"keydown($event)\">\r\n  <div uib-daypicker ng-switch-when=\"day\" tabindex=\"0\" template-url=\"day.html\"></div>\r\n  <div uib-monthpicker ng-switch-when=\"month\" tabindex=\"0\" template-url=\"month.html\"></div>\r\n  <div uib-yearpicker ng-switch-when=\"year\" tabindex=\"0\" template-url=\"year.html\"></div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
@@ -2135,13 +2139,87 @@ module.exports = require("moment");
 /* 39 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/datePicker/datePicker.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/datePicker/datePicker.html';
 var html = "<div class=\"ui action input\" ng-class=\"::{ 'fluid' : dp.isFluent }\">\r\n    <input type=\"text\" class=\"form-control\"\r\n            uib-datepicker-popup=\"{{::dp.format}}\"\r\n            ng-model=\"dp.date\"\r\n            ng-model-options=\"dp.modelOptions\"\r\n            ng-click=\"dp.toggleCalendar($event)\"\r\n            datepicker-popup=\"{{::dp.format}}\"\r\n            datepicker-popup-template-url=\"{{::dp.popupTemplate}}\"\r\n            datepicker-template-url=\"{{::dp.datePickerTemplate}}\"\r\n            is-open=\"dp.status.opened\"\r\n            min-date=\"dp.minDate\"\r\n            max-date=\"dp.maxDate\"\r\n            datepicker-options=\"dp.dateOptions\"\r\n            on-open-focus=\"false\"\r\n            popup-placement=\"{{::dp.placement}}\"\r\n            ng-required=\"true\"\r\n            readonly=\"readonly\"\r\n            close-text=\"Close\"\r\n            current-text=\"Today\"/>\r\n    <button class=\"ui icon button\" ng-click=\"dp.toggleCalendar($event)\">\r\n        <i class=\"calendar icon\"></i>\r\n    </button>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @namespace toolkit.components
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(41);
+var TimePicker = (function () {
+    function TimePicker() {
+        this.templateUrl = __webpack_require__(42);
+        this.controller = TimePickerController;
+        this.controllerAs = 'tp';
+        this.bindings = {
+            time: '=time',
+            hStep: '=?hStep',
+            mStep: '=?mStep',
+            isMeridian: '=?isMeridian'
+        };
+    }
+    return TimePicker;
+}());
+exports.TimePicker = TimePicker;
+/**
+ * @class toolkit.components.TimePickerController
+ * @classdesc Methods for showing the time picker component.
+ */
+var TimePickerController = (function () {
+    function TimePickerController() {
+    }
+    TimePickerController.prototype.$onInit = function () {
+        if (this.hStep === undefined) {
+            this.hStep = 1;
+        }
+        if (this.mStep === undefined) {
+            this.mStep = 5;
+        }
+        if (this.isMeridian === undefined) {
+            this.isMeridian = true;
+        }
+    };
+    /**
+     * Fires when the date changes. Not yet used.
+     *
+     * @memberOf TimePickerController
+     */
+    TimePickerController.prototype.changed = function () {
+    };
+    return TimePickerController;
+}());
+exports.TimePickerController = TimePickerController;
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+var path = 'timepicker.html';
+var html = "<table>\r\n    <!-- Up button row -->\r\n    <tr>\r\n        <td>\r\n            <button \r\n                class=\"ui fluid basic icon button\"\r\n                ng-click=\"incrementHours()\">\r\n                <i class=\"angle up icon\"></i>\r\n            </button>\r\n        </td>\r\n        <td></td>\r\n        <td>\r\n            <button \r\n                class=\"ui fluid basic icon button\"\r\n                ng-click=\"incrementMinutes()\">\r\n                <i class=\"angle up icon\"></i>\r\n            </button>\r\n        </td>\r\n    </tr>\r\n    <!-- Time row -->\r\n    <tr>\r\n        <td class=\"form-group uib-time hours\">\r\n            <input \r\n                type=\"text\" \r\n                placeholder=\"HH\" \r\n                ng-model=\"hours\" \r\n                ng-change=\"updateHours()\" \r\n                class=\"form-control text-center ng-pristine ng-valid ng-valid-hours ng-empty ng-valid-maxlength ng-touched\" \r\n                ng-readonly=\"::readonlyInput\" \r\n                maxlength=\"2\" \r\n                tabindex=\"0\" \r\n                ng-disabled=\"noIncrementHours()\" \r\n                ng-blur=\"blur()\">\r\n        </td>\r\n        <td class=\"uib-separator\">:</td>\r\n        <td class=\"form-group uib-time minutes\">\r\n            <input \r\n                type=\"text\" \r\n                placeholder=\"MM\" \r\n                ng-model=\"minutes\" \r\n                ng-change=\"updateMinutes()\" \r\n                class=\"form-control text-center ng-pristine ng-untouched ng-valid ng-valid-minutes ng-empty ng-valid-maxlength\" ng-readonly=\"::readonlyInput\" maxlength=\"2\" tabindex=\"0\" ng-disabled=\"noIncrementMinutes()\" \r\n                ng-blur=\"blur()\">\r\n        </td>\r\n        <td ng-if=\"showMeridian\" class=\"meridian-column\">\r\n            <button \r\n                class=\"ui fluid basic button\"\r\n                ng-click=\"toggleMeridian()\"\r\n                ng-disabled=\"noToggleMeridian()\">\r\n                {{meridian}}\r\n            </button>\r\n        </td>\r\n    </tr>\r\n    <!-- Down button row -->\r\n    <tr>\r\n        <td>\r\n            <button \r\n                class=\"ui fluid basic icon button\"\r\n                ng-click=\"decrementHours()\">\r\n                <i class=\"angle down icon\"></i>\r\n            </button>\r\n        </td>\r\n        <td></td>\r\n        <td>\r\n            <button \r\n                class=\"ui fluid basic icon button\"\r\n                ng-click=\"decrementMinutes()\">\r\n                <i class=\"angle down icon\"></i>\r\n            </button>\r\n        </td>\r\n    </tr>\r\n</tabl>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+var path = 'C:/Code/ez-web-toolkit/src/components/timePicker/timePicker.html';
+var html = "<div \r\n    uib-timepicker \r\n    ng-model=\"tp.time\" \r\n    ng-change=\"tp.changed()\" \r\n    hour-step=\"tp.hStep\" \r\n    minute-step=\"tp.mStep\" \r\n    show-meridian=\"tp.isMeridian\"\r\n    template-url=\"timepicker.html\">\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2157,7 +2235,7 @@ var ErrorBlock = (function () {
     function ErrorBlock() {
         this.controller = ErrorBlockController;
         this.controllerAs = 'eb';
-        this.templateUrl = __webpack_require__(41);
+        this.templateUrl = __webpack_require__(44);
         this.bindings = {
             errorBlock: '=ebError'
         };
@@ -2185,16 +2263,16 @@ exports.ErrorBlockController = ErrorBlockController;
 
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/errorBlock/errorBlock.html';
 var html = "<div ng-if=\"eb.showError\" class=\"ui negative message\">\r\n    <div class=\"header\">\r\n        {{eb.errorBlock.errorTitle}}\r\n    </div>\r\n    <p>\r\n        {{eb.errorBlock.errorMessage}}\r\n    </p>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 42 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2216,7 +2294,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var baseLookupController_1 = __webpack_require__(6);
 var EzGrid = (function () {
     function EzGrid() {
-        this.templateUrl = __webpack_require__(43);
+        this.templateUrl = __webpack_require__(46);
         this.controller = EzGridController;
         this.controllerAs = 'eg';
         this.bindings = {
@@ -2295,16 +2373,16 @@ exports.EzGridController = EzGridController;
 
 
 /***/ }),
-/* 43 */
+/* 46 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/ezGrid/ezGrid.html';
 var html = "<div ui-grid=\"eg.gridOptions\" ui-grid-selection ui-grid-pagination>\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"eg.isRequestRunning\">\r\n        <div class=\"ui large text loader sr-only\"><span>Loading..</span></div>\r\n    </div>\r\n    <div ng-if=\"eg.isRequestError\" class=\"ui active inverted dimmer part-loader gridErrContainer\">\r\n        <div class=\"ui error message gridErrMessage\">\r\n            <div class=\"header\">An error occurred, please try again</div>\r\n            <button type=\"button\" class=\"ui basic icon button gridErrBtn\" ng-click=\"eg.reloadGrid()\"><i class=\"refresh icon\"></i> Reload Data</button>\r\n        </div>\r\n    </div>\r\n    <div ng-show=\"eg.hasNoItems()\" class=\"ui active inverted dimmer part-loader noItemsInfoContainer\">\r\n        <div class=\"ui info message noItemsMessage\">\r\n            <div class=\"header\">No items found.</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2326,7 +2404,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var baseModalController_1 = __webpack_require__(9);
 var EzModal = (function () {
     function EzModal() {
-        this.templateUrl = __webpack_require__(45);
+        this.templateUrl = __webpack_require__(48);
         this.controller = EzModalController;
         this.controllerAs = 'em';
         this.bindings = {
@@ -2431,16 +2509,16 @@ exports.EzModalController = EzModalController;
 
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/ezModal/ezModal.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/ezModal/ezModal.html';
 var html = "<sm-modal\r\n    class=\"{{em.className}}\"\r\n    ng-class=\"{ 'data-is-active' : em.isShown, 'data-is-hidden' : !em.isShown }\"\r\n    id=\"{{em.id}}\"\r\n    visible=\"em.isModalVisible\"\r\n    on-show=\"em.onShow\"\r\n    on-hidden=\"em.onHideCallback\"\r\n    on-visible=\"em.onVisibleCallback\"\r\n    settings=\"{\r\n        transition: 'scale',\r\n        closable: false,\r\n        detachable: true,\r\n        observeChanges: true,\r\n        blurring: false\r\n    }\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"em.isLoaderVisible\">\r\n        <div class=\"ui large text loader\"><span>Loading...</span></div>\r\n    </div>\r\n\r\n    <div class=\"header\">{{ em.headerText }}</div>\r\n    <div ng-if=\"em.isInDom\" class=\"content\" ng-transclude></div>\r\n\r\n    <div class=\"ui actions-row actions\">\r\n        <div class=\"ui basic button\" ng-if=\"em.secondaryButtonText\" data-ng-click=\"em.onSecondaryButtonClick()\">{{ em.secondaryButtonText }}</div>\r\n         <div class=\"ui primary button\" ng-if=\"em.primaryButtonText\" data-ng-click=\"em.onPrimaryButtonClick()\">{{ em.primaryButtonText }}</div>\r\n    </div>\r\n</sm-modal>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2464,7 +2542,7 @@ var baseComponent_1 = __webpack_require__(1);
 var typeConsts_1 = __webpack_require__(10);
 var SingleLookup = (function () {
     function SingleLookup() {
-        this.templateUrl = __webpack_require__(47);
+        this.templateUrl = __webpack_require__(50);
         this.controller = SingleLookupController;
         this.controllerAs = 'sl';
         this.bindings = {
@@ -2664,16 +2742,16 @@ exports.SingleLookupController = SingleLookupController;
 
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
 var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\">\r\n\r\n            <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                 eg-item-id-field=\"sl.itemIdField\">\r\n        </ez-grid>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2690,7 +2768,7 @@ var UploadImage = (function () {
      * inits component.
      */
     function UploadImage() {
-        this.templateUrl = __webpack_require__(49);
+        this.templateUrl = __webpack_require__(52);
         this.controller = UploadImageController;
         this.controllerAs = 'ui';
         this.bindings = {
@@ -2756,16 +2834,16 @@ exports.UploadImageController = UploadImageController;
 
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
 var html = "<div class=\"ui segment image-uploader-container\">\r\n\r\n    <div class=\"ui active inverted dimmer part-loader\" ng-if=\"ui.isRequestRunning\">\r\n        <div class=\"ui large text loader\"><span>Loading..</span></div>\r\n    </div>\r\n\r\n    <img ng-if=\"!ui.hasExistingImage\" class=\"ui small rounded image\"\r\n         ngf-select=\"ui.onImageSelect($file)\"\r\n         ngf-pattern=\"'image/*'\"\r\n         ngf-accept=\"'image/*'\"\r\n         ng-src=\"{{ui.imageSrc}}\">\r\n\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2773,7 +2851,7 @@ module.exports = path;
 Object.defineProperty(exports, "__esModule", { value: true });
 var NotificationViewer = (function () {
     function NotificationViewer() {
-        this.templateUrl = __webpack_require__(51);
+        this.templateUrl = __webpack_require__(54);
         this.controller = NotificationViewerController;
         this.controllerAs = 'nv';
         this.bindings = {};
@@ -2807,22 +2885,72 @@ exports.NotificationViewerController = NotificationViewerController;
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
+var path = 'C:/Code/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
 var html = "<div ng-repeat=\"item in nv.items\" class=\"ui {{ item.type }} message\">\r\n    <i class=\"close icon\" ng-click=\"nv.dismiss(item)\"></i>\r\n    <div>\r\n        {{ item.message }}\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 52 */
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @namespace toolkit.components
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var ColorPicker = (function () {
+    function ColorPicker() {
+        this.templateUrl = __webpack_require__(56);
+        this.controller = ColorPickerController;
+        this.controllerAs = 'cp';
+        this.bindings = {
+            color: '=color',
+            text: '<?text'
+        };
+    }
+    return ColorPicker;
+}());
+exports.ColorPicker = ColorPicker;
+/**
+ * @class toolkit.components.ColorPickerController
+ * @classdesc Methods for showing the color picker component.
+ * @requires {@link https://github.com/buberdds/angular-bootstrap-colorpicker | angular-bootstrap-colorpicker }
+ */
+var ColorPickerController = (function () {
+    function ColorPickerController() {
+    }
+    ColorPickerController.prototype.$onInit = function () {
+        if (this.text === undefined || this.text === null || this.text.length === 0) {
+            this.text = 'Pick a color';
+        }
+    };
+    return ColorPickerController;
+}());
+exports.ColorPickerController = ColorPickerController;
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+var path = 'C:/Code/ez-web-toolkit/src/components/colorPicker/colorPicker.html';
+var html = "<div class=\"ui labeled button\">\r\n        <button \r\n        class=\"ui fluid basic button\"\r\n        colorpicker type=\"button\" \r\n        colorpicker-position=\"top\" \r\n        ng-model=\"cp.color\">\r\n        {{cp.text}}\r\n    </button>\r\n    <a class=\"ui basic left pointing label\" ng-style=\"{'background-color': cp.color}\"></a>\r\n</div>";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var customUiGridConstants_1 = __webpack_require__(53);
+var customUiGridConstants_1 = __webpack_require__(58);
 exports.CustomUiGridConstants = customUiGridConstants_1.CustomUiGridConstants;
 var eventConsts_1 = __webpack_require__(3);
 exports.EventConsts = eventConsts_1.EventConsts;
@@ -2831,7 +2959,7 @@ exports.TypeConsts = typeConsts_1.TypeConsts;
 
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2851,9 +2979,9 @@ var CustomUiGridConstants = (function () {
         get: function () {
             return {
                 debounceDelay: 400,
-                headerCellTemplate: __webpack_require__(54),
-                filterHeaderTemplate: __webpack_require__(55),
-                cellTemplate: __webpack_require__(56)
+                headerCellTemplate: __webpack_require__(59),
+                filterHeaderTemplate: __webpack_require__(60),
+                cellTemplate: __webpack_require__(61)
             };
         },
         enumerable: true,
@@ -2865,34 +2993,34 @@ exports.CustomUiGridConstants = CustomUiGridConstants;
 
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
+var path = 'C:/Code/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
 var html = "<style>\r\n    .ui-grid-filter-input {\r\n        display: inline-block;\r\n        position: relative;\r\n        height: 25px !important;\r\n        width: 0 auto;\r\n        min-width: 75% !important;\r\n        width: 100%;\r\n        padding: 0px;\r\n    }\r\n</style>\r\n\r\n<div ng-class=\"{ 'sortable': sortable }\">\r\n    <div class=\"ui-grid-cell-contents\" col-index=\"renderIndex\" title=\"TOOLTIP\">\r\n        <span ng-bind=\"col.displayName CUSTOM_FILTERS\"></span>\r\n\r\n        <span ui-grid-visible=\"col.sort.direction\" ng-class=\"{ 'ui-grid-icon-up-dir': col.sort.direction == asc, 'ui-grid-icon-down-dir': col.sort.direction == desc, 'ui-grid-icon-blank': !col.sort.direction }\">\r\n            &nbsp;\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ui-grid-column-menu-button\" ng-if=\"grid.options.enableColumnMenus && !col.isRowHeader  && col.colDef.enableColumnMenu !== false\" ng-click=\"toggleMenu($event)\" ng-class=\"{'ui-grid-column-menu-button-last-col': isLastCol}\">\r\n        <i class=\"ui-grid-icon-angle-down\">&nbsp;</i>\r\n    </div>\r\n\r\n    <div ui-grid-filter=\"\"></div>\r\n\r\n</div>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
+var path = 'C:/Code/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
 var html = "<div class=\"ui-grid-filter-container\"\r\n    ng-repeat=\"colFilter in col.filters\"\r\n    ng-class=\"{'ui-grid-filter-cancel-button-hidden' : colFilter.disableCancelFilterButton === true }\">\r\n    <div ng-if=\"colFilter.type !== 'select'\">\r\n        <div class=\"ui small icon input ui-grid-filter-input\">\r\n            <input type=\"text\"\r\n                class=\"ui-grid-filter-input-{{$index}}\"\r\n                ng-model=\"colFilter.term\"\r\n                ng-attr-placeholder=\"{{colFilter.placeholder || ''}}\"\r\n                aria-label=\"{{colFilter.ariaLabel || aria.defaultFilterLabel}}\" />\r\n\r\n            <i class=\"search icon\"></i>\r\n        </div>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term !== null && colFilter.term !== ''\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n\r\n    <div ng-if=\"colFilter.type === 'select'\">\r\n        <select class=\"ui-grid-filter-select ui-grid-filter-input-{{$index}}\"\r\n            ng-model=\"colFilter.term\"\r\n            aria-label=\"{{colFilter.ariaLabel || ''}}\"\r\n            ng-options=\"option.value as option.label for option in colFilter.selectOptions\">\r\n            <option value=\"\" disabled selected ng-bind=\"colFilter.placeholder || 'Select an option'\"></option>\r\n        </select>\r\n\r\n        <div role=\"button\"\r\n            class=\"ui-grid-filter-button-select\"\r\n            ng-click=\"removeFilter(colFilter, $index)\"\r\n            ng-if=\"!colFilter.disableCancelFilterButton\"\r\n            ng-disabled=\"colFilter.term === undefined || colFilter.term === null || colFilter.term === ''\"\r\n            ng-show=\"colFilter.term !== undefined && colFilter.term != null\">\r\n            <i class=\"ui-grid-icon-cancel\"\r\n                ui-grid-one-bind-aria-label=\"aria.removeFilter\">&nbsp;\r\n            </i>\r\n        </div>\r\n    </div>\r\n</div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 56 */
+/* 61 */
 /***/ (function(module, exports) {
 
-var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
+var path = 'C:/Code/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
 var html = "<div class=\"ui-grid-cell-contents\" style=\"line-height:{{ grid.options.rowHeight - 10 }}px\" title=\"TOOLTIP\" ng-bind=\"COL_FIELD CUSTOM_FILTERS\"></div>";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2909,7 +3037,7 @@ exports.ManagerState = managerState_1.ManagerState;
 
 
 /***/ }),
-/* 58 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2920,7 +3048,7 @@ exports.ResponseError = responseError_1.ResponseError;
 
 
 /***/ }),
-/* 59 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2930,20 +3058,20 @@ var requestOptions_1 = __webpack_require__(14);
 exports.RequestOptions = requestOptions_1.RequestOptions;
 var problemResult_1 = __webpack_require__(15);
 exports.ProblemResult = problemResult_1.ProblemResult;
-var validationProblemResult_1 = __webpack_require__(60);
+var validationProblemResult_1 = __webpack_require__(65);
 exports.ValidationProblemResult = validationProblemResult_1.ValidationProblemResult;
 var uiGridRequest_1 = __webpack_require__(16);
 exports.UiGridRequest = uiGridRequest_1.UiGridRequest;
-var uiGridResult_1 = __webpack_require__(61);
+var uiGridResult_1 = __webpack_require__(66);
 exports.UiGridResult = uiGridResult_1.UiGridResult;
-var errorBlock_1 = __webpack_require__(62);
+var errorBlock_1 = __webpack_require__(67);
 exports.ErrorBlockModel = errorBlock_1.ErrorBlockModel;
 var persistentMessage_1 = __webpack_require__(17);
 exports.PersistentMessage = persistentMessage_1.PersistentMessage;
 
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2978,7 +3106,7 @@ exports.ValidationProblemResult = ValidationProblemResult;
 
 
 /***/ }),
-/* 61 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3000,7 +3128,7 @@ exports.UiGridResult = UiGridResult;
 
 
 /***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3022,34 +3150,34 @@ exports.ErrorBlockModel = ErrorBlockModel;
 
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var responseHandlers_1 = __webpack_require__(64);
+var responseHandlers_1 = __webpack_require__(69);
 exports.ResponseHandlers = responseHandlers_1.ResponseHandlers;
-var apiService_1 = __webpack_require__(65);
+var apiService_1 = __webpack_require__(70);
 exports.ApiService = apiService_1.ApiService;
-var modalService_1 = __webpack_require__(66);
+var modalService_1 = __webpack_require__(71);
 exports.ModalService = modalService_1.ModalService;
-var notificationService_1 = __webpack_require__(67);
+var notificationService_1 = __webpack_require__(72);
 exports.NotificationService = notificationService_1.NotificationService;
-var processingService_1 = __webpack_require__(69);
+var processingService_1 = __webpack_require__(74);
 exports.ProcessingService = processingService_1.ProcessingService;
-var serverValidationService_1 = __webpack_require__(70);
+var serverValidationService_1 = __webpack_require__(75);
 exports.ServerValidationService = serverValidationService_1.ServerValidationService;
-var serviceRequestProcessor_1 = __webpack_require__(71);
+var serviceRequestProcessor_1 = __webpack_require__(76);
 exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
-var uiGridService_1 = __webpack_require__(72);
+var uiGridService_1 = __webpack_require__(77);
 exports.UiGridService = uiGridService_1.UiGridService;
-var persistentNotificationService_1 = __webpack_require__(73);
+var persistentNotificationService_1 = __webpack_require__(78);
 exports.PersistentNotificationService = persistentNotificationService_1.PersistentNotificationService;
 
 
 /***/ }),
-/* 64 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3145,7 +3273,7 @@ exports.ResponseHandlers = ResponseHandlers;
 
 
 /***/ }),
-/* 65 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3248,7 +3376,7 @@ exports.ApiService = ApiService;
 
 
 /***/ }),
-/* 66 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3354,7 +3482,7 @@ exports.ModalService = ModalService;
 
 
 /***/ }),
-/* 67 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3363,7 +3491,7 @@ exports.ModalService = ModalService;
  * @namespace toolkit.services
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var toastr = __webpack_require__(68);
+var toastr = __webpack_require__(73);
 var angular = __webpack_require__(5);
 /**
  * notification service implementation
@@ -3430,13 +3558,13 @@ exports.NotificationService = NotificationService;
 
 
 /***/ }),
-/* 68 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = require("toastr");
 
 /***/ }),
-/* 69 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3490,7 +3618,7 @@ exports.ProcessingService = ProcessingService;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 70 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3558,7 +3686,7 @@ exports.ServerValidationService = ServerValidationService;
 
 
 /***/ }),
-/* 71 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3603,7 +3731,7 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 
 /***/ }),
-/* 72 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3899,7 +4027,7 @@ exports.UiGridService = UiGridService;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 73 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3935,18 +4063,18 @@ exports.PersistentNotificationService = PersistentNotificationService;
 
 
 /***/ }),
-/* 74 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var focusElement_1 = __webpack_require__(75);
+var focusElement_1 = __webpack_require__(80);
 exports.FocusElement = focusElement_1.FocusElement;
 
 
 /***/ }),
-/* 75 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3991,26 +4119,26 @@ exports.FocusElement = FocusElement;
 
 
 /***/ }),
-/* 76 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var activator_1 = __webpack_require__(77);
+var activator_1 = __webpack_require__(82);
 exports.Activator = activator_1.Activator;
-var arrayHelpers_1 = __webpack_require__(78);
+var arrayHelpers_1 = __webpack_require__(83);
 exports.ArrayHelper = arrayHelpers_1.ArrayHelper;
-var objectCopier_1 = __webpack_require__(79);
+var objectCopier_1 = __webpack_require__(84);
 exports.ObjectCopier = objectCopier_1.ObjectCopier;
-var serviceRequestProcessor_1 = __webpack_require__(80);
+var serviceRequestProcessor_1 = __webpack_require__(85);
 exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
-var validationProcessor_1 = __webpack_require__(81);
+var validationProcessor_1 = __webpack_require__(86);
 exports.ValidationProcessor = validationProcessor_1.ValidationProcessor;
 
 
 /***/ }),
-/* 77 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4040,7 +4168,7 @@ exports.Activator = Activator;
 
 
 /***/ }),
-/* 78 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4077,7 +4205,7 @@ exports.ArrayHelper = ArrayHelper;
 
 
 /***/ }),
-/* 79 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4115,7 +4243,7 @@ exports.ObjectCopier = ObjectCopier;
 
 
 /***/ }),
-/* 80 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4156,7 +4284,7 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 
 /***/ }),
-/* 81 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
