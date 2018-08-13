@@ -2916,6 +2916,11 @@ var ColorPicker = (function () {
     return ColorPicker;
 }());
 exports.ColorPicker = ColorPicker;
+/**
+ * @class toolkit.components.ColorPickerController
+ * @classdesc Methods for showing the color picker component.
+ * @requires {@link https://github.com/buberdds/angular-bootstrap-colorpicker | angular-bootstrap-colorpicker }
+ */
 var ColorPickerController = (function () {
     function ColorPickerController() {
     }

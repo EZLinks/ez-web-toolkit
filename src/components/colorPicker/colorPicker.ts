@@ -19,6 +19,11 @@ export class ColorPicker implements ng.IComponentOptions {
     }
 }
 
+/**
+ * @class toolkit.components.ColorPickerController
+ * @classdesc Methods for showing the color picker component.
+ * @requires {@link https://github.com/buberdds/angular-bootstrap-colorpicker | angular-bootstrap-colorpicker }
+ */
 export class ColorPickerController {
     public color: string;
     public text: string;
