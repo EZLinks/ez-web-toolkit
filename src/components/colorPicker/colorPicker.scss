@@ -1,15 +1,13 @@
-color-picker {
-  .colorpicker.dropdown {
-    background-color: white;
+.colorpicker {
+  background-color: white;
 
-    button {
-      float: right;
-      border: 0;
-      background-color: white;
-      padding: 0;
-      font-size: x-large;
-      cursor: pointer;
-    }
+  button {
+    float: right;
+    border: 0;
+    background-color: white;
+    padding: 0;
+    font-size: x-large;
+    cursor: pointer;
   }
 
   .ui.labeled.button {
