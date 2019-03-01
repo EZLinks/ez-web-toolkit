@@ -55,6 +55,14 @@ export class ModalService implements IModalService {
     }
 
     hide(modal: BaseModalController) {
+
+        // if it is the last survived modal, then 
+        // kill all other modals
+        if (modal.closeLast) {
+            this.stack = [];
+            modal.previousModal = null;
+        }
+
         // Hide the modal.
         this.hideModal(modal);
 

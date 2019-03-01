@@ -5,17 +5,17 @@
 import { BaseModalController } from '../../baseClasses/baseModalController';
 import { IModalService } from '../../services/modalService';
 
-export class EzModal implements ng.IComponentOptions {
+export class EzModalTransclude implements ng.IComponentOptions {
 
     public templateUrl: string;
     public controller: any;
     public controllerAs: string;
     public bindings: any;
-    public transclude: boolean;
+    public transclude: {};
 
     constructor() {
-        this.templateUrl = require('ngtemplate-loader!html-loader!./ezModal.html');
-        this.controller = EzModalController;
+        this.templateUrl = require('ngtemplate-loader!html-loader!./ezModalTransclude.html');
+        this.controller = EzModalTranscludeController;
         this.controllerAs = 'em';
         this.bindings = {
 
@@ -69,7 +69,10 @@ export class EzModal implements ng.IComponentOptions {
             closeLast: '=?emCloseLast'
         };
 
-        this.transclude = true;
+        this.transclude = {            
+            content: 'contentSlot',
+            actions: '?extraActionsSlot'
+        };
     }
 }
 
@@ -77,7 +80,7 @@ export class EzModal implements ng.IComponentOptions {
  * @class toolkit.components.EzModalController
  * @classdesc A modal component.
  */
-export class EzModalController extends BaseModalController {
+export class EzModalTranscludeController extends BaseModalController {
 
     //#region Properties
 

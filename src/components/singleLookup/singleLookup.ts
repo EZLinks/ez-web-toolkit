@@ -11,10 +11,12 @@ import { INotificationService } from '../../services/notificationService';
 import { TypeConsts } from '../../constants/typeConsts';
 
 export class SingleLookup implements ng.IComponentOptions {
+    
     public templateUrl: string;
     public controller: any;
     public controllerAs: string;
     public bindings: any;
+    public transclude: {};
 
     constructor() {
         this.templateUrl = require('ngtemplate-loader!html-loader!./singleLookup.html');
@@ -57,7 +59,29 @@ export class SingleLookup implements ng.IComponentOptions {
 
             // The name of the property on the item that contains the unique
             //  identifier (probably 'id')
-            itemIdField: '<?itemIdField'
+            itemIdField: '<?itemIdField',
+
+            /**
+             * whether to use trascluded mmodel for extra actions or not
+             */
+            useTranscludeModal: '<?useTranscludeModal',
+
+            /**
+             * whether to show loading spinner or not
+             */
+            requestRunning: '=?isRequestRunning',
+
+            /**
+             * whether to lookup modal is visible or not
+             */
+            isModalVisible: '=?isModalVisible',
+
+            // if set to true, does not open other previous modals when being closed
+            closeLast: '=?closeLast'
+        };
+
+        this.transclude = {
+            actions: '?extraActionsSlot'
         };
     }
 }
@@ -85,6 +109,8 @@ export class SingleLookupController extends BaseComponent {
     public originalItem: any;
 
     public isModalVisible: boolean;
+    public useTranscludeModal: boolean;
+    public closeLast: boolean;
 
     public resultCallback: Function;
     public beforePopupOpen: Function;

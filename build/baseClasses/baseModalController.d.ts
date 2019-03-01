@@ -56,6 +56,10 @@ export declare class BaseModalController extends BaseComponent {
      * @member {boolean} toolkit.baseClasses.BaseModalController#isInDom
      */
     isInDom: boolean;
+    /**
+     * if set to true, does not open other previous modals when being closed
+     */
+    closeLast: boolean;
     modalVisibilityUpdated: (val: any, old: any) => void;
     toggleModalVisibility(val: boolean): void;
     toggleDomExistence(val: boolean): void;

@@ -8,6 +8,7 @@ export declare class SingleLookup implements ng.IComponentOptions {
     controller: any;
     controllerAs: string;
     bindings: any;
+    transclude: {};
     constructor();
 }
 /**
@@ -33,6 +34,8 @@ export declare class SingleLookupController extends BaseComponent {
     gridColumns: any;
     originalItem: any;
     isModalVisible: boolean;
+    useTranscludeModal: boolean;
+    closeLast: boolean;
     resultCallback: Function;
     beforePopupOpen: Function;
     commonGridColumnOptions: {

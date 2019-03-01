@@ -93,6 +93,11 @@ export class BaseModalController extends BaseComponent {
      */         
     isInDom: boolean;
 
+    /**
+     * if set to true, does not open other previous modals when being closed
+     */
+    closeLast: boolean;
+
     //#endregion
 
     //#region Functions
