@@ -7,7 +7,7 @@
 		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
 	else
 		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_75__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_77__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -252,12 +252,39 @@ module.exports = require("jquery");
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @namespace toolkit.constants
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+* @class toolkit.constants.TypeConsts
+* @classdesc The type constants.
+*/
+var TypeConsts = (function () {
+    function TypeConsts() {
+    }
+    /**
+     * The empty guid constant.
+     * @member {string} toolkit.constants.TypeConsts#emptyGuid
+     */
+    TypeConsts.emptyGuid = '00000000-0000-0000-0000-000000000000';
+    return TypeConsts;
+}());
+exports.TypeConsts = TypeConsts;
+
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("angular");
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -314,7 +341,7 @@ exports.BaseLookupController = BaseLookupController;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -323,7 +350,7 @@ exports.BaseLookupController = BaseLookupController;
  * @namespace toolkit.baseClasses
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var managerState_1 = __webpack_require__(9);
+var managerState_1 = __webpack_require__(10);
 var editorState_1 = __webpack_require__(2);
 var BaseManagerController = (function () {
     /**
@@ -416,7 +443,7 @@ exports.BaseManagerController = BaseManagerController;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -442,33 +469,6 @@ var ManagerState;
      */
     ManagerState[ManagerState["Editor"] = 1] = "Editor";
 })(ManagerState = exports.ManagerState || (exports.ManagerState = {}));
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * @namespace toolkit.constants
- */
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
-* @class toolkit.constants.TypeConsts
-* @classdesc The type constants.
-*/
-var TypeConsts = (function () {
-    function TypeConsts() {
-    }
-    /**
-     * The empty guid constant.
-     * @member {string} toolkit.constants.TypeConsts#emptyGuid
-     */
-    TypeConsts.emptyGuid = '00000000-0000-0000-0000-000000000000';
-    return TypeConsts;
-}());
-exports.TypeConsts = TypeConsts;
 
 
 /***/ }),
@@ -962,19 +962,19 @@ var BaseClasses = __webpack_require__(19);
 exports.BaseClasses = BaseClasses;
 var Components = __webpack_require__(24);
 exports.Components = Components;
-var Constants = __webpack_require__(59);
+var Constants = __webpack_require__(61);
 exports.Constants = Constants;
-var Enums = __webpack_require__(64);
+var Enums = __webpack_require__(66);
 exports.Enums = Enums;
-var Exceptions = __webpack_require__(65);
+var Exceptions = __webpack_require__(67);
 exports.Exceptions = Exceptions;
-var Models = __webpack_require__(66);
+var Models = __webpack_require__(68);
 exports.Models = Models;
-var Services = __webpack_require__(70);
+var Services = __webpack_require__(72);
 exports.Services = Services;
-var Directives = __webpack_require__(81);
+var Directives = __webpack_require__(83);
 exports.Directives = Directives;
-var Utils = __webpack_require__(83);
+var Utils = __webpack_require__(85);
 exports.Utils = Utils;
 
 
@@ -989,9 +989,9 @@ var baseComponent_1 = __webpack_require__(1);
 exports.BaseComponent = baseComponent_1.BaseComponent;
 var baseEditorController_1 = __webpack_require__(20);
 exports.BaseEditorController = baseEditorController_1.BaseEditorController;
-var baseLookupController_1 = __webpack_require__(7);
+var baseLookupController_1 = __webpack_require__(8);
 exports.BaseLookupController = baseLookupController_1.BaseLookupController;
-var baseManagerController_1 = __webpack_require__(8);
+var baseManagerController_1 = __webpack_require__(9);
 exports.BaseManagerController = baseManagerController_1.BaseManagerController;
 var baseManagerDeletableController_1 = __webpack_require__(23);
 exports.BaseManagerDeletableController = baseManagerDeletableController_1.BaseManagerDeletableController;
@@ -1250,7 +1250,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseManagerController_1 = __webpack_require__(8);
+var baseManagerController_1 = __webpack_require__(9);
 var eventConsts_1 = __webpack_require__(3);
 /**
  * @class toolkit.baseClasses.BaseManagerDeletableController<T extends Object>
@@ -1332,11 +1332,13 @@ var ezModalTransclude_1 = __webpack_require__(49);
 exports.EzModalTransclude = ezModalTransclude_1.EzModalTransclude;
 var singleLookup_1 = __webpack_require__(51);
 exports.SingleLookup = singleLookup_1.SingleLookup;
-var uploadImage_1 = __webpack_require__(53);
+var singleLookupTransclude_1 = __webpack_require__(53);
+exports.SingleLookupTransclude = singleLookupTransclude_1.SingleLookupTransclude;
+var uploadImage_1 = __webpack_require__(55);
 exports.UploadImage = uploadImage_1.UploadImage;
-var notificationViewer_1 = __webpack_require__(55);
+var notificationViewer_1 = __webpack_require__(57);
 exports.NotificationViewer = notificationViewer_1.NotificationViewer;
-var colorPicker_1 = __webpack_require__(57);
+var colorPicker_1 = __webpack_require__(59);
 exports.ColorPicker = colorPicker_1.ColorPicker;
 
 
@@ -1380,7 +1382,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n\n/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n\nez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n\nsingle-lookup input.action.input {\n  max-height: 40px; }\n\n.extra-actions {\n  display: inline-block !important; }\n\nupload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n\n.colorpicker {\n  background-color: white; }\n  .colorpicker button {\n    float: right;\n    border: 0;\n    background-color: white;\n    padding: 0;\n    font-size: x-large;\n    cursor: pointer; }\n  .colorpicker .ui.labeled.button {\n    width: 100%; }\n", ""]);
+exports.push([module.i, ".confirm-dialog .content {\n  text-align: center;\n  font-size: 1.4em;\n  margin: 0 auto;\n  vertical-align: middle; }\n  .confirm-dialog .content .emphasis {\n    font-weight: bolder;\n    padding: 7px 0;\n    margin-top: 10px;\n    font-size: 110%; }\n\n.confirm-dialog .actions input {\n  margin: auto 5px !important; }\n\n/*\r\n * The underscore in the file name prevents the compiler from generating\r\n * a css file from this scss file. This file should not contain any styling -\r\n * only variables to be used elsewhere.\r\n */\ndate-picker .form-control {\n  padding-right: 0 !important;\n  height: 40px !important;\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\ndate-picker .calendar-button + input[type=\"text\"] {\n  width: 110px; }\n\ndate-picker ul {\n  list-style-type: none; }\n\ndate-picker .text-center {\n  text-align: center; }\n\ndate-picker .pull-left {\n  float: left !important; }\n\ndate-picker .pull-right {\n  float: right !important; }\n\ndate-picker .dropdown-menu li {\n  list-style: none; }\n\ndate-picker .dropdown-menu {\n  position: absolute !important;\n  z-index: 1000;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  border-radius: 4px;\n  background-clip: padding-box; }\n\ndate-picker button.ui.primaryButton.button.primary {\n  color: #eee; }\n\ndate-picker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker date-picker td,\ndate-picker div.uib-datepicker td,\ndate-picker uib-daypicker td {\n  margin: 5px 5px;\n  padding: 7px 5px;\n  border-top: 1px solid #666666; }\n\ndate-picker uib-datepicker-popup-wrap table:focus {\n  outline: -webkit-focus-ring-color 0 !important;\n  outline: 0 !important; }\n\ndate-picker uib-datepicker-popup-wrap th {\n  padding-bottom: 5px; }\n\ndate-picker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker button.ui.primary.attached.label.icon.button.calendar-button {\n  width: auto !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker button.ui.button.small.active {\n  color: #eeeeee !important; }\n\ndate-picker div.uib-datepicker button.ui.button.small.today span {\n  border: 2px solid #7d7d7d;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker tr:nth-child(2) th {\n  padding-top: 5px; }\n\ndate-picker div.uib-datepicker div.uib-datepicker td {\n  border-top: none !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small {\n  padding-left: 1.25em;\n  padding-right: 1.25em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted {\n  background: #c0c1c2; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover {\n  background-color: silver !important;\n  background-color: rgba(192, 192, 192, 0.6) !important; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted span {\n  color: #7d7d7d;\n  color: rgba(125, 125, 125, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.text-muted:hover span {\n  color: black;\n  color: rgba(0, 0, 0, 0.6); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small span {\n  padding: .2em .5em; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active {\n  color: #fff !important;\n  background: RGBA(33, 133, 208, 1) !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.active span {\n  border: 2px solid #fff;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today {\n  background: #fff !important;\n  border: 1px solid RGBA(33, 133, 208, 1); }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today span {\n  background: #fff;\n  color: #666;\n  border-radius: 50%; }\n\ndate-picker div.uib-datepicker div.uib-datepicker button.ui.button.small.today.active span {\n  border: 2px solid RGBA(33, 133, 208, 1); }\n\nez-grid .noItemsMessage {\n  border-radius: 0px !important;\n  height: 21px !important;\n  padding: 16px 24px 16px 24px !important;\n  font-size: 12px !important;\n  margin-left: 1px !important;\n  margin-right: 1px !important; }\n\nez-grid .noItemsInfoContainer {\n  height: 55px !important; }\n\nez-grid .gridErrBtn {\n  margin-top: 10px !important; }\n\nez-grid .gridErrMessage {\n  border-radius: 0px;\n  display: table-cell !important;\n  vertical-align: middle; }\n\nez-grid .gridErrContainer {\n  display: table !important; }\n\nez-grid .ui-grid input.ui-grid-pager-control-input {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  appearance: none;\n  -webkit-appearance: none;\n  user-select: none;\n  pointer-events: none;\n  width: auto;\n  height: auto;\n  padding: 7px; }\n\nez-grid .ui-grid-viewport, ez-grid .ui-grid-canvas {\n  height: auto !important; }\n\nez-grid .ui-grid-pager-panel {\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin: auto; }\n\nsingle-lookup input.action.input {\n  max-height: 40px; }\n\nsingle-lookup-transclude input.action.input {\n  max-height: 40px; }\n\n.extra-actions {\n  display: inline-block !important; }\n\nupload-image img {\n  height: 150px !important;\n  width: 150px !important; }\n\nupload-image .image-uploader-container {\n  height: 180px !important;\n  width: 180px !important; }\n\n.colorpicker {\n  background-color: white; }\n  .colorpicker button {\n    float: right;\n    border: 0;\n    background-color: white;\n    padding: 0;\n    font-size: x-large;\n    cursor: pointer; }\n  .colorpicker .ui.labeled.button {\n    width: 100%; }\n", ""]);
 
 // exports
 
@@ -2293,7 +2295,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseLookupController_1 = __webpack_require__(7);
+var baseLookupController_1 = __webpack_require__(8);
 var EzGrid = (function () {
     function EzGrid() {
         this.templateUrl = __webpack_require__(46);
@@ -2684,7 +2686,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var baseComponent_1 = __webpack_require__(1);
-var typeConsts_1 = __webpack_require__(10);
+var typeConsts_1 = __webpack_require__(6);
 var SingleLookup = (function () {
     function SingleLookup() {
         this.templateUrl = __webpack_require__(52);
@@ -2718,10 +2720,6 @@ var SingleLookup = (function () {
             //  identifier (probably 'id')
             itemIdField: '<?itemIdField',
             /**
-             * whether to use trascluded mmodel for extra actions or not
-             */
-            useTranscludeModal: '<?useTranscludeModal',
-            /**
              * whether to show loading spinner or not
              */
             requestRunning: '=?isRequestRunning',
@@ -2731,9 +2729,6 @@ var SingleLookup = (function () {
             isModalVisible: '=?isModalVisible',
             // if set to true, does not open other previous modals when being closed
             closeLast: '=?closeLast'
-        };
-        this.transclude = {
-            actions: '?extraActionsSlot'
         };
     }
     return SingleLookup;
@@ -2908,12 +2903,258 @@ exports.SingleLookupController = SingleLookupController;
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/singleLookup/singleLookup.html';
-var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal ng-if=\"!sl.useTranscludeModal\" class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\"\r\n          em-close-last=\"sl.closeLast\">\r\n\r\n        <div class=\"ui active inverted dimmer part-loader\" ng-if=\"sl.requestRunning\">\r\n            <div class=\"ui large text loader sr-only\"><span>Loading...</span></div>\r\n        </div>\r\n\r\n        <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                 eg-item-id-field=\"sl.itemIdField\">\r\n        </ez-grid>\r\n\r\n</ez-modal>\r\n\r\n\r\n<ez-modal-transclude ng-if=\"sl.useTranscludeModal\" class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\"\r\n          em-close-last=\"sl.closeLast\">\r\n\r\n          <content-slot>\r\n\r\n                <div class=\"ui active inverted dimmer part-loader\" ng-if=\"sl.requestRunning\">\r\n                    <div class=\"ui large text loader sr-only\"><span>Loading...</span></div>\r\n                </div>\r\n\r\n                <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                    eg-selected-item=\"sl.selectedItem\"\r\n                    eg-get-items=\"sl.getItems(request)\"\r\n                    eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                    eg-item-id-field=\"sl.itemIdField\">\r\n                </ez-grid>\r\n        </content-slot>\r\n        \r\n        <extra-actions-slot ng-transclude=\"actions\">            \r\n        </extra-actions-slot>\r\n\r\n</ez-modal-transclude>\r\n\r\n";
+var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\"\r\n          em-close-last=\"sl.closeLast\">\r\n\r\n        <div class=\"ui active inverted dimmer part-loader\" ng-if=\"sl.requestRunning\">\r\n            <div class=\"ui large text loader sr-only\"><span>Loading...</span></div>\r\n        </div>\r\n\r\n        <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                 eg-selected-item=\"sl.selectedItem\"\r\n                 eg-get-items=\"sl.getItems(request)\"\r\n                 eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                 eg-item-id-field=\"sl.itemIdField\">\r\n        </ez-grid>\r\n\r\n</ez-modal>\r\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
 /* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @namespace toolkit.components
+ */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var _ = __webpack_require__(0);
+var baseComponent_1 = __webpack_require__(1);
+var typeConsts_1 = __webpack_require__(6);
+var SingleLookupTransclude = (function () {
+    function SingleLookupTransclude() {
+        this.templateUrl = __webpack_require__(54);
+        this.controller = SingleLookupTranscludeController;
+        this.controllerAs = 'sl';
+        this.bindings = {
+            // The function to request lookup data, passed with 'request' as a parameter
+            getData: '&getData',
+            // The function to get the initial item by ID
+            getSingle: '&getSingle',
+            // The columns to display in the grid in the format
+            // [{ displayName: 'Last Name', name: 'lastName', width: '30%'}]
+            gridColumns: '<gridColumns',
+            // If true, the button to clear the lookup is hidden.
+            isRequired: '<?isRequired',
+            // The html template to display in the textbox
+            // example: name + ' - ' + number
+            itemTemplate: '@itemTemplate',
+            // The callback function that returns the selected items id, passed with 'result' as a parameter
+            // (result will be the id of the selected item)
+            resultCallback: '&resultCallback',
+            // occurs before popup is being opened
+            beforePopupOpen: '&beforePopupOpen',
+            // The id to use as the current selected item
+            selectedId: '<selectedId',
+            // The title for the lookup window
+            title: '@title',
+            // The input placeholder text
+            placeholder: '@placeholder',
+            // The name of the property on the item that contains the unique
+            //  identifier (probably 'id')
+            itemIdField: '<?itemIdField',
+            /**
+             * whether to show loading spinner or not
+             */
+            requestRunning: '=?isRequestRunning',
+            /**
+             * whether to lookup modal is visible or not
+             */
+            isModalVisible: '=?isModalVisible',
+            // if set to true, does not open other previous modals when being closed
+            closeLast: '=?closeLast'
+        };
+        this.transclude = {
+            actions: '?extraActionsSlot'
+        };
+    }
+    return SingleLookupTransclude;
+}());
+exports.SingleLookupTransclude = SingleLookupTransclude;
+/**
+ * @class toolkit.components.SingleLookupController
+ * @classdesc A single lookup component.
+ */
+var SingleLookupTranscludeController = (function (_super) {
+    __extends(SingleLookupTranscludeController, _super);
+    function SingleLookupTranscludeController($scope, $timeout, notificationService, customUiGridConstants, uiGridConstants) {
+        var _this = _super.call(this, $scope) || this;
+        _this.$scope = $scope;
+        _this.$timeout = $timeout;
+        _this.notificationService = notificationService;
+        _this.customUiGridConstants = customUiGridConstants;
+        _this.uiGridConstants = uiGridConstants;
+        _this.commonGridColumnOptions = {
+            enableFiltering: true,
+            filter: {
+                condition: _this.uiGridConstants.filter.STARTS_WITH,
+                placeholder: 'starts with',
+                disableCancelFilterButton: true
+            },
+            filterHeaderTemplate: _this.customUiGridConstants.filterHeaderTemplate,
+            headerCellTemplate: _this.customUiGridConstants.headerCellTemplate,
+            sort: { direction: 'asc' }
+        };
+        /**
+         * The function called when the user clicks the ok button.
+         * Return false to keep the window open.
+         */
+        _this.onApprove = function () {
+            if (!_this.selectedItem) {
+                _this.notificationService.error('Please make a selection.');
+                return false;
+            }
+            _this.updateItemDisplay();
+            _this.isModalVisible = false;
+        };
+        /**
+         * The function called when the user clicks the cancel button.
+         */
+        _this.onDeny = function () {
+            _this.selectedItem = _.cloneDeep(_this.originalItem);
+        };
+        /**
+         * The function called when the modal window is done closing.
+         */
+        _this.onHidden = function () {
+            _this.resultCallback({ result: _this.selectedItem ? _this.selectedItem : { id: typeConsts_1.TypeConsts.emptyGuid } });
+            _this.originalItem = null;
+        };
+        /**
+         * Watch function to check if the selected id has changed
+         */
+        _this.selectedIdChanged = function (newValue, oldValue) {
+            // Check if the value that has been changed is equal to the currently selected item's id, if they
+            // are the same we do not need to do the refresh. The id's would not match if you are re-using a component
+            // for multiple purposes and need to refresh the display on the lookup.
+            if (newValue !== oldValue && (_this.selectedItem === null || _this.selectedItem.id !== newValue)) {
+                _this.refreshSelectedId();
+            }
+        };
+        _this.isModalVisible = false;
+        _this.unwatchArray.push(_this.$scope.$watch(function () { return _this.selectedId; }, _this.selectedIdChanged));
+        return _this;
+    }
+    /**
+     * Initialization function to get everything setup.
+     */
+    SingleLookupTranscludeController.prototype.$onInit = function () {
+        var _this = this;
+        // Merge the columns passed in with the common properties
+        _.forEach(this.gridColumns, function (col) {
+            // Use cloneDeep to prevent the same filter being used multiple times.
+            var c = Object.assign({}, _.cloneDeep(_this.commonGridColumnOptions), col);
+            Object.assign(col, c);
+        });
+        // Find the item to display if the id is given
+        this.refreshSelectedId();
+    };
+    /**
+     * Clears the selected item.
+     */
+    SingleLookupTranscludeController.prototype.clearItem = function () {
+        this.itemDisplay = '';
+        this.selectedId = typeConsts_1.TypeConsts.emptyGuid;
+        this.selectedItem = null;
+        this.originalItem = null;
+        this.resultCallback({ result: { id: typeConsts_1.TypeConsts.emptyGuid } });
+    };
+    /**
+     * Gets all the items filtered, sorted and paged.
+     */
+    SingleLookupTranscludeController.prototype.getItems = function (request) {
+        return this.getData({ request: request });
+    };
+    /**
+     * Opens the editor when an item is double clicked.
+     */
+    SingleLookupTranscludeController.prototype.onDoubleClickEvent = function () {
+        this.updateItemDisplay();
+        this.isModalVisible = false;
+    };
+    /**
+     * Function to open the modal window.
+     */
+    SingleLookupTranscludeController.prototype.openModal = function () {
+        if (this.beforePopupOpen) {
+            var result = this.beforePopupOpen();
+            if (result === false) {
+                return;
+            }
+        }
+        this.isModalVisible = true;
+        if (this.selectedItem) {
+            this.originalItem = _.cloneDeep(this.selectedItem);
+        }
+    };
+    /**
+     * Function to refresh the currently selected item
+     */
+    SingleLookupTranscludeController.prototype.refreshSelectedId = function () {
+        var _this = this;
+        if (this.selectedId && this.selectedId !== typeConsts_1.TypeConsts.emptyGuid) {
+            this.isDataLoading = true;
+            this.getSingle({ id: this.selectedId })
+                .then(function (result) {
+                _this.$timeout(function () {
+                    _this.selectedItem = result;
+                    _this.updateItemDisplay();
+                });
+            }).catch(function () {
+                // nothing to do
+            }).then(function () {
+                _this.$timeout(function () {
+                    _this.isDataLoading = false;
+                });
+            });
+        }
+        else {
+            this.itemDisplay = '';
+            this.selectedItem = null;
+            this.originalItem = null;
+        }
+    };
+    SingleLookupTranscludeController.prototype.updateItemDisplay = function () {
+        this.itemDisplay = this.$scope.$eval(this.itemTemplate, this.selectedItem);
+    };
+    SingleLookupTranscludeController.prototype.getLoadingClass = function () {
+        if (this.isDataLoading) {
+            return 'loading';
+        }
+        return '';
+    };
+    SingleLookupTranscludeController.$inject = [
+        '$scope',
+        '$timeout',
+        'notificationService',
+        'customUiGridConstants',
+        'uiGridConstants'
+    ];
+    return SingleLookupTranscludeController;
+}(baseComponent_1.BaseComponent));
+exports.SingleLookupTranscludeController = SingleLookupTranscludeController;
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/singleLookupTransclude/singleLookupTransclude.html';
+var html = "<div class=\"ui action input\">\r\n    <input type=\"text\" ng-model=\"sl.itemDisplay\" placeholder=\"{{ sl.placeholder }}\" readonly />\r\n    <button class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.openModal()\">\r\n        <i class=\"search icon\"></i>\r\n    </button>\r\n    <button ng-if=\"!sl.isRequired\" class=\"ui icon button {{ sl.getLoadingClass() }}\" ng-click=\"sl.clearItem()\">\r\n        <i class=\"remove icon\"></i>\r\n    </button>\r\n</div>\r\n\r\n<ez-modal-transclude class=\"small\"\r\n          em-header-text=\"{{ sl.title }}\"\r\n          em-primary-button-text=\"Select\"\r\n          em-secondary-button-text=\"Cancel\"\r\n          em-is-visible=\"sl.isModalVisible\"\r\n          em-on-deny=\"sl.onDeny()\"\r\n          em-on-hidden=\"sl.onHidden()\"\r\n          em-on-approve=\"sl.onApprove()\"\r\n          em-close-last=\"sl.closeLast\">\r\n\r\n          <content-slot>\r\n\r\n                <div class=\"ui active inverted dimmer part-loader\" ng-if=\"sl.requestRunning\">\r\n                    <div class=\"ui large text loader sr-only\"><span>Loading...</span></div>\r\n                </div>\r\n\r\n                <ez-grid eg-grid-columns=\"sl.gridColumns\"\r\n                    eg-selected-item=\"sl.selectedItem\"\r\n                    eg-get-items=\"sl.getItems(request)\"\r\n                    eg-on-double-click=\"sl.onDoubleClickEvent()\"\r\n                    eg-item-id-field=\"sl.itemIdField\">\r\n                </ez-grid>\r\n        </content-slot>\r\n        \r\n        <extra-actions-slot ng-transclude=\"actions\">            \r\n        </extra-actions-slot>\r\n\r\n</ez-modal-transclude>\r\n\r\n";
+window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
+module.exports = path;
+
+/***/ }),
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2930,7 +3171,7 @@ var UploadImage = (function () {
      * inits component.
      */
     function UploadImage() {
-        this.templateUrl = __webpack_require__(54);
+        this.templateUrl = __webpack_require__(56);
         this.controller = UploadImageController;
         this.controllerAs = 'ui';
         this.bindings = {
@@ -2996,7 +3237,7 @@ exports.UploadImageController = UploadImageController;
 
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/uploadImage/uploadImage.html';
@@ -3005,7 +3246,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3013,7 +3254,7 @@ module.exports = path;
 Object.defineProperty(exports, "__esModule", { value: true });
 var NotificationViewer = (function () {
     function NotificationViewer() {
-        this.templateUrl = __webpack_require__(56);
+        this.templateUrl = __webpack_require__(58);
         this.controller = NotificationViewerController;
         this.controllerAs = 'nv';
         this.bindings = {};
@@ -3047,7 +3288,7 @@ exports.NotificationViewerController = NotificationViewerController;
 
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/notificationViewer/notificationViewer.html';
@@ -3056,7 +3297,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3067,7 +3308,7 @@ module.exports = path;
 Object.defineProperty(exports, "__esModule", { value: true });
 var ColorPicker = (function () {
     function ColorPicker() {
-        this.templateUrl = __webpack_require__(58);
+        this.templateUrl = __webpack_require__(60);
         this.controller = ColorPickerController;
         this.controllerAs = 'cp';
         this.bindings = {
@@ -3097,7 +3338,7 @@ exports.ColorPickerController = ColorPickerController;
 
 
 /***/ }),
-/* 58 */
+/* 60 */
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/components/colorPicker/colorPicker.html';
@@ -3106,22 +3347,22 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 59 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var customUiGridConstants_1 = __webpack_require__(60);
+var customUiGridConstants_1 = __webpack_require__(62);
 exports.CustomUiGridConstants = customUiGridConstants_1.CustomUiGridConstants;
 var eventConsts_1 = __webpack_require__(3);
 exports.EventConsts = eventConsts_1.EventConsts;
-var typeConsts_1 = __webpack_require__(10);
+var typeConsts_1 = __webpack_require__(6);
 exports.TypeConsts = typeConsts_1.TypeConsts;
 
 
 /***/ }),
-/* 60 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3141,9 +3382,9 @@ var CustomUiGridConstants = (function () {
         get: function () {
             return {
                 debounceDelay: 400,
-                headerCellTemplate: __webpack_require__(61),
-                filterHeaderTemplate: __webpack_require__(62),
-                cellTemplate: __webpack_require__(63)
+                headerCellTemplate: __webpack_require__(63),
+                filterHeaderTemplate: __webpack_require__(64),
+                cellTemplate: __webpack_require__(65)
             };
         },
         enumerable: true,
@@ -3155,7 +3396,7 @@ exports.CustomUiGridConstants = CustomUiGridConstants;
 
 
 /***/ }),
-/* 61 */
+/* 63 */
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/templates/ui-grid/ui-grid-search-header.html';
@@ -3164,7 +3405,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 62 */
+/* 64 */
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/templates/ui-grid/ui-grid-filter.html';
@@ -3173,7 +3414,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 63 */
+/* 65 */
 /***/ (function(module, exports) {
 
 var path = 'C:/programming/work/gitlab/ez-web-toolkit/src/templates/ui-grid/ui-grid-centered-cell.html';
@@ -3182,7 +3423,7 @@ window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, htm
 module.exports = path;
 
 /***/ }),
-/* 64 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3194,12 +3435,12 @@ var errorResponseType_1 = __webpack_require__(11);
 exports.ErrorResponseType = errorResponseType_1.ErrorResponseType;
 var httpStatusCode_1 = __webpack_require__(12);
 exports.HttpStatusCode = httpStatusCode_1.HttpStatusCode;
-var managerState_1 = __webpack_require__(9);
+var managerState_1 = __webpack_require__(10);
 exports.ManagerState = managerState_1.ManagerState;
 
 
 /***/ }),
-/* 65 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3210,7 +3451,7 @@ exports.ResponseError = responseError_1.ResponseError;
 
 
 /***/ }),
-/* 66 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3220,20 +3461,20 @@ var requestOptions_1 = __webpack_require__(14);
 exports.RequestOptions = requestOptions_1.RequestOptions;
 var problemResult_1 = __webpack_require__(15);
 exports.ProblemResult = problemResult_1.ProblemResult;
-var validationProblemResult_1 = __webpack_require__(67);
+var validationProblemResult_1 = __webpack_require__(69);
 exports.ValidationProblemResult = validationProblemResult_1.ValidationProblemResult;
 var uiGridRequest_1 = __webpack_require__(16);
 exports.UiGridRequest = uiGridRequest_1.UiGridRequest;
-var uiGridResult_1 = __webpack_require__(68);
+var uiGridResult_1 = __webpack_require__(70);
 exports.UiGridResult = uiGridResult_1.UiGridResult;
-var errorBlock_1 = __webpack_require__(69);
+var errorBlock_1 = __webpack_require__(71);
 exports.ErrorBlockModel = errorBlock_1.ErrorBlockModel;
 var persistentMessage_1 = __webpack_require__(17);
 exports.PersistentMessage = persistentMessage_1.PersistentMessage;
 
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3268,7 +3509,7 @@ exports.ValidationProblemResult = ValidationProblemResult;
 
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3290,7 +3531,7 @@ exports.UiGridResult = UiGridResult;
 
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3312,34 +3553,34 @@ exports.ErrorBlockModel = ErrorBlockModel;
 
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var responseHandlers_1 = __webpack_require__(71);
+var responseHandlers_1 = __webpack_require__(73);
 exports.ResponseHandlers = responseHandlers_1.ResponseHandlers;
-var apiService_1 = __webpack_require__(72);
+var apiService_1 = __webpack_require__(74);
 exports.ApiService = apiService_1.ApiService;
-var modalService_1 = __webpack_require__(73);
+var modalService_1 = __webpack_require__(75);
 exports.ModalService = modalService_1.ModalService;
-var notificationService_1 = __webpack_require__(74);
+var notificationService_1 = __webpack_require__(76);
 exports.NotificationService = notificationService_1.NotificationService;
-var processingService_1 = __webpack_require__(76);
+var processingService_1 = __webpack_require__(78);
 exports.ProcessingService = processingService_1.ProcessingService;
-var serverValidationService_1 = __webpack_require__(77);
+var serverValidationService_1 = __webpack_require__(79);
 exports.ServerValidationService = serverValidationService_1.ServerValidationService;
-var serviceRequestProcessor_1 = __webpack_require__(78);
+var serviceRequestProcessor_1 = __webpack_require__(80);
 exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
-var uiGridService_1 = __webpack_require__(79);
+var uiGridService_1 = __webpack_require__(81);
 exports.UiGridService = uiGridService_1.UiGridService;
-var persistentNotificationService_1 = __webpack_require__(80);
+var persistentNotificationService_1 = __webpack_require__(82);
 exports.PersistentNotificationService = persistentNotificationService_1.PersistentNotificationService;
 
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3435,7 +3676,7 @@ exports.ResponseHandlers = ResponseHandlers;
 
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3444,7 +3685,7 @@ exports.ResponseHandlers = ResponseHandlers;
  * @namespace toolkit.services
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular = __webpack_require__(6);
+var angular = __webpack_require__(7);
 var requestOptions_1 = __webpack_require__(14);
 var ApiService = (function () {
     function ApiService($http, responseHandlers) {
@@ -3538,7 +3779,7 @@ exports.ApiService = ApiService;
 
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3650,7 +3891,7 @@ exports.ModalService = ModalService;
 
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3659,8 +3900,8 @@ exports.ModalService = ModalService;
  * @namespace toolkit.services
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var toastr = __webpack_require__(75);
-var angular = __webpack_require__(6);
+var toastr = __webpack_require__(77);
+var angular = __webpack_require__(7);
 /**
  * notification service implementation
  */
@@ -3726,13 +3967,13 @@ exports.NotificationService = NotificationService;
 
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports) {
 
 module.exports = require("toastr");
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3786,13 +4027,13 @@ exports.ProcessingService = ProcessingService;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular = __webpack_require__(6);
+var angular = __webpack_require__(7);
 var ServerValidationService = (function () {
     function ServerValidationService() {
         this.errs = {};
@@ -3854,7 +4095,7 @@ exports.ServerValidationService = ServerValidationService;
 
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3899,7 +4140,7 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4195,7 +4436,7 @@ exports.UiGridService = UiGridService;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4231,18 +4472,18 @@ exports.PersistentNotificationService = PersistentNotificationService;
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var focusElement_1 = __webpack_require__(82);
+var focusElement_1 = __webpack_require__(84);
 exports.FocusElement = focusElement_1.FocusElement;
 
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4287,26 +4528,26 @@ exports.FocusElement = FocusElement;
 
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var activator_1 = __webpack_require__(84);
+var activator_1 = __webpack_require__(86);
 exports.Activator = activator_1.Activator;
-var arrayHelpers_1 = __webpack_require__(85);
+var arrayHelpers_1 = __webpack_require__(87);
 exports.ArrayHelper = arrayHelpers_1.ArrayHelper;
-var objectCopier_1 = __webpack_require__(86);
+var objectCopier_1 = __webpack_require__(88);
 exports.ObjectCopier = objectCopier_1.ObjectCopier;
-var serviceRequestProcessor_1 = __webpack_require__(87);
+var serviceRequestProcessor_1 = __webpack_require__(89);
 exports.ServiceRequestProcessor = serviceRequestProcessor_1.ServiceRequestProcessor;
-var validationProcessor_1 = __webpack_require__(88);
+var validationProcessor_1 = __webpack_require__(90);
 exports.ValidationProcessor = validationProcessor_1.ValidationProcessor;
 
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4336,7 +4577,7 @@ exports.Activator = Activator;
 
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4373,7 +4614,7 @@ exports.ArrayHelper = ArrayHelper;
 
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4411,7 +4652,7 @@ exports.ObjectCopier = ObjectCopier;
 
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4452,7 +4693,7 @@ exports.ServiceRequestProcessor = ServiceRequestProcessor;
 
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

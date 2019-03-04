@@ -3,18 +3,19 @@
 import { BaseComponent } from '../../baseClasses/baseComponent';
 import { UiGridRequest } from '../../models/uiGrid/uiGridRequest';
 import { INotificationService } from '../../services/notificationService';
-export declare class SingleLookup implements ng.IComponentOptions {
+export declare class SingleLookupTransclude implements ng.IComponentOptions {
     templateUrl: string;
     controller: any;
     controllerAs: string;
     bindings: any;
+    transclude: {};
     constructor();
 }
 /**
  * @class toolkit.components.SingleLookupController
  * @classdesc A single lookup component.
  */
-export declare class SingleLookupController extends BaseComponent {
+export declare class SingleLookupTranscludeController extends BaseComponent {
     $scope: any;
     private $timeout;
     private notificationService;

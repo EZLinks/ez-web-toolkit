@@ -10,16 +10,17 @@ import { UiGridRequest } from '../../models/uiGrid/uiGridRequest';
 import { INotificationService } from '../../services/notificationService';
 import { TypeConsts } from '../../constants/typeConsts';
 
-export class SingleLookup implements ng.IComponentOptions {
+export class SingleLookupTransclude implements ng.IComponentOptions {
     
     public templateUrl: string;
     public controller: any;
     public controllerAs: string;
     public bindings: any;
+    public transclude: {};
 
     constructor() {
-        this.templateUrl = require('ngtemplate-loader!html-loader!./singleLookup.html');
-        this.controller = SingleLookupController;
+        this.templateUrl = require('ngtemplate-loader!html-loader!./singleLookupTransclude.html');
+        this.controller = SingleLookupTranscludeController;
         this.controllerAs = 'sl';
         this.bindings = {
 
@@ -73,6 +74,10 @@ export class SingleLookup implements ng.IComponentOptions {
             // if set to true, does not open other previous modals when being closed
             closeLast: '=?closeLast'
         };
+
+        this.transclude = {
+            actions: '?extraActionsSlot'
+        };
     }
 }
 
@@ -80,7 +85,7 @@ export class SingleLookup implements ng.IComponentOptions {
  * @class toolkit.components.SingleLookupController
  * @classdesc A single lookup component.
  */
-export class SingleLookupController extends BaseComponent {
+export class SingleLookupTranscludeController extends BaseComponent {
 
     public getData: (request) => Promise<any>;
     public getSingle: (id) => Promise<any>;

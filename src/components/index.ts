@@ -9,6 +9,7 @@ import { EzGrid } from './ezGrid/ezGrid';
 import { EzModal } from './ezModal/ezModal';
 import { EzModalTransclude } from './ezModalTransclude/ezModalTransclude';
 import { SingleLookup } from './singleLookup/singleLookup';
+import { SingleLookupTransclude } from './singleLookupTransclude/singleLookupTransclude';
 import { UploadImage } from './uploadImage/uploadImage';
 import { NotificationViewer } from './notificationViewer/notificationViewer';
 import { ColorPicker } from './colorPicker/colorPicker';
@@ -22,6 +23,7 @@ export {
     EzModal,
     EzModalTransclude,
     SingleLookup,
+    SingleLookupTransclude,
     UploadImage,
     NotificationViewer,
     ColorPicker

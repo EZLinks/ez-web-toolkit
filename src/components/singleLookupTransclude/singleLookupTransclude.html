@@ -8,7 +8,7 @@
     </button>
 </div>
 
-<ez-modal class="small"
+<ez-modal-transclude class="small"
           em-header-text="{{ sl.title }}"
           em-primary-button-text="Select"
           em-secondary-button-text="Cancel"
@@ -18,15 +18,22 @@
           em-on-approve="sl.onApprove()"
           em-close-last="sl.closeLast">
 
-        <div class="ui active inverted dimmer part-loader" ng-if="sl.requestRunning">
-            <div class="ui large text loader sr-only"><span>Loading...</span></div>
-        </div>
+          <content-slot>
 
-        <ez-grid eg-grid-columns="sl.gridColumns"
-                 eg-selected-item="sl.selectedItem"
-                 eg-get-items="sl.getItems(request)"
-                 eg-on-double-click="sl.onDoubleClickEvent()"
-                 eg-item-id-field="sl.itemIdField">
-        </ez-grid>
+                <div class="ui active inverted dimmer part-loader" ng-if="sl.requestRunning">
+                    <div class="ui large text loader sr-only"><span>Loading...</span></div>
+                </div>
 
-</ez-modal>
+                <ez-grid eg-grid-columns="sl.gridColumns"
+                    eg-selected-item="sl.selectedItem"
+                    eg-get-items="sl.getItems(request)"
+                    eg-on-double-click="sl.onDoubleClickEvent()"
+                    eg-item-id-field="sl.itemIdField">
+                </ez-grid>
+        </content-slot>
+        
+        <extra-actions-slot ng-transclude="actions">            
+        </extra-actions-slot>
+
+</ez-modal-transclude>
+
