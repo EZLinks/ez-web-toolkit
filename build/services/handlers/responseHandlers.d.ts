@@ -28,14 +28,14 @@ export declare class ResponseHandlers {
      * @param {HttpStatusCode} statusCode - The http status code.
      * @returns {boolean} Whether or not the status code is a success response.
      */
-    private isSuccessResponse(statusCode);
+    private isSuccessResponse;
     /**
      * Gets response data typed from json data.
      *
      * @param {any} jsonData - The json data object.
      * @returns {ErrorResponseType} The error response type.
      */
-    private getErrorResponseType(jsonData);
+    private getErrorResponseType;
 }
 export interface IResponseHandlers {
     error(rethrow: boolean, hideErrorMessage: boolean): any;

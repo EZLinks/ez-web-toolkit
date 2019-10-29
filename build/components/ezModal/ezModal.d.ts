@@ -1,8 +1,8 @@
-/// <reference types="angular" />
-/// <reference types="angular-mocks" />
 /**
  * @namespace toolkit.components
  */
+/// <reference types="angular" />
+/// <reference types="angular-mocks" />
 import { BaseModalController } from '../../baseClasses/baseModalController';
 import { IModalService } from '../../services/modalService';
 export declare class EzModal implements ng.IComponentOptions {

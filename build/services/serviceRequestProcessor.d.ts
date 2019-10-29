@@ -11,6 +11,6 @@ export declare class ServiceRequestProcessor {
     private handleCallback;
     isRequestRunning: boolean;
     isErrorOccured: boolean;
-    constructor($timeout: any, request: () => Promise<any>, handleCallback: (any) => void);
+    constructor($timeout: any, request: () => Promise<any>, handleCallback: (any: any) => void);
     process(): void;
 }

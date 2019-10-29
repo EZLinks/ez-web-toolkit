@@ -15,5 +15,5 @@ export declare enum EditorState {
      * The edit state.
      * @member {number} toolkit.enums.EditorState#Edit
      */
-    Edit = 1,
+    Edit = 1
 }

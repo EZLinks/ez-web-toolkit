@@ -1,7 +1,7 @@
-/// <reference types="angular" />
 /**
  * @namespace toolkit.baseClasses
  */
+/// <reference types="angular" />
 import { BaseComponent } from '../baseClasses/baseComponent';
 import { IModalService } from '../services/modalService';
 export declare class BaseModalController extends BaseComponent {

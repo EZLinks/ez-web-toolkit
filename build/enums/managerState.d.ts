@@ -15,5 +15,5 @@ export declare enum ManagerState {
      * Shows the editor.
      * @member {number} toolkit.enums.ManagerState#Editor
      */
-    Editor = 1,
+    Editor = 1
 }

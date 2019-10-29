@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.components
+ */
+/// <reference types="angular" />
 export declare class TimePicker implements ng.IComponentOptions {
     templateUrl: string;
     controller: any;

@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.services
+ */
 /// <reference types="angular" />
 import { IResponseHandlers } from './handlers/responseHandlers';
 import { RequestOptions } from '../models/http/requestOptions';

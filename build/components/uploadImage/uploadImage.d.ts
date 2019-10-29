@@ -1,7 +1,7 @@
-/// <reference types="angular" />
 /**
  * @namespace toolkit.components
  */
+/// <reference types="angular" />
 import { INotificationService } from '../../services/notificationService';
 /**
  * The upload image component.

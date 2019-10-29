@@ -1,6 +1,7 @@
 /**
  * @namespace toolkit.components
  */
+/// <reference types="angular" />
 export declare class ColorPicker implements ng.IComponentOptions {
     templateUrl: string;
     controller: any;

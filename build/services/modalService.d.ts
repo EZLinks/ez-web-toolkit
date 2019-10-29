@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.services
+ */
 /// <reference types="angular" />
 /// <reference types="angular-mocks" />
 import { BaseModalController } from '../baseClasses/baseModalController';
@@ -9,12 +12,12 @@ export declare class ModalService implements IModalService {
     constructor($timeout: ng.ITimeoutService);
     show(modal: BaseModalController): void;
     hide(modal: BaseModalController): void;
-    private showModal(modal);
-    private hideModal(modal);
+    private showModal;
+    private hideModal;
     /**
      * Does the modal contain a link to a previous/parent modal?
      */
-    private hasPreviousLink(modal);
+    private hasPreviousLink;
 }
 /**
  * @interface

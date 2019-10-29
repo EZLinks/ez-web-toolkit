@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.components
+ */
 /// <reference types="angular" />
 /// <reference types="angular-mocks" />
 import { BaseComponent } from '../../baseClasses/baseComponent';
@@ -21,8 +24,8 @@ export declare class SingleLookupTranscludeController extends BaseComponent {
     private notificationService;
     private customUiGridConstants;
     private uiGridConstants;
-    getData: (request) => Promise<any>;
-    getSingle: (id) => Promise<any>;
+    getData: (request: any) => Promise<any>;
+    getSingle: (id: any) => Promise<any>;
     itemTemplate: string;
     itemDisplay: string;
     selectedId: string;
@@ -89,8 +92,8 @@ export declare class SingleLookupTranscludeController extends BaseComponent {
     /**
      * Function to refresh the currently selected item
      */
-    private refreshSelectedId();
-    private updateItemDisplay();
+    private refreshSelectedId;
+    private updateItemDisplay;
     /**
      * Watch function to check if the selected id has changed
      */

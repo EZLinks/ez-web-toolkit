@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.services
+ */
 import { UiGridRequest } from '../models/uiGrid/uiGridRequest';
 import { BaseLookupController } from '../baseClasses/baseLookupController';
 export declare class UiGridService<T> implements IUiGridService<T> {
@@ -43,11 +46,11 @@ export declare class UiGridService<T> implements IUiGridService<T> {
     initFilterRequest(gridOptions: any): UiGridRequest;
     doSearch(controller: BaseLookupController<T>, isScrollPaging?: boolean): Promise<any> | void;
     destroyGrid(controller: BaseLookupController<T>): void;
-    private handleUiGridCallbacks(gridApi, controller, callback);
+    private handleUiGridCallbacks;
     selectAllItems: (controller: BaseLookupController<T>) => void;
     unselectAllItems: (controller: BaseLookupController<T>) => void;
-    private constructFilters(columns);
-    private gridFilterChanged(controller, isScrollPaging, callback);
+    private constructFilters;
+    private gridFilterChanged;
     /**
      * Resize the grid according to the number of rows retrieved from the data
      * source. If the number of rows is less than the page size, resize the grid
@@ -58,7 +61,7 @@ export declare class UiGridService<T> implements IUiGridService<T> {
      *
      * @param  {BaseLookupController<T>} controller - The controller.
      */
-    private resizeGrid(controller);
+    private resizeGrid;
 }
 /**
 * @interface

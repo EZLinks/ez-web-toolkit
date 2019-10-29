@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.baseClasses
+ */
 import { BaseManagerController } from '../baseClasses/baseManagerController';
 /**
  * @class toolkit.baseClasses.BaseManagerDeletableController<T extends Object>

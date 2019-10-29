@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.baseClasses
+ */
 /// <reference types="angular" />
 export declare class BaseComponent {
     /**

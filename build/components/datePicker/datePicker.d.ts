@@ -1,3 +1,7 @@
+/**
+ * @namespace toolkit.components
+ */
+/// <reference types="angular" />
 export declare class DatePicker implements ng.IComponentOptions {
     templateUrl: string;
     controller: any;

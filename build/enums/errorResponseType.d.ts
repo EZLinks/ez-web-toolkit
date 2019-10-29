@@ -20,5 +20,5 @@ export declare enum ErrorResponseType {
      * The result has validation problem.
      * @member {number} toolkit.enums.ErrorResponseType#ValidationProblemResult
      */
-    ValidationProblemResult = 2,
+    ValidationProblemResult = 2
 }

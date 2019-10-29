@@ -5,7 +5,7 @@ export declare class PersistentNotificationService implements IPersistentNotific
     warn(message: string): void;
     error(message: string): void;
     dismiss(item: PersistentMessage): void;
-    private addMesage(message, type);
+    private addMesage;
 }
 export interface IPersistentNotificationService {
     /**

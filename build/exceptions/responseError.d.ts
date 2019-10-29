@@ -8,7 +8,7 @@ import { ErrorResponseType } from '../enums/errorResponseType';
 */
 export declare class ResponseError extends Error {
     type: ErrorResponseType;
-    data: any;
+    data?: any;
     /**
      * Creates a new response error.
      * @param message

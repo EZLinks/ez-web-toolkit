@@ -1,4 +1,7 @@
 /**
+ * @namespace toolkit.services
+ */
+/**
  * notification service implementation
  */
 export declare class NotificationService implements INotificationService {

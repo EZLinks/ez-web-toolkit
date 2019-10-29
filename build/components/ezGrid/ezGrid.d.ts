@@ -1,6 +1,7 @@
 /**
  * @namespace toolkit.components
  */
+/// <reference types="angular" />
 import { BaseLookupController } from '../../baseClasses/baseLookupController';
 import { IUiGridService } from '../../services/uiGridService';
 export declare class EzGrid implements ng.IComponentOptions {

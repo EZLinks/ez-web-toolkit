@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["lodash", "jquery", "angular", "angular-typescript-validation", "moment", "toastr"], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
-		exports["ez-web-toolkit"] = factory(require("lodash"), require("jquery"), require("angular"), require("angular-typescript-validation"), require("moment"), require("toastr"));
+		exports["ez-web-toolkit"] = factory();
 	else
-		root["ez-web-toolkit"] = factory(root["lodash"], root["jquery"], root["angular"], root["angular-typescript-validation"], root["moment"], root["toastr"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_38__, __WEBPACK_EXTERNAL_MODULE_77__) {
+		root["ez-web-toolkit"] = factory();
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -90,7 +90,7 @@ module.exports = require("lodash");
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
-var BaseComponent = (function () {
+var BaseComponent = /** @class */ (function () {
     /**
      * @class toolkit.baseClasses.BaseComponent
      * @classdesc Automatically handles the scope destroy callbacks and watches.
@@ -160,7 +160,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.constants.EventConsts
 * @classdesc An event constants.
 */
-var EventConsts = (function () {
+var EventConsts = /** @class */ (function () {
     function EventConsts() {
     }
     /**
@@ -194,7 +194,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseComponent_1 = __webpack_require__(1);
-var BaseModalController = (function (_super) {
+var BaseModalController = /** @class */ (function (_super) {
     __extends(BaseModalController, _super);
     //#region Constructor
     /**
@@ -264,7 +264,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.constants.TypeConsts
 * @classdesc The type constants.
 */
-var TypeConsts = (function () {
+var TypeConsts = /** @class */ (function () {
     function TypeConsts() {
     }
     /**
@@ -305,7 +305,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseComponent_1 = __webpack_require__(1);
 var eventConsts_1 = __webpack_require__(3);
-var BaseLookupController = (function (_super) {
+var BaseLookupController = /** @class */ (function (_super) {
     __extends(BaseLookupController, _super);
     //#endregion
     //#region Constructor
@@ -352,7 +352,7 @@ exports.BaseLookupController = BaseLookupController;
 Object.defineProperty(exports, "__esModule", { value: true });
 var managerState_1 = __webpack_require__(10);
 var editorState_1 = __webpack_require__(2);
-var BaseManagerController = (function () {
+var BaseManagerController = /** @class */ (function () {
     /**
      * @class toolkit.baseClasses.BaseManagerController<T extends Object>
      * @abstract
@@ -826,7 +826,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.exceptions.ResponseError
 * @classdesc Occurs on response error.
 */
-var ResponseError = (function (_super) {
+var ResponseError = /** @class */ (function (_super) {
     __extends(ResponseError, _super);
     /**
      * Creates a new response error.
@@ -858,7 +858,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.models.RequestOptions
 * @classdesc The request options to be passed to the api service request function.
 */
-var RequestOptions = (function () {
+var RequestOptions = /** @class */ (function () {
     // TODO: Reverse order of url, string params.
     function RequestOptions(url, method, baseUrl) {
         if (baseUrl === void 0) { baseUrl = './'; }
@@ -885,7 +885,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @class toolkit.models.ProblemResult
  * @classdesc The problem result.
  */
-var ProblemResult = (function () {
+var ProblemResult = /** @class */ (function () {
     function ProblemResult() {
     }
     return ProblemResult;
@@ -907,7 +907,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.models.UiGridRequest
 * @classdesc Request with filterin for angular ui grid.
 */
-var UiGridRequest = (function () {
+var UiGridRequest = /** @class */ (function () {
     function UiGridRequest() {
     }
     return UiGridRequest;
@@ -916,7 +916,7 @@ exports.UiGridRequest = UiGridRequest;
 /**
  * sort request model.
  */
-var SortRequest = (function () {
+var SortRequest = /** @class */ (function () {
     function SortRequest() {
     }
     return SortRequest;
@@ -925,7 +925,7 @@ exports.SortRequest = SortRequest;
 /**
  * filter request.
  */
-var FilterRequest = (function () {
+var FilterRequest = /** @class */ (function () {
     function FilterRequest() {
     }
     return FilterRequest;
@@ -943,7 +943,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the persistent message class.
  */
-var PersistentMessage = (function () {
+var PersistentMessage = /** @class */ (function () {
     function PersistentMessage() {
     }
     return PersistentMessage;
@@ -1012,7 +1012,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var angular_typescript_validation_1 = __webpack_require__(21);
 var editorState_1 = __webpack_require__(2);
 var validationProcessor_1 = __webpack_require__(22);
-var BaseEditorController = (function () {
+var BaseEditorController = /** @class */ (function () {
     /**
      * @class toolkit.baseClasses.BaseEditorController<T extends Object>
      * @implements IValidatableController
@@ -1197,7 +1197,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.services.ValidationProcessor
 * @classdesc Methods for porocessing our validation response.
 */
-var ValidationProcessor = (function () {
+var ValidationProcessor = /** @class */ (function () {
     function ValidationProcessor() {
     }
     /**
@@ -1258,7 +1258,7 @@ var eventConsts_1 = __webpack_require__(3);
  * @extends BaseManagerController
  * @classdesc Methods for manager and extra methods for deleting an item.
  */
-var BaseManagerDeletableController = (function (_super) {
+var BaseManagerDeletableController = /** @class */ (function (_super) {
     __extends(BaseManagerDeletableController, _super);
     function BaseManagerDeletableController() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -1377,7 +1377,7 @@ if(false) {
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(27)(undefined);
+exports = module.exports = __webpack_require__(27)(false);
 // imports
 
 
@@ -1936,7 +1936,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the confirm dialog component.
  */
-var ConfirmDialog = (function () {
+var ConfirmDialog = /** @class */ (function () {
     /**
      * inits component.
      */
@@ -1962,7 +1962,7 @@ exports.ConfirmDialog = ConfirmDialog;
  * @class toolkit.components.ConfirmDialogController
  * @classdesc Methods for showing confirm dialog popup.
  */
-var ConfirmDialogController = (function () {
+var ConfirmDialogController = /** @class */ (function () {
     function ConfirmDialogController() {
         var _this = this;
         /**
@@ -2008,7 +2008,7 @@ __webpack_require__(35);
 __webpack_require__(36);
 __webpack_require__(37);
 var moment = __webpack_require__(38);
-var DatePicker = (function () {
+var DatePicker = /** @class */ (function () {
     function DatePicker() {
         this.templateUrl = __webpack_require__(39);
         this.controller = DatePickerController;
@@ -2030,7 +2030,7 @@ exports.DatePicker = DatePicker;
  * @class toolkit.components.DatePickerController
  * @classdesc Methods for showing date picker component.
  */
-var DatePickerController = (function () {
+var DatePickerController = /** @class */ (function () {
     function DatePickerController() {
         this.status = {
             opened: false
@@ -2159,7 +2159,7 @@ module.exports = path;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(41);
-var TimePicker = (function () {
+var TimePicker = /** @class */ (function () {
     function TimePicker() {
         this.templateUrl = __webpack_require__(42);
         this.controller = TimePickerController;
@@ -2178,7 +2178,7 @@ exports.TimePicker = TimePicker;
  * @class toolkit.components.TimePickerController
  * @classdesc Methods for showing the time picker component.
  */
-var TimePickerController = (function () {
+var TimePickerController = /** @class */ (function () {
     function TimePickerController() {
     }
     TimePickerController.prototype.$onInit = function () {
@@ -2232,7 +2232,7 @@ module.exports = path;
  * @namespace toolkit.components
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var ErrorBlock = (function () {
+var ErrorBlock = /** @class */ (function () {
     /**
      * inits component.
      */
@@ -2251,7 +2251,7 @@ exports.ErrorBlock = ErrorBlock;
  * @class toolkit.components.ErrorBlockController
  * @classdesc Methods for showing errors in popup.
  */
-var ErrorBlockController = (function () {
+var ErrorBlockController = /** @class */ (function () {
     function ErrorBlockController() {
     }
     Object.defineProperty(ErrorBlockController.prototype, "showError", {
@@ -2296,7 +2296,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseLookupController_1 = __webpack_require__(8);
-var EzGrid = (function () {
+var EzGrid = /** @class */ (function () {
     function EzGrid() {
         this.templateUrl = __webpack_require__(46);
         this.controller = EzGridController;
@@ -2334,7 +2334,7 @@ exports.EzGrid = EzGrid;
  * @class toolkit.components.EzGridController
  * @classdesc A grid component.
  */
-var EzGridController = (function (_super) {
+var EzGridController = /** @class */ (function (_super) {
     __extends(EzGridController, _super);
     function EzGridController($scope, uiGridService) {
         var _this = _super.call(this, $scope) || this;
@@ -2406,7 +2406,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseModalController_1 = __webpack_require__(4);
-var EzModal = (function () {
+var EzModal = /** @class */ (function () {
     function EzModal() {
         this.templateUrl = __webpack_require__(48);
         this.controller = EzModalController;
@@ -2459,7 +2459,7 @@ exports.EzModal = EzModal;
  * @class toolkit.components.EzModalController
  * @classdesc A modal component.
  */
-var EzModalController = (function (_super) {
+var EzModalController = /** @class */ (function (_super) {
     __extends(EzModalController, _super);
     function EzModalController($scope, $timeout, modalService) {
         var _this = _super.call(this, $scope, modalService) || this;
@@ -2544,7 +2544,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var baseModalController_1 = __webpack_require__(4);
-var EzModalTransclude = (function () {
+var EzModalTransclude = /** @class */ (function () {
     function EzModalTransclude() {
         this.templateUrl = __webpack_require__(50);
         this.controller = EzModalTranscludeController;
@@ -2600,7 +2600,7 @@ exports.EzModalTransclude = EzModalTransclude;
  * @class toolkit.components.EzModalController
  * @classdesc A modal component.
  */
-var EzModalTranscludeController = (function (_super) {
+var EzModalTranscludeController = /** @class */ (function (_super) {
     __extends(EzModalTranscludeController, _super);
     function EzModalTranscludeController($scope, $timeout, modalService) {
         var _this = _super.call(this, $scope, modalService) || this;
@@ -2687,7 +2687,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var baseComponent_1 = __webpack_require__(1);
 var typeConsts_1 = __webpack_require__(6);
-var SingleLookup = (function () {
+var SingleLookup = /** @class */ (function () {
     function SingleLookup() {
         this.templateUrl = __webpack_require__(52);
         this.controller = SingleLookupController;
@@ -2738,7 +2738,7 @@ exports.SingleLookup = SingleLookup;
  * @class toolkit.components.SingleLookupController
  * @classdesc A single lookup component.
  */
-var SingleLookupController = (function (_super) {
+var SingleLookupController = /** @class */ (function (_super) {
     __extends(SingleLookupController, _super);
     function SingleLookupController($scope, $timeout, notificationService, customUiGridConstants, uiGridConstants) {
         var _this = _super.call(this, $scope) || this;
@@ -2930,7 +2930,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var baseComponent_1 = __webpack_require__(1);
 var typeConsts_1 = __webpack_require__(6);
-var SingleLookupTransclude = (function () {
+var SingleLookupTransclude = /** @class */ (function () {
     function SingleLookupTransclude() {
         this.templateUrl = __webpack_require__(54);
         this.controller = SingleLookupTranscludeController;
@@ -2984,7 +2984,7 @@ exports.SingleLookupTransclude = SingleLookupTransclude;
  * @class toolkit.components.SingleLookupController
  * @classdesc A single lookup component.
  */
-var SingleLookupTranscludeController = (function (_super) {
+var SingleLookupTranscludeController = /** @class */ (function (_super) {
     __extends(SingleLookupTranscludeController, _super);
     function SingleLookupTranscludeController($scope, $timeout, notificationService, customUiGridConstants, uiGridConstants) {
         var _this = _super.call(this, $scope) || this;
@@ -3166,7 +3166,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * The upload image component.
  */
-var UploadImage = (function () {
+var UploadImage = /** @class */ (function () {
     /**
      * inits component.
      */
@@ -3186,7 +3186,7 @@ exports.UploadImage = UploadImage;
  * @class toolkit.components.UploadImageController
  * @classdesc An image uploader component.
  */
-var UploadImageController = (function () {
+var UploadImageController = /** @class */ (function () {
     /**
      * inits controller.
      * @param $timeout
@@ -3252,7 +3252,7 @@ module.exports = path;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var NotificationViewer = (function () {
+var NotificationViewer = /** @class */ (function () {
     function NotificationViewer() {
         this.templateUrl = __webpack_require__(58);
         this.controller = NotificationViewerController;
@@ -3262,7 +3262,7 @@ var NotificationViewer = (function () {
     return NotificationViewer;
 }());
 exports.NotificationViewer = NotificationViewer;
-var NotificationViewerController = (function () {
+var NotificationViewerController = /** @class */ (function () {
     function NotificationViewerController(service) {
         this.service = service;
     }
@@ -3306,7 +3306,7 @@ module.exports = path;
  * @namespace toolkit.components
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var ColorPicker = (function () {
+var ColorPicker = /** @class */ (function () {
     function ColorPicker() {
         this.templateUrl = __webpack_require__(60);
         this.controller = ColorPickerController;
@@ -3324,7 +3324,7 @@ exports.ColorPicker = ColorPicker;
  * @classdesc Methods for showing the color picker component.
  * @requires {@link https://github.com/buberdds/angular-bootstrap-colorpicker | angular-bootstrap-colorpicker }
  */
-var ColorPickerController = (function () {
+var ColorPickerController = /** @class */ (function () {
     function ColorPickerController() {
     }
     ColorPickerController.prototype.$onInit = function () {
@@ -3375,7 +3375,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.constants.CustomUiGridConstants
 * @classdesc An angular ui-grid constants.
 */
-var CustomUiGridConstants = (function () {
+var CustomUiGridConstants = /** @class */ (function () {
     function CustomUiGridConstants() {
     }
     Object.defineProperty(CustomUiGridConstants, "Default", {
@@ -3498,7 +3498,7 @@ var problemResult_1 = __webpack_require__(15);
 * @class toolkit.models.ValidationProblemResult
 * @classdesc The validation problem result.
 */
-var ValidationProblemResult = (function (_super) {
+var ValidationProblemResult = /** @class */ (function (_super) {
     __extends(ValidationProblemResult, _super);
     function ValidationProblemResult() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -3522,7 +3522,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.models.UiGridResult<T>
 * @classdesc The result of angular ui grid request.
 */
-var UiGridResult = (function () {
+var UiGridResult = /** @class */ (function () {
     function UiGridResult() {
     }
     return UiGridResult;
@@ -3544,7 +3544,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.models.ErrorBlockModel
 * @classdesc The error model for error block component.
 */
-var ErrorBlockModel = (function () {
+var ErrorBlockModel = /** @class */ (function () {
     function ErrorBlockModel() {
     }
     return ErrorBlockModel;
@@ -3597,7 +3597,7 @@ var successStatusCodes = [
 /**
  * Generic response handlers.
  */
-var ResponseHandlers = (function () {
+var ResponseHandlers = /** @class */ (function () {
     function ResponseHandlers(notification) {
         this.notification = notification;
     }
@@ -3687,7 +3687,7 @@ exports.ResponseHandlers = ResponseHandlers;
 Object.defineProperty(exports, "__esModule", { value: true });
 var angular = __webpack_require__(7);
 var requestOptions_1 = __webpack_require__(14);
-var ApiService = (function () {
+var ApiService = /** @class */ (function () {
     function ApiService($http, responseHandlers) {
         this.$http = $http;
         this.responseHandlers = responseHandlers;
@@ -3757,10 +3757,12 @@ var ApiService = (function () {
             if (err.data) {
                 _this.responseHandlers.handleProblem(err.data, opts.rethrow, opts.hideErrorMessage);
             }
+            // Otherwise, just throw a generic error.
             else {
                 _this.responseHandlers.error(opts.rethrow, opts.hideErrorMessage);
             }
         })
+            // Return response json data.
             .then(function (res) {
             // Need to check if res is defined.
             if (res) {
@@ -3789,7 +3791,7 @@ exports.ApiService = ApiService;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
-var ModalService = (function () {
+var ModalService = /** @class */ (function () {
     function ModalService($timeout) {
         this.$timeout = $timeout;
         this.stack = [];
@@ -3905,7 +3907,7 @@ var angular = __webpack_require__(7);
 /**
  * notification service implementation
  */
-var NotificationService = (function () {
+var NotificationService = /** @class */ (function () {
     function NotificationService() {
     }
     NotificationService.prototype.success = function (message, title, optionsOverride) {
@@ -3985,7 +3987,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @returns {Object}
  */
 // ReSharper disable once InconsistentNaming
-var ProcessingService = (function () {
+var ProcessingService = /** @class */ (function () {
     function ProcessingService() {
         /**
          * Whether or not to show the text of the overlay.
@@ -4034,7 +4036,7 @@ exports.ProcessingService = ProcessingService;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var angular = __webpack_require__(7);
-var ServerValidationService = (function () {
+var ServerValidationService = /** @class */ (function () {
     function ServerValidationService() {
         this.errs = {};
     }
@@ -4108,7 +4110,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.services.ServiceRequestProcessor
 * @classdesc Handles loading indication in requests automatically.
 */
-var ServiceRequestProcessor = (function () {
+var ServiceRequestProcessor = /** @class */ (function () {
     function ServiceRequestProcessor($timeout, request, handleCallback) {
         this.$timeout = $timeout;
         this.request = request;
@@ -4152,7 +4154,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var uiGridRequest_1 = __webpack_require__(16);
 // TODO: Update comments.
-var UiGridService = (function () {
+var UiGridService = /** @class */ (function () {
     function UiGridService($timeout) {
         this.$timeout = $timeout;
         this.selectAllItems = function (controller) {
@@ -4455,7 +4457,7 @@ exports.UiGridService = UiGridService;
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(0);
 var persistentMessage_1 = __webpack_require__(17);
-var PersistentNotificationService = (function () {
+var PersistentNotificationService = /** @class */ (function () {
     function PersistentNotificationService() {
     }
     PersistentNotificationService.prototype.items = function () {
@@ -4507,7 +4509,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 * @class toolkit.directives.FocusElement
 * @classdesc Makes a focus on element while loaded.
 */
-var FocusElement = (function () {
+var FocusElement = /** @class */ (function () {
     function FocusElement($timeout) {
         this.$timeout = $timeout;
         this.restrict = 'A';
@@ -4571,7 +4573,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @class toolkit.utils.Activator
  * @classdesc Creates instances of provided class types.
  */
-var Activator = (function () {
+var Activator = /** @class */ (function () {
     function Activator() {
     }
     /**
@@ -4601,7 +4603,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @class toolkit.utils.ArrayHelper
  * @classdesc Methods for helping deal with arrays.
  */
-var ArrayHelper = (function () {
+var ArrayHelper = /** @class */ (function () {
     function ArrayHelper() {
     }
     /**
@@ -4638,7 +4640,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @class toolkit.utils.ObjectCopier
  * @classdesc Copies object properties from one object to another.
  */
-var ObjectCopier = (function () {
+var ObjectCopier = /** @class */ (function () {
     function ObjectCopier() {
     }
     /**
@@ -4672,7 +4674,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * the service request processor.
  */
-var ServiceRequestProcessor = (function () {
+var ServiceRequestProcessor = /** @class */ (function () {
     function ServiceRequestProcessor($timeout, request, handleCallback) {
         this.$timeout = $timeout;
         this.request = request;
@@ -4713,7 +4715,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * validation processing tasks.
  */
-var ValidationProcessor = (function () {
+var ValidationProcessor = /** @class */ (function () {
     function ValidationProcessor() {
     }
     /**

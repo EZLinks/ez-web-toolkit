@@ -1,3 +1,6 @@
+/**
+ * @namespace toolkit.baseClasses
+ */
 /// <reference types="angular" />
 /// <reference types="angular-mocks" />
 import { IValidatableController, IRulesCustomizer, IValidator } from 'angular-typescript-validation';

@@ -1,8 +1,8 @@
-/// <reference types="angular" />
-/// <reference types="angular-mocks" />
 /**
  * @namespace toolkit.directives
  */
+/// <reference types="angular" />
+/// <reference types="angular-mocks" />
 /**
 * @class toolkit.directives.FocusElement
 * @classdesc Makes a focus on element while loaded.

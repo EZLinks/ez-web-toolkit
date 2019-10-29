@@ -1,3 +1,4 @@
+/// <reference types="angular" />
 import { IPersistentNotificationService } from '../../services/persistentNotificationService';
 import { PersistentMessage } from '../../models/persistentMessage';
 export declare class NotificationViewer implements ng.IComponentOptions {

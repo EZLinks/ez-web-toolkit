@@ -31,8 +31,8 @@ export declare abstract class BaseManagerController<T> {
      */
     isRequestRunning: boolean;
     /**
-     * Needs to be set in a timeout so the page updates accordingly.
-     */
+    * Needs to be set in a timeout so the page updates accordingly.
+    */
     state: ManagerState;
     /**
      * @class toolkit.baseClasses.BaseManagerController<T extends Object>
