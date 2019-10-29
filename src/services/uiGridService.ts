@@ -309,9 +309,23 @@ export class UiGridService<T> implements IUiGridService<T> {
             if (_.has(column, 'filter.term') && _.has(column, 'filter.condition')) {
 
                 if (column.filter.term !== null && column.filter.term !== undefined) {
+
+                    let termValue = column.filter.term;
+
+                    // it is the number filter
+                    if (column.filter.type === 'number') {
+                        let numberTermValue = parseFloat(termValue);
+
+                        if (isNaN(numberTermValue)) {
+                            termValue = '';
+                        } else {
+                            termValue = numberTermValue;
+                        }
+                    }
+
                     filters.push({
                         memberName: column.name,
-                        value: column.filter.term,
+                        value: termValue,
                         condition: column.filter.condition
                     });
                 }

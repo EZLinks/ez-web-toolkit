@@ -4366,9 +4366,20 @@ var UiGridService = (function () {
         columns.forEach(function (column) {
             if (_.has(column, 'filter.term') && _.has(column, 'filter.condition')) {
                 if (column.filter.term !== null && column.filter.term !== undefined) {
+                    var termValue = column.filter.term;
+                    // it is the number filter
+                    if (column.filter.type === 'number') {
+                        var numberTermValue = parseFloat(termValue);
+                        if (isNaN(numberTermValue)) {
+                            termValue = '';
+                        }
+                        else {
+                            termValue = numberTermValue;
+                        }
+                    }
                     filters.push({
                         memberName: column.name,
-                        value: column.filter.term,
+                        value: termValue,
                         condition: column.filter.condition
                     });
                 }
